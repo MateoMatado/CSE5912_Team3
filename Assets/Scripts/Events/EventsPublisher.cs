@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 // Code written by Dr Crawfis
 
-namespace Team3
+namespace Team3.Events
 {
     internal class EventsPublisher
     {
