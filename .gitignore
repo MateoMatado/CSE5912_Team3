@@ -60,8 +60,6 @@ crashlytics-build.properties
 
 UserSettings/EditorUserSettings.asset
 /Assets/ImportedAssets
-/Assets/ImportedAsset/Resources
-/Assets/ImportedAsset/Full_Scenes
 /Assets/ImportedAsset/Fog_Scenes
 /Assets/ImportedAsset/Cliffs_Scenes
 /Assets/ImportedAsset/_URP_package.meta
