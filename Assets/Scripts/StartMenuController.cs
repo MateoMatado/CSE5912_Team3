@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class StartMenuController : MonoBehaviour
 {    
@@ -12,6 +13,12 @@ public class StartMenuController : MonoBehaviour
     [SerializeField] private string newGameLevel = "Ball&Plane";
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    }
+
 
     public void NewGameYes()
     {
