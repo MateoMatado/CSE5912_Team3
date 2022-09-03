@@ -59,9 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 UserSettings/EditorUserSettings.asset
-/Assets/ImportedAssets
-/Assets/ImportedAsset/Full_Scenes.meta
-/Assets/ImportedAsset/Fog_Scenes.meta
-/Assets/ImportedAsset/Cliffs_Scenes.meta
-/Assets/ImportedAsset/presets
-/Assets/ImportedAsset/Ground textures pack
+
