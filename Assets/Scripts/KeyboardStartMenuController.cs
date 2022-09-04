@@ -74,7 +74,7 @@ public class KeyboardStartMenuController : MonoBehaviour
 
 
 
-
+    /*
     public void OpenNewGamePopOut()
     {
         newGamePopOut.SetActive(true);
@@ -83,6 +83,6 @@ public class KeyboardStartMenuController : MonoBehaviour
     {
         newGamePopOut.SetActive(false);
     }
-
+    */
     
 }
