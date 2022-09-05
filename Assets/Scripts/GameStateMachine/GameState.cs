@@ -5,21 +5,14 @@ using UnityEngine;
 public abstract class GameState
 {
     protected GameStateMachine stateMachine;
-
-    public void SwitchState(GameState newState)
-    {
-        stateMachine.CurrentState = newState;
-        Exit();
-        newState.Enter();
-    }
     
     public virtual void Enter()
     {
-
+        Debug.Log("<color=#48ab48>Entering Game State: </color><color=white>" + this.GetType().Name + "</color>");
     }
 
     public virtual void Exit()
     {
-
+        Debug.Log("<color=#a64444>Exiting Game State: </color><color=white>" + this.GetType().Name + "</color>");
     }
 }
