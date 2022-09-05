@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStateMachine 
 {
-    private static GameStateMachine instance;
+    private static GameStateMachine instance = null;
 
     public static GameStateMachine Instance
     {
@@ -12,7 +12,7 @@ public class GameStateMachine
         {
             if (instance == null)
             {
-                instance = new();
+                instance = new GameStateMachine();
             }
             return instance;
         }
@@ -26,14 +26,18 @@ public class GameStateMachine
         {
             return currentState;
         }
-        set
-        {
-            currentState = value;
-        }
     }
 
     private GameStateMachine()
     {
-        
+        Debug.Log("Initializing game state machine");
+        currentState = new MainMenuState();
+    }
+
+    public void SwitchState(GameState newState)
+    {
+        currentState.Exit();
+        currentState = newState;
+        newState.Enter();
     }
 }
