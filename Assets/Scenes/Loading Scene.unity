@@ -946,6 +946,9 @@ MonoBehaviour:
   Unity: {fileID: 1076124292079548392, guid: fe33d88742fffee4faf63dfd0c7846a0, type: 3}
   OSU: {fileID: 4042177661879698316, guid: 138d9ba888037e148873d8a1f2a62c9e, type: 3}
   CSE: {fileID: 3827306121904520130, guid: 2e6505b48248aa54abf329286d3c56f2, type: 3}
+  picture1: {fileID: 2860459528070791164, guid: eb15f0f954ecfcc458f325e7e00661d8, type: 3}
+  picture2: {fileID: 1588558275852662960, guid: b9e8eab936b63d5498826be85142b874, type: 3}
+  picture3: {fileID: 3765460945768534202, guid: db5cec2e4c2f9d649a985a741a021ff3, type: 3}
   slider: {fileID: 1368479601}
   ValueText: {fileID: 235997254}
   LoadingText: {fileID: 131822757}

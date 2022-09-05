@@ -9,6 +9,9 @@ public class LoadingState : MonoBehaviour
     [SerializeField] private GameObject Unity;
     [SerializeField] private GameObject OSU;
     [SerializeField] private GameObject CSE;
+    [SerializeField] private GameObject picture1;
+    [SerializeField] private GameObject picture2;
+    [SerializeField] private GameObject picture3;
     public Slider slider;
     public Text ValueText;
     public Text LoadingText;
@@ -58,6 +61,21 @@ public class LoadingState : MonoBehaviour
         /*CSE Logo*/
         var cloneCSE = Instantiate(CSE, transform.position, transform.rotation);
         yield return new WaitForSeconds(0.5f);
+        Destroy(cloneOSU);
+
+        /*Picture*/
+        var Picture1 = Instantiate(picture1, transform.position, transform.rotation);
+        yield return new WaitForSeconds(1f);
+        Destroy(Picture1);
+
+        var Picture2 = Instantiate(picture2, transform.position, transform.rotation);
+        yield return new WaitForSeconds(1f);
+        Destroy(Picture2);
+
+        var Picture3 = Instantiate(picture3, transform.position, transform.rotation);
+        yield return new WaitForSeconds(1f);
+        
+        /*Switch to main menu*/
         SceneManager.LoadScene(0);
 
     }
