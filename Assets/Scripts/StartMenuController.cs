@@ -10,7 +10,6 @@ public class StartMenuController : MonoBehaviour
 {    
     string levelToLoad;
     [SerializeField] private GameObject unableToLoad = null;
-    [SerializeField] private string newGameLevel = "Ball&Plane";
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
 
@@ -29,7 +28,7 @@ public class StartMenuController : MonoBehaviour
 
     public void NewGameYes()
     {
-        SceneManager.LoadScene(newGameLevel);
+        GameStateMachine.Instance.SwitchState(new RunningState());
     }
     public void LoadGameYes()
     {
