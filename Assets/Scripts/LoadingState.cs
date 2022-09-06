@@ -9,14 +9,16 @@ public class LoadingState : MonoBehaviour
     [SerializeField] private GameObject Unity;
     [SerializeField] private GameObject OSU;
     [SerializeField] private GameObject CSE;
+    [SerializeField] private GameObject CreditTo;
     [SerializeField] private GameObject picture1;
     [SerializeField] private GameObject picture2;
     [SerializeField] private GameObject picture3;
-    [SerializeField] private float slideDuration = 2f;
+    [SerializeField] private float slideDuration = 1.5f;
     [SerializeField] private float loadDuration = 2f;
     public Slider slider;
     public Text ValueText;
     public Text LoadingText;
+    private int count = 0;
     void Start()
     {
         StartCoroutine(Loading());
@@ -25,30 +27,34 @@ public class LoadingState : MonoBehaviour
     IEnumerator Loading()
     {
         /*Loading bar*/
-        slider.value = 0.2f;
-        ValueText.text = slider.value * 100f + "%";
-        LoadingText.text = "Loading Story";
-        yield return new WaitForSeconds(0.2f);
+        while(slider.value != 1)
+        {
+            /*update Message*/
+            slider.value += 0.01f;
+            ValueText.text = (int)(slider.value * 100f) + "%";
+            count++;
+            /*change text*/
+            if (count == 20)
+            {
+                LoadingText.text = "Loading Map";
+            }
+            else if (count == 40)
+            {
+                LoadingText.text = "Loading Player";
+            }
+            else if (count == 60)
+            {
+                LoadingText.text = "Loading Music";
+            }
+            else if (count == 80)
+            {
+                LoadingText.text = "Loading Story";
+            }
+            yield return new WaitForSeconds(0.02f);
+        }
+       
+        yield return new WaitForSeconds(0.5f);
 
-        slider.value = 0.4f;
-        ValueText.text = slider.value * 100f + "%";
-        LoadingText.text = "Loading Characters";
-        yield return new WaitForSeconds(loadDuration / 4f);
-
-        slider.value = 0.6f;
-        ValueText.text = slider.value * 100f + "%";
-        LoadingText.text = "Loading Weapons";
-        yield return new WaitForSeconds(loadDuration / 4f);
-
-        slider.value = 0.8f;
-        ValueText.text = slider.value * 100f + "%";
-        LoadingText.text = "Loading Map";
-        yield return new WaitForSeconds(loadDuration / 4f);
-
-        slider.value = 1f;
-        ValueText.text = slider.value * 100f + "%";
-        LoadingText.text = "Done";
-        yield return new WaitForSeconds(loadDuration / 4f);
 
         /*Unity Logo*/
         var cloneUnity =Instantiate(Unity, transform.position, transform.rotation);
@@ -64,6 +70,11 @@ public class LoadingState : MonoBehaviour
         var cloneCSE = Instantiate(CSE, transform.position, transform.rotation);
         yield return new WaitForSeconds(slideDuration);
         Destroy(cloneOSU);
+
+        /*CSE Logo*/
+        var cloneCreditTo = Instantiate(CreditTo, transform.position, transform.rotation);
+        yield return new WaitForSeconds(slideDuration/2);
+        Destroy(cloneCreditTo);
 
         /*Picture*/
         var Picture1 = Instantiate(picture1, transform.position, transform.rotation);
