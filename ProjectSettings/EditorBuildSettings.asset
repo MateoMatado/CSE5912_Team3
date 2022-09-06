@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ball&Plane.unity
     guid: 45196024a6e613842a35cc81b51cce96
+  - enabled: 1
+    path: Assets/Scenes/Loading Scene.unity
+    guid: 457d1bad1c7a60d4fa06cc3d56a9a224
+  - enabled: 1
+    path: Assets/Scenes/IslandTestArea.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
