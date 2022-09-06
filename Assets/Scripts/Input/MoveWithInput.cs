@@ -9,6 +9,7 @@ namespace Team3.Input
     {
         [SerializeField] private float jumpForce;
         [SerializeField] private float moveSpeed;
+        [SerializeField] private Camera camera;
 
         private GameInput inputs;
         private InputAction moveAction;
@@ -38,7 +39,10 @@ namespace Team3.Input
         private void FixedUpdate()
         {
             Vector2 moveVector = moveAction.ReadValue<Vector2>() * moveSpeed;
-            rBody.AddForce(moveVector.x, 0, moveVector.y, ForceMode.Impulse);
+            Vector3 cameraVector = Vector3.Normalize(new Vector3(camera.transform.forward.x, 0, camera.transform.forward.z));
+            rBody.AddForce(moveVector.y*cameraVector, ForceMode.Impulse);
+            cameraVector = Vector3.Normalize(new Vector3(camera.transform.right.x, 0, camera.transform.right.z));
+            rBody.AddForce(moveVector.x*camera.transform.right, ForceMode.Impulse);
         }
 
         private void Jump(InputAction.CallbackContext context)
