@@ -5,5 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LoadState : GameState
 {
-    
+    public override void Enter()
+    {
+        base.Enter();
+        SceneManager.LoadScene("Loading Scene");
+    }
 }

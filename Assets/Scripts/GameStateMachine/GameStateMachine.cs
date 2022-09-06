@@ -30,8 +30,7 @@ public class GameStateMachine
 
     private GameStateMachine()
     {
-        Debug.Log("Initializing game state machine");
-        currentState = new MainMenuState();
+        currentState = new DefaultState();
     }
 
     public void SwitchState(GameState newState)
@@ -40,4 +39,9 @@ public class GameStateMachine
         currentState = newState;
         newState.Enter();
     }
+}
+
+public class DefaultState : GameState
+{
+
 }

@@ -8,11 +8,11 @@ public abstract class GameState
     
     public virtual void Enter()
     {
-        Debug.Log("<color=#48ab48>Entering Game State: </color><color=white>" + this.GetType().Name + "</color>");
+        Debug.Log("<color=#88ff7d>Entering Game State: </color><color=white>" + this.GetType().Name + "</color>");
     }
 
     public virtual void Exit()
     {
-        Debug.Log("<color=#a64444>Exiting Game State: </color><color=white>" + this.GetType().Name + "</color>");
+        Debug.Log("<color=#ff7d7d>Exiting Game State: </color><color=white>" + this.GetType().Name + "</color>");
     }
 }
