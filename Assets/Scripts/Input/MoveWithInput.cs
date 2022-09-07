@@ -20,6 +20,7 @@ namespace Team3.Input
         {
             inputs = new GameInput();
             rBody = GetComponent<Rigidbody>();
+            Events.EventsPublisher.Instance.SubscribeToEvent("PlayerDeath", OnDeath);
         }
 
         private void OnEnable()
@@ -56,6 +57,11 @@ namespace Team3.Input
         private void QuitGame(InputAction.CallbackContext context)
         {
             GameStateMachine.Instance.SwitchState(new MainMenuState());
+        }
+
+        private void OnDeath(object sender, object data)
+        {
+            rBody.velocity = new Vector3(0, 0, 0);
         }
     }
 }

@@ -11,12 +11,13 @@ namespace Team3.Scripts
         // Start is called before the first frame update
         void Start()
         {
-
+            Events.EventsPublisher.Instance.RegisterEvent("PlayerDeath");
         }
 
         private void OnTriggerEnter(Collider other)
         {
             other.transform.position = respawnLocation;
+            Events.EventsPublisher.Instance.PublishEvent("PlayerDeath", null, null);
         }
     }
 }
