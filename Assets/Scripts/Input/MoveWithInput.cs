@@ -29,6 +29,9 @@ namespace Team3.Input
 
             inputs.Player.Jump.performed += Jump;
             inputs.Player.Jump.Enable();
+
+            inputs.Player.Pause.performed += QuitGame;
+            inputs.Player.Pause.Enable();
         }
 
         private void OnDisable()
@@ -48,6 +51,11 @@ namespace Team3.Input
         private void Jump(InputAction.CallbackContext context)
         {
             rBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        private void QuitGame(InputAction.CallbackContext context)
+        {
+            GameStateMachine.Instance.SwitchState(new MainMenuState());
         }
     }
 }
