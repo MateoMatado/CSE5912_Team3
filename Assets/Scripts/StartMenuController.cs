@@ -42,7 +42,11 @@ public class StartMenuController : MonoBehaviour
 
     public void ExitYes()
     {
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
         Application.Quit();
+    #endif
     }
 
     public void SetVolume(float volumeValue)
