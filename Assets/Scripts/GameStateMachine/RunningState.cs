@@ -8,6 +8,6 @@ public class RunningState : GameState
     public override void Enter()
     {
         base.Enter();
-        SceneManager.LoadScene("Ball&Plane");
+        SceneManager.LoadScene("IslandTestArea");
     }
 }
