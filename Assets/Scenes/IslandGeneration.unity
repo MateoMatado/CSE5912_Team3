@@ -152,13 +152,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31627ef880d433041ad601dfd3e1afc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 100
-  Length: 100
+  Width: 10
+  Length: 10
   Height: 50
-  Attempts: 10
+  Attempts: 100
   Islands:
-  - {fileID: 9156530376196742676, guid: 160025a973c663a47be5469defed7d27, type: 3}
-  - {fileID: 952968337567234497, guid: 1761cc1eb6f1ae34cac51e3559d8ccfd, type: 3}
+  - {fileID: 5454619838246524391, guid: 910024f0daf0a1649a8b108ba6a2fe67, type: 3}
+  - {fileID: 1432891071907168970, guid: d771fb84f33ede543b89ee029ff9fa8d, type: 3}
+  - {fileID: 4281461206169813096, guid: 6b3dbed6f9e877340bef608c82a5d01f, type: 3}
+  - {fileID: 6863668867776598345, guid: f614ebf8c8599b4408fe262f2c755649, type: 3}
+  - {fileID: 9005520898062321516, guid: 781a9b57558de96428a41cdf5378fa53, type: 3}
+  - {fileID: 3085576847060190053, guid: a2f67cfaf2b47f64bbf8fae7c273ec05, type: 3}
+  - {fileID: 4769205218157513726, guid: 8afb293adfa111c40a7599ad571010d3, type: 3}
+  - {fileID: 8046387056837986850, guid: 7aade38a25a05f94292f1c22f293d0f1, type: 3}
+  - {fileID: 5085873950381094774, guid: f78b327b9dd98bb45a75513a7f938f81, type: 3}
+  - {fileID: 2963736423139726833, guid: f85f4ea22c81c224badb94255c25ecf1, type: 3}
+  - {fileID: 4600167552408484380, guid: bcc8fc39605a5a04fbfa0c6139ceae84, type: 3}
+  - {fileID: 2155651054293200269, guid: 92705444a9c8cbe44a17215edf4f7fe8, type: 3}
+  - {fileID: 3298998413941396403, guid: 93fb6b86a5f480a4297202c1fe67c335, type: 3}
+  - {fileID: 1336511418900073520, guid: 8b8082fb21e315d4391922b3b87220d6, type: 3}
+  - {fileID: 8023479539561582269, guid: d6e509ae837a90f488917892b737e151, type: 3}
+  Empty: {fileID: 952968337567234497, guid: 1761cc1eb6f1ae34cac51e3559d8ccfd, type: 3}
 --- !u!4 &228366102
 Transform:
   m_ObjectHideFlags: 0
@@ -342,10 +356,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066890460}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 50, y: 90, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}

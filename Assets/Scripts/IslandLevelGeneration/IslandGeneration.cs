@@ -13,6 +13,7 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private int Attempts = 10;
 
     [SerializeField] private List<GameObject> Islands;
+    [SerializeField] private GameObject Empty;
 
     private Dictionary<GameObject,Vector2> DIslands = new Dictionary<GameObject,Vector2>();
     private enum EIslands{Empty,Filled};
@@ -24,26 +25,46 @@ public class IslandGeneration : MonoBehaviour
     {
         DIslands.Add(Islands[0], new Vector2(2, 2));
         DIslands.Add(Islands[1], new Vector2(4, 4));
+        DIslands.Add(Islands[2], new Vector2(6, 6));
+        DIslands.Add(Islands[3], new Vector2(8, 8));
+        DIslands.Add(Islands[4], new Vector2(10, 10));
+        DIslands.Add(Islands[5], new Vector2(2, 1));
+        DIslands.Add(Islands[6], new Vector2(4, 2));
+        DIslands.Add(Islands[7], new Vector2(6, 3));
+        DIslands.Add(Islands[8], new Vector2(8, 4));
+        DIslands.Add(Islands[9], new Vector2(10, 5));
+        DIslands.Add(Islands[10], new Vector2(1, 2));
+        DIslands.Add(Islands[11], new Vector2(2, 4));
+        DIslands.Add(Islands[12], new Vector2(3, 6));
+        DIslands.Add(Islands[13], new Vector2(4, 8));
+        DIslands.Add(Islands[14], new Vector2(5, 10));
 
-        EIslandArray = new int[Width,Length];
+        Generate();
+
+    }
+
+    private void Generate()
+    {
+        EIslandArray = new int[Width, Length];
         gameObjects = new GameObject[Width, Length];
-        for(int i = 0; i < Width; i++)
+        for (int i = 0; i < Width; i++)
         {
-            for(int j = 0; j < Length; j++)
+            for (int j = 0; j < Length; j++)
             {
-                EIslandArray[i,j] = (int)EIslands.Empty;
-                gameObjects[i, j] = GameObject.Instantiate(Islands[1]);
-                gameObjects[i, j].transform.position = new Vector3(i,0,j);
+                EIslandArray[i, j] = (int)EIslands.Empty;
+                gameObjects[i, j] = GameObject.Instantiate(Empty);
+                gameObjects[i, j].transform.position = new Vector3(i, 0, j);
                 gameObjects[i, j].transform.SetParent(transform);
             }
         }
 
         for (int i = 0; i < Attempts; i++)
         {
-            Vector2 IslandSize = DIslands[Islands[Random.Range(0, Islands.Count)]];
-            Vector2 pos = new Vector2(Random.Range(0,Width), Random.Range(0,Length));
+            int IslRand = Random.Range(0, Islands.Count);
+            Vector2 IslandSize = DIslands[Islands[IslRand]];
+            Vector2 pos = new Vector2(Random.Range(0, Width), Random.Range(0, Length));
 
-            bool check = IslandCheck(pos,IslandSize);
+            bool check = IslandCheck(pos, IslandSize);
 
             if (check)
             {
@@ -51,15 +72,15 @@ public class IslandGeneration : MonoBehaviour
                 {
                     for (int y = 0; y < IslandSize.y; y++)
                     {
-                        GameObject.Destroy(gameObjects[x+ (int)pos.x, y+ (int)pos.y]);
-                        gameObjects[x, y] = GameObject.Instantiate(Islands[0]);
+                        GameObject.Destroy(gameObjects[x + (int)pos.x, y + (int)pos.y]);
+                        gameObjects[x, y] = GameObject.Instantiate(Islands[IslRand]);
                         gameObjects[x, y].transform.position = new Vector3(x + (int)pos.x, 0, y + (int)pos.y);
                         gameObjects[x, y].transform.SetParent(transform);
+                        EIslandArray[x + (int)pos.x, y + (int)pos.y] = (int)EIslands.Filled;
                     }
                 }
             }
         }
-
     }
 
     private Boolean IslandCheck(Vector2 pos, Vector2 IslandSize)
