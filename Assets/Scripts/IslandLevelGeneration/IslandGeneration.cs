@@ -51,9 +51,9 @@ public class IslandGeneration : MonoBehaviour
                 {
                     for (int y = 0; y < IslandSize.y; y++)
                     {
-                        GameObject.Destroy(gameObjects[(int)pos.x, (int)pos.y]);
+                        GameObject.Destroy(gameObjects[x+ (int)pos.x, y+ (int)pos.y]);
                         gameObjects[x, y] = GameObject.Instantiate(Islands[0]);
-                        gameObjects[x, y].transform.position = new Vector3(x, 0, y);
+                        gameObjects[x, y].transform.position = new Vector3(x + (int)pos.x, 0, y + (int)pos.y);
                         gameObjects[x, y].transform.SetParent(transform);
                     }
                 }
@@ -69,7 +69,7 @@ public class IslandGeneration : MonoBehaviour
         {
             for (int y = 0; y < IslandSize.y; y++)
             {
-                if (x + (int)pos.x < Width && y + (int)pos.y < Length && EIslandArray[x+ (int)pos.x, y+ (int)pos.y] == (int)EIslands.Filled)
+                if (x + (int)pos.x >= Width || y + (int)pos.y >= Length || EIslandArray[x+ (int)pos.x, y+ (int)pos.y] == (int)EIslands.Filled)
                 {
                     check = false;
                 }
