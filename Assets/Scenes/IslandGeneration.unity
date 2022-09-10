@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31627ef880d433041ad601dfd3e1afc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 10
-  Length: 10
+  Width: 100
+  Length: 100
   Height: 50
-  Attempts: 100
+  Attempts: 1000
   Islands:
   - {fileID: 5454619838246524391, guid: 910024f0daf0a1649a8b108ba6a2fe67, type: 3}
   - {fileID: 1432891071907168970, guid: d771fb84f33ede543b89ee029ff9fa8d, type: 3}
