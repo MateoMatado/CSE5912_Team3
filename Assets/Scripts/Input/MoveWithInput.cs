@@ -10,10 +10,12 @@ namespace Team3.Input
         [SerializeField] private float jumpForce;
         [SerializeField] private float moveSpeed;
         [SerializeField] private Camera camera;
+        [SerializeField] private GameObject pauseMenu;
 
         private GameInput inputs;
         private InputAction moveAction;
         private Rigidbody rBody;
+        public static bool paused = false;
 
 
         private void Awake()
@@ -56,12 +58,34 @@ namespace Team3.Input
 
         private void QuitGame(InputAction.CallbackContext context)
         {
-            GameStateMachine.Instance.SwitchState(new MainMenuState());
+            
+            if (!paused)
+            {
+                Pause();
+            }
+            else
+            {
+                Resume();
+            }
         }
 
         private void OnDeath(object sender, object data)
         {
             rBody.velocity = new Vector3(0, 0, 0);
+        }
+
+        public void Pause()
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            paused = true;
+        }
+
+        public void Resume()
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            paused = false;
         }
     }
 }
