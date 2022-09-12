@@ -32,6 +32,7 @@ namespace Team3.Input
         private void StopMove(object sender, object data)
         {
             moving = false;
+            body.velocity = new Vector3(0, body.velocity.y, 0);
         }
 
         private IEnumerator Move()
@@ -42,9 +43,13 @@ namespace Team3.Input
                 {
                     Vector2 moveVector = moveAction.ReadValue<Vector2>() * speed;
                     Vector3 cameraVector = Vector3.Normalize(new Vector3(currentCamera.transform.forward.x, 0, currentCamera.transform.forward.z));
-                    body.AddForce(moveVector.y * cameraVector, ForceMode.Impulse);
+                    float yVel = body.velocity.y;
+                    body.velocity = moveVector.y * cameraVector;
+                    //body.AddForce(moveVector.y * cameraVector, ForceMode.Impulse);
                     cameraVector = Vector3.Normalize(new Vector3(currentCamera.transform.right.x, 0, currentCamera.transform.right.z));
-                    body.AddForce(moveVector.x * currentCamera.transform.right, ForceMode.Impulse);
+                    body.velocity += moveVector.x * cameraVector;
+                    body.velocity += new Vector3(0, yVel, 0);
+                    //body.AddForce(moveVector.x * currentCamera.transform.right, ForceMode.Impulse);
                     yield return null;
                 }
                 yield return null;
