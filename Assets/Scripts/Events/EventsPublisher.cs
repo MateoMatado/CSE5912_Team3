@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 // Code written by Dr Crawfis
 
@@ -47,6 +48,10 @@ namespace Team3.Events
         }
         public void PublishEvent(string eventName, object sender, object data)
         {
+        #if UNITY_EDITOR
+            Debug.Log("EVENT PERFORMED: \"" + eventName + "\"");
+        #endif
+
             if (events.TryGetValue(eventName, out Action<object, object> eventDelegate))
                 eventDelegate(sender, data);
             foreach (var handler in allSubscribers)
