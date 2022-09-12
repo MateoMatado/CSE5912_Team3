@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         GameStateMachine.Instance.SwitchState(new LoadState());
-        StartCoroutine(TestCoroutine());
+        // StartCoroutine(TestCoroutine());
     }
 
-    IEnumerator TestCoroutine()
+    private IEnumerator TestCoroutine()
     {
         while (true)
         {

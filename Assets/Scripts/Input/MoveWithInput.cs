@@ -76,6 +76,7 @@ namespace Team3.Input
 
         public void Pause()
         {
+            GameStateMachine.Instance.SwitchState(new PauseState());
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             paused = true;
@@ -83,6 +84,7 @@ namespace Team3.Input
 
         public void Resume()
         {
+            GameStateMachine.Instance.SwitchState(new RunningState());
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
             paused = false;

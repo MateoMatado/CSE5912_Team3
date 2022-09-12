@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Team3.Events;
 
 public class GameStateMachine 
 {
@@ -30,6 +31,8 @@ public class GameStateMachine
 
     private GameStateMachine()
     {
+        EventsPublisher.Instance.RegisterEvent("Pause");
+        EventsPublisher.Instance.RegisterEvent("Unpause");
         currentState = new DefaultState();
     }
 
