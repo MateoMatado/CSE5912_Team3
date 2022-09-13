@@ -32,7 +32,6 @@ namespace Team3
 
         private void StartPause(object sender, object data)
         {
-            Debug.Log("Start pause");
             pauseMenu.SetActive(true);
             paused = true;
             GameStateMachine.Instance.SwitchState(GameStateMachine.PauseState);
@@ -40,7 +39,6 @@ namespace Team3
 
         private void EndPause(object sender, object data)
         {
-            Debug.Log("End pause");
             pauseMenu.SetActive(false);
             paused = false;
             GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
