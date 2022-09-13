@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit()
     {
-        GameStateMachine.Instance.SwitchState(new MainMenuState());
+        GameStateMachine.Instance.SwitchState(GameStateMachine.MainMenuState);
     }
 
     public void BGMControl()

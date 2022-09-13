@@ -28,7 +28,7 @@ public class StartMenuController : MonoBehaviour
 
     public void NewGameYes()
     {
-        GameStateMachine.Instance.SwitchState(new RunningState());
+        GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
     }
     public void LoadGameYes()
     {
@@ -43,7 +43,7 @@ public class StartMenuController : MonoBehaviour
     public void ExitYes()
     {
         /*Switch to main menu*/
-        GameStateMachine.Instance.SwitchState(new ExitingState());
+        GameStateMachine.Instance.SwitchState(GameStateMachine.ExitingState);
     }
 
     public void SetVolume(float volumeValue)

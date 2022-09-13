@@ -89,7 +89,7 @@ public class LoadingState : MonoBehaviour
         yield return new WaitForSeconds(slideDuration);
         
         /*Switch to main menu*/
-        GameStateMachine.Instance.SwitchState(new MainMenuState());
+        GameStateMachine.Instance.SwitchState(GameStateMachine.MainMenuState);
 
     }
 }

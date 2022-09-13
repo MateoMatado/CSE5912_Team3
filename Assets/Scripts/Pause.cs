@@ -32,18 +32,18 @@ namespace Team3
 
         private void StartPause(object sender, object data)
         {
-            //GameStateMachine.Instance.SwitchState(new PauseState());
+            Debug.Log("Start pause");
             pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
             paused = true;
+            GameStateMachine.Instance.SwitchState(GameStateMachine.PauseState);
         }
 
         private void EndPause(object sender, object data)
         {
-            //GameStateMachine.Instance.SwitchState(new RunningState());
+            Debug.Log("End pause");
             pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
             paused = false;
+            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
         }
     }
 }

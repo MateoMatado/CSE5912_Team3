@@ -5,6 +5,13 @@ using Team3.Events;
 
 public class GameStateMachine 
 {
+    public static GameState DefaultState = new DefaultState(),
+                            LoadState = new LoadState(),
+                            MainMenuState = new MainMenuState(),
+                            RunningState = new RunningState(),
+                            ExitingState = new ExitingState(),
+                            PauseState = new PauseState();
+
     private static GameStateMachine instance = null;
 
     public static GameStateMachine Instance
@@ -31,9 +38,7 @@ public class GameStateMachine
 
     private GameStateMachine()
     {
-        EventsPublisher.Instance.RegisterEvent("Pause");
-        EventsPublisher.Instance.RegisterEvent("Unpause");
-        currentState = new DefaultState();
+        currentState = DefaultState;
     }
 
     public void SwitchState(GameState newState)
