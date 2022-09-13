@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);
-        GameStateMachine.Instance.SwitchState(new LoadState());
+        GameStateMachine.Instance.SwitchState(GameStateMachine.LoadState);
         // StartCoroutine(TestCoroutine());
     }
 
