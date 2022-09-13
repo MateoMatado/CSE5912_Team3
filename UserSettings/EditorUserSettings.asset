@@ -12,6 +12,7 @@ EditorUserSettings:
       value: 22424703114646680e0b0227036c731f171311242b6815332827187df7ee3d2cfb
       flags: 0
     RecentlyUsedScenePath-2:
+<<<<<<< HEAD
       value: 22424703114646680e0b0227036c7a081f0358192f2d2835633c133af6f9
       flags: 0
     RecentlyUsedScenePath-3:
@@ -25,6 +26,30 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedScenePath-6:
       value: 22424703114646680e0b0227036c76031a16162e182d35240c3b1832acf53a31f6fe
+=======
+      value: 22424703114646680e0b0227036c76031a16162e0b2d28353f28093aedee7a2decee22f0
+      flags: 0
+    RecentlyUsedScenePath-3:
+      value: 22424703114646680e0b0227036c7a081f0358192f2d2835633c133af6f9
+      flags: 0
+    RecentlyUsedScenePath-4:
+      value: 22424703114646680e0b0227036c6c0417050c072926337e38271427fb
+      flags: 0
+    RecentlyUsedScenePath-5:
+      value: 22424703114646680e0b0227036c6c0417050c192f2d2835633c133af6f9
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 22424703114646680e0b0227036c7d111a1b5e1a20292835633c133af6f9
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 22424703114646680e0b0227036c76031a16162e182d35240c3b1832acf53a31f6fe
+      flags: 0
+    RecentlyUsedScenePath-8:
+      value: 224247031146466b011b0b2b1e301032171919242d681f3521251224a2c73535e7f479caef3b2d3d3a16ea2e1771233efc0b070ab6260b055e2af8031ebf231014cb1d8a38c9111dc5185ce3cc1391c7d0dbdbaaebe8e2d6db91b5fcfde4f7
+      flags: 0
+    RecentlyUsedScenePath-9:
+      value: 22424703114646680e0b0227036c6f1c170e1d380d262f3d2c3d143cecd4312bf6ee38eea92f31352d1b
+>>>>>>> PlayerAnimation
       flags: 0
     RecentlyUsedScenePath-7:
       value: 224247031146466b011b0b2b1e301032171919242d681f3521251224a2c73535e7f479caef3b2d3d3a16ea2e1771233efc0b070ab6260b055e2af8031ebf231014cb1d8a38c9111dc5185ce3cc1391c7d0dbdbaaebe8e2d6db91b5fcfde4f7
