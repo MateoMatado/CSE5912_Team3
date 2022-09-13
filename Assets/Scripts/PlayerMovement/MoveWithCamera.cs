@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Team3.Input
+namespace Team3.PlayerMovement
 {
     public class MoveWithCamera : MonoBehaviour
     {
         [SerializeField] private float speed;
         [SerializeField] private Camera currentCamera;
-        [SerializeField] private Rigidbody body;
-
+        
+        private Rigidbody body;
         private InputAction moveAction;
         private bool moving = false;
 
