@@ -42,11 +42,8 @@ public class StartMenuController : MonoBehaviour
 
     public void ExitYes()
     {
-    #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-    #else
-        Application.Quit();
-    #endif
+        /*Switch to main menu*/
+        GameStateMachine.Instance.SwitchState(new ExitingState());
     }
 
     public void SetVolume(float volumeValue)
