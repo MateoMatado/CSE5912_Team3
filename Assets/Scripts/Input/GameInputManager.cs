@@ -8,9 +8,7 @@ namespace Team3.Input
     public class GameInputManager : MonoBehaviour
     {
         private GameInput inputs;
-        private InputAction moveAction;
 
-        // Start is called before the first frame update
         void Awake()
         {
             inputs = new GameInput();
@@ -43,7 +41,7 @@ namespace Team3.Input
             inputs.Player.ReloadScene.Disable();
 
             //for temporary camera switching, by Jimmy 
-            inputs.Player.CameraSwitch.Enable();
+            inputs.Player.CameraSwitch.Disable();
         }
     }
 }
