@@ -18,6 +18,7 @@ namespace Team3.Input
             inputs.Player.Move.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("PlayerStop", null, inputs.Player.Move); };
             inputs.Player.Jump.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PlayerJump", null, inputs.Player.Jump); };
             inputs.Player.Pause.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PauseUnpause", null, inputs.Player.Pause); };
+            inputs.Player.ReloadScene.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LoadRunning", null, inputs.Player.Pause); };
         }
 
         private void OnEnable()
@@ -25,6 +26,7 @@ namespace Team3.Input
             inputs.Player.Move.Enable();
             inputs.Player.Jump.Enable();
             inputs.Player.Pause.Enable();
+            inputs.Player.ReloadScene.Enable();
         }
 
         private void OnDisable()
@@ -32,6 +34,7 @@ namespace Team3.Input
             inputs.Player.Move.Disable();
             inputs.Player.Jump.Disable();
             inputs.Player.Pause.Disable();
+            inputs.Player.ReloadScene.Disable();
         }
     }
 }
