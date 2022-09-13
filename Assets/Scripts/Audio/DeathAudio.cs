@@ -16,6 +16,11 @@ namespace Team3.Audio
             Events.EventsPublisher.Instance.SubscribeToEvent(eventName, PlaySound);
         }
 
+        private void OnDestroy()
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent(eventName, PlaySound);
+        }
+
         private void PlaySound(object sender, object data)
         {
             if (audioList.Count > 0)

@@ -15,6 +15,11 @@ namespace Team3
             Events.EventsPublisher.Instance.SubscribeToEvent(eventName, Load);
         }
 
+        private void OnDestroy()
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent(eventName, Load);
+        }
+
         private void Load(object sender, object data)
         {
             SceneManager.LoadScene(sceneName);

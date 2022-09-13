@@ -18,6 +18,13 @@ namespace Team3
             Events.EventsPublisher.Instance.SubscribeToEvent("Unpause", EndPause);
         }
 
+        private void OnDestroy()
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("PauseUnpause", CheckPause);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("Pause", StartPause);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("Unpause", EndPause);
+        }
+
         private void CheckPause(object sender, object data)
         {
             if (!paused)

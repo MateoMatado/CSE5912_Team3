@@ -23,6 +23,12 @@ namespace Team3.PlayerMovement
             StartCoroutine(Move());
         }
 
+        private void OnDestroy()
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerMove", StartMove);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerStop", StopMove);
+        }
+
         private void StartMove(object sender, object data)
         {
             moveAction = (InputAction)data;

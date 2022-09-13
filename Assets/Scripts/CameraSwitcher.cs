@@ -37,6 +37,11 @@ namespace Team3.PlayerMovement
             Events.EventsPublisher.Instance.SubscribeToEvent("CameraSwitch", NextCamera);
         }
 
+        private void OnDestroy()
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("CameraSwitch", NextCamera);
+        }
+
         public void NextCamera(object sender, object data)
         {
             int oldIndex = index;

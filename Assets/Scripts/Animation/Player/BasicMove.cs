@@ -14,6 +14,12 @@ namespace Team3.Animation.Player
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerStop", SetStop);
         }
 
+        private void OnDestroy()
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerMove", SetMove);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerStop", SetStop);
+        }
+
         private void SetMove(object sender, object data)
         {
             anim.SetTrigger("ChangeRun");
