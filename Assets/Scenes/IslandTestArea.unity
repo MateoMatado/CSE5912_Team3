@@ -12192,31 +12192,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.9, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &371185260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371185256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584120d18bebff249abfe407fdc3edf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7
-  currentCamera: {fileID: 963194227}
-  body: {fileID: 371185258}
-  moveAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  moving: 0
 --- !u!114 &371185261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12252,7 +12227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   currentCamera: {fileID: 963194227}
-  body: {fileID: 371185258}
 --- !u!114 &371185263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12266,7 +12240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 10
-  body: {fileID: 371185258}
 --- !u!1001 &371772164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53029,7 +53002,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365857547}
-  m_LocalRotation: {x: 0.062137447, y: -0.0000000062623604, z: 3.8988046e-10, w: 0.9980676}
+  m_LocalRotation: {x: 0.062137444, y: -0.0000000047420396, z: 2.9522873e-10, w: 0.9980676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -76904,6 +76877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989646459}
   - component: {fileID: 1989646458}
+  - component: {fileID: 1989646460}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -76937,6 +76911,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1989646460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2f89d03f3d0bb46acc2380fa3b5e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 9254197}
 --- !u!1 &1990162739
 GameObject:
   m_ObjectHideFlags: 0
