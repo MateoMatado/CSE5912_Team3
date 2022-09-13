@@ -8,6 +8,10 @@ public class RunningState : GameState
     public override void Enter()
     {
         base.Enter();
-        SceneManager.LoadScene("IslandTestArea");
+        string gameScene = "IslandTestArea";
+        if (SceneManager.GetActiveScene().name != gameScene)
+        {
+            SceneManager.LoadScene(gameScene);
+        }
     }
 }
