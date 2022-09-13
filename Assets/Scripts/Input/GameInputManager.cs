@@ -19,6 +19,9 @@ namespace Team3.Input
             inputs.Player.Jump.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PlayerJump", null, inputs.Player.Jump); };
             inputs.Player.Pause.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PauseUnpause", null, inputs.Player.Pause); };
             inputs.Player.ReloadScene.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LoadRunning", null, inputs.Player.Pause); };
+
+            //for temporary camera switching, by Jimmy 
+            inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
         }
 
         private void OnEnable()
@@ -27,6 +30,9 @@ namespace Team3.Input
             inputs.Player.Jump.Enable();
             inputs.Player.Pause.Enable();
             inputs.Player.ReloadScene.Enable();
+
+            //for temporary camera switching, by Jimmy 
+            inputs.Player.CameraSwitch.Enable();
         }
 
         private void OnDisable()
@@ -35,6 +41,9 @@ namespace Team3.Input
             inputs.Player.Jump.Disable();
             inputs.Player.Pause.Disable();
             inputs.Player.ReloadScene.Disable();
+
+            //for temporary camera switching, by Jimmy 
+            inputs.Player.CameraSwitch.Enable();
         }
     }
 }
