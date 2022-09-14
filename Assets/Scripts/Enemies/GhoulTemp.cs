@@ -37,8 +37,8 @@ public class GhoulTemp : LivingEntity
     private float turnSmoothVelocity;
 
     // private float damage = 30f;
-    public float attackRadius = 2f;
-    public float attackDistance = 5f;
+    public float attackRadius = 3f;
+    private float attackDistance;
 
     public float fieldOfView = 50f;
     public float viewDistance = 10f;
@@ -199,9 +199,10 @@ public class GhoulTemp : LivingEntity
             return;
         }
         if (state == State.Chase)
-        {
+        {            
             var distance = Vector3.Distance(targetEntity.position, transform.position);
-            if (distance <= attackDistance)
+            Debug.Log("current:" + distance+"   ,   attkDis:"+ attackDistance);
+            if (distance <= attackDistance + 2f)  //this is to make 
             {
                 BeginAttack();
             }
@@ -232,14 +233,9 @@ public class GhoulTemp : LivingEntity
         state = State.Attack;
         navMeshAgent.isStopped = true;
         ghoulAnimator.SetTrigger("Attack");
-
-
-        //navMeshAgent.velocity = new Vector3(0, 0); //bad code
-
-        isAlreadyAttacked = true;
-        
-        lastAttackTime = Time.time;
-       // Debug.Log("State:Attacking...");
+        Debug.Log("State:Attacking...");
+        //isAlreadyAttacked = true;        
+        //lastAttackTime = Time.time;
     }
     
     public void EndAttack()
