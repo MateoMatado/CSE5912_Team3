@@ -46,9 +46,9 @@ namespace Team3.Animation.Player
             {
                 anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
                 anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                anim.SetIKPosition(AvatarIKGoal.LeftHand, pickup.position);
-                anim.SetIKRotation(AvatarIKGoal.LeftHand, pickup.rotation);
-                rot = (rot + 1) % 360;
+                anim.SetIKPosition(AvatarIKGoal.LeftHand, new Vector3(0, 0, 0));
+                anim.SetIKRotation(AvatarIKGoal.LeftHand, Quaternion.Euler(rot, rot, rot));
+                rot = (rot + 5) % 360;
             }
 
             if (rightAction != null && rightAction.IsPressed())
@@ -57,7 +57,6 @@ namespace Team3.Animation.Player
                 anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
                 anim.SetIKPosition(AvatarIKGoal.RightHand, pickup.position);
                 anim.SetIKRotation(AvatarIKGoal.RightHand, pickup.rotation);
-                rot = (rot + 1) % 360;
             }
         }
     }
