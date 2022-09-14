@@ -22,12 +22,12 @@ namespace Team3.Animation.Player
 
         private void SetMove(object sender, object data)
         {
-            anim.SetTrigger("ChangeRun");
+            anim.SetTrigger("SetRunning");
         }
 
         private void SetStop(object sender, object data)
         {
-            anim.SetTrigger("ChangeRun");
+            anim.SetTrigger("SetIdle");
         }
     }
 }
