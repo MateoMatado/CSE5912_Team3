@@ -30,14 +30,14 @@ public class GhoulTemp : LivingEntity
     public float fieldOfView = 50f;
     public float viewDistance = 10f;
 
-    public float patrolSpeed = 10f;
-    public float chaseSpeed = 20f;
+    public float patrolSpeed = 3f;
+    public float chaseSpeed = 10f;
 
-    public float attackDistance;
+    public float attackDistance =5f;
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
         
-    [SerializeField] float timeBetweenAttack = 0.5f;
+    [SerializeField] float timeBetweenAttack = 1.3f;
     private float lastAttackTime;
 
     private bool isAlreadyAttacked = false;
@@ -159,7 +159,7 @@ public class GhoulTemp : LivingEntity
 
                 //first, move to random position
                 //Debug.Log("remainingDistance" + navMeshAgent.remainingDistance);
-                if (navMeshAgent.remainingDistance <= 10f)
+                if (navMeshAgent.remainingDistance <= 8f)
                 {
                     var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
@@ -177,7 +177,7 @@ public class GhoulTemp : LivingEntity
                     }
                 }
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 
