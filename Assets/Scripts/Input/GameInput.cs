@@ -80,6 +80,24 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftArmActivate"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ab5d95f-0749-46d8-9883-94ae1dd38372"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightArmActivate"",
+                    ""type"": ""Button"",
+                    ""id"": ""44273eba-7f80-4da5-aa6e-c33dbf65e392"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -311,6 +329,50 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CameraSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f52a6bcb-31d8-4c10-9fd1-846ea053e132"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftArmActivate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0d1a4bc-7e75-420b-9adb-21bcc01c3d0c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftArmActivate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76262b97-3b26-4725-b8fa-5b9dff632806"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightArmActivate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c151f13-473f-4b04-b47f-a0da3e5d3aad"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightArmActivate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -904,6 +966,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_ReloadScene = m_Player.FindAction("ReloadScene", throwIfNotFound: true);
         m_Player_CameraSwitch = m_Player.FindAction("CameraSwitch", throwIfNotFound: true);
+        m_Player_LeftArmActivate = m_Player.FindAction("LeftArmActivate", throwIfNotFound: true);
+        m_Player_RightArmActivate = m_Player.FindAction("RightArmActivate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -981,6 +1045,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_ReloadScene;
     private readonly InputAction m_Player_CameraSwitch;
+    private readonly InputAction m_Player_LeftArmActivate;
+    private readonly InputAction m_Player_RightArmActivate;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -991,6 +1057,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @ReloadScene => m_Wrapper.m_Player_ReloadScene;
         public InputAction @CameraSwitch => m_Wrapper.m_Player_CameraSwitch;
+        public InputAction @LeftArmActivate => m_Wrapper.m_Player_LeftArmActivate;
+        public InputAction @RightArmActivate => m_Wrapper.m_Player_RightArmActivate;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1018,6 +1086,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @CameraSwitch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraSwitch;
                 @CameraSwitch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraSwitch;
                 @CameraSwitch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraSwitch;
+                @LeftArmActivate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftArmActivate;
+                @LeftArmActivate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftArmActivate;
+                @LeftArmActivate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftArmActivate;
+                @RightArmActivate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightArmActivate;
+                @RightArmActivate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightArmActivate;
+                @RightArmActivate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightArmActivate;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1040,6 +1114,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @CameraSwitch.started += instance.OnCameraSwitch;
                 @CameraSwitch.performed += instance.OnCameraSwitch;
                 @CameraSwitch.canceled += instance.OnCameraSwitch;
+                @LeftArmActivate.started += instance.OnLeftArmActivate;
+                @LeftArmActivate.performed += instance.OnLeftArmActivate;
+                @LeftArmActivate.canceled += instance.OnLeftArmActivate;
+                @RightArmActivate.started += instance.OnRightArmActivate;
+                @RightArmActivate.performed += instance.OnRightArmActivate;
+                @RightArmActivate.canceled += instance.OnRightArmActivate;
             }
         }
     }
@@ -1202,6 +1282,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnReloadScene(InputAction.CallbackContext context);
         void OnCameraSwitch(InputAction.CallbackContext context);
+        void OnLeftArmActivate(InputAction.CallbackContext context);
+        void OnRightArmActivate(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
