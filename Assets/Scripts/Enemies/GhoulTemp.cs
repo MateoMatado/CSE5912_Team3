@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GhoulTemp : LivingEntity
 {
@@ -11,36 +14,51 @@ public class GhoulTemp : LivingEntity
         Patrol,
         Chase,
         Attack
+        // AttackBegin,        Attacking
     }
 
     private State state;
+     
+    private NavMeshAgent navMeshAgent;
+    private Animator ghoulAnimator;
+     
+    //temp code for debug (to see the attack area and fov)
+    public Transform attackRoot;
+    public Transform eyeTransform;
+
+    /*
+        private AudioSource audioPlayer;
+        public AudioClip chaseClip;
+        public AudioClip deathClip;
+     */
+
+    public float chaseSpeed = 10f;
+    [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+
+    // private float damage = 30f;
+    public float attackRadius = 2f;
+    public float attackDistance = 5f;
+
+    public float fieldOfView = 50f;
+    public float viewDistance = 10f;
+    public float patrolSpeed = 3f;
+
 
     //public LivingEntity targetEntity;
     //temp code. should use upper one (livingEntity)
     public Transform targetEntity;
+    public LayerMask whatIsTarget; //chase only the given layer object
 
-    private NavMeshAgent navMeshAgent;
-    private Animator ghoulAnimator;
-    public LayerMask whatIsTarget; //chase the given layer object
 
-    //temp for debug
-    public Transform attackRoot;
-    public Transform eyeTransform;
-    public float attackRadius = 2f;
-    public float fieldOfView = 50f;
-    public float viewDistance = 10f;
-
-    public float patrolSpeed = 3f;
-    public float chaseSpeed = 10f;
-
-    public float attackDistance =5f;
-    [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
-    private float turnSmoothVelocity;
-        
     [SerializeField] float timeBetweenAttack = 1.3f;
     private float lastAttackTime;
 
     private bool isAlreadyAttacked = false;
+
+    //will use RaycastHit[] to implement range based attack
+    private const float waitTimeForCoroutine = 0.2f; //0.05
+    private const float remainingDistance = 8f; //1
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
@@ -57,7 +75,6 @@ public class GhoulTemp : LivingEntity
             Handles.color = new Color(1, 0.92f, 0.016f, 0.3f);
             Handles.DrawSolidArc(eyeTransform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
         }
-
     }
 #endif
 
@@ -65,56 +82,23 @@ public class GhoulTemp : LivingEntity
     {
         navMeshAgent = GetComponent<NavMeshAgent>();        
         ghoulAnimator = GetComponent<Animator>();
+        //audioPlayer = GetComponent<AudioSource>();
 
-        /*
+        
         var attackPivot = attackRoot.position;
         attackPivot.y = transform.position.y;
         attackDistance = Vector3.Distance(transform.position, attackPivot) + attackRadius;
+
+        //navMeshAgent.stoppingDistance = 0.3f;
+        //attackDistance = 5f;
         navMeshAgent.stoppingDistance = attackDistance;
-        */
-        attackDistance = 5f;
-        navMeshAgent.stoppingDistance = 0.3f;
-        
-        navMeshAgent.speed = patrolSpeed;
+        navMeshAgent.speed = patrolSpeed;        
     }
 
     private void Start()
     {
         StartCoroutine(UpdatePath());
-    }
-
-    private void Update()
-    {
-        if (isDead)
-        {
-            return;
-        }
-        if (state == State.Chase)
-        {
-            var distance = Vector3.Distance(targetEntity.transform.position, transform.position);
-            if (distance <= attackDistance)
-            {
-                BeginAttack();
-            }
-        }
-        ghoulAnimator.SetFloat("Speed", navMeshAgent.desiredVelocity.magnitude);
-    }
-    private void FixedUpdate()
-    {
-        if(state == State.Attack)
-        {
-            //turn smoothly to target
-            var lookRotation = Quaternion.LookRotation(targetEntity.transform.position - transform.position);
-            var targetAngleY = lookRotation.eulerAngles.y;
-
-            targetAngleY = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY, ref turnSmoothVelocity, turnSmoothTime);
-            transform.eulerAngles = Vector3.up * targetAngleY;
-
-
-            KeepAttack();
-        }
-    }
-
+    }   
     private bool hasTarget
     {
         get
@@ -136,16 +120,15 @@ public class GhoulTemp : LivingEntity
             {                
                 if (state == State.Patrol)
                 {
-                    state = State.Chase;
-                    //Debug.Log("State:Chasing...");
+                    state = State.Chase;                    
                     navMeshAgent.speed = chaseSpeed;
+                    Debug.Log("Enemy State : Chasing...");
                 }
-                navMeshAgent.SetDestination(targetEntity.transform.position);
+                navMeshAgent.SetDestination(targetEntity.position);
             }
             // if no target, then patrol
             else
-            {
-                //Debug.Log("No target...");
+            {                
                 if (targetEntity != null)
                 {
                     targetEntity = null;
@@ -153,13 +136,13 @@ public class GhoulTemp : LivingEntity
                 if (state != State.Patrol)
                 {
                     state = State.Patrol;
-                    //Debug.Log("State:Patrol...");
                     navMeshAgent.speed = patrolSpeed;
+                    Debug.Log("Enemy State : Patrol...");                    
                 }
 
                 //first, move to random position
                 //Debug.Log("remainingDistance" + navMeshAgent.remainingDistance);
-                if (navMeshAgent.remainingDistance <= 8f)
+                if (navMeshAgent.remainingDistance <= remainingDistance)
                 {
                     var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
@@ -169,15 +152,19 @@ public class GhoulTemp : LivingEntity
                 var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
                 foreach (var collider in colliders)
                 {
-                    if (IsTargetOnSight(collider.transform))
+                    if (!IsTargetOnSight(collider.transform))
                     {
-                        //Debug.Log("Target Detected");
-                        targetEntity = collider.transform;
-                        break;
+                        continue;
                     }
+                    else
+                    {
+                        targetEntity = collider.transform;
+                        Debug.Log("Target Detected");
+                        break;
+                    }                    
                 }
             }
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(waitTimeForCoroutine);
         }
     }
 
@@ -191,8 +178,8 @@ public class GhoulTemp : LivingEntity
             return false;
         }
 
-        RaycastHit hit;
         direction = target.position - eyeTransform.position;
+        RaycastHit hit;        
         if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance, whatIsTarget))
         {
             if (hit.transform == target)
@@ -200,21 +187,67 @@ public class GhoulTemp : LivingEntity
                 return true;
             }
         }
-
         return false;
+    }
 
+
+
+    private void Update()
+    {
+        if (isDead)
+        {
+            return;
+        }
+        if (state == State.Chase)
+        {
+            var distance = Vector3.Distance(targetEntity.position, transform.position);
+            if (distance <= attackDistance)
+            {
+                BeginAttack();
+            }
+        }
+        //ghoulAnimator.SetFloat("Speed", navMeshAgent.desiredVelocity.magnitude);
+        ghoulAnimator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+    }
+    private void FixedUpdate()
+    {
+        if (state == State.Attack)
+        {
+            //turn smoothly to target
+            var lookRotation = Quaternion.LookRotation(targetEntity.position - transform.position);
+            var targetAngleY = lookRotation.eulerAngles.y;
+
+            targetAngleY = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY, ref turnSmoothVelocity, turnSmoothTime);
+            transform.eulerAngles = Vector3.up * targetAngleY;
+
+
+            KeepAttack();
+        }
+
+        
     }
 
     public void BeginAttack()
     {
         state = State.Attack;
-        navMeshAgent.velocity = new Vector3(0, 0); //bad code
         navMeshAgent.isStopped = true;
-        isAlreadyAttacked = true;
         ghoulAnimator.SetTrigger("Attack");
+
+
+        //navMeshAgent.velocity = new Vector3(0, 0); //bad code
+
+        isAlreadyAttacked = true;
+        
         lastAttackTime = Time.time;
        // Debug.Log("State:Attacking...");
     }
+    
+    public void EndAttack()
+    {
+        state = State.Chase;
+        navMeshAgent.isStopped = false;
+    }
+
 
     public void KeepAttack()
     {
