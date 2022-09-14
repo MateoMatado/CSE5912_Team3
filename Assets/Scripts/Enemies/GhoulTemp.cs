@@ -221,7 +221,7 @@ public class GhoulTemp : LivingEntity
             transform.eulerAngles = Vector3.up * targetAngleY;
 
 
-            KeepAttack();
+            //KeepAttack();
         }
 
         
