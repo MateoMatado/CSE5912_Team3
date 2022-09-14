@@ -8,6 +8,7 @@ namespace Team3.Animation.Player
     public class RotateOnMove : MonoBehaviour
     {
         [SerializeField] float speed;
+        [SerializeField] Rigidbody body;
 
         InputAction movement;
         bool moving = false;
@@ -42,7 +43,10 @@ namespace Team3.Animation.Player
             {
                 while(moving)
                 {
-                    Debug.Log("Turning");
+                    Vector3 target = body.velocity;
+                    float angle = Mathf.Atan2(target.z, target.x) * Mathf.Rad2Deg;
+                    Quaternion final = Quaternion.AngleAxis(-angle+90, Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, final, speed * Time.deltaTime);
                     yield return null;
                 }
                 yield return null;

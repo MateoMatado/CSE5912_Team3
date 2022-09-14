@@ -75107,6 +75107,7 @@ GameObject:
   - component: {fileID: 371185261}
   - component: {fileID: 371185262}
   - component: {fileID: 371185263}
+  - component: {fileID: 1804142871}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -75114,6 +75115,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1804142871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804142870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79e594aff9b45345a3483b216ab292d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 800
 --- !u!1 &1804142878
 GameObject:
   m_ObjectHideFlags: 0

@@ -137,7 +137,7 @@ public class GhoulTemp : LivingEntity
                 if (state == State.Patrol)
                 {
                     state = State.Chase;
-                    Debug.Log("State:Chasing...");
+                    //Debug.Log("State:Chasing...");
                     navMeshAgent.speed = chaseSpeed;
                 }
                 navMeshAgent.SetDestination(targetEntity.transform.position);
@@ -145,7 +145,7 @@ public class GhoulTemp : LivingEntity
             // if no target, then patrol
             else
             {
-                Debug.Log("No target...");
+                //Debug.Log("No target...");
                 if (targetEntity != null)
                 {
                     targetEntity = null;
@@ -153,7 +153,7 @@ public class GhoulTemp : LivingEntity
                 if (state != State.Patrol)
                 {
                     state = State.Patrol;
-                    Debug.Log("State:Patrol...");
+                    //Debug.Log("State:Patrol...");
                     navMeshAgent.speed = patrolSpeed;
                 }
 
@@ -171,7 +171,7 @@ public class GhoulTemp : LivingEntity
                 {
                     if (IsTargetOnSight(collider.transform))
                     {
-                        Debug.Log("Target Detected");
+                        //Debug.Log("Target Detected");
                         targetEntity = collider.transform;
                         break;
                     }
@@ -213,7 +213,7 @@ public class GhoulTemp : LivingEntity
         isAlreadyAttacked = true;
         ghoulAnimator.SetTrigger("Attack");
         lastAttackTime = Time.time;
-        Debug.Log("State:Attacking...");
+       // Debug.Log("State:Attacking...");
     }
 
     public void KeepAttack()
@@ -224,7 +224,7 @@ public class GhoulTemp : LivingEntity
         {
             lastAttackTime = Time.time;
             ghoulAnimator.SetTrigger("Attack");
-            Debug.Log("State:Keep Attacking...");
+            //Debug.Log("State:Keep Attacking...");
 
             //Add code here for damage calculation 
         }
