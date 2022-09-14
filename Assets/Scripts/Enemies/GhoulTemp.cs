@@ -83,14 +83,11 @@ public class GhoulTemp : LivingEntity
         navMeshAgent = GetComponent<NavMeshAgent>();        
         ghoulAnimator = GetComponent<Animator>();
         //audioPlayer = GetComponent<AudioSource>();
-
         
         var attackPivot = attackRoot.position;
         attackPivot.y = transform.position.y;
         attackDistance = Vector3.Distance(transform.position, attackPivot) + attackRadius;
 
-        //navMeshAgent.stoppingDistance = 0.3f;
-        //attackDistance = 5f;
         navMeshAgent.stoppingDistance = attackDistance;
         navMeshAgent.speed = patrolSpeed;        
     }
@@ -212,6 +209,7 @@ public class GhoulTemp : LivingEntity
     }
     private void FixedUpdate()
     {
+        /*
         if (state == State.Attack)
         {
             //turn smoothly to target
@@ -220,11 +218,16 @@ public class GhoulTemp : LivingEntity
 
             targetAngleY = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY, ref turnSmoothVelocity, turnSmoothTime);
             transform.eulerAngles = Vector3.up * targetAngleY;
-
-
-            //KeepAttack();
+        }    
+        */
+        
+        if (state == State.Attack)
+        {
+            if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)
+            {
+                transform.rotation = Quaternion.LookRotation(navMeshAgent.velocity.normalized);
+            }
         }
-
         
     }
 
@@ -234,8 +237,6 @@ public class GhoulTemp : LivingEntity
         navMeshAgent.isStopped = true;
         ghoulAnimator.SetTrigger("Attack");
         Debug.Log("State:Attacking...");
-        //isAlreadyAttacked = true;        
-        //lastAttackTime = Time.time;
     }
     
     public void EndAttack()
@@ -243,38 +244,5 @@ public class GhoulTemp : LivingEntity
         state = State.Chase;
         navMeshAgent.isStopped = false;
     }
-
-
-    public void KeepAttack()
-    {
-        //should change later
-        //if the collided entity is the target, do attack
-        if (!isDead && Time.time >= lastAttackTime + timeBetweenAttack)
-        {
-            lastAttackTime = Time.time;
-            ghoulAnimator.SetTrigger("Attack");
-            //Debug.Log("State:Keep Attacking...");
-
-            //Add code here for damage calculation 
-        }
-    }
-
-
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        Debug.Log("Ontrigger");
-        //if the collided entity is the target, do attack
-        if (!isDead && Time.time >= lastAttackTime + timeBetweenAttack)
-        {
-            Transform attackTarget = other.transform;
-            if (attackTarget != null && attackTarget == targetEntity)
-            {
-                lastAttackTime = Time.time;
-                ghoulAnimator.SetTrigger("Attack");
-                //Add code here for damage calculation 
-            }
-        }
-    }
-    */
+    
 }
