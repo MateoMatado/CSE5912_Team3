@@ -5683,6 +5683,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 174512448}
   pickup: {fileID: 1804506430}
+  mouseSensitivity: 0.01
+  lMaxHAngle: 45
+  lMinHAngle: -135
+  lMaxVAngle: 45
+  lMinVAngle: -45
+  rMaxHAngle: 135
+  rMinHAngle: -45
+  rMaxVAngle: 45
+  rMinVAngle: -45
+  length: 50
 --- !u!1001 &175251594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57531,7 +57541,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365857547}
-  m_LocalRotation: {x: 0.06213744, y: 0.0000000012838337, z: -7.992855e-11, w: 0.9980676}
+  m_LocalRotation: {x: 0.06213744, y: 0.0000000034594696, z: -2.1537878e-10, w: 0.9980676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -85772,7 +85782,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046228060}
-  m_LocalRotation: {x: 0.025841676, y: -0.000000017234202, z: 4.4550943e-10, w: 0.99966604}
+  m_LocalRotation: {x: 0.025841676, y: 0.000000017234198, z: -4.4550935e-10, w: 0.99966604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
