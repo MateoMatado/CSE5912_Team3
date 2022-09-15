@@ -22,6 +22,7 @@ namespace Team3.Input
             inputs.Player.RightArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmActivate", null, (inputs.Player.RightArmActivate, inputs.Player.MoveArm)); };
             inputs.Player.RightArmActivate.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmDeactivate", null, inputs.Player.RightArmActivate); };
             //inputs.Player.MoveArm.started += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArm", null, inputs.Player.MoveArm); };
+            inputs.Player.MoveArmMouse.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArmMouse", null, inputs.Player.MoveArmMouse); };
 
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
@@ -73,6 +74,7 @@ namespace Team3.Input
         {
             arms++;
             inputs.Player.MoveArm.Enable();
+            inputs.Player.MoveArmMouse.Enable();
         }
 
         private void DisableArm(object sender, object data)
@@ -81,6 +83,7 @@ namespace Team3.Input
             if (arms < 1)
             {
                 inputs.Player.MoveArm.Disable();
+                inputs.Player.MoveArmMouse.Disable();
             }
         }
     }

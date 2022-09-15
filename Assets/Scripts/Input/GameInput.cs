@@ -107,6 +107,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveArmMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""eab60f2d-1844-4fdf-b805-1e7628f5deb6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -393,6 +402,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MoveArm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""390a9b88-f206-4d56-a2d1-9d7d60ec6dd6"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveArmMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -989,6 +1009,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_LeftArmActivate = m_Player.FindAction("LeftArmActivate", throwIfNotFound: true);
         m_Player_RightArmActivate = m_Player.FindAction("RightArmActivate", throwIfNotFound: true);
         m_Player_MoveArm = m_Player.FindAction("MoveArm", throwIfNotFound: true);
+        m_Player_MoveArmMouse = m_Player.FindAction("MoveArmMouse", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1069,6 +1090,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LeftArmActivate;
     private readonly InputAction m_Player_RightArmActivate;
     private readonly InputAction m_Player_MoveArm;
+    private readonly InputAction m_Player_MoveArmMouse;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1082,6 +1104,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @LeftArmActivate => m_Wrapper.m_Player_LeftArmActivate;
         public InputAction @RightArmActivate => m_Wrapper.m_Player_RightArmActivate;
         public InputAction @MoveArm => m_Wrapper.m_Player_MoveArm;
+        public InputAction @MoveArmMouse => m_Wrapper.m_Player_MoveArmMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1118,6 +1141,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @MoveArm.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveArm;
                 @MoveArm.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveArm;
                 @MoveArm.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveArm;
+                @MoveArmMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveArmMouse;
+                @MoveArmMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveArmMouse;
+                @MoveArmMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveArmMouse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1149,6 +1175,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @MoveArm.started += instance.OnMoveArm;
                 @MoveArm.performed += instance.OnMoveArm;
                 @MoveArm.canceled += instance.OnMoveArm;
+                @MoveArmMouse.started += instance.OnMoveArmMouse;
+                @MoveArmMouse.performed += instance.OnMoveArmMouse;
+                @MoveArmMouse.canceled += instance.OnMoveArmMouse;
             }
         }
     }
@@ -1314,6 +1343,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnLeftArmActivate(InputAction.CallbackContext context);
         void OnRightArmActivate(InputAction.CallbackContext context);
         void OnMoveArm(InputAction.CallbackContext context);
+        void OnMoveArmMouse(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

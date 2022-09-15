@@ -10,6 +10,8 @@ namespace Team3.Animation.Player
         [SerializeField] Animator anim;
         [SerializeField] Transform pickup;
 
+        [SerializeField] float mouseSensitivity;
+
         [SerializeField] float lMaxHAngle;
         [SerializeField] float lMinHAngle;
         [SerializeField] float lMaxVAngle;
@@ -22,10 +24,12 @@ namespace Team3.Animation.Player
 
         private Vector2 lHalfWH, lDefaultPos;
         private Vector2 rHalfWH, rDefaultPos;
+        Vector2 inVector = new Vector2();
 
         private InputAction leftAction;
         private InputAction rightAction;
         private InputAction stickAction;
+        private InputAction mouseAction;
 
         // For testing
         float rot = 0;
@@ -34,6 +38,7 @@ namespace Team3.Animation.Player
         {
             Events.EventsPublisher.Instance.SubscribeToEvent("LeftArmActivate", StartLeft);
             Events.EventsPublisher.Instance.SubscribeToEvent("RightArmActivate", StartRight);
+            Events.EventsPublisher.Instance.SubscribeToEvent("MoveArmMouse", StartMouse);
 
             lHalfWH = new Vector2(lMaxHAngle - lMinHAngle, lMaxVAngle - lMinVAngle) / 2;
             lDefaultPos = new Vector2(lMaxHAngle + lMinHAngle, lMaxVAngle + lMinVAngle) / 2;
@@ -45,6 +50,7 @@ namespace Team3.Animation.Player
         {
             Events.EventsPublisher.Instance.UnsubscribeToEvent("LeftArmActivate", StartLeft);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("RightArmActivate", StartRight);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("MoveArmMouse", StartMouse);
             //Events.EventsPublisher.Instance.UnsubscribeToEvent("MoveArm", StartStick);
         }
 
@@ -62,18 +68,40 @@ namespace Team3.Animation.Player
             Events.EventsPublisher.Instance.UnsubscribeToEvent("RightArmActivate", StartRight);
         }
 
+        private void StartMouse(object sender, object data)
+        {
+            mouseAction = (InputAction)data;
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("MoveArmMouse", StartMouse);
+        }
+
         /*private void StartStick(object sender, object data)
         {
             stickAction = (InputAction)data;
             Events.EventsPublisher.Instance.UnsubscribeToEvent("MoveArm", StartStick);
         }*/
 
+        private void UpdateInvector()
+        {
+            if (stickAction.inProgress)
+            {
+                inVector = stickAction.ReadValue<Vector2>();
+            }
+            else
+            {
+                inVector += mouseAction.ReadValue<Vector2>() * mouseSensitivity;
+                if (inVector.magnitude > 1)
+                {
+                    inVector = Vector2.ClampMagnitude(inVector, 1);
+                }
+            }
+        }
+
         private void OnAnimatorIK(int layerIndex)
         {
-            if(leftAction != null && leftAction.IsPressed())
+            if (leftAction != null && leftAction.IsPressed())
             {
+                UpdateInvector();
                 Vector3 shoulder = anim.GetBoneTransform(HumanBodyBones.LeftShoulder).transform.position;
-                Vector2 inVector = stickAction.ReadValue<Vector2>();
 
                 Vector2 armAngles = inVector * lHalfWH + lDefaultPos;
                 Vector3 result = transform.forward * length;
@@ -90,8 +118,8 @@ namespace Team3.Animation.Player
 
             if (rightAction != null && rightAction.IsPressed())
             {
+                UpdateInvector();
                 Vector3 shoulder = anim.GetBoneTransform(HumanBodyBones.RightShoulder).transform.position;
-                Vector2 inVector = stickAction.ReadValue<Vector2>();
 
                 Vector2 armAngles = inVector * rHalfWH + rDefaultPos;
                 Vector3 result = transform.forward * length;
