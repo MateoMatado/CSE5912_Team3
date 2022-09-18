@@ -17,8 +17,10 @@ public class InventoryManager : MonoBehaviour
 
     public Transform Player;
 
+    public static Dictionary<Item, int> ItemList = new Dictionary<Item, int>();
 
-    // Start is called before the first frame update
+
+    // Normal Set up
     public void Awake()
     {
         Instance = this;
@@ -36,6 +38,7 @@ public class InventoryManager : MonoBehaviour
         inputs.Player.Inventory.Disable();
     }
 
+    /*following three functions is to open inventory*/
     private void Inventory_performed(InputAction.CallbackContext context)
     {
         if (!Opened)
@@ -52,55 +55,83 @@ public class InventoryManager : MonoBehaviour
     public void Open()
     {
         Inventory.SetActive(true);
-        Time.timeScale = 0f;
         Opened = true;
     }
 
     public void Close()
     {
         Inventory.SetActive(false);
-        Time.timeScale = 1f;
         Opened = false;
     }
+
+    /*to get item and drop item*/
     public void Add(Item item)
     {
-        Items.Add(item);
+        if (!ItemList.ContainsKey(item))
+        {
+            ItemList.Add(item, 1);
+        }
+        else
+        {
+            ItemList[item] += 1;
+        }
+        ListItems();
     }
 
     public void Remove(Text name)
     {
         int count = -1;
-        for(int i = 0; i< Items.Count; i++)
+        foreach(var item in ItemList)
         {
-            Item item = Items[i];
-            if(item.itemName.Equals(name.text))
+            Item Item = item.Key;
+            int value = item.Value;
+            if (Item.itemName.Equals(name.text))
             {
-                Items.Remove(item);
+                if(value > 1)
+                {
+                    ItemList[Item]--;
+                }
+                else
+                {
+                    ItemList.Remove(Item);
+                }
                 break;
             }
         }
-        GameObject obj = ToolsFactory.Instance.GetDropObject(name);
-        Vector3 newPosition = Player.position + (Player.forward * 8) + (Player.up *-4f);
-        Instantiate(obj, newPosition, Player.rotation);
+        ListItems();
 
     }
+    /*To create a item dropped*/
+    public void DropItem(Text name)
+    {
+        GameObject obj = ToolsFactory.Instance.GetDropObject(name);
+        Vector3 newPosition = Player.position + (Player.forward * 8) + (Player.up * -4f);
+        Instantiate(obj, newPosition, Player.rotation);
+    }
 
+    /*update the item in inventory*/
     public void ListItems()
     {
         foreach(Transform item in ItemContent)
         {
             Destroy(item.gameObject);
         }
-        foreach (var item in Items)
+        foreach (var item in ItemList)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
             var itemName = obj.transform.Find("Name").GetComponent<Text>();
             var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
+            var itemAmount = obj.transform.Find("Amount").GetComponent<Text>();
 
-            itemName.text = item.itemName;
-            itemIcon.sprite = item.icon;
+            Item Item = item.Key;
+            int amount = item.Value;
+            itemName.text = Item.itemName;
+            itemIcon.sprite = Item.icon;
+            itemAmount.text = amount + "";
         }
     }
+
+
 
 
 
