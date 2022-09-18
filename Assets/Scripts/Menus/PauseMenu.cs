@@ -18,6 +18,12 @@ namespace Team3.Menus
         {
             EventSystem.current.SetSelectedGameObject(PauseFirstBtn);
         }
+
+        public void Resume()
+        {
+            pauseMenu.SetActive(false);
+            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
+        }
         public void Save()
         {
             //TODO: after having save
