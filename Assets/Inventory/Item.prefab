@@ -286,7 +286,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5623030983443884828}
+      - m_Target: {fileID: 3528663270865047949}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -298,7 +298,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 3528663270865047949}
+      - m_Target: {fileID: 5623030983443884828}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -446,8 +446,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 913742607642017795}
-        m_TargetAssemblyTypeName: ItemDrop, Assembly-CSharp
-        m_MethodName: Drop
+        m_TargetAssemblyTypeName: ItemDropAndUse, Assembly-CSharp
+        m_MethodName: DropMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
