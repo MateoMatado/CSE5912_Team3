@@ -8,7 +8,7 @@ namespace Team3.PlayerMovement
     public class MoveWithCamera : MonoBehaviour
     {
         [SerializeField] private float speed;
-        [SerializeField] private Camera currentCamera;
+        [SerializeField] private Transform cameraTarget;
         
         private Rigidbody body;
         private InputAction moveAction;
@@ -48,11 +48,11 @@ namespace Team3.PlayerMovement
                 while (moving)
                 {
                     Vector2 moveVector = moveAction.ReadValue<Vector2>() * speed;
-                    Vector3 cameraVector = Vector3.Normalize(new Vector3(currentCamera.transform.forward.x, 0, currentCamera.transform.forward.z));
+                    Vector3 cameraVector = Vector3.Normalize(new Vector3(cameraTarget.forward.x, 0, cameraTarget.forward.z));
                     float yVel = body.velocity.y;
                     body.velocity = moveVector.y * cameraVector;
                     //body.AddForce(moveVector.y * cameraVector, ForceMode.Impulse);
-                    cameraVector = Vector3.Normalize(new Vector3(currentCamera.transform.right.x, 0, currentCamera.transform.right.z));
+                    cameraVector = Vector3.Normalize(new Vector3(cameraTarget.right.x, 0, cameraTarget.right.z));
                     body.velocity += moveVector.x * cameraVector;
                     body.velocity += new Vector3(0, yVel, 0);
                     //body.AddForce(moveVector.x * currentCamera.transform.right, ForceMode.Impulse);
