@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &228366101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +306,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -157.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3496441303116981560, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -380.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7002964770633189224, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
       propertyPath: m_Name
       value: DonutIsland
@@ -356,6 +360,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
+--- !u!1 &1886377484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7002964770633189224, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
+  m_PrefabInstance: {fileID: 1679895522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1886377485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886377484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c735f5c7026033548873b49e8acd9a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rotate: 0
+  RotateDirection: {x: 0, y: 0.1, z: 0}
+  Float: 1
+  FloatHeight: 30
+  FloatSpeed: 0.01
 --- !u!1 &2047819550
 GameObject:
   m_ObjectHideFlags: 0
