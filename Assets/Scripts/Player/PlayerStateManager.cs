@@ -17,8 +17,22 @@ namespace Team3.Player
             Events.EventsPublisher.Instance.SubscribeToEvent("LeftArmDeactivate", (object sender, object data) => { UpdateLeftArm(false); });
             Events.EventsPublisher.Instance.SubscribeToEvent("RightArmActivate", (object sender, object data) => { UpdateRightArm(true); });
             Events.EventsPublisher.Instance.SubscribeToEvent("RightArmDeactivate", (object sender, object data) => { UpdateRightArm(false); });
+        
+            Events.EventsPublisher.Instance.SubscribeToEvent("Target", HandleTargetEvent);
         }
 
+        private void HandleTargetEvent(object sender, object data)
+        {
+            if (stateMachine.CurrentState is TargetingState)
+            {
+                stateMachine.SwitchState(PlayerStateMachine.DefaultState);
+                UpdateStateWithArms();
+            }
+            else
+            {
+                stateMachine.SwitchState(PlayerStateMachine.TargetingState);
+            }
+        }
 
         private void UpdateLeftArm(bool active)
         {
