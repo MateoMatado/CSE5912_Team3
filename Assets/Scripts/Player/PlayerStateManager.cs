@@ -9,6 +9,14 @@ namespace Team3.Player
         private PlayerStateMachine stateMachine;
         private bool leftArmActive = false, rightArmActive = false;
 
+        public PlayerStateMachine StateMachine
+        {
+            get
+            {
+                return stateMachine;
+            }
+        }
+
         void Awake() 
         {
             stateMachine = new PlayerStateMachine();
@@ -18,20 +26,17 @@ namespace Team3.Player
             Events.EventsPublisher.Instance.SubscribeToEvent("RightArmActivate", (object sender, object data) => { UpdateRightArm(true); });
             Events.EventsPublisher.Instance.SubscribeToEvent("RightArmDeactivate", (object sender, object data) => { UpdateRightArm(false); });
         
-            Events.EventsPublisher.Instance.SubscribeToEvent("Target", HandleTargetEvent);
         }
 
-        private void HandleTargetEvent(object sender, object data)
+        public void StartTargeting()
         {
-            if (stateMachine.CurrentState is TargetingState)
-            {
-                stateMachine.SwitchState(PlayerStateMachine.DefaultState);
-                UpdateStateWithArms();
-            }
-            else
-            {
-                stateMachine.SwitchState(PlayerStateMachine.TargetingState);
-            }
+            stateMachine.SwitchState(PlayerStateMachine.TargetingState);
+        }
+
+        public void StopTargeting()
+        {
+            stateMachine.SwitchState(PlayerStateMachine.DefaultState);
+            UpdateStateWithArms();
         }
 
         private void UpdateLeftArm(bool active)
