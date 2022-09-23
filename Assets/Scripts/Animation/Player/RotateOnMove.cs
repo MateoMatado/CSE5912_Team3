@@ -9,6 +9,7 @@ namespace Team3.Animation.Player
     {
         [SerializeField] float speed;
         [SerializeField] Rigidbody body;
+        [SerializeField] private Transform cameraTarget;
 
         InputAction movement;
         bool moving = false;
@@ -43,10 +44,12 @@ namespace Team3.Animation.Player
             {
                 while(moving)
                 {
-                    Vector3 target = body.velocity;
+                    Vector3 target = cameraTarget.forward;
                     float angle = Mathf.Atan2(target.z, target.x) * Mathf.Rad2Deg;
                     Quaternion final = Quaternion.AngleAxis(-angle+90, Vector3.up);
+                    var angles = cameraTarget.transform.eulerAngles;
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, final, speed * Time.deltaTime);
+                    cameraTarget.transform.eulerAngles = new Vector3(angles.x, angles.y, angles.z);
                     yield return null;
                 }
                 yield return null;

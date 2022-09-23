@@ -35,8 +35,8 @@ namespace Team3.CameraStuff
                 angles.x = 40;
             }
 
-            transform.rotation = Quaternion.Euler(0, cameraTarget.transform.rotation.eulerAngles.y, 0);
-            cameraTarget.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
+            // transform.rotation = Quaternion.Euler(0, cameraTarget.transform.rotation.eulerAngles.y, 0);
+            cameraTarget.transform.localEulerAngles = new Vector3(angles.x, angles.y, 0);
         }
     }
 }
