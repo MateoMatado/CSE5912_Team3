@@ -125,6 +125,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Target"",
+                    ""type"": ""Button"",
+                    ""id"": ""5494003f-0bc5-49bf-b5da-394d2cc575b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -433,6 +442,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3701b851-a81f-4ddf-bb75-b7b0d059a868"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1031,6 +1051,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_MoveArm = m_Player.FindAction("MoveArm", throwIfNotFound: true);
         m_Player_MoveArmMouse = m_Player.FindAction("MoveArmMouse", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1113,6 +1134,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveArm;
     private readonly InputAction m_Player_MoveArmMouse;
     private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_Target;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1128,6 +1150,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @MoveArm => m_Wrapper.m_Player_MoveArm;
         public InputAction @MoveArmMouse => m_Wrapper.m_Player_MoveArmMouse;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @Target => m_Wrapper.m_Player_Target;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1170,6 +1193,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Target.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
+                @Target.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
+                @Target.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1207,6 +1233,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
+                @Target.started += instance.OnTarget;
+                @Target.performed += instance.OnTarget;
+                @Target.canceled += instance.OnTarget;
             }
         }
     }
@@ -1374,6 +1403,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnMoveArm(InputAction.CallbackContext context);
         void OnMoveArmMouse(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnTarget(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

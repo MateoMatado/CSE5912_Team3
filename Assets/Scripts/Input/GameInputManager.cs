@@ -26,6 +26,8 @@ namespace Team3.Input
 
             inputs.Player.Look.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Look", null, inputs.Player.Look); };
 
+            inputs.Player.Target.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Target", null, inputs.Player.Target); };
+
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
 
@@ -46,6 +48,8 @@ namespace Team3.Input
 
             inputs.Player.Look.Enable();
 
+            inputs.Player.Target.Enable();
+
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.Enable();
         }
@@ -61,6 +65,8 @@ namespace Team3.Input
             inputs.Player.MoveArm.Disable();
 
             inputs.Player.Look.Disable();
+
+            inputs.Player.Target.Disable();
 
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.Disable();
