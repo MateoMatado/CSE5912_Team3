@@ -31,7 +31,7 @@ namespace Team3.Scripts.Player
                 current = Instantiate(characterMap[names[0]], this.transform.position, Quaternion.Euler(0, 0, 0));
                 current.transform.parent = this.transform;
                 current.transform.localScale = new Vector3(1, 1, 1);
-                current.transform.rotation = Quaternion.Euler(0, 0, 0);
+                current.transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
             catch
             {
@@ -55,7 +55,7 @@ namespace Team3.Scripts.Player
                 current = Instantiate(characterMap[name], this.transform.position, Quaternion.Euler(0, 0, 0));
                 current.transform.parent = this.transform;
                 current.transform.localScale = new Vector3(1, 1, 1);
-                current.transform.rotation = Quaternion.Euler(0, 0, 0);
+                current.transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
             else
             {
