@@ -23,10 +23,10 @@ namespace Team3.Input
             inputs.Player.RightArmActivate.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmDeactivate", null, inputs.Player.RightArmActivate); };
             //inputs.Player.MoveArm.started += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArm", null, inputs.Player.MoveArm); };
             inputs.Player.MoveArmMouse.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArmMouse", null, inputs.Player.MoveArmMouse); };
-
             inputs.Player.Look.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Look", null, inputs.Player.Look); };
-
             inputs.Player.Target.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Target", null, inputs.Player.Target); };
+            inputs.Player.ChangeBanana.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "banana"); };
+            inputs.Player.ChangeBaby.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "baby"); };
 
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
@@ -45,6 +45,8 @@ namespace Team3.Input
             inputs.Player.ReloadScene.Enable();
             inputs.Player.LeftArmActivate.Enable();
             inputs.Player.RightArmActivate.Enable();
+            inputs.Player.ChangeBanana.Enable();
+            inputs.Player.ChangeBaby.Enable();
 
             inputs.Player.Look.Enable();
 
@@ -63,6 +65,8 @@ namespace Team3.Input
             inputs.Player.LeftArmActivate.Disable();
             inputs.Player.RightArmActivate.Disable();
             inputs.Player.MoveArm.Disable();
+            inputs.Player.ChangeBanana.Disable();
+            inputs.Player.ChangeBaby.Disable();
 
             inputs.Player.Look.Disable();
 

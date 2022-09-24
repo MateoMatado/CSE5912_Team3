@@ -134,6 +134,24 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeBanana"",
+                    ""type"": ""Button"",
+                    ""id"": ""1796d95e-be14-4ba1-be63-744725e87bb6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeBaby"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d50f9b5-f5df-4b55-bef6-6efcb2e2c187"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -453,6 +471,28 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67bfed1c-e3f5-46b5-9a22-8d6fe047d522"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeBanana"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38e78232-06c9-488a-b044-8a2f45c94ea0"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeBaby"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1052,6 +1092,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_MoveArmMouse = m_Player.FindAction("MoveArmMouse", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
+        m_Player_ChangeBanana = m_Player.FindAction("ChangeBanana", throwIfNotFound: true);
+        m_Player_ChangeBaby = m_Player.FindAction("ChangeBaby", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1135,6 +1177,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveArmMouse;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Target;
+    private readonly InputAction m_Player_ChangeBanana;
+    private readonly InputAction m_Player_ChangeBaby;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1151,6 +1195,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @MoveArmMouse => m_Wrapper.m_Player_MoveArmMouse;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Target => m_Wrapper.m_Player_Target;
+        public InputAction @ChangeBanana => m_Wrapper.m_Player_ChangeBanana;
+        public InputAction @ChangeBaby => m_Wrapper.m_Player_ChangeBaby;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1196,6 +1242,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Target.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
                 @Target.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
                 @Target.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
+                @ChangeBanana.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBanana;
+                @ChangeBanana.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBanana;
+                @ChangeBanana.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBanana;
+                @ChangeBaby.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
+                @ChangeBaby.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
+                @ChangeBaby.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1236,6 +1288,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Target.started += instance.OnTarget;
                 @Target.performed += instance.OnTarget;
                 @Target.canceled += instance.OnTarget;
+                @ChangeBanana.started += instance.OnChangeBanana;
+                @ChangeBanana.performed += instance.OnChangeBanana;
+                @ChangeBanana.canceled += instance.OnChangeBanana;
+                @ChangeBaby.started += instance.OnChangeBaby;
+                @ChangeBaby.performed += instance.OnChangeBaby;
+                @ChangeBaby.canceled += instance.OnChangeBaby;
             }
         }
     }
@@ -1404,6 +1462,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnMoveArmMouse(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnTarget(InputAction.CallbackContext context);
+        void OnChangeBanana(InputAction.CallbackContext context);
+        void OnChangeBaby(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
