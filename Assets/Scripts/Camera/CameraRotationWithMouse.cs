@@ -20,6 +20,7 @@ public class CameraRotationWithMouse : MonoBehaviour
     private void Look(object sender, object data)
     {
         if (stateManager.StateMachine.CurrentState is TargetingState) return;
+        if (stateManager.StateMachine.CurrentState is IKState) return;
 
         look = ((InputAction)data).ReadValue<Vector2>();
 
