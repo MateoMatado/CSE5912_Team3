@@ -103,15 +103,15 @@ namespace Team3.Animation.Player
                     result = Quaternion.AngleAxis(armAngles.x, transform.up) * result;
                     result += shoulder;
 
-                    weapon.transform.position = result;
-                    Vector3 offset = Vector3.Normalize(anim.GetBoneTransform(HumanBodyBones.RightLowerArm).position - anim.GetBoneTransform(HumanBodyBones.RightHand).position) * positionOffset;
+                    weapon.position = result;
+                    Vector3 offset = Vector3.Normalize(anim.GetBoneTransform(HumanBodyBones.RightShoulder).position - anim.GetBoneTransform(HumanBodyBones.RightHand).position) * positionOffset;
                     weapon.LookAt(weapon.position + offset * 100);
                 }
                 else
                 {
-                    Vector3 offset = Vector3.Normalize(anim.GetBoneTransform(HumanBodyBones.RightLowerArm).position - anim.GetBoneTransform(HumanBodyBones.RightHand).position) * positionOffset;
+                    Vector3 offset = Vector3.Normalize(anim.GetBoneTransform(HumanBodyBones.RightShoulder).position - anim.GetBoneTransform(HumanBodyBones.RightHand).position) * positionOffset;
                     weapon.position = anim.GetBoneTransform(HumanBodyBones.RightHand).position + offset;
-                    weapon.LookAt(IKTarget.position + offset * 100);
+                    weapon.LookAt(weapon.position + offset * 100);
                 }
                 rot = (rot + 10) % 360;
                 yield return null;
