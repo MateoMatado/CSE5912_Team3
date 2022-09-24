@@ -17,9 +17,9 @@ namespace Team3.Input
             inputs.Player.Jump.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PlayerJump", null, inputs.Player.Jump); };
             inputs.Player.Pause.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PauseUnpause", null, inputs.Player.Pause); };
             inputs.Player.ReloadScene.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LoadRunning", null, inputs.Player.Pause); };
-            inputs.Player.LeftArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LeftArmActivate", null, (inputs.Player.LeftArmActivate, inputs.Player.MoveArm)); };
+            inputs.Player.LeftArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LeftArmActivate", null, (inputs.Player.LeftArmActivate, inputs.Player.MoveArm, inputs.Player.MoveArmMouse)); };
             inputs.Player.LeftArmActivate.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("LeftArmDeactivate", null, inputs.Player.LeftArmActivate); };
-            inputs.Player.RightArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmActivate", null, (inputs.Player.RightArmActivate, inputs.Player.MoveArm)); };
+            inputs.Player.RightArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmActivate", null, (inputs.Player.RightArmActivate, inputs.Player.MoveArm, inputs.Player.MoveArmMouse)); };
             inputs.Player.RightArmActivate.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmDeactivate", null, inputs.Player.RightArmActivate); };
             //inputs.Player.MoveArm.started += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArm", null, inputs.Player.MoveArm); };
             inputs.Player.MoveArmMouse.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArmMouse", null, inputs.Player.MoveArmMouse); };

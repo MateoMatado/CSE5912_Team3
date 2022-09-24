@@ -24,7 +24,7 @@ namespace Team3.Animation.Player
                 Vector3 offset = Vector3.Normalize(anim.GetBoneTransform(HumanBodyBones.RightLowerArm).position - anim.GetBoneTransform(HumanBodyBones.RightHand).position) * positionOffset;
                 weapon.position = anim.GetBoneTransform(HumanBodyBones.RightHand).position + offset;
                 weapon.LookAt(weapon.position + offset * 100);
-
+                
                 yield return null;
             }
         }

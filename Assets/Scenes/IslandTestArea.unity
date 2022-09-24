@@ -5708,28 +5708,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 174512446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c44836496b20d04e87eaab1542d5c10, type: 3}
+  m_Script: {fileID: 11500000, guid: 3df9b559e70d8ce49afb8958e64c08ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 174512448}
   weapon: {fileID: 185315826}
-  holdTarget: {fileID: 1433401951}
-  anim: {fileID: 174512448}
+  IKTarget: {fileID: 1433401951}
   positionOffset: -0.15
-  rotationOffset: {x: 0, y: 0, z: 0}
---- !u!114 &174512450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174512446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e79c0b3183103749ac0fa52840485c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 174512448}
-  pickup: {fileID: 0}
   mouseSensitivity: 0.01
   lMaxHAngle: 45
   lMinHAngle: -135
@@ -5737,9 +5722,9 @@ MonoBehaviour:
   lMinVAngle: -45
   rMaxHAngle: 135
   rMinHAngle: -45
-  rMaxVAngle: 45
+  rMaxVAngle: 25
   rMinVAngle: -45
-  length: 50
+  length: 1
 --- !u!1001 &175251594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74815,7 +74800,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1804506422}
   - component: {fileID: 371185258}
-  - component: {fileID: 371185259}
   - component: {fileID: 371185261}
   - component: {fileID: 371185262}
   - component: {fileID: 371185263}
@@ -74824,6 +74808,7 @@ GameObject:
   - component: {fileID: 1804142872}
   - component: {fileID: 1804142874}
   - component: {fileID: 1804142875}
+  - component: {fileID: 371185259}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -80353,11 +80338,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2063283974101140632, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9129509
       objectReference: {fileID: 0}
     - target: {fileID: 2063283974101140632, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063283974101140632, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.28854874
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063283974101140632, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.28854874
       objectReference: {fileID: 0}
     - target: {fileID: 2063283974101140632, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
