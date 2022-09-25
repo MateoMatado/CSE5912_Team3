@@ -10,6 +10,7 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private int Length = 100;
     [SerializeField] private int Height = 50;
     [SerializeField] private int Attempts = 10;
+    [SerializeField] private int Spacing = 2;
     [SerializeField] private float RandomHeightLimit = 1000;
     [SerializeField] private List<GameObject> Islands;
 
@@ -55,7 +56,7 @@ public class IslandGeneration : MonoBehaviour
                     }
                 }
                 gameObjects[(int)pos.x, (int)pos.y] = GameObject.Instantiate(Islands[IslRand]);
-                gameObjects[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x, Random.Range(100,RandomHeightLimit),(int)pos.y);
+                gameObjects[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x * Spacing, Random.Range(100,RandomHeightLimit),(int)pos.y * Spacing);
                 gameObjects[(int)pos.x, (int)pos.y].transform.SetParent(transform);
             }
         }

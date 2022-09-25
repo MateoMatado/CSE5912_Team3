@@ -156,7 +156,8 @@ MonoBehaviour:
   Length: 5000
   Height: 50
   Attempts: 1000
-  RandomHeightLimit: 1000
+  Spacing: 2
+  RandomHeightLimit: 1500
   Islands:
   - {fileID: 2070914281333398461, guid: 5634004bfd5d24e4c81b463d2375c3d9, type: 3}
   - {fileID: 2916570678104877123, guid: cca340d613f5ff94ab60d397f745707a, type: 3}
