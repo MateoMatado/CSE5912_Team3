@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerStateMachine
 {
-    public static PlayerState DefaultState = new DefaultPlayerState();
+    public static PlayerState   DefaultState = new DefaultPlayerState(),
+                                IKState = new IKState(),
+                                TargetingState = new TargetingState();
 
     private PlayerState currentState;
 

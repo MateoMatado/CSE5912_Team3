@@ -31,9 +31,6 @@ namespace Team3.Animation.Player
         private InputAction stickAction;
         private InputAction mouseAction;
 
-        // For testing
-        float rot = 0;
-
         void Start()
         {
             Events.EventsPublisher.Instance.SubscribeToEvent("LeftArmActivate", StartLeft);
@@ -110,10 +107,7 @@ namespace Team3.Animation.Player
                 result += shoulder;
 
                 anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-                anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
                 anim.SetIKPosition(AvatarIKGoal.LeftHand, result);
-                anim.SetIKRotation(AvatarIKGoal.LeftHand, Quaternion.Euler(rot, rot, rot));
-                rot = (rot + 5) % 360;
             }
 
             if (rightAction != null && rightAction.IsPressed())
@@ -128,10 +122,7 @@ namespace Team3.Animation.Player
                 result += shoulder;
 
                 anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
                 anim.SetIKPosition(AvatarIKGoal.RightHand, result);
-                anim.SetIKRotation(AvatarIKGoal.RightHand, Quaternion.Euler(rot, rot, rot));
-                rot = (rot + 5) % 360;
             }
         }
     }
