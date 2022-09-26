@@ -75,18 +75,58 @@ public class EquipmentManager : MonoBehaviour
         ListItems();
     }
 
-    public void Equip(Text name)
+    public void Equip1(Text name)
     {
-        for(int i = 0; i < Equipment.Count; i++)
+        for (int i = 0; i < Equipment.Count; i++)
         {
-            Item item = Equipment[i];
-            if (item.itemName.Equals(name.text))
+            Item Item = Equipment[i];
+            if (Item.itemName.Equals(name.text))
             {
-                Equipment.Remove(item);
-                Equipped.Add(item);
+                Equipment.Remove(Item);
+                
+
+                GameObject obj = Equipinventory[0];
+                var itemName = obj.transform.Find("Name").GetComponent<Text>();
+                var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
+                itemIcon.color = new Color32(255, 255, 255, 255);
+                itemName.text = Item.itemName;
+                itemIcon.sprite = Item.icon;
             }
         }
+
         ListItems();
+    }
+
+    public void Equip2(Text name)
+    {
+        for (int i = 0; i < Equipment.Count; i++)
+        {
+            Item Item = Equipment[i];
+            if (Item.itemName.Equals(name.text))
+            {
+                Equipment.Remove(Item);
+
+                GameObject obj = Equipinventory[1];
+                var itemName = obj.transform.Find("Name").GetComponent<Text>();
+                var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
+                itemIcon.color = new Color32(255, 255, 255, 255);
+                itemName.text = Item.itemName;
+                itemIcon.sprite = Item.icon;
+            }
+        }
+;
+        ListItems();
+    }
+
+    public void TakeOff(int pos, int Equip)
+    {
+        GameObject obj = Equipinventory[Equip];
+        var itemName = obj.transform.Find("Name").GetComponent<Text>();
+        var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
+        if (!itemName.text.Equals("1"))
+        {
+
+        }
     }
 
     public void Drop(Text name)
@@ -129,16 +169,6 @@ public class EquipmentManager : MonoBehaviour
 
         }
 
-        for (int i = 0; i < Equipped.Count; i++)
-        {
-            Item item = Equipped[i];
-            GameObject obj = Equipinventory[i];
-            var itemName = obj.transform.Find("Name").GetComponent<Text>();
-            var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
-            itemIcon.color = new Color32(255, 255, 255, 255);
-            itemName.text = item.itemName;
-            itemIcon.sprite = item.icon;
-        }
 
     }
 
