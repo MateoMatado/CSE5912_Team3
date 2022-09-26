@@ -20,7 +20,7 @@ public class EquipmentManager : MonoBehaviour
     public List<GameObject> inventory = new List<GameObject>();
     public List<GameObject> Equipinventory = new List<GameObject>();
     private Item tempEquipment;
-
+    public Sprite NoEquip;
 
 
     // Normal Set up
@@ -78,6 +78,17 @@ public class EquipmentManager : MonoBehaviour
         ListItems();
     }
 
+    public void TakeOff(int pos)
+    {
+        GameObject obj = Equipinventory[pos];
+        var itemName = obj.transform.Find("Name").GetComponent<Text>();
+        if (Equipped[pos] != null)
+        {
+            Equipment.Add(Equipped[pos]);
+            Equipped[pos] = null;
+        }
+        ListItems();
+    }
     /*update the item in inventory*/
     public void ListItems()
     {
@@ -112,6 +123,15 @@ public class EquipmentManager : MonoBehaviour
                 itemIcon.color = new Color32(255, 255, 255, 255);
                 itemName.text = Item.itemName;
                 itemIcon.sprite = Item.icon;
+            }
+            else if(Item == null)
+            {
+                GameObject obj = Equipinventory[i];
+                var itemName = obj.transform.Find("Name").GetComponent<Text>();
+                var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
+                itemIcon.color = new Color32(115, 108, 108, 85);
+                itemName.text = "1";
+                itemIcon.sprite = NoEquip;
             }
 
         }

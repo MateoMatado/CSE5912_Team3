@@ -21,7 +21,14 @@ public class EquipmentUSE : MonoBehaviour, IPointerClickHandler
     public void Equip2()
     {
         EquipmentManager.Instance.Equip(name,1);
-
+    }
+    public void OFF1()
+    {
+        EquipmentManager.Instance.TakeOff(0);
+    }
+    public void OFF2()
+    {
+        EquipmentManager.Instance.TakeOff(1);
     }
 
     public void Drop()
