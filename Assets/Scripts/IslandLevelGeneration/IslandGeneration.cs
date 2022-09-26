@@ -10,7 +10,8 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private int Length = 100;
     [SerializeField] private int Height = 50;
     [SerializeField] private int Attempts = 10;
-
+    [SerializeField] private int Spacing = 2;
+    [SerializeField] private float RandomHeightLimit = 1000;
     [SerializeField] private List<GameObject> Islands;
 
     private Dictionary<GameObject,Vector2> DIslands = new Dictionary<GameObject,Vector2>();
@@ -23,8 +24,10 @@ public class IslandGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DIslands.Add(Islands[0], new Vector2(150, 150));
-        DIslands.Add(Islands[1], new Vector2(600, 600));
+        DIslands.Add(Islands[0], new Vector2(250, 200));
+        DIslands.Add(Islands[1], new Vector2(500, 500));
+        DIslands.Add(Islands[2], new Vector2(800, 600));
+        DIslands.Add(Islands[3], new Vector2(800, 800));
 
         Generate();
 
@@ -53,7 +56,7 @@ public class IslandGeneration : MonoBehaviour
                     }
                 }
                 gameObjects[(int)pos.x, (int)pos.y] = GameObject.Instantiate(Islands[IslRand]);
-                gameObjects[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x, 0,(int)pos.y);
+                gameObjects[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x * Spacing, Random.Range(100,RandomHeightLimit),(int)pos.y * Spacing);
                 gameObjects[(int)pos.x, (int)pos.y].transform.SetParent(transform);
             }
         }
