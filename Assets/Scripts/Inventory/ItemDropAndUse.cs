@@ -10,16 +10,8 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
 
     public Text name;
     public Text Amount;
-    public void DropOne()
-    {
-        int value = Convert.ToInt32(Amount);
-        if(value == 1)
-        {
-            Destroy(gameObject);
-        }
-        InventoryManager.Instance.Remove(name, 1);
-        InventoryManager.Instance.DropItem(name,1);
-    }
+    public GameObject UseButton;
+    public GameObject DropButton;
 
     public void DropMenu()
     {
@@ -41,7 +33,8 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            DropOne();
+            UseButton.SetActive(true);
+            DropButton.SetActive(true);
         }
     }
 }

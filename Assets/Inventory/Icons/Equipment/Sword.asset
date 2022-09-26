@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd7da881ac11bf4283e4d487ec16cf8, type: 3}
-  m_Name: Blue pot
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  id: 2
-  itemName: Blue Pot
-  icon: {fileID: 21300000, guid: 635bdfea597fb7f4ca6000599149f890, type: 3}
-  EffectValue: 20
+  id: 102
+  itemName: Sword
+  icon: {fileID: 21300000, guid: 5fd50594014b70e48bd6993443d46b32, type: 3}
+  EffectValue: 50

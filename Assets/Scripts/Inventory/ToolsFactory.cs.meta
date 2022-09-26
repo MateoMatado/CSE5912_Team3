@@ -3,7 +3,12 @@ guid: 5d8c0dde87e801749b3407e43ff13714
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RedPot: {fileID: 1000012970591572, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
+  - BluePot: {fileID: 1000013317980782, guid: 2cf6690298568294cb6b655c0a3aeb87, type: 3}
+  - GreenPot: {fileID: 1000013846074356, guid: 11e31a2ebb4e6e246bcf8c0ba034a031, type: 3}
+  - Axe: {fileID: 1160154057661508, guid: e9f59d77b57d68e4199b7d15367aaa7c, type: 3}
+  - Sword: {fileID: 1220633678843950, guid: 944fc80616e7ee844bc7a8f312cd5b6a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

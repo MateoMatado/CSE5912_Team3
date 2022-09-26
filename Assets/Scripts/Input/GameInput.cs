@@ -152,6 +152,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipmentInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""cbf431c6-4dc3-4513-9db4-342cf62ccd07"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -493,6 +502,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeBaby"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""173c8b1d-b08d-4b45-8918-f49c33574de5"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipmentInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1094,6 +1114,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
         m_Player_ChangeBanana = m_Player.FindAction("ChangeBanana", throwIfNotFound: true);
         m_Player_ChangeBaby = m_Player.FindAction("ChangeBaby", throwIfNotFound: true);
+        m_Player_EquipmentInventory = m_Player.FindAction("EquipmentInventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1179,6 +1200,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Target;
     private readonly InputAction m_Player_ChangeBanana;
     private readonly InputAction m_Player_ChangeBaby;
+    private readonly InputAction m_Player_EquipmentInventory;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1197,6 +1219,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @Target => m_Wrapper.m_Player_Target;
         public InputAction @ChangeBanana => m_Wrapper.m_Player_ChangeBanana;
         public InputAction @ChangeBaby => m_Wrapper.m_Player_ChangeBaby;
+        public InputAction @EquipmentInventory => m_Wrapper.m_Player_EquipmentInventory;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1248,6 +1271,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ChangeBaby.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
                 @ChangeBaby.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
                 @ChangeBaby.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
+                @EquipmentInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
+                @EquipmentInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
+                @EquipmentInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1294,6 +1320,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ChangeBaby.started += instance.OnChangeBaby;
                 @ChangeBaby.performed += instance.OnChangeBaby;
                 @ChangeBaby.canceled += instance.OnChangeBaby;
+                @EquipmentInventory.started += instance.OnEquipmentInventory;
+                @EquipmentInventory.performed += instance.OnEquipmentInventory;
+                @EquipmentInventory.canceled += instance.OnEquipmentInventory;
             }
         }
     }
@@ -1464,6 +1493,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnTarget(InputAction.CallbackContext context);
         void OnChangeBanana(InputAction.CallbackContext context);
         void OnChangeBaby(InputAction.CallbackContext context);
+        void OnEquipmentInventory(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

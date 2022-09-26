@@ -9,6 +9,8 @@ public class ToolsFactory : MonoBehaviour
     [SerializeField] GameObject RedPot;
     [SerializeField] GameObject BluePot;
     [SerializeField] GameObject GreenPot;
+    [SerializeField] GameObject Axe;
+    [SerializeField] GameObject Sword;
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,7 +32,12 @@ public class ToolsFactory : MonoBehaviour
             case "Green Pot":
                 obj = GreenPot;
                 break;
-
+            case "AXE":
+                obj = Axe;
+                break;
+            case "Sword":
+                obj = Sword;
+                break;
             default:
                 obj = null;
                 break;

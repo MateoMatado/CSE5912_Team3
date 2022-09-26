@@ -10,7 +10,7 @@ public class NumberMenuManager : MonoBehaviour
 {
     public static NumberMenuManager Instance;
     public InputField InputNumber;
-    private static int count = 0;
+    private static int count = 1;
 
     // Normal Set up
     public void Awake()
@@ -20,7 +20,7 @@ public class NumberMenuManager : MonoBehaviour
     }
     public void Reset()
     {
-        count = 0;
+        count = 1;
     }
 
     public void Increase()

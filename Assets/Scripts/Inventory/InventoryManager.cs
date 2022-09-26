@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryItem;
     public static bool Opened = false;
     public GameObject Inventory;
+    public GameObject GeneralInventory;
     public GameObject NumberMenu;
     public InputField InputNumber;
     public Transform Player;
@@ -57,13 +58,14 @@ public class InventoryManager : MonoBehaviour
 
     public void Open()
     {
+        GeneralInventory.SetActive(true);
         Inventory.SetActive(true);
         Opened = true;
     }
 
     public void Close()
     {
-        Inventory.SetActive(false);
+        GeneralInventory.SetActive(false);
         Opened = false;
     }
 
