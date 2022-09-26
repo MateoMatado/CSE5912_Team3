@@ -2,10 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
-using UnityEditor.Playables;
 
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.Playables;
 #endif
 
 

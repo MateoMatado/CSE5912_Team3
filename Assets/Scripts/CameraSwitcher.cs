@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor.PackageManager;
+#endif
 
 
 //THIS IS FOR DEBUG by Jimmy
