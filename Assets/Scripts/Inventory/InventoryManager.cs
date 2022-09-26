@@ -9,10 +9,10 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
     public List<Item> Items = new List<Item>();
-    private GameInput inputs;
     public Transform ItemContent;
     public GameObject InventoryItem;
     public static bool Opened = false;
+    public GameObject EquipmentInventory;
     public GameObject Inventory;
     public GameObject GeneralInventory;
     public GameObject NumberMenu;
@@ -28,46 +28,9 @@ public class InventoryManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
-        inputs = new GameInput();
-        inputs.Player.Inventory.performed += Inventory_performed;
-        inputs.Player.Inventory.canceled += Inventory_performed;
-    }
-    private void OnEnable()
-    {
-        inputs.Player.Inventory.Enable();
+
     }
 
-    private void OnDisable()
-    {
-        inputs.Player.Inventory.Disable();
-    }
-
-    /*following three functions is to open inventory*/
-    private void Inventory_performed(InputAction.CallbackContext context)
-    {
-        if (!Opened)
-        {
-            Open();
-            ListItems();
-        }
-        else
-        {
-            Close();
-        }
-    }
-
-    public void Open()
-    {
-        GeneralInventory.SetActive(true);
-        Inventory.SetActive(true);
-        Opened = true;
-    }
-
-    public void Close()
-    {
-        GeneralInventory.SetActive(false);
-        Opened = false;
-    }
 
     /*to get item and drop item*/
     public void Add(Item item)

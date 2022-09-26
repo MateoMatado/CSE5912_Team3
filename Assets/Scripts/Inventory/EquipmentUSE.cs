@@ -15,12 +15,12 @@ public class EquipmentUSE : MonoBehaviour, IPointerClickHandler
 
     public void Equip1()
     {
-        EquipmentManager.Instance.Equip1(name);
+        EquipmentManager.Instance.Equip(name,0);
 
     }
     public void Equip2()
     {
-        EquipmentManager.Instance.Equip2(name);
+        EquipmentManager.Instance.Equip(name,1);
 
     }
 
