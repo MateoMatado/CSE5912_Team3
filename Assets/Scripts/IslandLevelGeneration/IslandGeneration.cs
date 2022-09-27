@@ -40,7 +40,19 @@ public class IslandGeneration : MonoBehaviour
     {
         EIslandArray = new int[Width, Length];
         gameObjects = new GameObject[Width, Length];
-        
+
+
+        for (int x = 0; x < SislandSize.x; x++)
+        {
+            for (int y = 0; y < SislandSize.y; y++)
+            {
+                EIslandArray[x + 1, y + 1] = (int)EIslands.Filled;
+            }
+        }
+        gameObjects[2000, 2000] = GameObject.Instantiate(StartingIsland);
+        gameObjects[2000, 2000].transform.position = new Vector3(2000 * Spacing, Random.Range(100, RandomHeightLimit), 2000 * Spacing);
+        gameObjects[2000, 2000].transform.SetParent(transform);
+
         for (int i = 0; i < Attempts; i++)
         {
             int IslRand = Random.Range(0, Islands.Count);
@@ -48,17 +60,6 @@ public class IslandGeneration : MonoBehaviour
             Vector2 pos = new Vector2(Random.Range(0, Width), Random.Range(0, Length));
 
             bool check = IslandCheck(pos, IslandSize);
-
-            for (int x = 0; x < SislandSize.x; x++)
-            {
-                for (int y = 0; y < SislandSize.y; y++)
-                {
-                    EIslandArray[x + (int)pos.x, y + (int)pos.y] = (int)EIslands.Filled;
-                }
-            }
-            gameObjects[100, 100] = GameObject.Instantiate(StartingIsland);
-            gameObjects[100, 100].transform.position = new Vector3(100 * Spacing, Random.Range(100,RandomHeightLimit),100 * Spacing);
-            gameObjects[100, 100].transform.SetParent(transform);
 
             if (check)
             {
