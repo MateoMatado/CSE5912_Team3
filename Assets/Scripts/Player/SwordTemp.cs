@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SwordTemp : MonoBehaviour
 {
-    int attackpoint = 100;
+    int attackpoint = 120;
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("============sword==============");
+        Debug.Log("============OnTriggerEnter==============");
         IDamageable target = other.GetComponent<IDamageable>();
         if (target != null)
         {

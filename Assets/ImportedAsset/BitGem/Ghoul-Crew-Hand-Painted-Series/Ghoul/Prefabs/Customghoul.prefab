@@ -643,7 +643,7 @@ MonoBehaviour:
   startingHealth: 100
   attackRoot: {fileID: 3377834570201493105}
   eyeTransform: {fileID: 3377834569736095706}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 198615267133080452, guid: ed67c2cb8e3a7fb418c6fbb1b001dce2, type: 3}
   deathSound: {fileID: 8300000, guid: e963d76d001cfb34d8e7eb4ce2853270, type: 3}
   onDamageSound: {fileID: 8300000, guid: e963d76d001cfb34d8e7eb4ce2853270, type: 3}
   chaseSpeed: 10

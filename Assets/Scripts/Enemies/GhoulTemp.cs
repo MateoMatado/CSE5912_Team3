@@ -273,7 +273,8 @@ public class GhoulTemp : LivingEntity
     {
         if (!isDead)
         {
-            //hitEffect.Play();
+            hitEffect.transform.position = transform.position;
+            hitEffect.Play();
             ghoulAudioPlayer.clip = onDamageSound;
             ghoulAudioPlayer.PlayOneShot(onDamageSound);
         }
@@ -284,15 +285,18 @@ public class GhoulTemp : LivingEntity
 
     public override void Die()
     {
+        hitEffect.transform.position = transform.position;
+        hitEffect.Play();
         base.Die();
+        ghoulAnimator.SetTrigger("Die");
+        ghoulAudioPlayer.clip = deathSound;
+        ghoulAudioPlayer.PlayOneShot(deathSound);
 
         Collider ghoulCollider = GetComponent<Collider>();
         ghoulCollider.enabled = false;
         navMeshAgent.isStopped = true;
         navMeshAgent.enabled = false;
-
-        ghoulAnimator.SetTrigger("Die");
-        ghoulAudioPlayer.clip = deathSound;
-        ghoulAudioPlayer.PlayOneShot(deathSound);
+        
+        
     }
 }
