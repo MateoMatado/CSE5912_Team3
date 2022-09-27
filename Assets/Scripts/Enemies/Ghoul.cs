@@ -289,17 +289,17 @@ public class Ghoul : LivingEntity
 
 
 
-    public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
+    public override void OnDamage(float damage)
     {
         if (!isDead)
         {
-            hitEffect.transform.position = hitPoint;
-            hitEffect.transform.rotation = Quaternion.LookRotation(hitNormal);
-            hitEffect.Play();
+            //hitEffect.transform.position = hitPoint;
+            //hitEffect.transform.rotation = Quaternion.LookRotation(hitNormal);
+            //hitEffect.Play();
 
             ghoulAudioPlayer.PlayOneShot(hitSound);
         }
-        base.OnDamage(damage,hitPoint, hitNormal);
+        base.OnDamage(damage);
     }
 
     public override void Die()
@@ -331,7 +331,7 @@ public class Ghoul : LivingEntity
                 Vector3 hitPoint = other.ClosestPoint(transform.position);  
                 Vector3 hitNormal = transform.position - other.transform.position; ;
 
-                attackTarget.OnDamage(damage, hitPoint, hitNormal);
+                attackTarget.OnDamage(damage);
             }
         }
     }

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public interface IDamageable 
 {
-    //hitPoint : the point that the attack hit 
-    //hitNormal : Direction of the hit surface
-    void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal);
+    //Vector3 hitPoint : the point that the attack hit 
+    //Vector3 hitNormal : Direction of the hit surface
+    void OnDamage(float damage);
 }
 
 // Every Damageable entities should inherit this IDamageable interface
