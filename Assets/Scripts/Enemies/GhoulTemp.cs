@@ -26,13 +26,12 @@ public class GhoulTemp : LivingEntity
     public Transform attackRoot;
     public Transform eyeTransform;
 
-    /*        
-        public AudioClip chaseClip;
-        public AudioClip deathClip;
-     */
+            
+    //public AudioClip chaseClip;
+    //public AudioClip deathClip;
+    
 
     private AudioSource ghoulAudioPlayer;
-
     public ParticleSystem hitEffect;
     public AudioClip deathSound;
     public AudioClip onDamageSound;
@@ -90,7 +89,7 @@ public class GhoulTemp : LivingEntity
     {
         navMeshAgent = GetComponent<NavMeshAgent>();        
         ghoulAnimator = GetComponent<Animator>();
-        //ghoulAudioPlayer = GetComponent<AudioSource>();
+        ghoulAudioPlayer = GetComponent<AudioSource>();
         
         var attackPivot = attackRoot.position;
         attackPivot.y = transform.position.y;
@@ -127,7 +126,7 @@ public class GhoulTemp : LivingEntity
                 {
                     state = State.Chase;                    
                     navMeshAgent.speed = chaseSpeed;
-                    Debug.Log("Enemy State : Chasing...");
+                    //Debug.Log("Enemy State : Chasing...");
                 }
                 navMeshAgent.SetDestination(targetEntity.position);
             }
@@ -142,7 +141,7 @@ public class GhoulTemp : LivingEntity
                 {
                     state = State.Patrol;
                     navMeshAgent.speed = patrolSpeed;
-                    Debug.Log("Enemy State : Patrol...");                    
+                    //Debug.Log("Enemy State : Patrol...");                    
                 }
 
                 //first, move to random position
@@ -164,7 +163,7 @@ public class GhoulTemp : LivingEntity
                     else
                     {
                         targetEntity = collider.transform;
-                        Debug.Log("Target Detected");
+                        //Debug.Log("Target Detected");
                         break;
                     }                    
                 }
@@ -206,7 +205,7 @@ public class GhoulTemp : LivingEntity
         if (state == State.Chase)
         {            
             var distance = Vector3.Distance(targetEntity.position, transform.position);
-            Debug.Log("current:" + distance+"   ,   attkDis:"+ attackDistance);
+            //Debug.Log("current:" + distance+"   ,   attkDis:"+ attackDistance);
             if (distance <= attackDistance + 2f)  //this is to make 
             {
                 BeginAttack();
@@ -244,7 +243,7 @@ public class GhoulTemp : LivingEntity
         state = State.Attack;
         navMeshAgent.isStopped = true;
         ghoulAnimator.SetTrigger("Attack");
-        Debug.Log("State:Attacking...");
+        //Debug.Log("State:Attacking...");
     }
     
     public void EndAttack()
@@ -259,8 +258,8 @@ public class GhoulTemp : LivingEntity
     {
         if (!isDead)
         {
-            hitEffect.Play();
-
+            //hitEffect.Play();
+            ghoulAudioPlayer.clip = onDamageSound;
             ghoulAudioPlayer.PlayOneShot(onDamageSound);
         }
 
@@ -278,6 +277,7 @@ public class GhoulTemp : LivingEntity
         navMeshAgent.enabled = false;
 
         ghoulAnimator.SetTrigger("Die");
+        ghoulAudioPlayer.clip = deathSound;
         ghoulAudioPlayer.PlayOneShot(deathSound);
     }
 }

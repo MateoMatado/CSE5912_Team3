@@ -18,6 +18,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     public virtual void OnDamage(float damage)
     {
+        Debug.Log("Ahh~ ondamage");
         currentHealth -= damage;
 
         if(currentHealth <= 0 && !isDead)
