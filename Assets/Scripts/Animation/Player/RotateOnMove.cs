@@ -47,7 +47,8 @@ namespace Team3.Animation.Player
             {
                 while(moving)
                 {
-                    Vector3 target = cameraTarget.forward;
+                    // Vector3 target = cameraTarget.forward;
+                    Vector3 target = body.velocity;
                     float angle = Mathf.Atan2(target.z, target.x) * Mathf.Rad2Deg;
                     Quaternion final = Quaternion.AngleAxis(-angle+90, Vector3.up);
                     var angles = cameraTarget.transform.eulerAngles;
