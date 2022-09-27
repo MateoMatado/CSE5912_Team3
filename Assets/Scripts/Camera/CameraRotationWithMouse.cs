@@ -17,6 +17,11 @@ public class CameraRotationWithMouse : MonoBehaviour
         Team3.Events.EventsPublisher.Instance.SubscribeToEvent("Look", Look);
     }
 
+    private void OnDestroy()
+    {
+        Team3.Events.EventsPublisher.Instance.UnsubscribeToEvent("Look", Look);
+    }
+
     private void Look(object sender, object data)
     {
         if (stateManager.StateMachine.CurrentState is TargetingState) return;
