@@ -7,16 +7,16 @@ using UnityEngine.EventSystems;
 public class ExitSceneControl : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
-    [SerializeField] private GameObject QuiButton;
+    [SerializeField] private GameObject QuitButton;
     private void Awake()
     {
-        EventSystem.current.SetSelectedGameObject(QuiButton);
+        EventSystem.current.SetSelectedGameObject(QuitButton);
     }
     // Update is called once per frame
     void Update()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
-        if(transform.position.y > 760)
+        if(transform.position.y > 1000)
         {
             Exit();
         }

@@ -72,6 +72,7 @@ public class EquipmentManager : MonoBehaviour
                     Equipment.Add(Equipped[pos]);
                 }
                 Equipped[pos] = Item;
+                break;
             }
         }
 
@@ -92,6 +93,10 @@ public class EquipmentManager : MonoBehaviour
     /*update the item in inventory*/
     public void ListItems()
     {
+        while (Equipment.Contains(null))
+        {
+            Equipment.Remove(null);
+        }
         for (int i = 0; i< inventory.Count; i++)
         {            
             GameObject obj = inventory[i];
