@@ -248,8 +248,12 @@ public class GhoulTemp : LivingEntity
     
     public void EndAttack()
     {
-        state = State.Chase;
-        navMeshAgent.isStopped = false;
+        if (!isDead)
+        {
+            state = State.Chase;
+            navMeshAgent.isStopped = false;
+        }
+        
     }
 
 

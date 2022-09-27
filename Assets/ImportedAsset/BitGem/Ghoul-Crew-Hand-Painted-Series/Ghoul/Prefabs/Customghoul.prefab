@@ -645,7 +645,7 @@ MonoBehaviour:
   eyeTransform: {fileID: 3377834569736095706}
   hitEffect: {fileID: 0}
   deathSound: {fileID: 8300000, guid: e963d76d001cfb34d8e7eb4ce2853270, type: 3}
-  onDamageSound: {fileID: 8300000, guid: 99972552970a91d4394aebed1f52ec1f, type: 3}
+  onDamageSound: {fileID: 8300000, guid: e963d76d001cfb34d8e7eb4ce2853270, type: 3}
   chaseSpeed: 10
   turnSmoothTime: 0.01
   attackRadius: 2
