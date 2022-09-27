@@ -33,6 +33,7 @@ public class GhoulTemp : LivingEntity
 
     private AudioSource ghoulAudioPlayer;
     public ParticleSystem hitEffect;
+    private ParticleSystem hitEffect2;
     public AudioClip deathSound;
     public AudioClip onDamageSound;
 
@@ -96,7 +97,9 @@ public class GhoulTemp : LivingEntity
         attackDistance = Vector3.Distance(transform.position, attackPivot) + attackRadius;
 
         navMeshAgent.stoppingDistance = attackDistance;
-        navMeshAgent.speed = patrolSpeed;        
+        navMeshAgent.speed = patrolSpeed;
+
+        hitEffect2 = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()
@@ -273,8 +276,7 @@ public class GhoulTemp : LivingEntity
     {
         if (!isDead)
         {
-            hitEffect.transform.position = transform.position;
-            hitEffect.Play();
+            hitEffect2.Play();
             ghoulAudioPlayer.clip = onDamageSound;
             ghoulAudioPlayer.PlayOneShot(onDamageSound);
         }
@@ -285,8 +287,6 @@ public class GhoulTemp : LivingEntity
 
     public override void Die()
     {
-        hitEffect.transform.position = transform.position;
-        hitEffect.Play();
         base.Die();
         ghoulAnimator.SetTrigger("Die");
         ghoulAudioPlayer.clip = deathSound;
