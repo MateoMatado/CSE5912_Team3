@@ -49,7 +49,7 @@ public class GhoulTemp : LivingEntity
     public float viewDistance = 10f;
     public float patrolSpeed = 3f;
 
-    
+    private float lostDistance = 10f;
 
 
     //public LivingEntity targetEntity;
@@ -210,6 +210,17 @@ public class GhoulTemp : LivingEntity
             {
                 BeginAttack();
             }
+            
+            
+            //!!!!!!!!!
+            if(distance >= lostDistance)
+            {
+                targetEntity = null;
+                state = State.Patrol;
+                navMeshAgent.speed = patrolSpeed;
+            }
+
+
         }
         //ghoulAnimator.SetFloat("Speed", navMeshAgent.desiredVelocity.magnitude);
         ghoulAnimator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
