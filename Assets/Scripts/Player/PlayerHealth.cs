@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerHealth : LivingEntity
 {
+
+    //OnEnable is for when player revives  
     protected override void OnEnable()
     {
         base.OnEnable();

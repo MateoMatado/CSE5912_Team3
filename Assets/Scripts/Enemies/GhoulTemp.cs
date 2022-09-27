@@ -26,11 +26,17 @@ public class GhoulTemp : LivingEntity
     public Transform attackRoot;
     public Transform eyeTransform;
 
-    /*
-        private AudioSource audioPlayer;
+    /*        
         public AudioClip chaseClip;
         public AudioClip deathClip;
      */
+
+    private AudioSource ghoulAudioPlayer;
+
+    public ParticleSystem hitEffect;
+    public AudioClip deathSound;
+    public AudioClip onDamageSound;
+
 
     public float chaseSpeed = 10f;
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
@@ -43,6 +49,8 @@ public class GhoulTemp : LivingEntity
     public float fieldOfView = 50f;
     public float viewDistance = 10f;
     public float patrolSpeed = 3f;
+
+    
 
 
     //public LivingEntity targetEntity;
@@ -82,7 +90,7 @@ public class GhoulTemp : LivingEntity
     {
         navMeshAgent = GetComponent<NavMeshAgent>();        
         ghoulAnimator = GetComponent<Animator>();
-        //audioPlayer = GetComponent<AudioSource>();
+        //ghoulAudioPlayer = GetComponent<AudioSource>();
         
         var attackPivot = attackRoot.position;
         attackPivot.y = transform.position.y;
@@ -244,5 +252,32 @@ public class GhoulTemp : LivingEntity
         state = State.Chase;
         navMeshAgent.isStopped = false;
     }
-    
+
+
+
+    public override void OnDamage(float damage)
+    {
+        if (!isDead)
+        {
+            hitEffect.Play();
+
+            ghoulAudioPlayer.PlayOneShot(onDamageSound);
+        }
+
+        //affect damage on hp
+        base.OnDamage(damage);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        Collider ghoulCollider = GetComponent<Collider>();
+        ghoulCollider.enabled = false;
+        navMeshAgent.isStopped = true;
+        navMeshAgent.enabled = false;
+
+        ghoulAnimator.SetTrigger("Die");
+        ghoulAudioPlayer.PlayOneShot(deathSound);
+    }
 }
