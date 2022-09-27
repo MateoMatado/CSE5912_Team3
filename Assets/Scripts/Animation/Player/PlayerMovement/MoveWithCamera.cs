@@ -17,6 +17,7 @@ namespace Team3.PlayerMovement
         // Start is called before the first frame update
         void Start()
         {
+            cameraTarget = Camera.main.transform;
             body = GetComponent<Rigidbody>();
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", StartMove);
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerStop", StopMove);
