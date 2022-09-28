@@ -13,6 +13,9 @@ namespace Team3.Animation.Player
         [SerializeField] float positionOffset;
 
         [SerializeField] float mouseSensitivity;
+        [SerializeField] float swingThreshold = 0.2f;
+        [SerializeField] float swingForce = 1;
+        Rigidbody body;
 
         [SerializeField] float lMaxHAngle;
         [SerializeField] float lMinHAngle;
@@ -27,6 +30,7 @@ namespace Team3.Animation.Player
         private Vector2 lHalfWH, lDefaultPos;
         private Vector2 rHalfWH, rDefaultPos;
         Vector2 inVector = new Vector2();
+        Vector2 dPos = new Vector2();
 
         private InputAction leftAction;
         private InputAction rightAction;
@@ -47,7 +51,10 @@ namespace Team3.Animation.Player
             rHalfWH = new Vector2(rMaxHAngle - rMinHAngle, rMaxVAngle - rMinVAngle) / 2;
             rDefaultPos = new Vector2(rMaxHAngle + rMinHAngle, rMaxVAngle + rMinVAngle) / 2;
 
+            body = transform.parent.parent.gameObject.GetComponent<Rigidbody>();
+
             StartCoroutine(MoveSword());
+            //StartCoroutine(PushOnSwing());
         }
 
         private void OnDestroy()
@@ -132,6 +139,7 @@ namespace Team3.Animation.Player
                     inVector = Vector2.ClampMagnitude(inVector, 1);
                 }
             }
+            dPos = dPos - inVector;
         }
 
         private void OnAnimatorIK(int layerIndex)
@@ -170,11 +178,29 @@ namespace Team3.Animation.Player
                 anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
                 anim.SetIKPosition(AvatarIKGoal.RightHand, IKTarget.position);
             }
+            else
+            {
+                dPos = new Vector2(0, 0);
+            }
 
             anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
             anim.SetIKRotation(AvatarIKGoal.RightHand, IKTarget.rotation);
             anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
             anim.SetIKRotation(AvatarIKGoal.LeftHand, Quaternion.Euler(rot, rot, rot));
+        }
+
+        private IEnumerator PushOnSwing()
+        {
+            while(true)
+            {
+                while (dPos.magnitude >= swingThreshold)
+                {
+                    Vector3 force = anim.GetBoneTransform(HumanBodyBones.LeftShoulder).transform.position - anim.GetBoneTransform(HumanBodyBones.LeftHand).transform.position;
+                    body.AddForce(force * swingForce, ForceMode.Impulse);
+                    yield return null;
+                }
+                while (dPos.magnitude < swingThreshold) { yield return null; }
+            }
         }
     }
 }
