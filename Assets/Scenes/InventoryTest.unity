@@ -2410,6 +2410,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687679358}
   m_CullTransparentMesh: 1
+--- !u!114 &698559084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7619676320341563832, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
+  m_PrefabInstance: {fileID: 1617095790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &754371733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3082,15 +3093,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7890c2f692baa5246be910f9983d2c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
   ItemContent: {fileID: 1607119048}
   InventoryItem: {fileID: 3340476601635950074, guid: 8be40f57a5ad18b4b8c87e0068dd9622, type: 3}
-  EquipmentInventory: {fileID: 0}
+  EquipmentInventory: {fileID: 687679358}
   Inventory: {fileID: 1342538248}
   GeneralInventory: {fileID: 588183077}
   NumberMenuForDrop: {fileID: 152179114}
   NumberMenuForUse: {fileID: 441100621}
-  InputNumber: {fileID: 906932558}
+  InputNumberDrop: {fileID: 906932558}
+  InputNumberUse: {fileID: 698559084}
   Player: {fileID: 132611866}
 --- !u!4 &1020477017
 Transform:
@@ -3135,7 +3146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b546afa06624960469e5055b8c5afcfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputNumber: {fileID: 906932558}
+  InputNumberForUse: {fileID: 698559084}
+  InputNumberForDrop: {fileID: 906932558}
 --- !u!1001 &1023229186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3903,7 +3915,7 @@ PrefabInstance:
     - target: {fileID: 2155026423146225208, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 11500000, guid: b546afa06624960469e5055b8c5afcfc, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2155026423146225208, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3930,7 +3942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2155026423146225208, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: DropWithNumber
+      value: UseWithNumber
       objectReference: {fileID: 0}
     - target: {fileID: 2155026423146225208, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
@@ -4082,7 +4094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095060650095235059, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_Name
-      value: Number Menu For Drop
+      value: Number Menu For Use
       objectReference: {fileID: 0}
     - target: {fileID: 7095060650095235059, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_IsActive
@@ -5737,7 +5749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2155026423146225208, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: DropWithNumber
+      value: UseWithNumber
       objectReference: {fileID: 0}
     - target: {fileID: 2155026423146225208, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
@@ -5889,7 +5901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095060650095235059, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_Name
-      value: 'Number Menu For USE '
+      value: 'Number Menu For Drop '
       objectReference: {fileID: 0}
     - target: {fileID: 7095060650095235059, guid: 7ea46aa0bf089ba4a930a3ecfb01edd3, type: 3}
       propertyPath: m_IsActive
