@@ -15,7 +15,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject EquipmentInventory;
     public GameObject Inventory;
     public GameObject GeneralInventory;
-    public GameObject NumberMenu;
+    public GameObject NumberMenuForDrop;
+    public GameObject NumberMenuForUse;
     public InputField InputNumber;
     public Transform Player;
     public static Dictionary<Item, int> ItemList = new Dictionary<Item, int>();
@@ -73,8 +74,13 @@ public class InventoryManager : MonoBehaviour
 
     public void DropWithNumberMenu(Text name)
     {
-        NumberMenu.SetActive(true);
+        NumberMenuForDrop.SetActive(true);
         tempName = name; 
+    }
+    public void UseWithNumberMenu(Text name)
+    {
+        NumberMenuForUse.SetActive(true);
+        tempName = name;
     }
 
 
@@ -83,6 +89,13 @@ public class InventoryManager : MonoBehaviour
         int value = Convert.ToInt32(InputNumber.text);
         Remove(tempName, value);
         DropItem(tempName, DropAmount);
+        NumberMenuManager.Instance.Reset();
+    }
+    public void UseWithNumber()
+    {
+        int value = Convert.ToInt32(InputNumber.text);
+        Remove(tempName, value);
+        //TODO:have function to use with number
         NumberMenuManager.Instance.Reset();
     }
     /*To create a item dropped*/

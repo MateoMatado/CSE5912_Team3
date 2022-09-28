@@ -5,9 +5,16 @@ using UnityEngine.InputSystem;
 
 namespace Team3.Input
 {
+    public enum InputType
+    {
+        MouseKeyboard, Gamepad
+    }
+
     public class GameInputManager : MonoBehaviour
     {
         private GameInput inputs;
+
+        public static InputType currentDevice = InputType.MouseKeyboard;
 
         void Awake()
         {
@@ -23,7 +30,8 @@ namespace Team3.Input
             inputs.Player.RightArmActivate.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmDeactivate", null, inputs.Player.RightArmActivate); };
             //inputs.Player.MoveArm.started += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArm", null, inputs.Player.MoveArm); };
             inputs.Player.MoveArmMouse.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArmMouse", null, inputs.Player.MoveArmMouse); };
-            inputs.Player.Look.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Look", null, inputs.Player.Look); };
+            inputs.Player.LookMouse.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LookMouse", null, (inputs.Player.LookMouse, inputs.Player.LookPad)); currentDevice = InputType.MouseKeyboard; };
+            inputs.Player.LookPad.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LookPad", null, (inputs.Player.LookMouse, inputs.Player.LookPad)); currentDevice = InputType.Gamepad; };
             inputs.Player.Target.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Target", null, inputs.Player.Target); };
             inputs.Player.ChangeBanana.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "banana"); };
             inputs.Player.ChangeBaby.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "baby"); };
@@ -48,7 +56,8 @@ namespace Team3.Input
             inputs.Player.ChangeBanana.Enable();
             inputs.Player.ChangeBaby.Enable();
 
-            inputs.Player.Look.Enable();
+            inputs.Player.LookPad.Enable();
+            inputs.Player.LookMouse.Enable();
 
             inputs.Player.Target.Enable();
 
@@ -68,7 +77,8 @@ namespace Team3.Input
             inputs.Player.ChangeBanana.Disable();
             inputs.Player.ChangeBaby.Disable();
 
-            inputs.Player.Look.Disable();
+            inputs.Player.LookPad.Disable();
+            inputs.Player.LookMouse.Disable();
 
             inputs.Player.Target.Disable();
 
@@ -91,6 +101,8 @@ namespace Team3.Input
             arms++;
             inputs.Player.MoveArm.Enable();
             inputs.Player.MoveArmMouse.Enable();
+            inputs.Player.LookMouse.Disable();
+            inputs.Player.LookPad.Disable();
         }
 
         private void DisableArm(object sender, object data)
@@ -100,6 +112,8 @@ namespace Team3.Input
             {
                 inputs.Player.MoveArm.Disable();
                 inputs.Player.MoveArmMouse.Disable();
+                inputs.Player.LookMouse.Enable();
+                inputs.Player.LookPad.Enable();
             }
         }
     }
