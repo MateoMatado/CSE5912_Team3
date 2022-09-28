@@ -650,9 +650,9 @@ MonoBehaviour:
   chaseSpeed: 10
   turnSmoothTime: 0.01
   attackRadius: 2
-  fieldOfView: 160
+  fieldOfView: 360
   viewDistance: 25
-  patrolSpeed: 4
+  patrolSpeed: 10
   targetEntity: {fileID: 0}
   whatIsTarget:
     serializedVersion: 2

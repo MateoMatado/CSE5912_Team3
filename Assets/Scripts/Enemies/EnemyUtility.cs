@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyUtility : MonoBehaviour
 {
-    private float delayTime = 3f;
+    private float delayTime = 0.5f;
     public Vector3 randomPoint;
     public static Vector3 GetRandomPointOnNavMesh(Vector3 center, float distance, int areaMask)
     {

@@ -37,7 +37,7 @@ public class GhoulTemp : LivingEntity
     public AudioClip onDamageSound;
 
 
-    public float chaseSpeed = 10f;
+    
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
@@ -45,11 +45,12 @@ public class GhoulTemp : LivingEntity
     public float attackRadius = 3f;
     private float attackDistance;
 
-    public float fieldOfView = 50f;
-    public float viewDistance = 10f;
-    public float patrolSpeed = 3f;
-
+    private float fieldOfView = 360f;
+    private float viewDistance = 10f;
     private float lostDistance = 10f;
+    private float patrolSpeed = 3f;
+    private float chaseSpeed = 10f;
+    
 
 
     //public LivingEntity targetEntity;
@@ -68,9 +69,6 @@ public class GhoulTemp : LivingEntity
     private const float remainingDistance = 8f; //1
 
 
-    //Flocking
-    GameObject[] enemyObjectArray;
-    float spaceBetween = 5f;
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
@@ -107,11 +105,7 @@ public class GhoulTemp : LivingEntity
     }
 
     private void Start()
-    {
-        //For Flocking Behavior
-        enemyObjectArray = GameObject.FindGameObjectsWithTag("Enemy");
-
-
+    {      
         StartCoroutine(UpdatePath());
     }   
     private bool hasTarget
