@@ -14,7 +14,6 @@ public class GhoulTemp : LivingEntity
         Patrol,
         Chase,
         Attack
-        // AttackBegin,        Attacking
     }
 
     private State state;
@@ -68,6 +67,11 @@ public class GhoulTemp : LivingEntity
     private const float waitTimeForCoroutine = 0.2f; //0.05
     private const float remainingDistance = 8f; //1
 
+
+    //Flocking
+    GameObject[] enemyObjectArray;
+    float spaceBetween = 5f;
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
@@ -104,6 +108,10 @@ public class GhoulTemp : LivingEntity
 
     private void Start()
     {
+        //For Flocking Behavior
+        enemyObjectArray = GameObject.FindGameObjectsWithTag("Enemy");
+
+
         StartCoroutine(UpdatePath());
     }   
     private bool hasTarget
@@ -149,11 +157,16 @@ public class GhoulTemp : LivingEntity
 
                 //first, move to random position
                 //Debug.Log("remainingDistance" + navMeshAgent.remainingDistance);
+                
                 if (navMeshAgent.remainingDistance <= remainingDistance)
                 {
-                    var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
+                    var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
+                    //var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
                 }
+                
+
+
 
                 //Then, check nearby object whether it is target(player) by checking colliders nearby
                 var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
@@ -212,10 +225,9 @@ public class GhoulTemp : LivingEntity
             if (distance <= attackDistance + 2f)  //this is to make 
             {
                 BeginAttack();
-            }
+            }            
             
-            
-            //!!!!!!!!!
+            //when lost target
             if(distance >= lostDistance)
             {
                 targetEntity = null;
@@ -225,23 +237,12 @@ public class GhoulTemp : LivingEntity
 
 
         }
-        //ghoulAnimator.SetFloat("Speed", navMeshAgent.desiredVelocity.magnitude);
+        
         ghoulAnimator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
-    private void FixedUpdate()
-    {
-        /*
-        if (state == State.Attack)
-        {
-            //turn smoothly to target
-            var lookRotation = Quaternion.LookRotation(targetEntity.position - transform.position);
-            var targetAngleY = lookRotation.eulerAngles.y;
 
-            targetAngleY = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY, ref turnSmoothVelocity, turnSmoothTime);
-            transform.eulerAngles = Vector3.up * targetAngleY;
-        }    
-        */
-        
+    private void FixedUpdate()
+    {       
         if (state == State.Attack)
         {
             if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)

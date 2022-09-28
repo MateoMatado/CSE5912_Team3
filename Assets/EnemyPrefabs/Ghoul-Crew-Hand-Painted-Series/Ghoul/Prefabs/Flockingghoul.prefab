@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 3042590793874637824}
   - component: {fileID: 3042590793874637827}
   m_Layer: 0
-  m_Name: ghoulCustom
+  m_Name: Flockingghoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
