@@ -32748,6 +32748,7 @@ GameObject:
   - component: {fileID: 872898690}
   - component: {fileID: 872898689}
   - component: {fileID: 872898688}
+  - component: {fileID: 872898691}
   m_Layer: 0
   m_Name: EnemySpawnerType2
   m_TagString: Untagged
@@ -32796,6 +32797,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &872898691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872898687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8b3074bf8527b42bf7a3c502064aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomPoint: {x: 0, y: 0, z: 0}
 --- !u!1001 &873038912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74491,12 +74505,8 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   deathSound: {fileID: 0}
   onDamageSound: {fileID: 0}
-  chaseSpeed: 15
   turnSmoothTime: 0.1
   attackRadius: 3
-  fieldOfView: 160
-  viewDistance: 20
-  patrolSpeed: 3
   targetEntity: {fileID: 0}
   whatIsTarget:
     serializedVersion: 2
