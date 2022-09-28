@@ -56,21 +56,6 @@ public class LoadingState : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
 
-        /*Unity Logo*/
-        var cloneUnity =Instantiate(Unity, transform.position, transform.rotation);
-        yield return new WaitForSeconds(slideDuration);
-        Destroy(cloneUnity);
-
-        /*OSU Logo*/
-        var cloneOSU = Instantiate(OSU, transform.position, transform.rotation);
-        yield return new WaitForSeconds(slideDuration);
-        Destroy(cloneOSU);
-
-        /*CSE Logo*/
-        var cloneCSE = Instantiate(CSE, transform.position, transform.rotation);
-        yield return new WaitForSeconds(slideDuration);
-        Destroy(cloneOSU);
-
         /*CSE Logo*/
         var cloneCreditTo = Instantiate(CreditTo, transform.position, transform.rotation);
         yield return new WaitForSeconds(slideDuration/2);
