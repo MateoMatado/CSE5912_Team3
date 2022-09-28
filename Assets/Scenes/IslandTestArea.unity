@@ -6618,9 +6618,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 143737666}
         m_TargetAssemblyTypeName: Team3.Menus.PauseMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
