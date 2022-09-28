@@ -437,7 +437,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 913742607642017795}
         m_TargetAssemblyTypeName: ItemDropAndUse, Assembly-CSharp
-        m_MethodName: DropMenu
+        m_MethodName: UseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
