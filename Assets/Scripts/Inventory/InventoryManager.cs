@@ -77,7 +77,11 @@ public class InventoryManager : MonoBehaviour
         NumberMenuForDrop.SetActive(true);
         tempName = name; 
     }
-
+    public void UseWithNumberMenu(Text name)
+    {
+        NumberMenuForUse.SetActive(true);
+        tempName = name;
+    }
 
 
     public void DropWithNumber()

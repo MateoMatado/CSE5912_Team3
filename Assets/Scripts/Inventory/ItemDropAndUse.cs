@@ -19,7 +19,7 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     }
     public void UseMenu()
     {
-
+        InventoryManager.Instance.UseWithNumberMenu(name);
     }
 
     public void Use()
