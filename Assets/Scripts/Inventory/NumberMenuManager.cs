@@ -9,7 +9,8 @@ using System;
 public class NumberMenuManager : MonoBehaviour
 {
     public static NumberMenuManager Instance;
-    public InputField InputNumber;
+    public InputField InputNumberForUse;
+    public InputField InputNumberForDrop;
     private static int count = 1;
 
     // Normal Set up
@@ -39,6 +40,7 @@ public class NumberMenuManager : MonoBehaviour
 
     public void Update()
     {
-        InputNumber.text = count + "";
+        InputNumberForUse.text = count + "";
+        InputNumberForDrop.text = count + "";
     }
 }

@@ -8,7 +8,6 @@ using System;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
     public Transform ItemContent;
     public GameObject InventoryItem;
     public static bool Opened = false;
@@ -17,7 +16,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject GeneralInventory;
     public GameObject NumberMenuForDrop;
     public GameObject NumberMenuForUse;
-    public InputField InputNumber;
+    public InputField InputNumberDrop;
+    public InputField InputNumberUse;
     public Transform Player;
     public static Dictionary<Item, int> ItemList = new Dictionary<Item, int>();
 
@@ -77,23 +77,19 @@ public class InventoryManager : MonoBehaviour
         NumberMenuForDrop.SetActive(true);
         tempName = name; 
     }
-    public void UseWithNumberMenu(Text name)
-    {
-        NumberMenuForUse.SetActive(true);
-        tempName = name;
-    }
+
 
 
     public void DropWithNumber()
     {
-        int value = Convert.ToInt32(InputNumber.text);
+        int value = Convert.ToInt32(InputNumberDrop.text);
         Remove(tempName, value);
         DropItem(tempName, DropAmount);
         NumberMenuManager.Instance.Reset();
     }
     public void UseWithNumber()
     {
-        int value = Convert.ToInt32(InputNumber.text);
+        int value = Convert.ToInt32(InputNumberUse.text);
         Remove(tempName, value);
         //TODO:have function to use with number
         NumberMenuManager.Instance.Reset();
