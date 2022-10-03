@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Team3.Player;
+using Cinemachine;
 
 // My changes to this file are kinda ugly code wise but it works for both the mouse and the keyboard and should be fine until I remake the input system
 namespace Team3
@@ -52,7 +53,7 @@ namespace Team3
                 {
                     if (stateManager.StateMachine.CurrentState is TargetingState) break;
                     if (stateManager.StateMachine.CurrentState is IKState) break;
-                    if (stateManager.StateMachine.CurrentState is PauseState) break;
+                    if (GameStateMachine.Instance.CurrentState is PauseState) break;
                     look = mouse.ReadValue<Vector2>() * mouseSensitivity;
                     MoveCamera(look);                    
                     yield return null;
@@ -61,7 +62,7 @@ namespace Team3
                 {
                     if (stateManager.StateMachine.CurrentState is TargetingState) break;
                     if (stateManager.StateMachine.CurrentState is IKState) break;
-                    if (stateManager.StateMachine.CurrentState is PauseState) break;
+                    if (GameStateMachine.Instance.CurrentState is PauseState) break;
                     look = gamepad.ReadValue<Vector2>() * padSensitivity;
                     MoveCamera(look);
                     yield return null;

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Cinemachine;
 
 namespace Team3.Player
 {
     public class TargetingManager : MonoBehaviour
     {
-        [SerializeField] private GameObject defaultCamera;
-        [SerializeField] private GameObject targetingCamera;
+        [SerializeField] private CinemachineVirtualCamera defaultCamera;
+        [SerializeField] private CinemachineVirtualCamera targetingCamera;
         [SerializeField] private Transform enemyTarget;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float sphereRadius = 30;
@@ -28,16 +29,16 @@ namespace Team3.Player
 
         private void StartTargeting(object sender, object data)
         {
-            targetingCamera.SetActive(true);
-            defaultCamera.SetActive(false);
+            targetingCamera.Priority = 10;
+            defaultCamera.Priority = 0;
             targeting = true;
             StartCoroutine(Target());
         }
 
         private void StopTargeting(object sender, object data)
         {
-            defaultCamera.SetActive(true);
-            targetingCamera.SetActive(false);
+            targetingCamera.Priority = 0;
+            defaultCamera.Priority = 10;
             targeting = false;
         }
 
@@ -71,7 +72,6 @@ namespace Team3.Player
                     temp.y = enemyTarget.position.y;
                     enemyTarget.position = temp;
                 }
-                transform.LookAt(enemyTarget, Vector3.up);
                 Debug.DrawRay(transform.position, enemyTarget.position - transform.position, Color.blue);
                 yield return null;
             }
