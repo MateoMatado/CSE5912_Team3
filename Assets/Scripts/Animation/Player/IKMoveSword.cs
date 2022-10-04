@@ -15,7 +15,7 @@ namespace Team3.Animation.Player
         [SerializeField] float mouseSensitivity;
         [SerializeField] float swingThreshold = 0.2f;
         [SerializeField] float swingDelay = 0.2f;
-        [SerializeField] float swingForce = 70;
+        [SerializeField] float swingForce = 80;
         Rigidbody body;
 
         [SerializeField] float lMaxHAngle;
@@ -180,6 +180,8 @@ namespace Team3.Animation.Player
             {
                 anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
                 anim.SetIKPosition(AvatarIKGoal.RightHand, IKTarget.position);
+                anim.SetLookAtPosition(IKTarget.position);
+                anim.SetLookAtWeight(1);
             }
             else
             {
