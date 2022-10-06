@@ -7,10 +7,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyToSpawn;
     [SerializeField] private float radius = 10f;
     [SerializeField] private int numberOfSpawn = 20;
+    //private bool wasTriggeredOn = false;
     private bool isTriggerOn = false;
     private float nextSpawnTime = 3f;
     private float spawnTimer = 0;
-    private int totalSpawnCount = 6;
+    private int totalSpawnCount = 2;
 
     
     private void Update()
@@ -21,10 +22,10 @@ public class EnemySpawner : MonoBehaviour
             if (spawnTimer < 0)
             {
                 totalSpawnCount --;
-                if(totalSpawnCount >= 0)
+                if(totalSpawnCount > 0)
                 {
                     Spawn();
-                }                
+                }
                 spawnTimer = nextSpawnTime;
             }
 
@@ -50,6 +51,6 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Spawn Enemy!!!");
         Spawn();
-        isTriggerOn = true;
+        isTriggerOn = true;        
     }
 }

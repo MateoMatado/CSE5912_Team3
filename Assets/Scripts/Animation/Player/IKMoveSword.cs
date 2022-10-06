@@ -13,6 +13,10 @@ namespace Team3.Animation.Player
         [SerializeField] float positionOffset;
 
         [SerializeField] float mouseSensitivity;
+        [SerializeField] float swingThreshold = 0.2f;
+        [SerializeField] float swingDelay = 0.2f;
+        [SerializeField] float swingForce = 70;
+        Rigidbody body;
 
         [SerializeField] float lMaxHAngle;
         [SerializeField] float lMinHAngle;
@@ -27,6 +31,7 @@ namespace Team3.Animation.Player
         private Vector2 lHalfWH, lDefaultPos;
         private Vector2 rHalfWH, rDefaultPos;
         Vector2 inVector = new Vector2();
+        Vector2 dPos = new Vector2();
 
         private InputAction leftAction;
         private InputAction rightAction;
@@ -47,7 +52,10 @@ namespace Team3.Animation.Player
             rHalfWH = new Vector2(rMaxHAngle - rMinHAngle, rMaxVAngle - rMinVAngle) / 2;
             rDefaultPos = new Vector2(rMaxHAngle + rMinHAngle, rMaxVAngle + rMinVAngle) / 2;
 
+            body = transform.parent.parent.gameObject.GetComponent<Rigidbody>();
+
             StartCoroutine(MoveSword());
+            StartCoroutine(PushOnSwing());
         }
 
         private void OnDestroy()
@@ -120,6 +128,8 @@ namespace Team3.Animation.Player
 
         private void UpdateInvector()
         {
+            Vector2 oldVector = inVector;
+
             if (stickAction.inProgress)
             {
                 inVector = stickAction.ReadValue<Vector2>();
@@ -132,6 +142,7 @@ namespace Team3.Animation.Player
                     inVector = Vector2.ClampMagnitude(inVector, 1);
                 }
             }
+            dPos = oldVector - inVector;
         }
 
         private void OnAnimatorIK(int layerIndex)
@@ -170,11 +181,31 @@ namespace Team3.Animation.Player
                 anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
                 anim.SetIKPosition(AvatarIKGoal.RightHand, IKTarget.position);
             }
+            else
+            {
+                dPos = new Vector2(0, 0);
+            }
 
             anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
             anim.SetIKRotation(AvatarIKGoal.RightHand, IKTarget.rotation);
             anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
             anim.SetIKRotation(AvatarIKGoal.LeftHand, Quaternion.Euler(rot, rot, rot));
+        }
+
+        private IEnumerator PushOnSwing()
+        {
+            while(true)
+            {
+                while (dPos.magnitude >= swingThreshold)
+                {
+                    Vector3 force = anim.GetBoneTransform(HumanBodyBones.RightHand).transform.position - anim.GetBoneTransform(HumanBodyBones.RightShoulder).transform.position;
+                    //body.AddForce(new Vector3(force.x, 0, force.z) * swingForce, ForceMode.Impulse);
+                    body.velocity = new Vector3();
+                    body.AddForce(body.transform.forward * swingForce, ForceMode.Impulse);
+                    yield return new WaitForSeconds(0.2f);
+                }
+                while (dPos.magnitude < swingThreshold) { yield return null; }
+            }
         }
     }
 }
