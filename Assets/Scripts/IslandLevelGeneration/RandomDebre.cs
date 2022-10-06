@@ -12,7 +12,7 @@ public class RandomDebre : MonoBehaviour
         this.transform.Rotate(new Vector3(0, Random.Range(-180, 180), 0), Space.Self);
 
         this.transform.position = new Vector3(this.transform.position.x + Random.Range(-area.x, area.x),
-            this.transform.position.y, this.transform.position.z + Random.Range(-area.y, area.y));
+            this.transform.position.y - 1, this.transform.position.z + Random.Range(-area.y, area.y));
     }
 
 }
