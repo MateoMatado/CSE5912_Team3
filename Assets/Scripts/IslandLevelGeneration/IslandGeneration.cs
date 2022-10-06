@@ -106,6 +106,16 @@ public class IslandGeneration : MonoBehaviour
                 }
             }
         }
+        for (int x = 0; x < IslandSize.y; x++)
+        {
+            for (int y = 0; y < IslandSize.x; y++)
+            {
+                if (x + (int)pos.x >= Width || y + (int)pos.y >= Length || EIslandArray[x + (int)pos.x, y + (int)pos.y] == (int)EIslands.Filled)
+                {
+                    check = false;
+                }
+            }
+        }
         return check;
     }
 }
