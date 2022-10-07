@@ -39,6 +39,13 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
         //TODO: have a function called for the effect
     }
 
+    public void QuickUse()
+    {
+       
+        InventoryManager.Instance.Remove(name, 1);
+        //TODO: have a function called for the effect
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
