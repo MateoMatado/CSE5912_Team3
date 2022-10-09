@@ -36,14 +36,14 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
             Destroy(gameObject);
         }
         InventoryManager.Instance.Remove(name,1);
-        //TODO: have a function called for the effect
+        ItemEffectFactory.Instance.Effect(name.text);
     }
 
     public void QuickUse()
     {
        
         InventoryManager.Instance.Remove(name, 1);
-        //TODO: have a function called for the effect
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
