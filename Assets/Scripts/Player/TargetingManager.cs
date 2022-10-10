@@ -14,6 +14,7 @@ namespace Team3.Player
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float sphereRadius = 30;
         [SerializeField] private float tooClose = 5;
+        [SerializeField] private Material outlineMaterial;
         private PlayerStateManager stateManager;
         private GameObject currentEnemy = null;
         private bool targeting = false;
@@ -40,6 +41,8 @@ namespace Team3.Player
             targetingCamera.Priority = 0;
             defaultCamera.Priority = 10;
             targeting = false;
+            DisableOutline(currentEnemy);
+            currentEnemy = null;
         }
 
         private void HandleTargetEvent(object sender, object data)
@@ -51,6 +54,46 @@ namespace Team3.Player
             else
             {
                 stateManager.StartTargeting();
+            }
+        }
+
+        private void EnableOutline(GameObject enemy)
+        {
+            if (currentEnemy != null)
+            {
+                foreach (var skinnedMeshRenderer in currentEnemy.GetComponentsInChildren<SkinnedMeshRenderer>())
+                {
+                    var currentMaterials = skinnedMeshRenderer.materials;
+                    List<Material> newMaterials = new List<Material>();
+                    foreach (Material material in currentMaterials)
+                    {
+                        newMaterials.Add(material);
+                    }
+                    newMaterials.Add(outlineMaterial);
+                    skinnedMeshRenderer.materials = newMaterials.ToArray();
+                }
+            }
+        }
+
+        private void DisableOutline(GameObject enemy)
+        {
+            if (currentEnemy != null)
+            {
+                foreach (var skinnedMeshRenderer in currentEnemy.GetComponentsInChildren<SkinnedMeshRenderer>())
+                {
+                    var currentMaterials = skinnedMeshRenderer.materials;
+                    List<Material> newMaterials = new List<Material>();
+                    foreach (Material material in currentMaterials)
+                    {
+                        if (!material.name.Contains(outlineMaterial.name))
+                        {
+                            newMaterials.Add(material);
+                            // Debug.Log("OL: " + material.name + " " + outlineMaterial.name);
+                        }
+                    }
+                    skinnedMeshRenderer.materials = newMaterials.ToArray();
+                    // Debug.Log("OUTLINE: " + currentMaterials.Contains(outlineMaterial));
+                }
             }
         }
 
@@ -79,6 +122,7 @@ namespace Team3.Player
 
         private void TargetClosestEnemy()
         {
+            DisableOutline(currentEnemy);
             var colliders = Physics.OverlapSphere(transform.position, sphereRadius, layerMask).ToList();
             colliders.Sort((a, b) => { return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position)); });
             if (colliders.Count > 0)
@@ -107,6 +151,7 @@ namespace Team3.Player
             {
                 stateManager.StopTargeting();
             }
+            EnableOutline(currentEnemy);
         }
     }
 }
