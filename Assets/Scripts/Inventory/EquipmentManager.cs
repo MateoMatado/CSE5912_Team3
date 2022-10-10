@@ -21,6 +21,8 @@ public class EquipmentManager : MonoBehaviour
     public List<GameObject> Equipinventory = new List<GameObject>();
     private Item tempEquipment;
     public Sprite NoEquip;
+    public List<Image> WeaponHUD;
+
 
 
     // Normal Set up
@@ -128,6 +130,8 @@ public class EquipmentManager : MonoBehaviour
                 itemIcon.color = new Color32(255, 255, 255, 255);
                 itemName.text = Item.itemName;
                 itemIcon.sprite = Item.icon;
+                WeaponHUD[i].sprite = Item.icon;
+                WeaponHUD[i].color = new Color32(255, 255, 255, 255);
             }
             else if(Item == null)
             {
