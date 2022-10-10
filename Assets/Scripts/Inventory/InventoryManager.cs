@@ -7,6 +7,7 @@ using System;
 
 public class InventoryManager : MonoBehaviour
 {
+    /*inventory item*/
     public static InventoryManager Instance;
     public Transform ItemContent;
     public GameObject InventoryItem;
@@ -20,14 +21,25 @@ public class InventoryManager : MonoBehaviour
     public InputField InputNumberUse;
     public Transform Player;
     public static Dictionary<Item, int> ItemList = new Dictionary<Item, int>();
-
+    /*Quick items*/
+    public GameObject QuickItemsSystem;
+    public List<String> QuickItems = new List<String>();
+    [SerializeField] public List<GameObject> Keys = new List<GameObject>();
+    [SerializeField] public List<GameObject> HUDKeys = new List<GameObject>();
+    /*temp variable*/
     private Text tempName;
     private int DropAmount;
-
+    private Text tempAmount;
+    private Image tempIcon;
 
     // Normal Set up
     public void Awake()
     {
+        QuickItems.Add(null);
+        QuickItems.Add(null);
+        QuickItems.Add(null);
+        QuickItems.Add(null);
+        /*make it Instance*/
         Instance = this;
 
     }
@@ -49,7 +61,7 @@ public class InventoryManager : MonoBehaviour
 
     public void Remove(Text name, int amount)
     {
-        int count = -1;
+
         foreach(var item in ItemList)
         {
             Item Item = item.Key;
@@ -72,6 +84,7 @@ public class InventoryManager : MonoBehaviour
         ListItems();
     }
 
+    /*open Menu*/
     public void DropWithNumberMenu(Text name)
     {
         NumberMenuForDrop.SetActive(true);
@@ -82,8 +95,46 @@ public class InventoryManager : MonoBehaviour
         NumberMenuForUse.SetActive(true);
         tempName = name;
     }
+    public void EquipItem(Text name, Image Icon, Text Amount)
+    {
+        QuickItemsSystem.SetActive(true);
+        tempName = name;
+        tempAmount = Amount;
+        tempIcon = Icon;
+    }
 
-
+    /*Equip Item to Quick Key*/
+    public void Equip(int position)
+    {
+        GameObject obj = Keys[position];
+        var itemName = obj.transform.Find("Name").GetComponent<Text>();
+        var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
+        var itemAmount = obj.transform.Find("Amount").GetComponent<Text>();
+        itemName.text = tempName.text;
+        itemIcon.color = new Color32(255, 255, 255, 255);
+        itemIcon.sprite = tempIcon.sprite;
+        itemAmount.text = tempAmount.text;
+        QuickItems[position] = itemName.text;
+        
+        ChangeQuickItem(position);
+    }
+    public void Equip1()
+    {
+        Equip(0);
+    }
+    public void Equip2()
+    {
+        Equip(1);
+    }
+    public void Equip3()
+    {
+        Equip(2);
+    }
+    public void Equip4()
+    {
+        Equip(3);
+    }
+    /*Operation of Number Menu*/
     public void DropWithNumber()
     {
         int value = Convert.ToInt32(InputNumberDrop.text);
@@ -113,6 +164,7 @@ public class InventoryManager : MonoBehaviour
     /*update the item in inventory*/
     public void ListItems()
     {
+        /*sort the Inventory*/
         foreach(Transform item in ItemContent)
         {
             Destroy(item.gameObject);
@@ -130,6 +182,24 @@ public class InventoryManager : MonoBehaviour
             itemIcon.sprite = Item.icon;
             itemAmount.text = amount + "";
         }
+    }
+    public void ChangeQuickItem(int position)
+    {
+
+        GameObject obj = Keys[position];
+        var itemName = obj.transform.Find("Name").GetComponent<Text>();
+        var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
+        var itemAmount = obj.transform.Find("Amount").GetComponent<Text>();
+
+        GameObject obj2 = HUDKeys[position];
+        var Name = obj2.transform.Find("Name").GetComponent<Text>();
+        var Icon = obj2.transform.Find("Icon").GetComponent<Image>();
+        var Amount = obj2.transform.Find("Amount").GetComponent<Text>();
+        Icon.color = new Color32(255, 255, 255, 255);
+        Name.text = itemName.text;
+        Icon.sprite = itemIcon.sprite;
+        Amount.text = itemAmount.text;
+        
     }
 
 

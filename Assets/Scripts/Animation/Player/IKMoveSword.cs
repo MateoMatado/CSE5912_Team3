@@ -14,7 +14,8 @@ namespace Team3.Animation.Player
 
         [SerializeField] float mouseSensitivity;
         [SerializeField] float swingThreshold = 0.2f;
-        [SerializeField] float swingForce = 1;
+        [SerializeField] float swingDelay = 0.2f;
+        [SerializeField] float swingForce = 70;
         Rigidbody body;
 
         [SerializeField] float lMaxHAngle;
@@ -54,7 +55,7 @@ namespace Team3.Animation.Player
             body = transform.parent.parent.gameObject.GetComponent<Rigidbody>();
 
             StartCoroutine(MoveSword());
-            //StartCoroutine(PushOnSwing());
+            StartCoroutine(PushOnSwing());
         }
 
         private void OnDestroy()
@@ -127,6 +128,8 @@ namespace Team3.Animation.Player
 
         private void UpdateInvector()
         {
+            Vector2 oldVector = inVector;
+
             if (stickAction.inProgress)
             {
                 inVector = stickAction.ReadValue<Vector2>();
@@ -139,7 +142,7 @@ namespace Team3.Animation.Player
                     inVector = Vector2.ClampMagnitude(inVector, 1);
                 }
             }
-            dPos = dPos - inVector;
+            dPos = oldVector - inVector;
         }
 
         private void OnAnimatorIK(int layerIndex)
@@ -195,9 +198,11 @@ namespace Team3.Animation.Player
             {
                 while (dPos.magnitude >= swingThreshold)
                 {
-                    Vector3 force = anim.GetBoneTransform(HumanBodyBones.LeftShoulder).transform.position - anim.GetBoneTransform(HumanBodyBones.LeftHand).transform.position;
-                    body.AddForce(force * swingForce, ForceMode.Impulse);
-                    yield return null;
+                    Vector3 force = anim.GetBoneTransform(HumanBodyBones.RightHand).transform.position - anim.GetBoneTransform(HumanBodyBones.RightShoulder).transform.position;
+                    //body.AddForce(new Vector3(force.x, 0, force.z) * swingForce, ForceMode.Impulse);
+                    body.velocity = new Vector3();
+                    body.AddForce(body.transform.forward * swingForce, ForceMode.Impulse);
+                    yield return new WaitForSeconds(0.2f);
                 }
                 while (dPos.magnitude < swingThreshold) { yield return null; }
             }

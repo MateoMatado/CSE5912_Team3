@@ -170,6 +170,42 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""QuickKey1"",
+                    ""type"": ""Button"",
+                    ""id"": ""9791b852-ba88-402f-a3d1-81caf6871b74"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickKey2"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b89866e-33b5-4499-92be-27f471367b5a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickKey3"",
+                    ""type"": ""Button"",
+                    ""id"": ""1cecea5f-7e83-4e05-acbd-3a054c774c83"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickKey4"",
+                    ""type"": ""Button"",
+                    ""id"": ""d21d3157-f20b-453b-bc3e-7a9bff4f36ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -533,6 +569,50 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""LookPad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfe604f7-44f1-41a5-84e1-6161ae721aed"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickKey1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b7f80ec-efdd-45be-9327-611bcddb5925"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickKey2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e63d168a-e3d6-472b-81ac-16e2154a993a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickKey3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d04b2651-dbb3-4c71-aa53-d8565b8af62f"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickKey4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1136,6 +1216,10 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_ChangeBanana = m_Player.FindAction("ChangeBanana", throwIfNotFound: true);
         m_Player_ChangeBaby = m_Player.FindAction("ChangeBaby", throwIfNotFound: true);
         m_Player_EquipmentInventory = m_Player.FindAction("EquipmentInventory", throwIfNotFound: true);
+        m_Player_QuickKey1 = m_Player.FindAction("QuickKey1", throwIfNotFound: true);
+        m_Player_QuickKey2 = m_Player.FindAction("QuickKey2", throwIfNotFound: true);
+        m_Player_QuickKey3 = m_Player.FindAction("QuickKey3", throwIfNotFound: true);
+        m_Player_QuickKey4 = m_Player.FindAction("QuickKey4", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1223,6 +1307,10 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ChangeBanana;
     private readonly InputAction m_Player_ChangeBaby;
     private readonly InputAction m_Player_EquipmentInventory;
+    private readonly InputAction m_Player_QuickKey1;
+    private readonly InputAction m_Player_QuickKey2;
+    private readonly InputAction m_Player_QuickKey3;
+    private readonly InputAction m_Player_QuickKey4;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1243,6 +1331,10 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @ChangeBanana => m_Wrapper.m_Player_ChangeBanana;
         public InputAction @ChangeBaby => m_Wrapper.m_Player_ChangeBaby;
         public InputAction @EquipmentInventory => m_Wrapper.m_Player_EquipmentInventory;
+        public InputAction @QuickKey1 => m_Wrapper.m_Player_QuickKey1;
+        public InputAction @QuickKey2 => m_Wrapper.m_Player_QuickKey2;
+        public InputAction @QuickKey3 => m_Wrapper.m_Player_QuickKey3;
+        public InputAction @QuickKey4 => m_Wrapper.m_Player_QuickKey4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1300,6 +1392,18 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipmentInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
                 @EquipmentInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
                 @EquipmentInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
+                @QuickKey1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey1;
+                @QuickKey1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey1;
+                @QuickKey1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey1;
+                @QuickKey2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey2;
+                @QuickKey2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey2;
+                @QuickKey2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey2;
+                @QuickKey3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey3;
+                @QuickKey3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey3;
+                @QuickKey3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey3;
+                @QuickKey4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
+                @QuickKey4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
+                @QuickKey4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1352,6 +1456,18 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipmentInventory.started += instance.OnEquipmentInventory;
                 @EquipmentInventory.performed += instance.OnEquipmentInventory;
                 @EquipmentInventory.canceled += instance.OnEquipmentInventory;
+                @QuickKey1.started += instance.OnQuickKey1;
+                @QuickKey1.performed += instance.OnQuickKey1;
+                @QuickKey1.canceled += instance.OnQuickKey1;
+                @QuickKey2.started += instance.OnQuickKey2;
+                @QuickKey2.performed += instance.OnQuickKey2;
+                @QuickKey2.canceled += instance.OnQuickKey2;
+                @QuickKey3.started += instance.OnQuickKey3;
+                @QuickKey3.performed += instance.OnQuickKey3;
+                @QuickKey3.canceled += instance.OnQuickKey3;
+                @QuickKey4.started += instance.OnQuickKey4;
+                @QuickKey4.performed += instance.OnQuickKey4;
+                @QuickKey4.canceled += instance.OnQuickKey4;
             }
         }
     }
@@ -1524,6 +1640,10 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnChangeBanana(InputAction.CallbackContext context);
         void OnChangeBaby(InputAction.CallbackContext context);
         void OnEquipmentInventory(InputAction.CallbackContext context);
+        void OnQuickKey1(InputAction.CallbackContext context);
+        void OnQuickKey2(InputAction.CallbackContext context);
+        void OnQuickKey3(InputAction.CallbackContext context);
+        void OnQuickKey4(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
