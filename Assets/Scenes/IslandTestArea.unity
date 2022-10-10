@@ -73206,6 +73206,7 @@ MonoBehaviour:
     m_Bits: 64
   sphereRadius: 50
   tooClose: 10
+  outlineMaterial: {fileID: 2100000, guid: 2a9eea8ae3bc04ba7bd922221b704cdb, type: 2}
 --- !u!114 &1804142876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74211,6 +74212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
@@ -83769,6 +83771,8 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.9579545, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -85356,8 +85360,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081077855}
-  m_LocalRotation: {x: 0.0026241017, y: 0.99677163, z: 0.07139525, w: -0.036635913}
-  m_LocalPosition: {x: -1.3644257, y: 0.34369135, z: 7.581726}
+  m_LocalRotation: {x: 0.00260629, y: 0.99681693, z: 0.07070393, w: -0.0367447}
+  m_LocalPosition: {x: -1.1525803, y: -0.35287714, z: 7.5668335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1489697597}
@@ -85391,6 +85395,8 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.9579545, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
