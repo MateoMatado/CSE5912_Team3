@@ -11,6 +11,8 @@ namespace Team3.Player
         [SerializeField] private CinemachineVirtualCamera defaultCamera;
         [SerializeField] private CinemachineVirtualCamera targetingCamera;
         [SerializeField] private Transform enemyTarget;
+        [SerializeField] private Transform cameraTarget;
+        [SerializeField] private Transform cameraTransform;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float sphereRadius = 30;
         [SerializeField] private float tooClose = 5;
@@ -103,6 +105,7 @@ namespace Team3.Player
             TargetClosestEnemy();
             while (targeting && currentEnemy != null)
             {
+                cameraTarget.transform.rotation = cameraTransform.transform.rotation;
                 if (Vector3.Distance(currentEnemy.transform.position, transform.position) > sphereRadius)
                 {
                     stateManager.StopTargeting();
