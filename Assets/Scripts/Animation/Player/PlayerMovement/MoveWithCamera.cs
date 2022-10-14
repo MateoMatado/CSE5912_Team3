@@ -32,6 +32,7 @@ namespace Team3.PlayerMovement
 
         public void StartFlying()
         {
+            transform.Find("SmokeTrail").gameObject.SetActive(true);
             flying = true;
         }
 
@@ -74,6 +75,7 @@ namespace Team3.PlayerMovement
             if (flying)
             {
                 flying = false;
+                transform.Find("SmokeTrail").gameObject.SetActive(false);
             }
         }
     }

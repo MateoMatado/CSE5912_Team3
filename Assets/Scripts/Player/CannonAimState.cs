@@ -137,6 +137,7 @@ public class CannonAimState : PlayerState
     private void ShootCannon()
     {
         LeaveCannon();
+        cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         mouth.GetChild(0).GetComponent<ParticleSystem>().Play();
         player.GetComponent<MoveWithCamera>().StartFlying();
         player.transform.position = mouth.position;
