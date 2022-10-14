@@ -45,7 +45,6 @@ namespace Team3.Menus
 
         public void Exit()
         {
-            Events.EventsPublisher.Instance.PublishEvent("PauseUnpause", null, null);
             GameStateMachine.Instance.SwitchState(GameStateMachine.MainMenuState);
         }
 

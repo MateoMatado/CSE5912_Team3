@@ -27,28 +27,19 @@ namespace Team3
 
         private void CheckPause(object sender, object data)
         {
-            if (!paused)
-            {
-                Events.EventsPublisher.Instance.PublishEvent("Pause", null, null);
-            }
-            else
-            {
-                Events.EventsPublisher.Instance.PublishEvent("Unpause", null, null);
-            }
+            GameStateMachine.Instance.CurrentState.HandlePause();
         }
 
         private void StartPause(object sender, object data)
         {
             pauseMenu.SetActive(true);
             paused = true;
-            GameStateMachine.Instance.SwitchState(GameStateMachine.PauseState);
         }
 
         private void EndPause(object sender, object data)
         {
             pauseMenu.SetActive(false);
             paused = false;
-            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
         }
     }
 }
