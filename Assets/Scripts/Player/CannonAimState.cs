@@ -112,7 +112,13 @@ public class CannonAimState : PlayerState
 
     private void HandleJump(object sender, object data)
     {
+        ShootCannon();
         LeaveCannon();
+    }
+
+    private void ShootCannon()
+    {
+        cannonBarrel.Find("Mouth").GetChild(0).GetComponent<ParticleSystem>().Play();
     }
 
     private void LeaveCannon()
