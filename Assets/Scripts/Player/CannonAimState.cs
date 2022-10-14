@@ -18,6 +18,7 @@ public class CannonAimState : PlayerState
     private bool rotating = false;
     private bool inCannon = false;
     const float minAngle = 15, maxAngle = 65;
+    private float force = 40000;
 
     public override void Enter()
     {
@@ -142,7 +143,7 @@ public class CannonAimState : PlayerState
         player.GetComponent<MoveWithCamera>().StartFlying();
         player.transform.position = mouth.position;
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().AddForce(cannonBarrel.forward * 40000);
+        player.GetComponent<Rigidbody>().AddForce(cannonBarrel.forward * force);
     }
 
 
