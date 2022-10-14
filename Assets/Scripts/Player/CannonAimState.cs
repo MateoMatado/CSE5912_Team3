@@ -4,6 +4,7 @@ using UnityEngine;
 using Team3.Events;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using Team3.PlayerMovement;
 
 public class CannonAimState : PlayerState
 {
@@ -11,9 +12,11 @@ public class CannonAimState : PlayerState
     private GameObject player;
     private CinemachineVirtualCamera camera;
     private Transform cannonBarrel;
+    private Transform mouth;
     private InputAction moveAction;
     private float rotationSpeed = 30f;
     private bool rotating = false;
+    private bool inCannon = false;
     const float minAngle = 15, maxAngle = 65;
 
     public override void Enter()
@@ -25,6 +28,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.SubscribeToEvent("PlayerStop", HandleCannonStop);
         EventsPublisher.Instance.SubscribeToEvent("PlayerJump", HandleJump);
         EventsPublisher.Instance.SubscribeToEvent("LookMouse", HandleLook);
+        EventsPublisher.Instance.SubscribeToEvent("PauseUnpause", HandleEscape);
     }
 
     public override void Exit()
@@ -35,8 +39,11 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.UnsubscribeToEvent("PlayerStop", HandleCannonStop);
         EventsPublisher.Instance.UnsubscribeToEvent("PlayerJump", HandleJump);
         EventsPublisher.Instance.UnsubscribeToEvent("LookMouse", HandleLook);
+        EventsPublisher.Instance.UnsubscribeToEvent("PauseUnpause", HandleEscape);
         EventsPublisher.Instance.PublishEvent("ExitCannonAimState", null, null);
     }
+
+    
 
     private void HandleEnterCannon(object sender, object data)
     {
@@ -46,6 +53,18 @@ public class CannonAimState : PlayerState
         camera = tuple.Item3;
         camera.Priority = 100;
         cannonBarrel = cannon.transform.Find("Barrel");
+        mouth = cannonBarrel.Find("Mouth");
+        inCannon = true;
+        DummyMonoBehavior.Dummy.StartCoroutine(HoldPlayer());
+    }
+
+    private IEnumerator HoldPlayer()
+    {
+        while (inCannon)
+        {
+            player.transform.position = mouth.position;
+            yield return null;
+        }
     }
 
 
@@ -113,16 +132,28 @@ public class CannonAimState : PlayerState
     private void HandleJump(object sender, object data)
     {
         ShootCannon();
-        LeaveCannon();
     }
 
     private void ShootCannon()
     {
-        cannonBarrel.Find("Mouth").GetChild(0).GetComponent<ParticleSystem>().Play();
+        LeaveCannon();
+        mouth.GetChild(0).GetComponent<ParticleSystem>().Play();
+        player.GetComponent<MoveWithCamera>().StartFlying();
+        player.transform.position = mouth.position;
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        player.GetComponent<Rigidbody>().AddForce(cannonBarrel.forward * 40000);
+    }
+
+
+
+    private void HandleEscape(object sender, object data)
+    {
+        LeaveCannon();
     }
 
     private void LeaveCannon()
     {
+        inCannon = false;
         camera.Priority = 0;
         stateMachine.SwitchState(PlayerStateMachine.DefaultState);
     }

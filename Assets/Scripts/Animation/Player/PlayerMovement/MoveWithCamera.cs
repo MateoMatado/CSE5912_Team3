@@ -13,6 +13,7 @@ namespace Team3.PlayerMovement
         private Rigidbody body;
         private InputAction moveAction;
         private bool moving = false;
+        private bool flying = false;
 
         // Start is called before the first frame update
         void Start()
@@ -29,6 +30,11 @@ namespace Team3.PlayerMovement
             Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerStop", StopMove);
         }
 
+        public void StartFlying()
+        {
+            flying = true;
+        }
+
         private void StartMove(object sender, object data)
         {
             moveAction = (InputAction)data;
@@ -38,14 +44,15 @@ namespace Team3.PlayerMovement
         private void StopMove(object sender, object data)
         {
             moving = false;
-            body.velocity = new Vector3(0, body.velocity.y, 0);
+            if (!flying)
+                body.velocity = new Vector3(0, body.velocity.y, 0);
         }
 
         private IEnumerator Move()
         {
             while(true)
             {
-                while (moving)
+                while (moving && !flying)
                 {
                     Vector2 moveVector = moveAction.ReadValue<Vector2>() * speed;
                     Vector3 cameraVector = Vector3.Normalize(new Vector3(cameraTarget.forward.x, 0, cameraTarget.forward.z));
@@ -59,6 +66,14 @@ namespace Team3.PlayerMovement
                     yield return null;
                 }
                 yield return null;
+            }
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (flying)
+            {
+                flying = false;
             }
         }
     }
