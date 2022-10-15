@@ -19,6 +19,7 @@ public class CannonAimState : PlayerState
     private bool inCannon = false;
     const float minAngle = 15, maxAngle = 65;
     private float force = 40000;
+    private LineRenderer trajectory;
 
     public override void Enter()
     {
@@ -55,6 +56,7 @@ public class CannonAimState : PlayerState
         camera.Priority = 100;
         cannonBarrel = cannon.transform.Find("Barrel");
         mouth = cannonBarrel.Find("Mouth");
+        trajectory = mouth.Find("Line").GetComponent<LineRenderer>();
         inCannon = true;
         DummyMonoBehavior.Dummy.StartCoroutine(HoldPlayer());
     }
@@ -108,8 +110,56 @@ public class CannonAimState : PlayerState
 
             cannonBarrel.transform.localEulerAngles = new Vector3(angles.x, angles.y, 0);
 
+            UpdateTrajectory();
+
             yield return null;
         }
+    }
+
+    private void UpdateTrajectory()
+    {
+        trajectory.positionCount = 300;
+        Vector3 startPosition = mouth.position;
+        List<Vector3> points = new List<Vector3>() {
+            startPosition
+        };
+        float playerMass = player.GetComponent<Rigidbody>().mass;
+        Vector3 initialVelocity = cannonBarrel.forward * force * Time.fixedDeltaTime / playerMass;
+        Vector3 prevPoint = startPosition;
+        bool hitSomething = false;
+
+        for (int i = 1; i < 300; i++)
+        {
+            float time = i * .1f;
+            Vector3 point = startPosition + time * initialVelocity + .5f * Physics.gravity * time * time;
+            points.Add(point);
+
+            int layerMask = 1 << 3;
+            layerMask = ~layerMask;
+            RaycastHit hit;
+            hitSomething = hitSomething || Physics.Raycast(prevPoint, (point - prevPoint).normalized, out hit, Vector3.Distance(prevPoint, point), layerMask);
+            if (hitSomething)
+            {
+                trajectory.positionCount = i + 1;
+                // hit.collider.gameObject;
+                break;
+            }
+
+            prevPoint = point;
+        }
+        if (hitSomething)
+        {
+            Color green = new Color(0, 1, 0, .5f);
+            trajectory.startColor = green;
+            trajectory.endColor = green;
+        }
+        else
+        {
+            Color red = new Color(1, 0, 0, .5f);
+            trajectory.startColor = red;
+            trajectory.endColor = red;
+        }
+        trajectory.SetPositions(points.ToArray());
     }
 
 
@@ -139,7 +189,7 @@ public class CannonAimState : PlayerState
     {
         LeaveCannon();
         cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
-        mouth.GetChild(0).GetComponent<ParticleSystem>().Play();
+        mouth.Find("CannonShot").GetComponent<ParticleSystem>().Play();
         player.GetComponent<MoveWithCamera>().StartFlying();
         player.transform.position = mouth.position;
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;

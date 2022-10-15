@@ -76,6 +76,7 @@ namespace Team3.PlayerMovement
             {
                 flying = false;
                 transform.Find("SmokeTrail").gameObject.SetActive(false);
+                Events.EventsPublisher.Instance.PublishEvent("StopFlying", null, null);
             }
         }
     }
