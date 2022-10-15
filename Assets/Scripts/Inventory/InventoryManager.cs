@@ -32,6 +32,10 @@ public class InventoryManager : MonoBehaviour
     private Text tempAmount;
     private Image tempIcon;
 
+    /*information box*/
+    private GameObject currentInformation = null;
+    public GameObject informationBox;
+    public Transform canvas;
     // Normal Set up
     public void Awake()
     {
@@ -160,7 +164,29 @@ public class InventoryManager : MonoBehaviour
         }
 
     }
+    /*Display information box*/
+    public void Display(string name, string effect, Vector3 position)
+    {
+        if(currentInformation != null)
+        {
+            Destroy(currentInformation.gameObject);
+        }
+        position.x += 100;
+        position.y -= 10;
+        currentInformation = Instantiate(informationBox, position, Quaternion.identity, canvas);
+        var itemName = currentInformation.transform.Find("Name").GetComponent<Text>();
+        var itemEffect = currentInformation.transform.Find("Effect").GetComponent<Text>();
 
+        itemName.text = name + ":";
+        itemEffect.text = effect;
+    }
+    public void NotDisplay()
+    {
+        if (currentInformation != null)
+        {
+            Destroy(currentInformation.gameObject);
+        }
+    }
     /*update the item in inventory*/
     public void ListItems()
     {
@@ -175,12 +201,14 @@ public class InventoryManager : MonoBehaviour
             var itemName = obj.transform.Find("Name").GetComponent<Text>();
             var itemIcon = obj.transform.Find("Icon").GetComponent<Image>();
             var itemAmount = obj.transform.Find("Amount").GetComponent<Text>();
+            var itemEffect = obj.transform.Find("Effect").GetComponent<Text>();
 
             Item Item = item.Key;
             int amount = item.Value;
             itemName.text = Item.itemName;
             itemIcon.sprite = Item.icon;
             itemAmount.text = amount + "";
+            itemEffect.text = Item.Effect;
         }
     }
     public void ChangeQuickItem(int position)
