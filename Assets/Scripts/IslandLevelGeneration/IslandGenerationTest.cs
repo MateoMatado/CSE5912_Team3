@@ -12,6 +12,8 @@ public class IslandGenerationTest : MonoBehaviour
 
     [SerializeField] private int Attempts = 10;
 
+    [SerializeField] int Bias = 3;
+
     [SerializeField] private List<GameObject> Islands;
     [SerializeField] private GameObject Empty;
 
@@ -21,7 +23,6 @@ public class IslandGenerationTest : MonoBehaviour
     private GameObject[,] gameObjects;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,17 +30,6 @@ public class IslandGenerationTest : MonoBehaviour
         DIslands.Add(Islands[1], new Vector2(10, 10));
         DIslands.Add(Islands[2], new Vector2(10, 10));
         DIslands.Add(Islands[3], new Vector2(15, 10));
-        DIslands.Add(Islands[4], new Vector2(15, 10));
-        DIslands.Add(Islands[5], new Vector2(20, 10));
-        DIslands.Add(Islands[6], new Vector2(20, 10));
-        DIslands.Add(Islands[7], new Vector2(10, 10));
-        DIslands.Add(Islands[8], new Vector2(10, 10));
-        DIslands.Add(Islands[9], new Vector2(10, 10));
-        DIslands.Add(Islands[10], new Vector2(10, 15));
-        DIslands.Add(Islands[11], new Vector2(10, 15));
-        DIslands.Add(Islands[12], new Vector2(10, 20));
-        DIslands.Add(Islands[13], new Vector2(10, 20));
-        DIslands.Add(Islands[14], new Vector2(20, 20));
 
         Generate();
 
@@ -63,6 +53,14 @@ public class IslandGenerationTest : MonoBehaviour
         for (int i = 0; i < Attempts; i++)
         {
             int IslRand = Random.Range(0, Islands.Count);
+            for (int j = 0; j < Bias; j++)
+            {
+                int IslRand2 = Random.Range(0, Islands.Count);
+                if (IslRand2 > IslRand)
+                {
+                    IslRand = IslRand2;
+                }
+            }
             Vector2 IslandSize = DIslands[Islands[IslRand]];
             Vector2 pos = new Vector2(Random.Range(0, Width), Random.Range(0, Length));
 
