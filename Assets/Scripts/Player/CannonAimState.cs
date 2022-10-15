@@ -20,6 +20,8 @@ public class CannonAimState : PlayerState
     const float minAngle = 15, maxAngle = 65;
     private float force = 40000;
     private LineRenderer trajectory;
+    private GameObject island = null;
+    private Material outlineMaterial;
 
     public override void Enter()
     {
@@ -31,6 +33,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.SubscribeToEvent("PlayerJump", HandleJump);
         EventsPublisher.Instance.SubscribeToEvent("LookMouse", HandleLook);
         EventsPublisher.Instance.SubscribeToEvent("PauseUnpause", HandleEscape);
+        if (outlineMaterial == null) outlineMaterial = Resources.Load("IslandOutline") as Material;
     }
 
     public override void Exit()
@@ -137,12 +140,24 @@ public class CannonAimState : PlayerState
             int layerMask = 1 << 3;
             layerMask = ~layerMask;
             RaycastHit hit;
-            hitSomething = hitSomething || Physics.Raycast(prevPoint, (point - prevPoint).normalized, out hit, Vector3.Distance(prevPoint, point), layerMask);
-            if (hitSomething)
+            if (Physics.Raycast(prevPoint, (point - prevPoint).normalized, out hit, Vector3.Distance(prevPoint, point), layerMask))
             {
-                trajectory.positionCount = i + 1;
-                // hit.collider.gameObject;
-                break;
+                if (hit.collider.gameObject.layer != 6)
+                {
+                    GameObject parentIsland = GetParentIsland(hit.collider.transform);
+                    if (parentIsland != null)
+                    {
+                        if (parentIsland != island)
+                        {
+                            UpdateHitIsland(parentIsland);
+                        }
+
+                        hitSomething = true;
+                        trajectory.positionCount = i + 1;
+
+                        break;
+                    }
+                }
             }
 
             prevPoint = point;
@@ -155,11 +170,68 @@ public class CannonAimState : PlayerState
         }
         else
         {
+            if (island != null) UpdateHitIsland(null);
             Color red = new Color(1, 0, 0, .5f);
             trajectory.startColor = red;
             trajectory.endColor = red;
         }
         trajectory.SetPositions(points.ToArray());
+    }
+
+    private GameObject GetParentIsland(Transform child)
+    {
+        Transform parent = child;
+        while (parent.tag != "IslandParent" && parent.parent != null)
+        {
+            parent = parent.parent;
+        }
+        if (parent.tag != "IslandParent") return null;
+        return parent.gameObject;
+    }
+
+    private void UpdateHitIsland(GameObject newIsland)
+    {
+        DisableOutline(island);
+        EnableOutline(newIsland);
+        island = newIsland;
+    }
+
+    private void DisableOutline(GameObject g)
+    {
+        if (g != null)
+        {
+            foreach (var meshRenderer in g.GetComponentsInChildren<MeshRenderer>())
+            {
+                var currentMaterials = meshRenderer.materials;
+                List<Material> newMaterials = new List<Material>();
+                foreach (Material material in currentMaterials)
+                {
+                    if (!material.name.Contains(outlineMaterial.name))
+                    {
+                        newMaterials.Add(material);
+                    }
+                }
+                meshRenderer.materials = newMaterials.ToArray();
+            }
+        }
+    }
+
+    private void EnableOutline(GameObject g)
+    {
+        if (g != null)
+        {
+            foreach (var meshRenderer in g.GetComponentsInChildren<MeshRenderer>())
+            {
+                var currentMaterials = meshRenderer.materials;
+                List<Material> newMaterials = new List<Material>();
+                foreach (Material material in currentMaterials)
+                {
+                    newMaterials.Add(material);
+                }
+                newMaterials.Add(outlineMaterial);
+                meshRenderer.materials = newMaterials.ToArray();
+            }
+        }
     }
 
 

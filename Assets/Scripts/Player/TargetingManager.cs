@@ -16,7 +16,7 @@ namespace Team3.Player
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float sphereRadius = 30;
         [SerializeField] private float tooClose = 5;
-        [SerializeField] private Material outlineMaterial;
+        [SerializeField] public Material outlineMaterial;
         private PlayerStateManager stateManager;
         private GameObject currentEnemy = null;
         private bool targeting = false;
