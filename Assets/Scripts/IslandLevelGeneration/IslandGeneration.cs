@@ -14,6 +14,8 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private float Spacing = 2;
     [SerializeField] private float RandomHeightLimit = 1000;
     [SerializeField] private List<GameObject> Islands;
+    [SerializeField] private GameObject Chains;
+    [SerializeField] private GameObject Chainlink;
 
     private Dictionary<GameObject,Vector2> DIslands = new Dictionary<GameObject,Vector2>();
     private enum EIslands{Empty,Filled};
@@ -30,8 +32,9 @@ public class IslandGeneration : MonoBehaviour
         DIslands.Add(Islands[2], new Vector2(800, 600));
         DIslands.Add(Islands[3], new Vector2(800, 800));
 
-        Generate();
+       // Generate();
 
+        ChainScript Chain = new ChainScript(new Vector3(0,0,0), new Vector3(0, 5, 0), Chains, Chainlink);
     }
 
     private void Generate()
