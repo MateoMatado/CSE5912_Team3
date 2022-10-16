@@ -171,7 +171,7 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(currentInformation.gameObject);
         }
-        position.x += 100;
+        position.x += 165;
         position.y -= 10;
         currentInformation = Instantiate(informationBox, position, Quaternion.identity, canvas);
         var itemName = currentInformation.transform.Find("Name").GetComponent<Text>();
