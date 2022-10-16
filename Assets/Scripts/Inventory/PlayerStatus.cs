@@ -9,6 +9,7 @@ public class PlayerStatus : MonoBehaviour
     public static float Mana = 80;
     private static float ChangeValueHP = 0;
     private static float ChangeValueMana = 0;
+    [SerializeField] private float speed = 0.2f;
     // Normal Set up
     public void Awake()
     {
@@ -33,12 +34,12 @@ public class PlayerStatus : MonoBehaviour
 
     public void HealthChange(float amount)
     {
-        ChangeValueHP = amount;
+        ChangeValueHP += amount;
     }
 
     public void ManaChange(float amount)
     {
-        ChangeValueMana = amount;
+        ChangeValueMana += amount;
     }
 
     public void Update()
@@ -47,28 +48,28 @@ public class PlayerStatus : MonoBehaviour
         {
             if(ChangeValueHP > 0)
             {
-                HP += 0.2f;
-                ChangeValueHP -= 0.2f;
+                HP +=speed;
+                ChangeValueHP -=speed;
                 
             }
             else
             {
-                HP -= 0.2f;
-                ChangeValueHP  += 0.2f;
+                HP -=speed;
+                ChangeValueHP  +=speed;
             }
         }
         if (ChangeValueMana != 0)
         {
             if (ChangeValueMana > 0)
             {
-                Mana += 0.2f;
-                ChangeValueMana -= 0.2f;
+                Mana +=speed;
+                ChangeValueMana -=speed;
 
             }
             else
             {
-                Mana -= 0.2f;
-                ChangeValueMana += 0.2f;
+                Mana -=speed;
+                ChangeValueMana +=speed;
             }
         }
     }

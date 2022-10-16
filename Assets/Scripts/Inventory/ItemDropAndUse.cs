@@ -11,6 +11,7 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     public Text name;
     public Text Amount;
     public Image Icon;
+    public Text Effect;
     public GameObject UseButton;
     public GameObject DropButton;
     public GameObject EquipButton;
@@ -27,7 +28,14 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     {
         InventoryManager.Instance.EquipItem(name, Icon, Amount);
     }
-
+    public void DisplayInformation()
+    {
+        InventoryManager.Instance.Display(name.text, Effect.text, transform.position);
+    }
+    public void NotDisplayInformation()
+    {
+        InventoryManager.Instance.NotDisplay();
+    }
     public void Use()
     {
         int value = Convert.ToInt32(Amount);

@@ -206,6 +206,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Collect"",
+                    ""type"": ""Button"",
+                    ""id"": ""c48bd14b-8ef3-41cf-a483-23c278f63cc4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -613,6 +622,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""QuickKey4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff9b674d-5b28-4aaa-a6a0-4a48f66906d6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Collect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1220,6 +1240,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_QuickKey2 = m_Player.FindAction("QuickKey2", throwIfNotFound: true);
         m_Player_QuickKey3 = m_Player.FindAction("QuickKey3", throwIfNotFound: true);
         m_Player_QuickKey4 = m_Player.FindAction("QuickKey4", throwIfNotFound: true);
+        m_Player_Collect = m_Player.FindAction("Collect", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1311,6 +1332,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_QuickKey2;
     private readonly InputAction m_Player_QuickKey3;
     private readonly InputAction m_Player_QuickKey4;
+    private readonly InputAction m_Player_Collect;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1335,6 +1357,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @QuickKey2 => m_Wrapper.m_Player_QuickKey2;
         public InputAction @QuickKey3 => m_Wrapper.m_Player_QuickKey3;
         public InputAction @QuickKey4 => m_Wrapper.m_Player_QuickKey4;
+        public InputAction @Collect => m_Wrapper.m_Player_Collect;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1404,6 +1427,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @QuickKey4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
                 @QuickKey4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
                 @QuickKey4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
+                @Collect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollect;
+                @Collect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollect;
+                @Collect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollect;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1468,6 +1494,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @QuickKey4.started += instance.OnQuickKey4;
                 @QuickKey4.performed += instance.OnQuickKey4;
                 @QuickKey4.canceled += instance.OnQuickKey4;
+                @Collect.started += instance.OnCollect;
+                @Collect.performed += instance.OnCollect;
+                @Collect.canceled += instance.OnCollect;
             }
         }
     }
@@ -1644,6 +1673,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnQuickKey2(InputAction.CallbackContext context);
         void OnQuickKey3(InputAction.CallbackContext context);
         void OnQuickKey4(InputAction.CallbackContext context);
+        void OnCollect(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
