@@ -157,15 +157,16 @@ MonoBehaviour:
   Length: 5000
   Height: 50
   Attempts: 100
-  Spacing: 1.2
   RandomHeightLimit: 1000
   Islands:
   - {fileID: 2070914281333398461, guid: 5634004bfd5d24e4c81b463d2375c3d9, type: 3}
   - {fileID: 2916570678104877123, guid: cca340d613f5ff94ab60d397f745707a, type: 3}
   - {fileID: 6891552101434141695, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
   - {fileID: 1891037396360784119, guid: 5184d25ec5dc24a429c4fa7d669f6c7b, type: 3}
-  Chains: {fileID: 0}
+  - {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
+  StartingIsland: {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
+  IslandList: []
 --- !u!4 &228366102
 Transform:
   m_ObjectHideFlags: 0

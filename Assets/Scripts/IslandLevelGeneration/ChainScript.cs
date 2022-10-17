@@ -8,7 +8,7 @@ public class ChainScript
 {
 
     List<GameObject> ChainList = new List<GameObject>();
-    private Vector3 ChainSize = new Vector3((float).25 * 200, (float).6 * 200, (float).1 * 200);
+    private Vector3 ChainSize = new Vector3((float).25 * 150, (float).6 * 150, (float).1 * 150);
     bool Turn = false;
 
     // Start is called before the first frame update
