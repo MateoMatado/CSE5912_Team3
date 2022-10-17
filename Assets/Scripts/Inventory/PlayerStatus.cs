@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public static PlayerStatus Instance;
+    public static PlayerStatus Instance = new PlayerStatus();
     public static float HP = 80;
     public static float Mana = 80;
     private static float ChangeValueHP = 0;
