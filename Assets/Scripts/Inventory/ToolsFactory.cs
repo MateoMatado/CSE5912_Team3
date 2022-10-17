@@ -14,6 +14,8 @@ public class ToolsFactory : MonoBehaviour
     [SerializeField] GameObject GreenPot;
     [SerializeField] GameObject GreenPotions;
     [SerializeField] GameObject BerserkPotions;
+    [SerializeField] GameObject BiggerPot;
+    [SerializeField] GameObject PurplePot;
     /*Equipment*/
     [SerializeField] GameObject Axe;
     [SerializeField] GameObject Sword;
@@ -40,6 +42,12 @@ public class ToolsFactory : MonoBehaviour
                 break;
             case "Green Pot":
                 obj = GreenPot;
+                break;
+            case "Bigger Pot":
+                obj = BiggerPot;
+                break;
+            case "Purple Pot":
+                obj = PurplePot;
                 break;
             /*Potions*/
             case "Potions Red":

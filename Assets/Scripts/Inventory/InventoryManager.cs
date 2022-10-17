@@ -160,7 +160,7 @@ public class InventoryManager : MonoBehaviour
         {
             GameObject obj = ToolsFactory.Instance.GetDropObject(name);
             Vector3 newPosition = Player.position + (Player.forward * 8) + (Player.up * -4f);
-            Instantiate(obj, newPosition, Player.rotation);
+            Instantiate(obj, newPosition, obj.transform.rotation);
         }
 
     }
