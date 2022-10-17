@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public static PlayerStatus Instance;
-    public static float HP = 80;
-    public static float Mana = 80;
+    public static PlayerStatus Instance = new PlayerStatus();
+    public static float HP = 20;
+    public static float Mana = 20;
     private static float ChangeValueHP = 0;
     private static float ChangeValueMana = 0;
     private static float AccelerateTime = 0;
+    private static float BiggerTime = 0;
     private static float Speed = 1f;
     private static float time =0;
     [SerializeField] private float ChangeSpeed = 0.2f;
@@ -37,7 +38,7 @@ public class PlayerStatus : MonoBehaviour
         }
         return -1;
     }
-
+    /*Change HP or Mana*/
     public void HealthChange(float amount)
     {
         ChangeValueHP += amount;
@@ -47,6 +48,8 @@ public class PlayerStatus : MonoBehaviour
     {
         ChangeValueMana += amount;
     }
+
+    /*Accelerate*/
     public void SpeedChange(float amount)
     {
         Speed = 2f;
@@ -55,7 +58,7 @@ public class PlayerStatus : MonoBehaviour
     }
     IEnumerator Accelerate()
     {
-        
+
         while (AccelerateTime != 0)
         {
             AccelerateTime--;
@@ -63,6 +66,28 @@ public class PlayerStatus : MonoBehaviour
         }
         Speed = 1f;
     }
+
+    /*Get Bigger*/
+    public void GetBigger(float amount)
+    {
+        transform.localScale = new Vector3(6, 6, 6);
+        BiggerTime = amount;
+        transform.position += transform.up * 5f;
+        StartCoroutine(Bigger());
+    }
+    IEnumerator Bigger()
+    {
+
+        while (BiggerTime != 0)
+        {
+            BiggerTime--;
+            yield return new WaitForSeconds(1);
+        }
+        transform.localScale = new Vector3(3, 3, 3);
+        transform.position += transform.up * 25f;
+    }
+
+    /*Normal Update*/
     public void Update()
     {
         if(ChangeValueHP != 0)

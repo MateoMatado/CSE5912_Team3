@@ -26,6 +26,9 @@ public class ItemEffectFactory : MonoBehaviour
             case "Green Pot":
                 PlayerStatus.Instance.SpeedChange(30f);
                 break;
+            case "Bigger Pot":
+                PlayerStatus.Instance.GetBigger(30f);
+                break;
             case "Potions Red":
                 PlayerStatus.Instance.HealthChange(20);
                 break;
