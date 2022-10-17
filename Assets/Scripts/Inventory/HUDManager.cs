@@ -10,6 +10,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Slider Mana;
     public static HUDManager Instance;
     public GameObject CollectPanel;
+    public Text number;
+    private int coin = 0;
     public void Awake()
     {
         Instance = this;
@@ -24,10 +26,15 @@ public class HUDManager : MonoBehaviour
     {
         CollectPanel.SetActive(false);
     }
+    public void GetCoin(int number)
+    {
+        coin += number;
+    }
     // Update is called once per frame
     void Update()
     {
         HP.value = PlayerStatus.Instance.GetValue("HP") / 100;
         Mana.value = PlayerStatus.Instance.GetValue("Mana") / 100;
+        number.text = coin + "";
     }
 }
