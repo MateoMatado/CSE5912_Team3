@@ -36,6 +36,7 @@ public class EquipmentPickUp : MonoBehaviour
     {
         EquipmentManager.Instance.Add(Item);
         Destroy(gameObject);
+        HUDManager.Instance.CloseCollectPanel();
     }
 
     void OnTriggerEnter(Collider col)

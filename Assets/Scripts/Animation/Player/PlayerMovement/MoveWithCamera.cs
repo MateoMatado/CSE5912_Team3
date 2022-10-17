@@ -47,7 +47,7 @@ namespace Team3.PlayerMovement
             {
                 while (moving)
                 {
-                    Vector2 moveVector = moveAction.ReadValue<Vector2>() * speed;
+                    Vector2 moveVector = moveAction.ReadValue<Vector2>() * speed * PlayerStatus.Instance.GetValue("Speed");
                     Vector3 cameraVector = Vector3.Normalize(new Vector3(cameraTarget.forward.x, 0, cameraTarget.forward.z));
                     float yVel = body.velocity.y;
                     body.velocity = moveVector.y * cameraVector;

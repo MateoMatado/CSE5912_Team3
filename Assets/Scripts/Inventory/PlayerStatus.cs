@@ -9,7 +9,10 @@ public class PlayerStatus : MonoBehaviour
     public static float Mana = 80;
     private static float ChangeValueHP = 0;
     private static float ChangeValueMana = 0;
-    [SerializeField] private float speed = 0.2f;
+    private static float AccelerateTime = 0;
+    private static float Speed = 1f;
+    private static float time =0;
+    [SerializeField] private float ChangeSpeed = 0.2f;
     // Normal Set up
     public void Awake()
     {
@@ -26,6 +29,9 @@ public class PlayerStatus : MonoBehaviour
             case "Mana":
                 return Mana;
                 break;
+            case "Speed":
+                return Speed;
+                break;
             default:
                 return -1;
         }
@@ -41,35 +47,50 @@ public class PlayerStatus : MonoBehaviour
     {
         ChangeValueMana += amount;
     }
-
+    public void SpeedChange(float amount)
+    {
+        Speed = 2f;
+        AccelerateTime = amount;
+        StartCoroutine(Accelerate());
+    }
+    IEnumerator Accelerate()
+    {
+        
+        while (AccelerateTime != 0)
+        {
+            AccelerateTime--;
+            yield return new WaitForSeconds(1);
+        }
+        Speed = 1f;
+    }
     public void Update()
     {
         if(ChangeValueHP != 0)
         {
             if(ChangeValueHP > 0)
             {
-                HP +=speed;
-                ChangeValueHP -=speed;
+                HP +=ChangeSpeed;
+                ChangeValueHP -=ChangeSpeed;
                 
             }
             else
             {
-                HP -=speed;
-                ChangeValueHP  +=speed;
+                HP -=ChangeSpeed;
+                ChangeValueHP  +=ChangeSpeed;
             }
         }
         if (ChangeValueMana != 0)
         {
             if (ChangeValueMana > 0)
             {
-                Mana +=speed;
-                ChangeValueMana -=speed;
+                Mana +=ChangeSpeed;
+                ChangeValueMana -=ChangeSpeed;
 
             }
             else
             {
-                Mana -=speed;
-                ChangeValueMana +=speed;
+                Mana -=ChangeSpeed;
+                ChangeValueMana +=ChangeSpeed;
             }
         }
     }

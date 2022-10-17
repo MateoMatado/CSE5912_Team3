@@ -18,10 +18,22 @@ public class ItemEffectFactory : MonoBehaviour
         switch (name)
         {
             case "Red Pot":
-                PlayerStatus.Instance.HealthChange(20);
+                PlayerStatus.Instance.HealthChange(50);
                 break;
             case "Blue Pot":
+                PlayerStatus.Instance.ManaChange(50);
+                break;
+            case "Green Pot":
+                PlayerStatus.Instance.SpeedChange(30f);
+                break;
+            case "Potions Red":
+                PlayerStatus.Instance.HealthChange(20);
+                break;
+            case "Potions Blue":
                 PlayerStatus.Instance.ManaChange(20);
+                break;
+            case "Potions Green":
+                PlayerStatus.Instance.SpeedChange(10f);
                 break;
         }
     }
