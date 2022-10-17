@@ -48,9 +48,6 @@ public class IslandGeneration : MonoBehaviour
             {
                 if(Random.RandomRange(0,100) <= 5 && num < 5)
                 {
-                    Debug.LogError(Island.transform.position);
-                    Debug.LogError(Island2.transform.position);
-
                     GameObject Parent = new GameObject();
                     Parent.name = "Chain";
                     Vector3 pos1 = new Vector3(Island.transform.position.x, Island.transform.position.y, Island.transform.position.z);
