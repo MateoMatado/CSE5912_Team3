@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 public class IslandGeneration : MonoBehaviour
@@ -13,10 +14,10 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private int Length = 100;
     [SerializeField] private int Height = 50;
     [SerializeField] private int Attempts = 10;
-    [SerializeField] private float Spacing = 2;
     [SerializeField] private float RandomHeightLimit = 1000;
     [SerializeField] private List<GameObject> Islands;
     [SerializeField] private GameObject Chainlink;
+    [SerializeField] private GameObject StartingIsland;
 
     private Dictionary<String,Vector2> DIslands = new Dictionary<String,Vector2>();
     private enum EIslands{Empty,Filled};
@@ -32,6 +33,7 @@ public class IslandGeneration : MonoBehaviour
         DIslands.Add(Islands[1].name.ToString(), new Vector2(500, 500));
         DIslands.Add(Islands[2].name.ToString(), new Vector2(800, 600));
         DIslands.Add(Islands[3].name.ToString(), new Vector2(800, 800));
+        DIslands.Add(Islands[4].name.ToString(), new Vector2(250, 200));
 
         GenerateIslands();
         GenerateChains();
@@ -46,7 +48,7 @@ public class IslandGeneration : MonoBehaviour
         {
             foreach (GameObject Island2 in IslandList)
             {
-                if(Random.RandomRange(0,100) <= 5 && num < 5)
+                if(Random.RandomRange(0,100) <= 3 && num < 20)
                 {
                     GameObject Parent = new GameObject();
                     Parent.name = "Chain";
@@ -64,6 +66,18 @@ public class IslandGeneration : MonoBehaviour
         EIslandArray = new int[Width, Length];
         gameObjectIslands = new GameObject[Width, Length];
         int BiasDec = Bias;
+
+        for (int x = 0; x < DIslands["StartingIsland"].x; x++)
+        {
+            for (int y = 0; y < DIslands["StartingIsland"].y; y++)
+            {
+                EIslandArray[x + 2000, y + 2000] = (int)EIslands.Filled;
+            }
+        }
+        gameObjectIslands[2000, 2000] = GameObject.Instantiate(StartingIsland);
+        gameObjectIslands[2000, 2000].transform.position = new Vector3(2000, Random.Range(100, RandomHeightLimit), 2000);
+        gameObjectIslands[2000, 2000].transform.SetParent(transform);
+
         while (BiasDec >= 0)
         {
             for (int i = 0; i < Attempts; i++)
@@ -103,7 +117,7 @@ public class IslandGeneration : MonoBehaviour
                         gameObjectIslands[(int)pos.x, (int)pos.y].transform.Rotate(new Vector3(0, -90, 0), Space.Self);
                         rotcheck = true;
                     }
-                    gameObjectIslands[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x * Spacing, Random.Range(100, RandomHeightLimit), (int)pos.y * Spacing);
+                    gameObjectIslands[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x, Random.Range(100, RandomHeightLimit), (int)pos.y);
                     gameObjectIslands[(int)pos.x, (int)pos.y].transform.SetParent(transform);
 
                     if (rotcheck)
