@@ -277,6 +277,7 @@ public class CannonAimState : PlayerState
 
     private void LeaveCannon()
     {
+        UpdateHitIsland(null);
         inCannon = false;
         camera.Priority = 0;
         stateMachine.SwitchState(PlayerStateMachine.DefaultState);
