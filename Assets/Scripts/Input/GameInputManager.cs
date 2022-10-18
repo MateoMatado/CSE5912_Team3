@@ -35,6 +35,7 @@ namespace Team3.Input
             inputs.Player.Target.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Target", null, inputs.Player.Target); };
             inputs.Player.ChangeBanana.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "banana"); };
             inputs.Player.ChangeBaby.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "baby"); };
+            inputs.Player.ToggleRagdoll.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ToggleRagdoll", null, null); };
 
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
@@ -55,6 +56,8 @@ namespace Team3.Input
             inputs.Player.RightArmActivate.Enable();
             inputs.Player.ChangeBanana.Enable();
             inputs.Player.ChangeBaby.Enable();
+            inputs.Player.ToggleRagdoll.Enable();
+
 
             inputs.Player.LookPad.Enable();
             inputs.Player.LookMouse.Enable();
@@ -76,6 +79,7 @@ namespace Team3.Input
             inputs.Player.MoveArm.Disable();
             inputs.Player.ChangeBanana.Disable();
             inputs.Player.ChangeBaby.Disable();
+            inputs.Player.ToggleRagdoll.Disable();
 
             inputs.Player.LookPad.Disable();
             inputs.Player.LookMouse.Disable();

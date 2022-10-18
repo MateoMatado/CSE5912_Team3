@@ -14,8 +14,14 @@ namespace Team3.Ragdoll
         private ConfigurableJoint[] joints;
         private Quaternion[] initialJointRotations;
 
+        private JointDrive[,] forces;
+
+        bool rag = false;
+
         void Start()
         {
+            Events.EventsPublisher.Instance.SubscribeToEvent("ToggleRagdoll", ToggleRagdoll);
+
             joints = ragRoot.GetComponentsInChildren<ConfigurableJoint>();
             TransformStore[] stores = animRoot.GetComponentsInChildren<TransformStore>();
 
@@ -30,6 +36,42 @@ namespace Team3.Ragdoll
             {
                 bones[i] = stores[i].transform;
             }
+
+            forces = new JointDrive[2,joints.Length];
+
+            for (int i = 0; i < joints.Length; i++)
+            {
+                forces[0,i] = joints[i].angularYZDrive;
+                forces[1,i] = joints[i].angularXDrive;
+            }
+        }
+
+        private void OnDisable()
+        {
+            Events.EventsPublisher.Instance.SubscribeToEvent("ToggleRagdoll", ToggleRagdoll);
+        }
+
+        void ToggleRagdoll(object sender, object data)
+        {
+            if (rag)
+            {
+                for (int i = 0; i < joints.Length; i++)
+                {
+                    joints[i].angularYZDrive = forces[0, i];
+                    joints[i].angularXDrive = forces[1, i];
+                }
+            }
+            else
+            {
+                for (int i = 0; i < joints.Length; i++)
+                {
+                    forces[0, i] = joints[i].angularYZDrive;
+                    forces[1, i] = joints[i].angularXDrive;
+                    joints[i].angularYZDrive = new JointDrive();
+                    joints[i].angularXDrive = new JointDrive();
+                }
+            }
+            rag = !rag;
         }
 
         void FixedUpdate()
@@ -45,14 +87,10 @@ namespace Team3.Ragdoll
 
                 Quaternion resultRotation = Quaternion.Inverse(worldToJointSpace);
 
-                //Debug.Log(bones[i + 1].localRotation);
-                //Debug.Log(initialJointRotations[i]);
                 resultRotation *= Quaternion.Inverse(bones[i + 1].localRotation) * initialJointRotations[i];
-                //resultRotation *= initialJointRotations[i] * Quaternion.Inverse(bones[i + 1].localRotation);
                 resultRotation *= worldToJointSpace;
 
                 joints[i].targetRotation = resultRotation;
-                //joints[i].targetRotation = Quaternion.Euler(45, 45, 45);
             }
         }
     }

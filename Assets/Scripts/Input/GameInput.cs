@@ -170,6 +170,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleRagdoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""199fc864-397e-4388-b2cd-88e0a6af5444"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -533,6 +542,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""LookPad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c349fde-8fcf-4eb4-bffd-1a645cbb3ce3"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleRagdoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1136,6 +1156,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_ChangeBanana = m_Player.FindAction("ChangeBanana", throwIfNotFound: true);
         m_Player_ChangeBaby = m_Player.FindAction("ChangeBaby", throwIfNotFound: true);
         m_Player_EquipmentInventory = m_Player.FindAction("EquipmentInventory", throwIfNotFound: true);
+        m_Player_ToggleRagdoll = m_Player.FindAction("ToggleRagdoll", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1223,6 +1244,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ChangeBanana;
     private readonly InputAction m_Player_ChangeBaby;
     private readonly InputAction m_Player_EquipmentInventory;
+    private readonly InputAction m_Player_ToggleRagdoll;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1243,6 +1265,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @ChangeBanana => m_Wrapper.m_Player_ChangeBanana;
         public InputAction @ChangeBaby => m_Wrapper.m_Player_ChangeBaby;
         public InputAction @EquipmentInventory => m_Wrapper.m_Player_EquipmentInventory;
+        public InputAction @ToggleRagdoll => m_Wrapper.m_Player_ToggleRagdoll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1300,6 +1323,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipmentInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
                 @EquipmentInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
                 @EquipmentInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
+                @ToggleRagdoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @ToggleRagdoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @ToggleRagdoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1352,6 +1378,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipmentInventory.started += instance.OnEquipmentInventory;
                 @EquipmentInventory.performed += instance.OnEquipmentInventory;
                 @EquipmentInventory.canceled += instance.OnEquipmentInventory;
+                @ToggleRagdoll.started += instance.OnToggleRagdoll;
+                @ToggleRagdoll.performed += instance.OnToggleRagdoll;
+                @ToggleRagdoll.canceled += instance.OnToggleRagdoll;
             }
         }
     }
@@ -1524,6 +1553,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnChangeBanana(InputAction.CallbackContext context);
         void OnChangeBaby(InputAction.CallbackContext context);
         void OnEquipmentInventory(InputAction.CallbackContext context);
+        void OnToggleRagdoll(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

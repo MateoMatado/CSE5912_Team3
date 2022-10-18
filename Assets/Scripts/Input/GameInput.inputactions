@@ -148,6 +148,15 @@
                     "processors": "",
                     "interactions": "Press(behavior=2)",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ToggleRagdoll",
+                    "type": "Button",
+                    "id": "199fc864-397e-4388-b2cd-88e0a6af5444",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -511,6 +520,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "LookPad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c349fde-8fcf-4eb4-bffd-1a645cbb3ce3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleRagdoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

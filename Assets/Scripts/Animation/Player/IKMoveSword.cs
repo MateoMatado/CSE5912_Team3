@@ -10,6 +10,7 @@ namespace Team3.Animation.Player
         [SerializeField] Animator anim;
         [SerializeField] Transform weapon;
         [SerializeField] Transform IKTarget;
+        [SerializeField] Transform hand;
         [SerializeField] float positionOffset;
 
         [SerializeField] float mouseSensitivity;
@@ -121,7 +122,8 @@ namespace Team3.Animation.Player
                     weapon.position = anim.GetBoneTransform(HumanBodyBones.RightHand).position + offset;
                     weapon.LookAt(weapon.position + offset * 100);
                 }
-                rot = (rot + 10) % 360;
+                // Looks fun but screws with ragdoll too much
+                //rot = (rot + 10) % 360;
                 yield return null;
             }
         }
