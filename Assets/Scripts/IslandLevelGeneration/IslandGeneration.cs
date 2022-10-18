@@ -14,6 +14,7 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private int Length = 100;
     [SerializeField] private int Height = 50;
     [SerializeField] private int Attempts = 10;
+    [SerializeField] private int ChainNum = 15;
     [SerializeField] private float RandomHeightLimit = 1000;
     [SerializeField] private List<GameObject> Islands;
     [SerializeField] private GameObject Chainlink;
@@ -48,7 +49,7 @@ public class IslandGeneration : MonoBehaviour
         {
             foreach (GameObject Island2 in IslandList)
             {
-                if(Random.RandomRange(0,100) <= 3 && num < 20)
+                if(Random.RandomRange(0,100) <= 3 && num < ChainNum)
                 {
                     GameObject Parent = new GameObject();
                     Parent.name = "Chain";
