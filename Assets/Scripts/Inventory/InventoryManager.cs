@@ -228,6 +228,7 @@ public class InventoryManager : MonoBehaviour
         Icon.sprite = itemIcon.sprite;
         Amount.text = itemAmount.text;
         
+        
     }
 
 
