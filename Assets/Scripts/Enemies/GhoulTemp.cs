@@ -251,8 +251,7 @@ public class GhoulTemp : LivingEntity
     {
         state = State.Attack;
         navMeshAgent.isStopped = true;
-        ghoulAnimator.SetTrigger("Attack");
-        //Debug.Log("State:Attacking...");
+        ghoulAnimator.SetTrigger("Attack");        
     }
     
     public void EndAttack()

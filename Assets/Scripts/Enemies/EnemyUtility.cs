@@ -26,7 +26,7 @@ public class EnemyUtility : MonoBehaviour
         while (true)
         {
             randomPoint = GetRandomPointOnNavMesh(transform.position, 100f, NavMesh.AllAreas);
-            Debug.Log("RandomPoint: " + randomPoint);
+            //Debug.Log("RandomPoint: " + randomPoint);
             yield return new WaitForSeconds(delayTime);
         }      
         
