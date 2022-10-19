@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 1865291017125095022}
   m_Layer: 8
   m_Name: Lava Island
-  m_TagString: Untagged
+  m_TagString: IslandParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

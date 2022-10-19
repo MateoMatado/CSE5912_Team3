@@ -34,7 +34,6 @@ public class IslandGeneration : MonoBehaviour
         DIslands.Add(Islands[1].name.ToString(), new Vector2(500, 500));
         DIslands.Add(Islands[2].name.ToString(), new Vector2(800, 600));
         DIslands.Add(Islands[3].name.ToString(), new Vector2(800, 800));
-        DIslands.Add(Islands[4].name.ToString(), new Vector2(250, 200));
 
         GenerateIslands();
         GenerateChains();
@@ -68,9 +67,9 @@ public class IslandGeneration : MonoBehaviour
         gameObjectIslands = new GameObject[Width, Length];
         int BiasDec = Bias;
 
-        for (int x = 0; x < DIslands["StartingIsland"].x; x++)
+        for (int x = 0; x < DIslands["IslandBasic"].x; x++)
         {
-            for (int y = 0; y < DIslands["StartingIsland"].y; y++)
+            for (int y = 0; y < DIslands["IslandBasic"].y; y++)
             {
                 EIslandArray[x + 2000, y + 2000] = (int)EIslands.Filled;
             }

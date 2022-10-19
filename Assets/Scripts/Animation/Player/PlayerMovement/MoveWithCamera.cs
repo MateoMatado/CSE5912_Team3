@@ -19,6 +19,7 @@ namespace Team3.PlayerMovement
         void Start()
         {
             body = GetComponent<Rigidbody>();
+            if (cameraTarget == null) cameraTarget = Camera.main.transform;
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", StartMove);
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerStop", StopMove);
             StartCoroutine(Move());

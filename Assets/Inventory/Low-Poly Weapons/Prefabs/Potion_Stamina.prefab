@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2396436}
   - component: {fileID: -4658315159513542949}
   - component: {fileID: -8502465020986721249}
-  - component: {fileID: -2304968303396141918}
+  - component: {fileID: -4988815446238401144}
   m_Layer: 0
   m_Name: Potion_Stamina
   m_TagString: Untagged
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.21674058, y: 0.21674033, z: 0.83066267}
   m_Center: {x: 0, y: 0.000000007450582, z: 0.05111661}
---- !u!114 &-2304968303396141918
+--- !u!114 &-4988815446238401144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
