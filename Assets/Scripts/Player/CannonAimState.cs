@@ -218,7 +218,7 @@ public class CannonAimState : PlayerState
 
     private void EnableOutline(GameObject g)
     {
-        if (g != null)
+        if (g != null && g != GetParentIsland(cannon.transform))
         {
             foreach (var meshRenderer in g.GetComponentsInChildren<MeshRenderer>())
             {
