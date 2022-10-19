@@ -289,9 +289,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1171577394601231643}
-  weapon: {fileID: 0}
-  IKTarget: {fileID: 3627219546358631123, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
   sword: {fileID: 2223283866969300754, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
+  foamFinger: {fileID: 2223283866969300754, guid: 4b15faf877a0ef345b996d1f714bae92, type: 3}
+  hammer: {fileID: 2223283866969300754, guid: e9391399af7429b498ec212b9a90e442, type: 3}
   swingForce: 70
   swingThreshold: 0.2
   mouseSensitivity: 0.01
