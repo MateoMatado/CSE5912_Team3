@@ -160,16 +160,24 @@ namespace Team3.Animation.Player
                 UpdateInvector(); // Must be inside of to verify that input exists
                 right?.UpdateArm(anim, inVector, AvatarIKGoal.RightHand);
                 either = true;
+                anim.SetLookAtWeight(1);
+                anim.SetLookAtPosition(anim.GetIKPosition(AvatarIKGoal.RightHand));
             }
             if ((leftAction != null && leftAction.IsPressed()) || (rightAction != null && rightAction.IsPressed() && left == right))
             {
                 UpdateInvector();
                 left?.UpdateArm(anim, inVector, AvatarIKGoal.LeftHand);
+                if (!either)
+                {
+                    anim.SetLookAtWeight(1);
+                    anim.SetLookAtPosition(anim.GetIKPosition(AvatarIKGoal.LeftHand));
+                }
                 either = true;
             }
             if (!either)
             {
                 dPos = new Vector2(0, 0);
+                anim.SetLookAtWeight(0);
             }
         }
 
