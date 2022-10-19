@@ -15,10 +15,22 @@ namespace Team3
         // Start is called before the first frame update
         void Start()
         {
-            playerStateManager = GameObject.Find("Player").GetComponent<PlayerStateManager>();
+            StartCoroutine(WaitForPlayer());
             Events.EventsPublisher.Instance.SubscribeToEvent("PauseUnpause", CheckPause);
             Events.EventsPublisher.Instance.SubscribeToEvent("Pause", StartPause);
             Events.EventsPublisher.Instance.SubscribeToEvent("Unpause", EndPause);
+        }
+
+        private IEnumerator WaitForPlayer()
+        {
+            while (playerStateManager == null)
+            {
+                if (GameObject.Find("Player") != null)
+                {
+                    playerStateManager = GameObject.Find("Player").GetComponent<PlayerStateManager>();
+                }
+                yield return null;
+            }
         }
 
         private void OnDestroy()

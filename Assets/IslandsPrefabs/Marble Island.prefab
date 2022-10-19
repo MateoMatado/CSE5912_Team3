@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 199094983574624683}
   m_Layer: 8
   m_Name: Marble Island
-  m_TagString: Untagged
+  m_TagString: IslandParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

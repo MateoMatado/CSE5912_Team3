@@ -24,6 +24,9 @@ namespace Team3.Player
         void Awake()
         {
             stateManager = GetComponent<PlayerStateManager>();
+            if (cameraTransform == null) cameraTransform = Camera.main.transform;
+            if (defaultCamera == null) defaultCamera = GameObject.Find("DefaultCamera").GetComponent<CinemachineVirtualCamera>();
+            if (targetingCamera == null) targetingCamera = GameObject.Find("TargetingCamera").GetComponent<CinemachineVirtualCamera>();
 
             Events.EventsPublisher.Instance.SubscribeToEvent("EnterTargetingState", StartTargeting);
             Events.EventsPublisher.Instance.SubscribeToEvent("ExitTargetingState", StopTargeting);
