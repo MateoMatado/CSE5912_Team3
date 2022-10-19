@@ -9,160 +9,185 @@ public class BossTypeA : LivingEntity
     {
         Chase,
         Faint,
-        SpinAttack,
+        Spinning,
         DashAttack,
-        Idle
+        Idle,
+        Roar
     }
     private State state;
 
     private Animator bossAnimator;
-    private AudioSource ghoulAudioPlayer;
+    private AudioSource bossAudioPlayer;
     public ParticleSystem hitEffect;
     private ParticleSystem hitEffect2;
     public AudioClip deathSound;
     public AudioClip onDamageSound;
+    public Transform targetEntity;
 
+
+    private Vector3 oldTargetPosition;
     public float attackRadius = 3f;
     private float attackDistance;
-    private const float dashRange = 8f;   
+    private const float dashRange = 70f;
+    private const float spinStartDistance = 30f;    
 
-    public Transform targetEntity;
-    [SerializeField] float timeBetweenAttack = 1.3f;
-    private float lastAttackTime;
-
-    private bool isAlreadyAttacked = false;
-    private const float waitTimeForCoroutine = 0.2f; //0.05
-    private const float remainingDistance = 8f; //1
-
-    private const float faintTime = 4f;
-    private const float spinTime = 2f;
+    private const float faintTime = 3f;
+    private const float spinTime = 8f;
+    private const float roarTime = 1f;
+    private const float waitingTimeBeforeDash = 2f;
 
     private float speed = 3f;
-    private const float walkSpeed = 5f;
-    private const float dashSpeed = 15f;
-    private const float rotateSpeed = 10f;
-    float dashDuration = 0.5f;
-    public Transform attackRoot;
-    //Transform orientation;
-    private Rigidbody rb;
+    private const float chaseSpeed = 10f;
+    private const float dashSpeed = 40f;
+    private const float spinTowardSpeed = 13f;
+    private const float rotateSpeed = 720f;
 
+    public Transform attackRoot;
+    Rigidbody rb;
 
     float timer = 0f;
-    float waitingTimeBeforeDash = 4f;
+    
 
     private void Awake()
     {
-        speed = walkSpeed;
+        startingHealth = 1000f;
+        speed = chaseSpeed;
+        //GetComponentInParent!
         bossAnimator = GetComponent<Animator>();
-        //bossAudioPlayer = GetComponent<AudioSource>();
+        bossAudioPlayer = GetComponent<AudioSource>();
 
         var attackPivot = attackRoot.position;
         attackPivot.y = transform.position.y;
         attackDistance = Vector3.Distance(transform.position, attackPivot) + attackRadius;
 
         rb=GetComponent<Rigidbody>();
-        //orientation = GetComponent<Transform>();
 
-        //hitEffect2 = GetComponentInChildren<ParticleSystem>();
+        hitEffect2 = GetComponentInChildren<ParticleSystem>();
     }
 
-    void SpinAttack()
+    
+    void DoSpinning()
     {
-        bossAnimator.SetTrigger("Spin");
-        DoSpinning();
+        state = State.Spinning;
+        timer += Time.deltaTime;
 
-        DoFaint();
-        state = State.Idle;
-    }
-    IEnumerator DoSpinning()
-    {
-        transform.Rotate(0f, rotateSpeed*Time.deltaTime, 0f, Space.Self);
-        transform.Translate(Vector3.forward * Time.deltaTime);
-        yield return new WaitForSeconds(spinTime);
+        //Perform Spinning
+        if (timer < spinTime)
+        {
+            transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f, Space.Self);
+            //transform.LookAt(targetEntity);
+            
+            speed = spinTowardSpeed;
+            //transform.position += Vector3.forward * speed * Time.deltaTime;
+            var targetPos = (targetEntity.position - transform.position).normalized;
+            transform.position += targetPos * speed * Time.deltaTime;
+            //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+        //State: Spinning -> Faint
+        else
+        {
+            timer = 0.0f;
+            state = State.Faint;
+            bossAnimator.SetTrigger("Die");
+        }
     }
 
 
-    IEnumerator DoFaint()
+    void DoFaint()
     {
-        bossAnimator.SetTrigger("Faint");
-        yield return new WaitForSeconds(faintTime);
+        state = State.Faint;
+        speed = 0f;
+        timer += Time.deltaTime;
+        //State: Faint -> Chase
+        if (timer > faintTime)
+        {
+            state = State.Chase;
+            bossAnimator.SetTrigger("Chase");
+            timer = 0.0f;
+        }
     }
-    void DashAttack()
+
+    void DoRoarBeforeDash()
     {
-        bossAnimator.SetTrigger("Dash");
-        speed = dashSpeed;
+        //bossAnimator.SetTrigger("Angry");
+        state = State.Roar;
+        speed = 0f;
+        timer += Time.deltaTime;
         transform.LookAt(targetEntity);
+        if (timer > waitingTimeBeforeDash)
+        {
+            //Perform DashAttack
+            //Look At Old Target Position
+            oldTargetPosition = targetEntity.position; ////////////            
+            bossAnimator.SetTrigger("Dash");
+            state = State.DashAttack;            
+            timer = 0.0f;
+        }
+    }
+    void DoDash()
+    {
+        state = State.DashAttack;                
+        speed = dashSpeed;
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        //Vector3 force = transform.forward;
-        //rb.AddForce(force, ForceMode.Impulse);
-    }
-
-    void ResetDash()
-    {
-
-    }
-    void DoChase()
-    {
-
-    }
-
-    void DoIdle()
-    {
-
     }
 
     private void Start()
     {
         bossAnimator.SetFloat("Speed", speed);
-        //bossAnimator.SetTrigger("Faint");
-       
-        
         state = State.Chase;        
     }
 
-
     void Update()
-    {
-        Debug.Log("BOSS STATE: " + state + "!!!!!!!!!!!");
-        //Debug.Log("SPEED:" + speed + ";;;" + bossAnimator.GetFloat("Speed"));
+    {        
+        //Debug.Log("BOSS STATE: " + state + "!!!!!!!!!!!");
         if (isDead)
         {
             return;
         }
         if (state == State.Chase)
         {
+            //Chase To Target
+            speed = chaseSpeed;
             transform.LookAt(targetEntity);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-            var distance = Vector3.Distance(targetEntity.position, transform.position);
-
-            //Change State to "DashAttack"
-            if (distance > dashRange)  
+            //Check Distance whether to Change State 
+            var currentTargetdistance = Vector3.Distance(targetEntity.position, transform.position);
+            if (currentTargetdistance > dashRange)  
             {
-                speed = 0f;
-                bossAnimator.SetFloat("Speed", speed);
-                timer += Time.deltaTime;
-                //Debug.Log("TIMER:" + timer);
-                if (timer > waitingTimeBeforeDash)
-                {
-                    state = State.DashAttack;
-                    DashAttack();
-                    timer = 0;
-                }
-                
+                state = State.Roar;
+                bossAnimator.SetTrigger("Angry");
             }
-            //Change State to "SpinAttack"
-            else if (distance < attackDistance )
-            {
-                state = State.SpinAttack;
-                SpinAttack();
+            else if (currentTargetdistance < spinStartDistance)
+            {                
+                state = State.Spinning;
+                bossAnimator.SetTrigger("Spin");
             }
-            
-
+        }
+        else if(state == State.Roar)
+        {
+            DoRoarBeforeDash();
         }
         else if(state == State.DashAttack)
         {
-
+            var oldTargetdistance = Vector3.Distance(oldTargetPosition, transform.position);            
+            if (oldTargetdistance > 1f)
+            {
+                DoDash(); 
+            }
+            else
+            {
+                state = State.Chase;
+                bossAnimator.SetTrigger("Chase");
+            }            
+        }
+        else if(state == State.Spinning)
+        {
+            DoSpinning();
+        }
+        else if(state == State.Faint)
+        {
+            DoFaint();
         }
 
     }
@@ -185,8 +210,8 @@ public class BossTypeA : LivingEntity
         if (!isDead)
         {
             hitEffect2.Play();
-            ghoulAudioPlayer.clip = onDamageSound;
-            ghoulAudioPlayer.PlayOneShot(onDamageSound);
+            bossAudioPlayer.clip = onDamageSound;
+            bossAudioPlayer.PlayOneShot(onDamageSound);
         }
 
         //affect damage on hp
@@ -197,11 +222,11 @@ public class BossTypeA : LivingEntity
     {
         base.Die();
         bossAnimator.SetTrigger("Die");
-        ghoulAudioPlayer.clip = deathSound;
-        ghoulAudioPlayer.PlayOneShot(deathSound);
+        bossAudioPlayer.clip = deathSound;
+        bossAudioPlayer.PlayOneShot(deathSound);
 
-        Collider ghoulCollider = GetComponent<Collider>();
-        ghoulCollider.enabled = false;
+        //Collider bossCollider = GetComponent<Collider>();
+        //bossCollider.enabled = false;
 
 
     }
