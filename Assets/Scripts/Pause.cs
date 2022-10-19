@@ -1,21 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Team3.Player;
 
 namespace Team3
 {
     public class Pause : MonoBehaviour
     {
-        [SerializeField] GameObject pauseMenu;
+        [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private PlayerStateManager playerStateManager;
 
         private bool paused = false;
 
         // Start is called before the first frame update
         void Start()
         {
+            StartCoroutine(WaitForPlayer());
             Events.EventsPublisher.Instance.SubscribeToEvent("PauseUnpause", CheckPause);
             Events.EventsPublisher.Instance.SubscribeToEvent("Pause", StartPause);
             Events.EventsPublisher.Instance.SubscribeToEvent("Unpause", EndPause);
+        }
+
+        private IEnumerator WaitForPlayer()
+        {
+            while (playerStateManager == null)
+            {
+                if (GameObject.Find("Player") != null)
+                {
+                    playerStateManager = GameObject.Find("Player").GetComponent<PlayerStateManager>();
+                }
+                yield return null;
+            }
         }
 
         private void OnDestroy()
@@ -27,13 +42,9 @@ namespace Team3
 
         private void CheckPause(object sender, object data)
         {
-            if (!paused)
+            if (playerStateManager.StateMachine.CurrentState is not CannonAimState)
             {
-                Events.EventsPublisher.Instance.PublishEvent("Pause", null, null);
-            }
-            else
-            {
-                Events.EventsPublisher.Instance.PublishEvent("Unpause", null, null);
+                GameStateMachine.Instance.CurrentState.HandlePause();
             }
         }
 
@@ -41,14 +52,12 @@ namespace Team3
         {
             pauseMenu.SetActive(true);
             paused = true;
-            GameStateMachine.Instance.SwitchState(GameStateMachine.PauseState);
         }
 
         private void EndPause(object sender, object data)
         {
             pauseMenu.SetActive(false);
             paused = false;
-            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
         }
     }
 }

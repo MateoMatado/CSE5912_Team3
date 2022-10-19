@@ -16,7 +16,7 @@ namespace Team3.Player
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float sphereRadius = 30;
         [SerializeField] private float tooClose = 5;
-        [SerializeField] private Material outlineMaterial;
+        [SerializeField] public Material outlineMaterial;
         private PlayerStateManager stateManager;
         private GameObject currentEnemy = null;
         private bool targeting = false;
@@ -24,6 +24,9 @@ namespace Team3.Player
         void Awake()
         {
             stateManager = GetComponent<PlayerStateManager>();
+            if (cameraTransform == null) cameraTransform = Camera.main.transform;
+            if (defaultCamera == null) defaultCamera = GameObject.Find("DefaultCamera").GetComponent<CinemachineVirtualCamera>();
+            if (targetingCamera == null) targetingCamera = GameObject.Find("TargetingCamera").GetComponent<CinemachineVirtualCamera>();
 
             Events.EventsPublisher.Instance.SubscribeToEvent("EnterTargetingState", StartTargeting);
             Events.EventsPublisher.Instance.SubscribeToEvent("ExitTargetingState", StopTargeting);

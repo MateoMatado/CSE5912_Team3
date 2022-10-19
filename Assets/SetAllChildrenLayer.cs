@@ -15,7 +15,7 @@ public class SetAllChildrenLayer : MonoBehaviour
         foreach (var child in children)
         {
             //            Debug.Log(child.name);
-            child.gameObject.layer = layer;
+            if (child.gameObject.layer == 0) child.gameObject.layer = layer;
         }
     }
 }
