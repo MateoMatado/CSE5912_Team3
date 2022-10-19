@@ -51,7 +51,7 @@ namespace Team3.Input
             inputs.Player.EquipHammer.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKHammer(hammer)); };
 
             //for temporary camera switching, by Jimmy 
-            inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
+            // inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
 
             Events.EventsPublisher.Instance.SubscribeToEvent("LeftArmActivate", EnableArm);
             Events.EventsPublisher.Instance.SubscribeToEvent("RightArmActivate", EnableArm);
