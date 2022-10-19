@@ -257,19 +257,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 121230, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
   m_PrefabInstance: {fileID: 5334346665807115095}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9212269615763565189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5334346665807129305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22900c1152a15e146858c254c02ce269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 5334346665814475859}
 --- !u!114 &5825037644258440656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,10 +271,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 5334346665814475859}
   sword: {fileID: 2223283866969300754, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
+  foamFinger: {fileID: 2223283866969300754, guid: 4b15faf877a0ef345b996d1f714bae92, type: 3}
+  hammer: {fileID: 2223283866969300754, guid: e9391399af7429b498ec212b9a90e442, type: 3}
   swingForce: 70
   swingThreshold: 0.2
   mouseSensitivity: 0.01
   swingDelay: 0.2
+--- !u!114 &9212269615763565189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334346665807129305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22900c1152a15e146858c254c02ce269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5334346665814475859}
 --- !u!4 &5334346665807536919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 495680, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}

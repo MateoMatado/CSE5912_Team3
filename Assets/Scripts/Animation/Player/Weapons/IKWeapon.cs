@@ -28,7 +28,26 @@ namespace Team3.Animation.Player.Weapons
 
         public void SetParent(Transform t)
         {
-            Weapon.transform.parent = t;
+            if (Weapon != null)
+            {
+                Weapon.transform.parent = t;
+            }
+        }
+
+        public void DisableWeapon()
+        {
+            if (Weapon != null)
+            {
+                Weapon.SetActive(false);
+            }
+        }
+
+        public void EnableWeapon()
+        {
+            if (Weapon != null)
+            {
+                Weapon.SetActive(true);
+            }
         }
     }
 }

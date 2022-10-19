@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4343968, g: 0.46909028, b: 0.47645423, a: 1}
+  m_IndirectSpecularColor: {r: 0.43439746, g: 0.46909103, b: 0.47645578, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -37800,7 +37800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -515, y: 11.12, z: 223}
+  m_LocalPosition: {x: 97.8, y: -2.3000002, z: 473.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59219,6 +59219,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5976817669905050619, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 8181900815667077321, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
       propertyPath: m_Name
       value: Cannon
@@ -81050,6 +81054,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44daca197a6d4d49945fb654eccbce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sword: {fileID: 0}
+  foamFinger: {fileID: 0}
+  hammer: {fileID: 0}
 --- !u!4 &1989646459
 Transform:
   m_ObjectHideFlags: 0
@@ -87143,6 +87150,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2051578688, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6999999
+      objectReference: {fileID: 0}
     - target: {fileID: 4520910968490342920, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: cameraTarget
       value: 
@@ -87153,15 +87164,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520910968986401104, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -515
+      value: 97.8
       objectReference: {fileID: 0}
     - target: {fileID: 4520910968986401104, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.72
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: 4520910968986401104, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 233
+      value: 483.97
       objectReference: {fileID: 0}
     - target: {fileID: 4520910968986401104, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalRotation.w
@@ -87194,6 +87205,10 @@ PrefabInstance:
     - target: {fileID: 4520910968986690928, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520910968986690939, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+      propertyPath: rayLength
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4520910968986690941, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: cameraTransform
