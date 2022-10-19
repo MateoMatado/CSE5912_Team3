@@ -34,7 +34,6 @@ public class IslandGeneration : MonoBehaviour
         DIslands.Add(Islands[1].name.ToString(), new Vector2(500, 500));
         DIslands.Add(Islands[2].name.ToString(), new Vector2(800, 600));
         DIslands.Add(Islands[3].name.ToString(), new Vector2(800, 800));
-        DIslands.Add(Islands[4].name.ToString(), new Vector2(250, 200));
 
         GenerateIslands();
         GenerateChains();
