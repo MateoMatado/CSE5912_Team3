@@ -3144,7 +3144,7 @@ ConfigurableJoint:
   m_ZMotion: 0
   m_AngularXMotion: 1
   m_AngularYMotion: 1
-  m_AngularZMotion: 1
+  m_AngularZMotion: 0
   m_LinearLimitSpring:
     spring: 0
     damper: 0
@@ -3156,22 +3156,22 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: 53.610268
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 135
+    limit: 98.56299
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
     spring: 0
     damper: 0
   m_AngularYLimit:
-    limit: 125
+    limit: 57.821198
     bounciness: 1
     contactDistance: 0
   m_AngularZLimit:
-    limit: 125
+    limit: 79.58424
     bounciness: 1
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
