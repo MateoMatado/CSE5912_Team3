@@ -81054,9 +81054,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44daca197a6d4d49945fb654eccbce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sword: {fileID: 0}
-  foamFinger: {fileID: 0}
-  hammer: {fileID: 0}
+  sword: {fileID: 2223283866969300754, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
+  foamFinger: {fileID: 2223283866969300754, guid: 4b15faf877a0ef345b996d1f714bae92, type: 3}
+  hammer: {fileID: 2223283866969300754, guid: e9391399af7429b498ec212b9a90e442, type: 3}
 --- !u!4 &1989646459
 Transform:
   m_ObjectHideFlags: 0
