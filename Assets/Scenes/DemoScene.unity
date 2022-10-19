@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10480086, g: 0.054782517, b: 0.04967916, a: 1}
+  m_IndirectSpecularColor: {r: 0.11480177, g: 0.0617494, b: 0.0556425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1217,6 +1217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44daca197a6d4d49945fb654eccbce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sword: {fileID: 2223283866969300754, guid: 7fccd20cb9f187a4ebecbc971a1494f9, type: 3}
+  foamFinger: {fileID: 2223283866969300754, guid: 4b15faf877a0ef345b996d1f714bae92, type: 3}
+  hammer: {fileID: 2223283866969300754, guid: e9391399af7429b498ec212b9a90e442, type: 3}
 --- !u!4 &310522758
 Transform:
   m_ObjectHideFlags: 0
