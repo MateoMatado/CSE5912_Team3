@@ -17,8 +17,8 @@ public class CannonAimState : PlayerState
     private float rotationSpeed = 30f;
     private bool rotating = false;
     private bool inCannon = false;
-    const float minAngle = 15, maxAngle = 65;
-    private float force = 40000;
+    const float minAngle = 5, maxAngle = 80;
+    private float force = 70000;
     private LineRenderer trajectory;
     private GameObject island = null;
     private Material outlineMaterial;
