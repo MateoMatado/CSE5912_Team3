@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToolsFactory : MonoBehaviour
+public class ItemsFactory : MonoBehaviour
 {
-    public static ToolsFactory Instance;
+    public static ItemsFactory Instance;
     /*pot and potions*/
     [SerializeField] GameObject RedPot;
     [SerializeField] GameObject RedPotions;
@@ -17,10 +17,9 @@ public class ToolsFactory : MonoBehaviour
     [SerializeField] GameObject BiggerPot;
     [SerializeField] GameObject PurplePot;
     /*Equipment*/
-    [SerializeField] GameObject Axe;
     [SerializeField] GameObject Sword;
-    [SerializeField] GameObject Bow;
-    [SerializeField] GameObject Wand;
+    [SerializeField] GameObject FoamFinger;
+    [SerializeField] GameObject Hammer;
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,10 +27,10 @@ public class ToolsFactory : MonoBehaviour
     }
 
     // Update is called once per frame
-    public GameObject GetDropObject(Text Name)
+    public GameObject GetDropObject(string Name)
     {
         GameObject obj;
-        switch (Name.text)
+        switch (Name)
         {
             /*Pot*/
             case "Red Pot":
@@ -63,17 +62,14 @@ public class ToolsFactory : MonoBehaviour
                 obj = BerserkPotions;
                 break;
             /*Equipment*/
-            case "AXE":
-                obj = Axe;
-                break;
             case "Sword":
                 obj = Sword;
                 break;
-            case "Bow":
-                obj = Bow;
+            case "FoamFinger":
+                obj = FoamFinger;
                 break;
-            case "Wand":
-                obj = Wand;
+            case "Hammer":
+                obj = Hammer;
                 break;
             default:
                 obj = null;
@@ -81,6 +77,6 @@ public class ToolsFactory : MonoBehaviour
 
         }
         return obj;
-            
+
     }
 }
