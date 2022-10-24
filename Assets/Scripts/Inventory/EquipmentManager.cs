@@ -149,16 +149,16 @@ public class EquipmentManager : MonoBehaviour
 
 
     }
-
+    /*Connect System to Player*/
     public void EquipWeapon()
     {
-        Item Item;
+        Item Item = Equipped[0];
         if (EquipFirst)
         {
             Item = Equipped[0];
 
         }
-        else
+        if(EquipSecond)
         {
             Item = Equipped[1];
         }
@@ -195,4 +195,18 @@ public class EquipmentManager : MonoBehaviour
 
     }
 
+    public void SwitchWeapon()
+    {
+        if (EquipFirst)
+        {
+            EquipFirst = false;
+            EquipSecond = true;
+        }
+        else if(!EquipFirst)
+        {
+            EquipSecond = false;
+            EquipFirst = true;
+        }
+        EquipWeapon();
+    }
 }

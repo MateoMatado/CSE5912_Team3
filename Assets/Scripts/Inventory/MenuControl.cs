@@ -25,6 +25,7 @@ public class MenuControl : MonoBehaviour
         inputs.Player.QuickKey2.performed += QuickKey2_performed;
         inputs.Player.QuickKey3.performed += QuickKey3_performed;
         inputs.Player.QuickKey4.performed += QuickKey4_performed;
+        inputs.Player.SwitchWeapon.performed += SwitchWeapon_performed;
     }
     private void OnEnable()
     {
@@ -34,6 +35,7 @@ public class MenuControl : MonoBehaviour
         inputs.Player.QuickKey2.Enable();
         inputs.Player.QuickKey3.Enable();
         inputs.Player.QuickKey4.Enable();
+        inputs.Player.SwitchWeapon.Enable();
     }
 
     private void OnDisable()
@@ -44,6 +46,7 @@ public class MenuControl : MonoBehaviour
         inputs.Player.QuickKey2.Disable();
         inputs.Player.QuickKey3.Disable();
         inputs.Player.QuickKey4.Disable();
+        inputs.Player.SwitchWeapon.Disable();
     }
 
     /*following three functions is to open inventory*/
@@ -91,7 +94,11 @@ public class MenuControl : MonoBehaviour
     {
         QuickKey[3].onClick.Invoke();
     }
-
+    private void SwitchWeapon_performed(InputAction.CallbackContext context)
+    {
+        EquipmentManager.Instance.SwitchWeapon();
+        Debug.Log("Switch");
+    }
     public void OpenInventory()
     {
         GeneralInventory.SetActive(true);
