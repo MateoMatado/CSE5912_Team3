@@ -18,6 +18,7 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private float RandomHeightLimit = 1000;
     [SerializeField] private List<GameObject> Islands;
     [SerializeField] private GameObject Chainlink;
+    [SerializeField] private GameObject FloatingRock;
     [SerializeField] private GameObject StartingIsland;
 
     private Dictionary<String,Vector2> DIslands = new Dictionary<String,Vector2>();
@@ -44,17 +45,46 @@ public class IslandGeneration : MonoBehaviour
         Vector3 Pos1 = new Vector3();
         Vector3 Pos2 = new Vector3();
         int num = 0;
+        int posmod = 6;
         foreach(GameObject Island in IslandList)
         {
             foreach (GameObject Island2 in IslandList)
             {
-                if(Random.RandomRange(0,100) <= 3 && num < ChainNum)
+                if(Random.RandomRange(0,100) <= 1 && num < ChainNum)
                 {
+                    Pos1 = new Vector3(Island.transform.position.x, Island.transform.position.y, Island.transform.position.z);
+                    Pos2 = new Vector3(Island2.transform.position.x, Island2.transform.position.y, Island2.transform.position.z);
                     GameObject Parent = new GameObject();
                     Parent.name = "Chain";
-                    Vector3 pos1 = new Vector3(Island.transform.position.x, Island.transform.position.y, Island.transform.position.z);
-                    Vector3 pos2 = new Vector3(Island2.transform.position.x, Island2.transform.position.y, Island2.transform.position.z);
-                    ChainScript Chain = new ChainScript(pos1, pos2, Parent, Chainlink);
+                    if (Pos1.x < Pos2.x && Pos1.y < Pos2.y)
+                    {
+                        Pos1.x += DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z += DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x += DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z += DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    else if (Pos1.x > Pos2.x && Pos1.y < Pos2.y)
+                    {
+                        Pos1.x -= DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z += DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x -= DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z += DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    else if (Pos1.x < Pos2.x && Pos1.y > Pos2.y)
+                    {
+                        Pos1.x += DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z -= DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x += DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z -= DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    else
+                    {
+                        Pos1.x -= DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z -= DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x -= DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z -= DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    ChainScript Chain = new ChainScript(Pos1, Pos2, Parent, Chainlink, FloatingRock);
                     num++;
                 }
             }
