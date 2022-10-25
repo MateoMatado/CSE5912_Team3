@@ -269,6 +269,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""eaf6693f-bb7a-4fe6-a446-11c6250eb9b7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -753,6 +762,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwapHands"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb8e3244-dea3-4a89-9e06-ff9a249949c6"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1367,6 +1387,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_EquipHammer = m_Player.FindAction("EquipHammer", throwIfNotFound: true);
         m_Player_Unequip = m_Player.FindAction("Unequip", throwIfNotFound: true);
         m_Player_SwapHands = m_Player.FindAction("SwapHands", throwIfNotFound: true);
+        m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1465,6 +1486,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_EquipHammer;
     private readonly InputAction m_Player_Unequip;
     private readonly InputAction m_Player_SwapHands;
+    private readonly InputAction m_Player_SwitchWeapon;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1496,6 +1518,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @EquipHammer => m_Wrapper.m_Player_EquipHammer;
         public InputAction @Unequip => m_Wrapper.m_Player_Unequip;
         public InputAction @SwapHands => m_Wrapper.m_Player_SwapHands;
+        public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1586,6 +1609,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @SwapHands.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapHands;
                 @SwapHands.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapHands;
                 @SwapHands.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapHands;
+                @SwitchWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1671,6 +1697,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @SwapHands.started += instance.OnSwapHands;
                 @SwapHands.performed += instance.OnSwapHands;
                 @SwapHands.canceled += instance.OnSwapHands;
+                @SwitchWeapon.started += instance.OnSwitchWeapon;
+                @SwitchWeapon.performed += instance.OnSwitchWeapon;
+                @SwitchWeapon.canceled += instance.OnSwitchWeapon;
             }
         }
     }
@@ -1854,6 +1883,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnEquipHammer(InputAction.CallbackContext context);
         void OnUnequip(InputAction.CallbackContext context);
         void OnSwapHands(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
