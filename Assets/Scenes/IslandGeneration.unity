@@ -221,7 +221,7 @@ MonoBehaviour:
   Width: 5000
   Length: 5000
   Height: 50
-  Attempts: 100
+  Attempts: 1000
   ChainNum: 10
   RandomHeightLimit: 1000
   Islands:
@@ -232,6 +232,7 @@ MonoBehaviour:
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
   FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
   StartingIsland: {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
+  BossIsland: {fileID: 5332919744698319654, guid: 1bfdc02b57f20064c941499cb85c90c4, type: 3}
   IslandList: []
 --- !u!4 &843580765
 Transform:
