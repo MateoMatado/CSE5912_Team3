@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 52
+  controlID: 54
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 55
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 54
+  controlID: 56
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 422
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -400,23 +400,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c4b4f7ff
-      m_LastClickedID: -543548
-      m_ExpandedIDs: 2efaf6ff3afaf6ff30fbffff58620000e86200001c6d0000
+      m_SelectedIDs: b25d0000
+      m_LastClickedID: 23986
+      m_ExpandedIDs: 30fbfffff8620000386b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: FX_BloodSplat_01 (3)
-        m_OriginalName: FX_BloodSplat_01 (3)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -543494
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -634,7 +634,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -651,9 +651,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 8.658779, y: -8.700001, z: 556.99}
+    m_Target: {x: 4.893692, y: -18.685492, z: 532.11017}
     speed: 2
-    m_Value: {x: 8.658779, y: -8.700001, z: 556.99}
+    m_Value: {x: 4.893692, y: -18.685492, z: 532.11017}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -700,13 +700,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.017663496, y: 0.633613, z: -0.014429616, w: -0.7733323}
+    m_Target: {x: -0.20435408, y: 0.009712879, z: -0.001993274, w: -0.97886574}
     speed: 2
-    m_Value: {x: -0.017663244, y: 0.633604, z: -0.014429411, w: -0.77332133}
+    m_Value: {x: -0.20435031, y: 0.009712699, z: -0.0019932373, w: -0.9788477}
   m_Size:
-    m_Target: 0.0000134869915
+    m_Target: 13.93099
     speed: 2
-    m_Value: 0.0000134869915
+    m_Value: 13.93099
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -870,22 +870,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/EnemyPrefabs/Ghoul-Crew-Hand-Painted-Series/Ghoul-Grotesque/Source
+    - Assets/Scripts/Enemies
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/EnemyPrefabs/Ghoul-Crew-Hand-Painted-Series/Ghoul-Grotesque/Source
+  - Assets/Scripts/Enemies
   m_LastFoldersGridSize: 96
   m_LastProjectPath: K:\UNITY_PROJECT\CSE5912_NEW\CSE5912_Team3
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 329}
-    m_SelectedIDs: 42890000
-    m_LastClickedID: 35138
-    m_ExpandedIDs: 0000000036870000388700003a8700003c8700003e87000040870000fa8800006c7e0600
+    scrollPos: {x: 0, y: 649}
+    m_SelectedIDs: a0070100
+    m_LastClickedID: 67488
+    m_ExpandedIDs: 000000007a8700007c8700007e8700008087000082870000848700008687000082070100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -913,7 +913,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000036870000388700003a8700003c8700003e87000040870000
+    m_ExpandedIDs: 000000007a8700007c8700007e87000080870000828700008487000086870000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -941,7 +941,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300009ca1020078c41000
+    m_ExpandedInstanceIDs: c62300009ca1020078c41000de8b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

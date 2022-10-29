@@ -25,10 +25,9 @@ public class GhoulTemp : LivingEntity
     public Transform attackRoot;
     public Transform eyeTransform;
 
-            
     //public AudioClip chaseClip;
     //public AudioClip deathClip;
-    
+
 
     private AudioSource ghoulAudioPlayer;
     public ParticleSystem hitEffect;
@@ -154,12 +153,12 @@ public class GhoulTemp : LivingEntity
                 
                 if (navMeshAgent.remainingDistance <= remainingDistance)
                 {
+                    //var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
                     var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
                     //var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
                 }
                 
-
 
 
                 //Then, check nearby object whether it is target(player) by checking colliders nearby

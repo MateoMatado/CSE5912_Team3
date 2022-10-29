@@ -29,12 +29,12 @@ public class BossTypeA : LivingEntity
     public float attackRadius = 3f;
     private float attackDistance;
     private const float dashRange = 70f;
-    private const float spinStartDistance = 30f;    
+    private const float spinStartDistance = 50f;    
 
     private const float faintTime = 3f;
-    private const float spinTime = 8f;
+    private const float spinTime = 4f;
     private const float roarTime = 1f;
-    private const float waitingTimeBeforeDash = 2f;
+    private const float waitingTimeBeforeDash = 5f;
 
     private float speed = 3f;
     private const float chaseSpeed = 10f;
