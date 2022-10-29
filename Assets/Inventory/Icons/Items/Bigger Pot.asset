@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 8
   itemName: Bigger Pot
   icon: {fileID: 21300000, guid: 70752464496b50a4ebd2bea4111c15c9, type: 3}
-  EffectValue: 30
+  Value: 50
   Effect: 2x Size (30s)
