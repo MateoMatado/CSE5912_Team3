@@ -123,65 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &228366100
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 228366102}
-  - component: {fileID: 228366101}
-  m_Layer: 0
-  m_Name: IslandGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &228366101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228366100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31627ef880d433041ad601dfd3e1afc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bias: 1
-  Width: 5000
-  Length: 5000
-  Height: 50
-  Attempts: 100
-  RandomHeightLimit: 1000
-  Islands:
-  - {fileID: 2070914281333398461, guid: 5634004bfd5d24e4c81b463d2375c3d9, type: 3}
-  - {fileID: 2916570678104877123, guid: cca340d613f5ff94ab60d397f745707a, type: 3}
-  - {fileID: 6891552101434141695, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
-  - {fileID: 1891037396360784119, guid: 5184d25ec5dc24a429c4fa7d669f6c7b, type: 3}
-  - {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
-  Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
-  StartingIsland: {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
-  IslandList: []
---- !u!4 &228366102
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228366100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &714918224
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +187,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &843580763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 843580765}
+  - component: {fileID: 843580764}
+  m_Layer: 0
+  m_Name: IslandGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &843580764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843580763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31627ef880d433041ad601dfd3e1afc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bias: 2
+  Width: 5000
+  Length: 5000
+  Height: 50
+  Attempts: 1000
+  ChainNum: 10
+  RandomHeightLimit: 1000
+  Islands:
+  - {fileID: 2070914281333398461, guid: 5634004bfd5d24e4c81b463d2375c3d9, type: 3}
+  - {fileID: 2916570678104877123, guid: cca340d613f5ff94ab60d397f745707a, type: 3}
+  - {fileID: 6891552101434141695, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
+  - {fileID: 1891037396360784119, guid: 5184d25ec5dc24a429c4fa7d669f6c7b, type: 3}
+  Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
+  FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
+  StartingIsland: {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
+  BossIsland: {fileID: 5332919744698319654, guid: 1bfdc02b57f20064c941499cb85c90c4, type: 3}
+  IslandList: []
+--- !u!4 &843580765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843580763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &945885212
 GameObject:
