@@ -33,10 +33,11 @@ public class ChainScriptTest : MonoBehaviour
 
         Vector3 prevGameObjectPos = StartPos;
 
-        while (CurrDist < Distance)
+        while (CurrDist <= Distance)
         {
             GameObject Link = GameObject.Instantiate(ChainLink);
             Link.transform.position = new Vector3((float)(ChainSize.y - .11) + prevGameObjectPos.x, prevGameObjectPos.y, prevGameObjectPos.z);
+            StartChain.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
             Link.transform.SetParent(gameObject.transform);
             prevGameObjectPos = Link.transform.position;
 

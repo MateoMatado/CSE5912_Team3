@@ -158,9 +158,9 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i<amount; i++)
         {
-            GameObject obj = ToolsFactory.Instance.GetDropObject(name);
+            GameObject obj = ItemsFactory.Instance.GetDropObject(name.text);
             Vector3 newPosition = Player.position + (Player.forward * 8) + (Player.up * -4f);
-            Instantiate(obj, newPosition, Player.rotation);
+            Instantiate(obj, newPosition, obj.transform.rotation);
         }
 
     }
@@ -227,6 +227,7 @@ public class InventoryManager : MonoBehaviour
         Name.text = itemName.text;
         Icon.sprite = itemIcon.sprite;
         Amount.text = itemAmount.text;
+        
         
     }
 

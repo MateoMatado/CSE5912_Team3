@@ -51,6 +51,7 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     {
        
         InventoryManager.Instance.Remove(name, 1);
+        ItemEffectFactory.Instance.Effect(name.text);
 
     }
 

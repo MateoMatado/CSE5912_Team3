@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 public class IslandGeneration : MonoBehaviour
@@ -13,10 +14,13 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private int Length = 100;
     [SerializeField] private int Height = 50;
     [SerializeField] private int Attempts = 10;
-    [SerializeField] private float Spacing = 2;
+    [SerializeField] private int ChainNum = 15;
     [SerializeField] private float RandomHeightLimit = 1000;
     [SerializeField] private List<GameObject> Islands;
     [SerializeField] private GameObject Chainlink;
+    [SerializeField] private GameObject FloatingRock;
+    [SerializeField] private GameObject StartingIsland;
+    [SerializeField] private GameObject BossIsland;
 
     private Dictionary<String,Vector2> DIslands = new Dictionary<String,Vector2>();
     private enum EIslands{Empty,Filled};
@@ -42,17 +46,46 @@ public class IslandGeneration : MonoBehaviour
         Vector3 Pos1 = new Vector3();
         Vector3 Pos2 = new Vector3();
         int num = 0;
+        int posmod = 6;
         foreach(GameObject Island in IslandList)
         {
             foreach (GameObject Island2 in IslandList)
             {
-                if(Random.RandomRange(0,100) <= 5 && num < 5)
+                if(Random.RandomRange(0,100) <= 1 && num < ChainNum)
                 {
+                    Pos1 = new Vector3(Island.transform.position.x, Island.transform.position.y, Island.transform.position.z);
+                    Pos2 = new Vector3(Island2.transform.position.x, Island2.transform.position.y, Island2.transform.position.z);
                     GameObject Parent = new GameObject();
                     Parent.name = "Chain";
-                    Vector3 pos1 = new Vector3(Island.transform.position.x, Island.transform.position.y, Island.transform.position.z);
-                    Vector3 pos2 = new Vector3(Island2.transform.position.x, Island2.transform.position.y, Island2.transform.position.z);
-                    ChainScript Chain = new ChainScript(pos1, pos2, Parent, Chainlink);
+                    if (Pos1.x < Pos2.x && Pos1.y < Pos2.y)
+                    {
+                        Pos1.x += DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z += DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x += DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z += DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    else if (Pos1.x > Pos2.x && Pos1.y < Pos2.y)
+                    {
+                        Pos1.x -= DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z += DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x -= DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z += DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    else if (Pos1.x < Pos2.x && Pos1.y > Pos2.y)
+                    {
+                        Pos1.x += DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z -= DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x += DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z -= DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    else
+                    {
+                        Pos1.x -= DIslands[Island.name.ToString()].x / posmod;
+                        Pos1.z -= DIslands[Island.name.ToString()].y / posmod;
+                        Pos2.x -= DIslands[Island2.name.ToString()].x / posmod;
+                        Pos2.z -= DIslands[Island2.name.ToString()].y / posmod;
+                    }
+                    ChainScript Chain = new ChainScript(Pos1, Pos2, Parent, Chainlink, FloatingRock);
                     num++;
                 }
             }
@@ -64,6 +97,29 @@ public class IslandGeneration : MonoBehaviour
         EIslandArray = new int[Width, Length];
         gameObjectIslands = new GameObject[Width, Length];
         int BiasDec = Bias;
+
+        for (int x = 0; x < DIslands["IslandBasic"].x; x++)
+        {
+            for (int y = 0; y < DIslands["IslandBasic"].y; y++)
+            {
+                EIslandArray[x + 2000, y + 2000] = (int)EIslands.Filled;
+            }
+        }
+        gameObjectIslands[2000, 2000] = GameObject.Instantiate(StartingIsland);
+        gameObjectIslands[2000, 2000].transform.position = new Vector3(2000, Random.Range(100, RandomHeightLimit), 2000);
+        gameObjectIslands[2000, 2000].transform.SetParent(transform);
+
+        for (int x = 0; x < 1000; x++)
+        {
+            for (int y = 0; y < 1000; y++)
+            {
+                EIslandArray[x + (int)(Width/2), y + (int)(Width / 2)] = (int)EIslands.Filled;
+            }
+        }
+        gameObjectIslands[2000, 2000] = GameObject.Instantiate(BossIsland);
+        gameObjectIslands[2000, 2000].transform.position = new Vector3((float)(Width/2.3), RandomHeightLimit + RandomHeightLimit/3, (float)(Length / 2.3));
+        gameObjectIslands[2000, 2000].transform.SetParent(transform);
+
         while (BiasDec >= 0)
         {
             for (int i = 0; i < Attempts; i++)
@@ -103,7 +159,7 @@ public class IslandGeneration : MonoBehaviour
                         gameObjectIslands[(int)pos.x, (int)pos.y].transform.Rotate(new Vector3(0, -90, 0), Space.Self);
                         rotcheck = true;
                     }
-                    gameObjectIslands[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x * Spacing, Random.Range(100, RandomHeightLimit), (int)pos.y * Spacing);
+                    gameObjectIslands[(int)pos.x, (int)pos.y].transform.position = new Vector3((int)pos.x, Random.Range(100, RandomHeightLimit), (int)pos.y);
                     gameObjectIslands[(int)pos.x, (int)pos.y].transform.SetParent(transform);
 
                     if (rotcheck)

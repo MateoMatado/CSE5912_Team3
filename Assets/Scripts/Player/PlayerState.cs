@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PlayerState
 {
-    protected PlayerStateMachine stateMachine;
+    public PlayerStateMachine stateMachine;
     
     public virtual void Enter()
     {

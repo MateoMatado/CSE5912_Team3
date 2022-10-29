@@ -14,7 +14,14 @@ namespace Team3.Input
     {
         private GameInput inputs;
 
+        // Temporary until inventory is integrated
+        [SerializeField] GameObject sword;
+        [SerializeField] GameObject foamFinger;
+        [SerializeField] GameObject hammer;
+        AvatarIKGoal lastHand = AvatarIKGoal.RightHand;
+
         public static InputType currentDevice = InputType.MouseKeyboard;
+        public static bool InIK = false;
 
         void Awake()
         {
@@ -24,9 +31,9 @@ namespace Team3.Input
             inputs.Player.Jump.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PlayerJump", null, inputs.Player.Jump); };
             inputs.Player.Pause.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("PauseUnpause", null, inputs.Player.Pause); };
             inputs.Player.ReloadScene.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LoadRunning", null, inputs.Player.Pause); };
-            inputs.Player.LeftArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LeftArmActivate", null, (inputs.Player.LeftArmActivate, inputs.Player.MoveArm, inputs.Player.MoveArmMouse)); };
+            inputs.Player.LeftArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("LeftArmActivate", AvatarIKGoal.LeftHand, (inputs.Player.LeftArmActivate, inputs.Player.MoveArm, inputs.Player.MoveArmMouse)); };
             inputs.Player.LeftArmActivate.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("LeftArmDeactivate", null, inputs.Player.LeftArmActivate); };
-            inputs.Player.RightArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmActivate", null, (inputs.Player.RightArmActivate, inputs.Player.MoveArm, inputs.Player.MoveArmMouse)); };
+            inputs.Player.RightArmActivate.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmActivate", AvatarIKGoal.RightHand, (inputs.Player.RightArmActivate, inputs.Player.MoveArm, inputs.Player.MoveArmMouse)); };
             inputs.Player.RightArmActivate.canceled += (context) => { Events.EventsPublisher.Instance.PublishEvent("RightArmDeactivate", null, inputs.Player.RightArmActivate); };
             //inputs.Player.MoveArm.started += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArm", null, inputs.Player.MoveArm); };
             inputs.Player.MoveArmMouse.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveArmMouse", null, inputs.Player.MoveArmMouse); };
@@ -35,9 +42,16 @@ namespace Team3.Input
             inputs.Player.Target.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Target", null, inputs.Player.Target); };
             inputs.Player.ChangeBanana.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "banana"); };
             inputs.Player.ChangeBaby.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "baby"); };
+            inputs.Player.SwapHands.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("SwapHands", null, null); };
+
+            inputs.Player.Unequip.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, null); };
+            inputs.Player.EquipHand.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKUnarmed()); };
+            inputs.Player.EquipSword.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKSword(sword)); };
+            inputs.Player.EquipFoam.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKFoam(foamFinger)); };
+            inputs.Player.EquipHammer.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKHammer(hammer)); };
 
             //for temporary camera switching, by Jimmy 
-            inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
+            // inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
 
             Events.EventsPublisher.Instance.SubscribeToEvent("LeftArmActivate", EnableArm);
             Events.EventsPublisher.Instance.SubscribeToEvent("RightArmActivate", EnableArm);
@@ -61,6 +75,13 @@ namespace Team3.Input
 
             inputs.Player.Target.Enable();
 
+            inputs.Player.Unequip.Enable();
+            inputs.Player.EquipHand.Enable();
+            inputs.Player.EquipSword.Enable();
+            inputs.Player.EquipFoam.Enable();
+            inputs.Player.EquipHammer.Enable();
+            inputs.Player.SwapHands.Enable();
+
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.Enable();
         }
@@ -81,6 +102,13 @@ namespace Team3.Input
             inputs.Player.LookMouse.Disable();
 
             inputs.Player.Target.Disable();
+
+            inputs.Player.Unequip.Disable();
+            inputs.Player.EquipHand.Disable();
+            inputs.Player.EquipSword.Disable();
+            inputs.Player.EquipFoam.Disable();
+            inputs.Player.EquipHammer.Disable();
+            inputs.Player.SwapHands.Disable();
 
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.Disable();
@@ -103,6 +131,9 @@ namespace Team3.Input
             inputs.Player.MoveArmMouse.Enable();
             inputs.Player.LookMouse.Disable();
             inputs.Player.LookPad.Disable();
+            InIK = true;
+
+            lastHand = (AvatarIKGoal)sender;
         }
 
         private void DisableArm(object sender, object data)
@@ -110,6 +141,7 @@ namespace Team3.Input
             arms--;
             if (arms < 1)
             {
+                InIK = false;
                 inputs.Player.MoveArm.Disable();
                 inputs.Player.MoveArmMouse.Disable();
                 inputs.Player.LookMouse.Enable();

@@ -6,6 +6,6 @@ public class ChainCollisionHandler : MonoBehaviour
 {
     private void Awake()
     {
-        Physics.IgnoreLayerCollision(0, 7);
+        Physics.IgnoreLayerCollision(7, 8);
     }
 }

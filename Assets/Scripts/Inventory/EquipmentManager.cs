@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
-
+using Team3.Events;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -23,8 +23,9 @@ public class EquipmentManager : MonoBehaviour
     public Sprite NoEquip;
     public List<Image> WeaponHUD;
 
-
-
+    private bool EquipFirst = true;
+    private bool EquipSecond = false;
+    AvatarIKGoal lastHand = AvatarIKGoal.RightHand;
     // Normal Set up
     public void Awake()
     {
@@ -50,7 +51,7 @@ public class EquipmentManager : MonoBehaviour
             if (item.itemName.Equals(name.text))
             {
                 Equipment.Remove(item);
-                GameObject obj = ToolsFactory.Instance.GetDropObject(name);
+                GameObject obj = ItemsFactory.Instance.GetDropObject(name.text);
                 Vector3 newPosition = Player.position + (Player.forward * 8) + (Player.up );
                 Instantiate(obj, newPosition, Player.rotation);
             }
@@ -79,6 +80,7 @@ public class EquipmentManager : MonoBehaviour
         }
 
         ListItems();
+        EquipWeapon();
     }
 
     public void TakeOff(int pos)
@@ -147,6 +149,64 @@ public class EquipmentManager : MonoBehaviour
 
 
     }
+    /*Connect System to Player*/
+    public void EquipWeapon()
+    {
+        Item Item = Equipped[0];
+        if (EquipFirst)
+        {
+            Item = Equipped[0];
 
+        }
+        if(EquipSecond)
+        {
+            Item = Equipped[1];
+        }
+        /*GetWeapon*/
+        if (Item != null)
+        {
+            GetWeapon(Item.itemName);
+        }
+        else
+        {
+            GetWeapon("null");
+        }
+    }
 
+    public void GetWeapon(String name)
+    {
+        GameObject obj = ItemsFactory.Instance.GetDropObject(name);
+        switch (name)
+        {
+            case "Sword":
+                EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKSword(obj));
+                break;
+            case "FoamFinger":
+                EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKFoam(obj));
+                break;
+            case "Hammer":
+                EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKHammer(obj));
+                break;
+            case "null":
+                EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKUnarmed());
+                break;
+        }
+            
+
+    }
+
+    public void SwitchWeapon()
+    {
+        if (EquipFirst)
+        {
+            EquipFirst = false;
+            EquipSecond = true;
+        }
+        else if(!EquipFirst)
+        {
+            EquipSecond = false;
+            EquipFirst = true;
+        }
+        EquipWeapon();
+    }
 }

@@ -39,12 +39,14 @@ public class GameStateMachine
     private GameStateMachine()
     {
         currentState = DefaultState;
+        currentState.stateMachine = this;
     }
 
     public void SwitchState(GameState newState)
     {
         currentState.Exit();
         currentState = newState;
+        currentState.stateMachine = this;
         newState.Enter();
     }
 }
