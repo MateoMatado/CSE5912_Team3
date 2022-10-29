@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 5
   itemName: Potions Blue
   icon: {fileID: 21300000, guid: 74f3ff7910cd94f41af53cfb1413fa03, type: 3}
-  EffectValue: 20
+  Value: 20
   Effect: +20 Mana

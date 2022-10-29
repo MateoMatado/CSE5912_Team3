@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 2
   itemName: Blue Pot
   icon: {fileID: 21300000, guid: f25acdfafd81edc4cba58781c28990ad, type: 3}
-  EffectValue: 50
+  Value: 50
   Effect: +50 Mana

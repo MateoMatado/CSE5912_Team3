@@ -70,7 +70,7 @@ public class PlayerStatus : MonoBehaviour
     /*Get Bigger*/
     public void GetBigger(float amount)
     {
-        transform.localScale = new Vector3(6, 6, 6);
+        transform.localScale = new Vector3(4, 4, 4);
         BiggerTime = amount;
         transform.position += transform.up * 5f;
         StartCoroutine(Bigger());
