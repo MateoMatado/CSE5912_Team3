@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4343968, g: 0.46909028, b: 0.47645423, a: 1}
+  m_IndirectSpecularColor: {r: 0.43439746, g: 0.46909103, b: 0.47645578, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17341,6 +17341,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 55f94b3dfaaba26458dbf470efc8cfa4, type: 3}
   m_PrefabInstance: {fileID: 462693281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &464532943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4772127645535004, guid: 128214d13765b4ab2860bb108de796c7, type: 3}
+  m_PrefabInstance: {fileID: 636511757}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &470761701
 PrefabInstance:
@@ -37535,6 +37540,30 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3e29725df726b3b43942802262aa27e9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27bfdb9a40efac94b969eaf77cea92d9, type: 3}
+--- !u!1 &943357146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1049403487954978, guid: 128214d13765b4ab2860bb108de796c7, type: 3}
+  m_PrefabInstance: {fileID: 636511757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &943357148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943357146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f638c462b68179e4ea7b8b7cfdec330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  hitEffect: {fileID: 198615267133080452, guid: ed67c2cb8e3a7fb418c6fbb1b001dce2, type: 3}
+  deathSound: {fileID: 8300000, guid: e23c1348148115649813a7baa9c314a0, type: 3}
+  onDamageSound: {fileID: 8300000, guid: 6e43d052aed07fc40b28cf7f6ff54f72, type: 3}
+  targetEntity: {fileID: 1967159757}
+  attackRadius: 3
+  attackRoot: {fileID: 464532943}
 --- !u!1001 &944426758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81184,6 +81213,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 55f94b3dfaaba26458dbf470efc8cfa4, type: 3}
   m_PrefabInstance: {fileID: 1965858396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1967159757 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4520910968986401104, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+  m_PrefabInstance: {fileID: 4520910968256425062}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1971974888 stripped
 Transform:
