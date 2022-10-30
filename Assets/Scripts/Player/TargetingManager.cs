@@ -11,9 +11,12 @@ namespace Team3.Player
         [SerializeField] private CinemachineVirtualCamera defaultCamera;
         [SerializeField] private CinemachineVirtualCamera targetingCamera;
         [SerializeField] private Transform enemyTarget;
+        [SerializeField] private Transform cameraTarget;
+        [SerializeField] private Transform cameraTransform;
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private float sphereRadius = 30;
         [SerializeField] private float tooClose = 5;
+        [SerializeField] public Material outlineMaterial;
         private PlayerStateManager stateManager;
         private GameObject currentEnemy = null;
         private bool targeting = false;
@@ -21,6 +24,9 @@ namespace Team3.Player
         void Awake()
         {
             stateManager = GetComponent<PlayerStateManager>();
+            if (cameraTransform == null) cameraTransform = Camera.main.transform;
+            if (defaultCamera == null) defaultCamera = GameObject.Find("DefaultCamera").GetComponent<CinemachineVirtualCamera>();
+            if (targetingCamera == null) targetingCamera = GameObject.Find("TargetingCamera").GetComponent<CinemachineVirtualCamera>();
 
             Events.EventsPublisher.Instance.SubscribeToEvent("EnterTargetingState", StartTargeting);
             Events.EventsPublisher.Instance.SubscribeToEvent("ExitTargetingState", StopTargeting);
@@ -40,6 +46,8 @@ namespace Team3.Player
             targetingCamera.Priority = 0;
             defaultCamera.Priority = 10;
             targeting = false;
+            DisableOutline(currentEnemy);
+            currentEnemy = null;
         }
 
         private void HandleTargetEvent(object sender, object data)
@@ -54,12 +62,53 @@ namespace Team3.Player
             }
         }
 
+        private void EnableOutline(GameObject enemy)
+        {
+            if (currentEnemy != null)
+            {
+                foreach (var skinnedMeshRenderer in currentEnemy.GetComponentsInChildren<SkinnedMeshRenderer>())
+                {
+                    var currentMaterials = skinnedMeshRenderer.materials;
+                    List<Material> newMaterials = new List<Material>();
+                    foreach (Material material in currentMaterials)
+                    {
+                        newMaterials.Add(material);
+                    }
+                    newMaterials.Add(outlineMaterial);
+                    skinnedMeshRenderer.materials = newMaterials.ToArray();
+                }
+            }
+        }
+
+        private void DisableOutline(GameObject enemy)
+        {
+            if (currentEnemy != null)
+            {
+                foreach (var skinnedMeshRenderer in currentEnemy.GetComponentsInChildren<SkinnedMeshRenderer>())
+                {
+                    var currentMaterials = skinnedMeshRenderer.materials;
+                    List<Material> newMaterials = new List<Material>();
+                    foreach (Material material in currentMaterials)
+                    {
+                        if (!material.name.Contains(outlineMaterial.name))
+                        {
+                            newMaterials.Add(material);
+                            // Debug.Log("OL: " + material.name + " " + outlineMaterial.name);
+                        }
+                    }
+                    skinnedMeshRenderer.materials = newMaterials.ToArray();
+                    // Debug.Log("OUTLINE: " + currentMaterials.Contains(outlineMaterial));
+                }
+            }
+        }
+
         private IEnumerator Target()
         {
             currentEnemy = null;
             TargetClosestEnemy();
             while (targeting && currentEnemy != null)
             {
+                cameraTarget.transform.rotation = cameraTransform.transform.rotation;
                 if (Vector3.Distance(currentEnemy.transform.position, transform.position) > sphereRadius)
                 {
                     stateManager.StopTargeting();
@@ -79,6 +128,7 @@ namespace Team3.Player
 
         private void TargetClosestEnemy()
         {
+            DisableOutline(currentEnemy);
             var colliders = Physics.OverlapSphere(transform.position, sphereRadius, layerMask).ToList();
             colliders.Sort((a, b) => { return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position)); });
             if (colliders.Count > 0)
@@ -107,6 +157,7 @@ namespace Team3.Player
             {
                 stateManager.StopTargeting();
             }
+            EnableOutline(currentEnemy);
         }
     }
 }

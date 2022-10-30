@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   itemName: Green Pot
-  icon: {fileID: 21300000, guid: ef1c9711f3ce7ee4493afe00b03bfe21, type: 3}
-  EffectValue: 5
+  icon: {fileID: 21300000, guid: 75f3205da4d77cb40b448d7cc6d87bfb, type: 3}
+  Value: 50
+  Effect: 2x speed (30s)

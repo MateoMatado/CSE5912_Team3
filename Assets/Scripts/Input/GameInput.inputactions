@@ -150,9 +150,108 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ToggleRagdoll",
+                    "name": "QuickKey1",
                     "type": "Button",
-                    "id": "199fc864-397e-4388-b2cd-88e0a6af5444",
+                    "id": "9791b852-ba88-402f-a3d1-81caf6871b74",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuickKey2",
+                    "type": "Button",
+                    "id": "8b89866e-33b5-4499-92be-27f471367b5a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuickKey3",
+                    "type": "Button",
+                    "id": "1cecea5f-7e83-4e05-acbd-3a054c774c83",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuickKey4",
+                    "type": "Button",
+                    "id": "d21d3157-f20b-453b-bc3e-7a9bff4f36ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Collect",
+                    "type": "Button",
+                    "id": "c48bd14b-8ef3-41cf-a483-23c278f63cc4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipHand",
+                    "type": "Button",
+                    "id": "ad95a591-d953-4eb3-b87a-1a2b029f8ae0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip Sword",
+                    "type": "Button",
+                    "id": "bb461dcb-d33d-4798-83a2-276b8e2e76ce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipFoam",
+                    "type": "Button",
+                    "id": "f4ec42f0-c654-451e-b400-02abd33f6a60",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipHammer",
+                    "type": "Button",
+                    "id": "d0feae3d-9653-4717-91b9-edc3f51eb1d1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Unequip",
+                    "type": "Button",
+                    "id": "0c26afae-330f-45a2-87ea-e17003155459",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwapHands",
+                    "type": "Button",
+                    "id": "a890d516-6474-442e-87bf-5ae74283f34c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchWeapon",
+                    "type": "Button",
+                    "id": "eaf6693f-bb7a-4fe6-a446-11c6250eb9b7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -525,12 +624,133 @@
                 },
                 {
                     "name": "",
-                    "id": "6c349fde-8fcf-4eb4-bffd-1a645cbb3ce3",
-                    "path": "<Keyboard>/r",
+                    "id": "cfe604f7-44f1-41a5-84e1-6161ae721aed",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleRagdoll",
+                    "action": "QuickKey1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b7f80ec-efdd-45be-9327-611bcddb5925",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuickKey2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e63d168a-e3d6-472b-81ac-16e2154a993a",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuickKey3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d04b2651-dbb3-4c71-aa53-d8565b8af62f",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuickKey4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff9b674d-5b28-4aaa-a6a0-4a48f66906d6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Collect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1af16aa1-be20-49c8-b9ef-21d91e5d802d",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip Sword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6dac2bf-198f-4a30-b55d-3e59011db6e0",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipFoam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49bbec22-4f67-4d7e-b74c-c1a0de6d9da6",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipHammer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "893737e7-fba5-4a2e-b330-e9bec3a0b8b1",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipHand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8cb863d5-ee91-4153-922d-a3a5b3ef8ff0",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Unequip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89d8bd50-7f69-4160-8973-76de66365c1e",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapHands",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb8e3244-dea3-4a89-9e06-ff9a249949c6",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

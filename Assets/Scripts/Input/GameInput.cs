@@ -172,9 +172,108 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ToggleRagdoll"",
+                    ""name"": ""QuickKey1"",
                     ""type"": ""Button"",
-                    ""id"": ""199fc864-397e-4388-b2cd-88e0a6af5444"",
+                    ""id"": ""9791b852-ba88-402f-a3d1-81caf6871b74"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickKey2"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b89866e-33b5-4499-92be-27f471367b5a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickKey3"",
+                    ""type"": ""Button"",
+                    ""id"": ""1cecea5f-7e83-4e05-acbd-3a054c774c83"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickKey4"",
+                    ""type"": ""Button"",
+                    ""id"": ""d21d3157-f20b-453b-bc3e-7a9bff4f36ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Collect"",
+                    ""type"": ""Button"",
+                    ""id"": ""c48bd14b-8ef3-41cf-a483-23c278f63cc4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipHand"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad95a591-d953-4eb3-b87a-1a2b029f8ae0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Equip Sword"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb461dcb-d33d-4798-83a2-276b8e2e76ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipFoam"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4ec42f0-c654-451e-b400-02abd33f6a60"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipHammer"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0feae3d-9653-4717-91b9-edc3f51eb1d1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Unequip"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c26afae-330f-45a2-87ea-e17003155459"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwapHands"",
+                    ""type"": ""Button"",
+                    ""id"": ""a890d516-6474-442e-87bf-5ae74283f34c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""eaf6693f-bb7a-4fe6-a446-11c6250eb9b7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -547,12 +646,133 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6c349fde-8fcf-4eb4-bffd-1a645cbb3ce3"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""id"": ""cfe604f7-44f1-41a5-84e1-6161ae721aed"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToggleRagdoll"",
+                    ""action"": ""QuickKey1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b7f80ec-efdd-45be-9327-611bcddb5925"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickKey2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e63d168a-e3d6-472b-81ac-16e2154a993a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickKey3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d04b2651-dbb3-4c71-aa53-d8565b8af62f"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickKey4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff9b674d-5b28-4aaa-a6a0-4a48f66906d6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Collect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1af16aa1-be20-49c8-b9ef-21d91e5d802d"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Equip Sword"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6dac2bf-198f-4a30-b55d-3e59011db6e0"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipFoam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49bbec22-4f67-4d7e-b74c-c1a0de6d9da6"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipHammer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""893737e7-fba5-4a2e-b330-e9bec3a0b8b1"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipHand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cb863d5-ee91-4153-922d-a3a5b3ef8ff0"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Unequip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89d8bd50-7f69-4160-8973-76de66365c1e"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapHands"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb8e3244-dea3-4a89-9e06-ff9a249949c6"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1156,7 +1376,18 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_ChangeBanana = m_Player.FindAction("ChangeBanana", throwIfNotFound: true);
         m_Player_ChangeBaby = m_Player.FindAction("ChangeBaby", throwIfNotFound: true);
         m_Player_EquipmentInventory = m_Player.FindAction("EquipmentInventory", throwIfNotFound: true);
-        m_Player_ToggleRagdoll = m_Player.FindAction("ToggleRagdoll", throwIfNotFound: true);
+        m_Player_QuickKey1 = m_Player.FindAction("QuickKey1", throwIfNotFound: true);
+        m_Player_QuickKey2 = m_Player.FindAction("QuickKey2", throwIfNotFound: true);
+        m_Player_QuickKey3 = m_Player.FindAction("QuickKey3", throwIfNotFound: true);
+        m_Player_QuickKey4 = m_Player.FindAction("QuickKey4", throwIfNotFound: true);
+        m_Player_Collect = m_Player.FindAction("Collect", throwIfNotFound: true);
+        m_Player_EquipHand = m_Player.FindAction("EquipHand", throwIfNotFound: true);
+        m_Player_EquipSword = m_Player.FindAction("Equip Sword", throwIfNotFound: true);
+        m_Player_EquipFoam = m_Player.FindAction("EquipFoam", throwIfNotFound: true);
+        m_Player_EquipHammer = m_Player.FindAction("EquipHammer", throwIfNotFound: true);
+        m_Player_Unequip = m_Player.FindAction("Unequip", throwIfNotFound: true);
+        m_Player_SwapHands = m_Player.FindAction("SwapHands", throwIfNotFound: true);
+        m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1244,7 +1475,18 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ChangeBanana;
     private readonly InputAction m_Player_ChangeBaby;
     private readonly InputAction m_Player_EquipmentInventory;
-    private readonly InputAction m_Player_ToggleRagdoll;
+    private readonly InputAction m_Player_QuickKey1;
+    private readonly InputAction m_Player_QuickKey2;
+    private readonly InputAction m_Player_QuickKey3;
+    private readonly InputAction m_Player_QuickKey4;
+    private readonly InputAction m_Player_Collect;
+    private readonly InputAction m_Player_EquipHand;
+    private readonly InputAction m_Player_EquipSword;
+    private readonly InputAction m_Player_EquipFoam;
+    private readonly InputAction m_Player_EquipHammer;
+    private readonly InputAction m_Player_Unequip;
+    private readonly InputAction m_Player_SwapHands;
+    private readonly InputAction m_Player_SwitchWeapon;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1265,7 +1507,18 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @ChangeBanana => m_Wrapper.m_Player_ChangeBanana;
         public InputAction @ChangeBaby => m_Wrapper.m_Player_ChangeBaby;
         public InputAction @EquipmentInventory => m_Wrapper.m_Player_EquipmentInventory;
-        public InputAction @ToggleRagdoll => m_Wrapper.m_Player_ToggleRagdoll;
+        public InputAction @QuickKey1 => m_Wrapper.m_Player_QuickKey1;
+        public InputAction @QuickKey2 => m_Wrapper.m_Player_QuickKey2;
+        public InputAction @QuickKey3 => m_Wrapper.m_Player_QuickKey3;
+        public InputAction @QuickKey4 => m_Wrapper.m_Player_QuickKey4;
+        public InputAction @Collect => m_Wrapper.m_Player_Collect;
+        public InputAction @EquipHand => m_Wrapper.m_Player_EquipHand;
+        public InputAction @EquipSword => m_Wrapper.m_Player_EquipSword;
+        public InputAction @EquipFoam => m_Wrapper.m_Player_EquipFoam;
+        public InputAction @EquipHammer => m_Wrapper.m_Player_EquipHammer;
+        public InputAction @Unequip => m_Wrapper.m_Player_Unequip;
+        public InputAction @SwapHands => m_Wrapper.m_Player_SwapHands;
+        public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1323,9 +1576,42 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipmentInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
                 @EquipmentInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
                 @EquipmentInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipmentInventory;
-                @ToggleRagdoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
-                @ToggleRagdoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
-                @ToggleRagdoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @QuickKey1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey1;
+                @QuickKey1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey1;
+                @QuickKey1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey1;
+                @QuickKey2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey2;
+                @QuickKey2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey2;
+                @QuickKey2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey2;
+                @QuickKey3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey3;
+                @QuickKey3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey3;
+                @QuickKey3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey3;
+                @QuickKey4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
+                @QuickKey4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
+                @QuickKey4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickKey4;
+                @Collect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollect;
+                @Collect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollect;
+                @Collect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollect;
+                @EquipHand.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipHand;
+                @EquipHand.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipHand;
+                @EquipHand.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipHand;
+                @EquipSword.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipSword;
+                @EquipSword.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipSword;
+                @EquipSword.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipSword;
+                @EquipFoam.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipFoam;
+                @EquipFoam.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipFoam;
+                @EquipFoam.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipFoam;
+                @EquipHammer.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipHammer;
+                @EquipHammer.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipHammer;
+                @EquipHammer.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipHammer;
+                @Unequip.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnequip;
+                @Unequip.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnequip;
+                @Unequip.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUnequip;
+                @SwapHands.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapHands;
+                @SwapHands.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapHands;
+                @SwapHands.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapHands;
+                @SwitchWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1378,9 +1664,42 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipmentInventory.started += instance.OnEquipmentInventory;
                 @EquipmentInventory.performed += instance.OnEquipmentInventory;
                 @EquipmentInventory.canceled += instance.OnEquipmentInventory;
-                @ToggleRagdoll.started += instance.OnToggleRagdoll;
-                @ToggleRagdoll.performed += instance.OnToggleRagdoll;
-                @ToggleRagdoll.canceled += instance.OnToggleRagdoll;
+                @QuickKey1.started += instance.OnQuickKey1;
+                @QuickKey1.performed += instance.OnQuickKey1;
+                @QuickKey1.canceled += instance.OnQuickKey1;
+                @QuickKey2.started += instance.OnQuickKey2;
+                @QuickKey2.performed += instance.OnQuickKey2;
+                @QuickKey2.canceled += instance.OnQuickKey2;
+                @QuickKey3.started += instance.OnQuickKey3;
+                @QuickKey3.performed += instance.OnQuickKey3;
+                @QuickKey3.canceled += instance.OnQuickKey3;
+                @QuickKey4.started += instance.OnQuickKey4;
+                @QuickKey4.performed += instance.OnQuickKey4;
+                @QuickKey4.canceled += instance.OnQuickKey4;
+                @Collect.started += instance.OnCollect;
+                @Collect.performed += instance.OnCollect;
+                @Collect.canceled += instance.OnCollect;
+                @EquipHand.started += instance.OnEquipHand;
+                @EquipHand.performed += instance.OnEquipHand;
+                @EquipHand.canceled += instance.OnEquipHand;
+                @EquipSword.started += instance.OnEquipSword;
+                @EquipSword.performed += instance.OnEquipSword;
+                @EquipSword.canceled += instance.OnEquipSword;
+                @EquipFoam.started += instance.OnEquipFoam;
+                @EquipFoam.performed += instance.OnEquipFoam;
+                @EquipFoam.canceled += instance.OnEquipFoam;
+                @EquipHammer.started += instance.OnEquipHammer;
+                @EquipHammer.performed += instance.OnEquipHammer;
+                @EquipHammer.canceled += instance.OnEquipHammer;
+                @Unequip.started += instance.OnUnequip;
+                @Unequip.performed += instance.OnUnequip;
+                @Unequip.canceled += instance.OnUnequip;
+                @SwapHands.started += instance.OnSwapHands;
+                @SwapHands.performed += instance.OnSwapHands;
+                @SwapHands.canceled += instance.OnSwapHands;
+                @SwitchWeapon.started += instance.OnSwitchWeapon;
+                @SwitchWeapon.performed += instance.OnSwitchWeapon;
+                @SwitchWeapon.canceled += instance.OnSwitchWeapon;
             }
         }
     }
@@ -1553,7 +1872,18 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnChangeBanana(InputAction.CallbackContext context);
         void OnChangeBaby(InputAction.CallbackContext context);
         void OnEquipmentInventory(InputAction.CallbackContext context);
-        void OnToggleRagdoll(InputAction.CallbackContext context);
+        void OnQuickKey1(InputAction.CallbackContext context);
+        void OnQuickKey2(InputAction.CallbackContext context);
+        void OnQuickKey3(InputAction.CallbackContext context);
+        void OnQuickKey4(InputAction.CallbackContext context);
+        void OnCollect(InputAction.CallbackContext context);
+        void OnEquipHand(InputAction.CallbackContext context);
+        void OnEquipSword(InputAction.CallbackContext context);
+        void OnEquipFoam(InputAction.CallbackContext context);
+        void OnEquipHammer(InputAction.CallbackContext context);
+        void OnUnequip(InputAction.CallbackContext context);
+        void OnSwapHands(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

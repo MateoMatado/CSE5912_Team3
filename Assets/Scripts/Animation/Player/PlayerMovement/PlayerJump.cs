@@ -31,7 +31,7 @@ namespace Team3.PlayerMovement
         void OnJump(object sender, object data)
         {
             ray = new Ray(bottom.position, new Vector3(0, -1, 0));
-            if (Physics.Raycast(ray, rayLength))
+            if (true || Physics.Raycast(ray, rayLength))
             {
                 body.velocity = new Vector3(body.velocity.x, Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight), body.velocity.z);
                 jumped = true;
