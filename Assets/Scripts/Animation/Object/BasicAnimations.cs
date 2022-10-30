@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BasicAnimations : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BasicAnimations : MonoBehaviour
     [SerializeField] Boolean Float = false;
     [SerializeField] float FloatHeight = 0;
     [SerializeField] float FloatSpeed = 0;
+    [SerializeField] Boolean rand = false;
 
     private Boolean FloatSwitch = false;
     private Vector3 InitPos;
@@ -31,7 +33,21 @@ public class BasicAnimations : MonoBehaviour
     }
     private void RotateObject()
     {
-        gameObject.transform.Rotate(RotateDirection);
+        if (!rand)
+        {
+            gameObject.transform.Rotate(RotateDirection);
+        }
+        else
+        {
+            int yrand = Random.Range(0, 2);
+            if (yrand == 0) {
+                gameObject.transform.Rotate(-RotateDirection);
+            }
+            else
+            {
+                gameObject.transform.Rotate(RotateDirection);
+            }
+        }
     }
     private void FloatObject()
     {
