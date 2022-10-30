@@ -8,6 +8,7 @@ public class ItemEffectFactory : MonoBehaviour
     public GameObject effect;
     public ParticleSystem ps;
     public Light light;
+    private bool CD = false;
     // Start is called before the first frame update
     public void Awake()
     {
@@ -18,6 +19,7 @@ public class ItemEffectFactory : MonoBehaviour
 
     public void Effect(string name)
     {
+        CD = true;
         switch (name)
         {
             case "Red Pot":
@@ -63,5 +65,11 @@ public class ItemEffectFactory : MonoBehaviour
         effect.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         effect.SetActive(false);
+        CD = false;
+    }
+
+    public bool InCD()
+    {
+        return CD;
     }
 }
