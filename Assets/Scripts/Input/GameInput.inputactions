@@ -256,6 +256,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EquipConfettiGun",
+                    "type": "Button",
+                    "id": "d8603fa7-9afe-4024-b315-d4e3bc72d689",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -751,6 +760,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0148adfd-0ef1-418d-8b17-44c2c30b5488",
+                    "path": "<Keyboard>/minus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipConfettiGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

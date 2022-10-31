@@ -11,6 +11,7 @@ namespace Team3.Animation.Player
         [SerializeField] GameObject sword;
         [SerializeField] GameObject foamFinger;
         [SerializeField] GameObject hammer;
+        [SerializeField] GameObject confettiGun;
         [SerializeField] float swingForce = 70;
         [SerializeField] float swingThreshold = 0.2f;
         [SerializeField] float mouseSensitivity = 0.01f;
@@ -67,6 +68,15 @@ namespace Team3.Animation.Player
                 right?.DisableWeapon();
                 left?.DisableWeapon();
                 right = (Weapons.IKHammer)data;
+                left = right;
+                right?.EnableWeapon();
+                right.SetParent(transform);
+            }
+            else if ((Weapons.IKWeapon)data is Weapons.IKConfettiGun gun)
+            {
+                right?.DisableWeapon();
+                left?.DisableWeapon();
+                right = gun;
                 left = right;
                 right?.EnableWeapon();
                 right.SetParent(transform);
