@@ -37,6 +37,7 @@ public class ItemPickUp : MonoBehaviour
     {
         InventoryManager.Instance.Add(Item);
         Destroy(gameObject);
+        HUDManager.Instance.GetCoin(Item.Value*-1);
         HUDManager.Instance.CloseCollectPanel();
     }
 

@@ -15,6 +15,9 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     public GameObject UseButton;
     public GameObject DropButton;
     public GameObject EquipButton;
+    public GameObject CD;
+    public Slider cd;
+    public bool inCD = false;
 
     public void DropMenu()
     {
@@ -38,20 +41,27 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     }
     public void Use()
     {
-        int value = Convert.ToInt32(Amount);
-        if (value == 1)
+        if (!ItemEffectFactory.Instance.InCD())
         {
-            Destroy(gameObject);
+            int value = Convert.ToInt32(Amount);
+            if (value == 1)
+            {
+                Destroy(gameObject);
+            }
+            InventoryManager.Instance.Remove(name, 1);
+            ItemEffectFactory.Instance.Effect(name.text);
         }
-        InventoryManager.Instance.Remove(name,1);
-        ItemEffectFactory.Instance.Effect(name.text);
+
     }
 
     public void QuickUse()
     {
-       
-        InventoryManager.Instance.Remove(name, 1);
-        ItemEffectFactory.Instance.Effect(name.text);
+        if (!ItemEffectFactory.Instance.InCD())
+        {
+            InventoryManager.Instance.Remove(name, 1);
+            ItemEffectFactory.Instance.Effect(name.text);
+        }
+
 
     }
 
@@ -63,5 +73,26 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
             DropButton.SetActive(true);
             EquipButton.SetActive(true);
         }
+    }
+
+    public void Update()
+    {
+        if (ItemEffectFactory.Instance.InCD() && !inCD)
+        {
+            inCD = true;
+            CD.SetActive(true);
+            cd.value = 1f;
+            StartCoroutine(InCD());
+        }
+    }
+    IEnumerator InCD()
+    {
+        while(cd.value != 0f)
+        {
+            cd.value -= 0.02f;
+            yield return new WaitForSeconds(0.05f);
+        }
+        CD.SetActive(false);
+        inCD = false;
     }
 }
