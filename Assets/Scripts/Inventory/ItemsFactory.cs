@@ -20,6 +20,8 @@ public class ItemsFactory : MonoBehaviour
     [SerializeField] GameObject Sword;
     [SerializeField] GameObject FoamFinger;
     [SerializeField] GameObject Hammer;
+    /*coin*/
+    [SerializeField] GameObject coin;
     // Start is called before the first frame update
     void Awake()
     {
@@ -77,6 +79,57 @@ public class ItemsFactory : MonoBehaviour
 
         }
         return obj;
+    }
 
+    public GameObject GetRandomObject(int NO)
+    {
+        GameObject obj;
+        switch (NO)
+        {
+            /*Pot*/
+            case 1:
+                obj = RedPot;
+                break;
+            case 2:
+                obj = BluePot;
+                break;
+            case 3:
+                obj = GreenPot;
+                break;
+            case 4:
+                obj = BiggerPot;
+                break;
+            case 5:
+                obj = PurplePot;
+                break;
+            /*Potions*/
+            case 6:
+                obj = RedPotions;
+                break;
+            case 7:
+                obj = BluePotions;
+                break;
+            case 8:
+                obj = GreenPotions;
+                break;
+            case 9:
+                obj = BerserkPotions;
+                break;
+            /*Equipment*/
+            case 10:
+                obj = Sword;
+                break;
+            case 11:
+                obj = FoamFinger;
+                break;
+            case 12:
+                obj = Hammer;
+                break;
+            default:
+                obj = coin;
+                break;
+
+        }
+        return obj;
     }
 }

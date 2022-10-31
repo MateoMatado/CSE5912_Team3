@@ -187,6 +187,9 @@ public class EquipmentManager : MonoBehaviour
             case "Hammer":
                 EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKHammer(obj));
                 break;
+            case "ConfettiGun":
+                EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKConfettiGun(obj));
+                break;
             case "null":
                 EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKUnarmed());
                 break;

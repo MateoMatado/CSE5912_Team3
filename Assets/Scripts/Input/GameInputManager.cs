@@ -18,6 +18,7 @@ namespace Team3.Input
         [SerializeField] GameObject sword;
         [SerializeField] GameObject foamFinger;
         [SerializeField] GameObject hammer;
+        [SerializeField] GameObject confettiGun;
         AvatarIKGoal lastHand = AvatarIKGoal.RightHand;
 
         public static InputType currentDevice = InputType.MouseKeyboard;
@@ -49,6 +50,7 @@ namespace Team3.Input
             inputs.Player.EquipSword.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKSword(sword)); };
             inputs.Player.EquipFoam.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKFoam(foamFinger)); };
             inputs.Player.EquipHammer.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKHammer(hammer)); };
+            inputs.Player.EquipConfettiGun.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKConfettiGun(confettiGun)); };
 
             //for temporary camera switching, by Jimmy 
             // inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
@@ -80,6 +82,7 @@ namespace Team3.Input
             inputs.Player.EquipSword.Enable();
             inputs.Player.EquipFoam.Enable();
             inputs.Player.EquipHammer.Enable();
+            inputs.Player.EquipConfettiGun.Enable();
             inputs.Player.SwapHands.Enable();
 
             //for temporary camera switching, by Jimmy 
@@ -108,6 +111,7 @@ namespace Team3.Input
             inputs.Player.EquipSword.Disable();
             inputs.Player.EquipFoam.Disable();
             inputs.Player.EquipHammer.Disable();
+            inputs.Player.EquipConfettiGun.Disable();
             inputs.Player.SwapHands.Disable();
 
             //for temporary camera switching, by Jimmy 

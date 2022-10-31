@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 7db3eb33cec5f994e89ecf2ace4d63b9, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: fd9e52ef40ddd664a9d72bd06d88e7ee, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11480177, g: 0.0617494, b: 0.0556425, a: 1}
+  m_IndirectSpecularColor: {r: 0.001494512, g: 0.010842968, b: 0.023874689, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1341,19 +1341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8c0dde87e801749b3407e43ff13714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedPot: {fileID: 1000012970591572, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
-  RedPotions: {fileID: 0}
-  BluePot: {fileID: 1000013317980782, guid: 2cf6690298568294cb6b655c0a3aeb87, type: 3}
-  BluePotions: {fileID: 0}
-  GreenPot: {fileID: 1000013846074356, guid: 11e31a2ebb4e6e246bcf8c0ba034a031, type: 3}
-  GreenPotions: {fileID: 0}
-  BerserkPotions: {fileID: 0}
-  BiggerPot: {fileID: 0}
-  PurplePot: {fileID: 0}
-  Axe: {fileID: 1160154057661508, guid: e9f59d77b57d68e4199b7d15367aaa7c, type: 3}
-  Sword: {fileID: 1220633678843950, guid: 944fc80616e7ee844bc7a8f312cd5b6a, type: 3}
-  Bow: {fileID: 0}
-  Wand: {fileID: 0}
 --- !u!114 &352009888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2459,6 +2446,7 @@ GameObject:
   - component: {fileID: 559928289}
   - component: {fileID: 559928288}
   - component: {fileID: 559928287}
+  - component: {fileID: 559928291}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2559,13 +2547,21 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559928286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -515, y: 11.12, z: 223}
+  m_LocalPosition: {x: 67.52756, y: 90.75461, z: -22.2585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 20, y: 180, z: 0}
+--- !u!124 &559928291
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559928286}
+  m_Enabled: 1
 --- !u!1 &580280760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,7 +4963,9 @@ MonoBehaviour:
   - {fileID: 6891552101434141695, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
   - {fileID: 1891037396360784119, guid: 5184d25ec5dc24a429c4fa7d669f6c7b, type: 3}
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
+  FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
   StartingIsland: {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
+  BossIsland: {fileID: 6413008049201610010, guid: 1bfdc02b57f20064c941499cb85c90c4, type: 3}
   IslandList: []
 --- !u!4 &1006411364
 Transform:
@@ -9815,7 +9813,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -11139,6 +11137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fd993d1f14467469cb42abe354592a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 0}
+  ps: {fileID: 0}
+  light: {fileID: 0}
 --- !u!114 &2041099380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11151,19 +11152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8c0dde87e801749b3407e43ff13714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedPot: {fileID: 1000012970591572, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
-  RedPotions: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
-  BluePot: {fileID: 1000013317980782, guid: 2cf6690298568294cb6b655c0a3aeb87, type: 3}
-  BluePotions: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
-  GreenPot: {fileID: 1000013846074356, guid: 11e31a2ebb4e6e246bcf8c0ba034a031, type: 3}
-  GreenPotions: {fileID: 146310, guid: f244d85ca954f4336a1a7595053efbfc, type: 3}
-  BerserkPotions: {fileID: 108390, guid: db1c94431d2a64a068f8c904090cee66, type: 3}
-  BiggerPot: {fileID: 179448, guid: 41ddecd19696e4b7abfe4584fa7efe68, type: 3}
-  PurplePot: {fileID: 168240, guid: cc45d25784d134031be721e31c3c239f, type: 3}
-  Axe: {fileID: 1160154057661508, guid: e9f59d77b57d68e4199b7d15367aaa7c, type: 3}
-  Sword: {fileID: 1220633678843950, guid: 944fc80616e7ee844bc7a8f312cd5b6a, type: 3}
-  Bow: {fileID: 131850, guid: 8093457b576f04fbfa270bca1b2553a1, type: 3}
-  Wand: {fileID: 6262986123301899059, guid: 8e26553eb7bc8f84e87ad5cbe258d7a2, type: 3}
 --- !u!4 &2041099381
 Transform:
   m_ObjectHideFlags: 0

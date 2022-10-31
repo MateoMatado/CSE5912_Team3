@@ -11,15 +11,23 @@ public class HUDManager : MonoBehaviour
     public static HUDManager Instance;
     public GameObject CollectPanel;
     public Text number;
-    private int coin = 0;
+    private int coin = 100;
     public void Awake()
     {
         Instance = this;
     }
-    public void DisplayCollectPanel(string name)
+    public void DisplayCollectPanel(string name, int price)
     {
         var text = CollectPanel.transform.Find("ItemName").GetComponent<Text>();
-        text.text = "Press E to collect " + name;
+        text.text = "Press E to collect " + name + " ($" + price +")";
+        if (AbleToBuy(price))
+        {
+            text.color = Color.white;
+        }
+        else
+        {
+            text.color = Color.red;
+        }
         CollectPanel.SetActive(true);
     }
     public void CloseCollectPanel()
@@ -29,6 +37,14 @@ public class HUDManager : MonoBehaviour
     public void GetCoin(int number)
     {
         coin += number;
+    }
+    public bool AbleToBuy(int price)
+    {
+        if(price > coin)
+        {
+            return false;
+        }
+        return true;
     }
     // Update is called once per frame
     void Update()

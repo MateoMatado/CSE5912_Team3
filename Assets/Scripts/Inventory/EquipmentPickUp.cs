@@ -26,7 +26,7 @@ public class EquipmentPickUp : MonoBehaviour
     /*following three functions is to open inventory*/
     private void Collect_performed(InputAction.CallbackContext context)
     {
-        if (isInRange)
+        if (isInRange && HUDManager.Instance.AbleToBuy(Item.Value))
         {
             PickUp();
         }
@@ -42,7 +42,7 @@ public class EquipmentPickUp : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         isInRange = true;
-        HUDManager.Instance.DisplayCollectPanel(Item.itemName);
+        HUDManager.Instance.DisplayCollectPanel(Item.itemName, Item.Value);
     }
 
     void OnTriggerExit(Collider col)

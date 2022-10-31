@@ -278,6 +278,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipConfettiGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8603fa7-9afe-4024-b315-d4e3bc72d689"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -773,6 +782,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0148adfd-0ef1-418d-8b17-44c2c30b5488"",
+                    ""path"": ""<Keyboard>/minus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipConfettiGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1388,6 +1408,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_Unequip = m_Player.FindAction("Unequip", throwIfNotFound: true);
         m_Player_SwapHands = m_Player.FindAction("SwapHands", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
+        m_Player_EquipConfettiGun = m_Player.FindAction("EquipConfettiGun", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1487,6 +1508,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Unequip;
     private readonly InputAction m_Player_SwapHands;
     private readonly InputAction m_Player_SwitchWeapon;
+    private readonly InputAction m_Player_EquipConfettiGun;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1519,6 +1541,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @Unequip => m_Wrapper.m_Player_Unequip;
         public InputAction @SwapHands => m_Wrapper.m_Player_SwapHands;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
+        public InputAction @EquipConfettiGun => m_Wrapper.m_Player_EquipConfettiGun;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1612,6 +1635,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @SwitchWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
                 @SwitchWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
                 @SwitchWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
+                @EquipConfettiGun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
+                @EquipConfettiGun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
+                @EquipConfettiGun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1700,6 +1726,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @SwitchWeapon.started += instance.OnSwitchWeapon;
                 @SwitchWeapon.performed += instance.OnSwitchWeapon;
                 @SwitchWeapon.canceled += instance.OnSwitchWeapon;
+                @EquipConfettiGun.started += instance.OnEquipConfettiGun;
+                @EquipConfettiGun.performed += instance.OnEquipConfettiGun;
+                @EquipConfettiGun.canceled += instance.OnEquipConfettiGun;
             }
         }
     }
@@ -1884,6 +1913,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnUnequip(InputAction.CallbackContext context);
         void OnSwapHands(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
+        void OnEquipConfettiGun(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

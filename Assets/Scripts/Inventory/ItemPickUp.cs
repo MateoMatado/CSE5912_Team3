@@ -27,7 +27,7 @@ public class ItemPickUp : MonoBehaviour
     /*following three functions is to open inventory*/
     private void Collect_performed(InputAction.CallbackContext context)
     {
-        if (isInRange)
+        if (isInRange && HUDManager.Instance.AbleToBuy(Item.Value))
         {
             PickUp();
         }
@@ -37,13 +37,14 @@ public class ItemPickUp : MonoBehaviour
     {
         InventoryManager.Instance.Add(Item);
         Destroy(gameObject);
+        HUDManager.Instance.GetCoin(Item.Value*-1);
         HUDManager.Instance.CloseCollectPanel();
     }
 
     void OnTriggerEnter(Collider col)
     {
         isInRange = true;
-        HUDManager.Instance.DisplayCollectPanel(Item.itemName);
+        HUDManager.Instance.DisplayCollectPanel(Item.itemName, Item.Value);
     }
 
     void OnTriggerExit(Collider col)
