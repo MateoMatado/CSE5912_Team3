@@ -21,6 +21,9 @@ namespace Team3.Animation.Player.Weapons
         private Vector2 lHalfWH, lDefaultPos;
         private Vector2 rHalfWH, rDefaultPos;
 
+        private float shootInterval = 3f;
+        private float shootTime = 0f;
+
         public IKConfettiGun(GameObject confettiGun)
         {
             Weapon = GameObject.Instantiate(confettiGun);
@@ -73,10 +76,31 @@ namespace Team3.Animation.Player.Weapons
             if (Input.GameInputManager.InIK)
             {
                 Weapon.transform.LookAt(rHand.position + (anim.transform.forward) * 100);
+                shootTime -= Time.deltaTime;
+                if (shootTime <= 0)
+                {
+                    Shoot();
+                    shootTime = shootInterval;
+                }
             }
             else
             {
                 Weapon.transform.LookAt(rHand.position + (rFoot.position - rHand.position) * 100);
+            }
+        }
+
+        public void Shoot()
+        {
+            Weapon.GetComponentInChildren<ParticleSystem>().Play();
+            Vector3 firePoint = Weapon.transform.Find("FirePoint").position;
+            float radius = 5;
+            RaycastHit[] hits = Physics.SphereCastAll(firePoint, radius, Weapon.transform.forward, radius * 2, 6);
+            firePoint.y -= radius;
+            float force = 500;
+            foreach (RaycastHit hit in hits)
+            {
+                Vector3 direction = (hit.collider.transform.position - firePoint).normalized;
+                hit.collider.gameObject.GetComponentInChildren<Rigidbody>().AddForce(direction * force);
             }
         }
 
