@@ -11,7 +11,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager Instance;
     public GameObject CollectPanel;
     public Text number;
-    private int coin = 1000;
+    private int coin = 500;
     public void Awake()
     {
         Instance = this;
