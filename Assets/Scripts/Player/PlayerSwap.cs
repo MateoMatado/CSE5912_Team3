@@ -8,6 +8,7 @@ namespace Team3.Scripts.Player
     {
         [SerializeField] List<string> names;
         [SerializeField] List<GameObject> prefabs;
+        [SerializeField] GameObject cameraTarget;
 
         GameObject current;
         
@@ -30,6 +31,7 @@ namespace Team3.Scripts.Player
             {
                 current = Instantiate(characterMap[names[0]], this.transform.position, Quaternion.Euler(0, 0, 0));
                 current.transform.parent = this.transform;
+                cameraTarget.transform.parent = current.GetComponentInChildren<CameraTarget>(false).transform;
                 current.transform.localScale = new Vector3(1, 1, 1);
                 current.transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
@@ -51,8 +53,10 @@ namespace Team3.Scripts.Player
             string name = (string)data;
             if (characterMap.ContainsKey(name))
             {
+                cameraTarget.transform.parent = transform;
                 Destroy(current);
                 current = Instantiate(characterMap[name], this.transform.position, Quaternion.Euler(0, 0, 0));
+                cameraTarget.transform.parent = current.GetComponentInChildren<CameraTarget>(false).transform;
                 current.transform.parent = this.transform;
                 current.transform.localScale = new Vector3(1, 1, 1);
                 current.transform.localRotation = Quaternion.Euler(0, 0, 0);
