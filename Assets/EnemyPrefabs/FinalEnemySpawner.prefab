@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  ghoulPrefab: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
+  enemyPrefab: {fileID: 57280224200543022, guid: 51dd74121c92d41669007310df82787d, type: 3}
 --- !u!4 &3014551854052635472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  ghoulPrefab: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
+  enemyPrefab: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
 --- !u!1001 &3014551854545964937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  ghoulPrefab: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
+  enemyPrefab: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
 --- !u!1001 &3014551854973558803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  ghoulPrefab: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
+  enemyPrefab: {fileID: 57280224200543022, guid: 51dd74121c92d41669007310df82787d, type: 3}
 --- !u!4 &3014551854973966543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}

@@ -6,14 +6,16 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class EnemySpawner : LivingEntity
 {
-    [SerializeField] private GhoulTemp ghoulPrefab;
+    //[SerializeField] private GhoulTemp ghoulPrefab;
+    [SerializeField] private LivingEntity enemyPrefab;
     public bool IsTriggerOn
     { get; set; }
+    [SerializeField] private const int numberOfSpawnAtOnce = 6;
 
-    private List<GhoulTemp> ghoulsList = new List<GhoulTemp>();
-
+    //private List<GhoulTemp> ghoulsList = new List<GhoulTemp>();
+    private List<LivingEntity> ghoulsList = new List<LivingEntity>();
     private const float radius = 8f;
-    private const int numberOfSpawnAtOnce = 10; 
+    
 
     private const float nextSpawnTime = 5f;
     private float spawnTimer = 0;
@@ -21,7 +23,7 @@ public class EnemySpawner : LivingEntity
     private const float spawnDelayTime = 0.1f;
 
     private int totalEnemyCount;
-    private const int maxEnemyCount = 100;
+    private const int maxEnemyCount = 60;
 
 
 
@@ -73,7 +75,7 @@ public class EnemySpawner : LivingEntity
         for (int i = 0; i < numberOfSpawnAtOnce; i++)
         {
             yield return new WaitForSeconds(spawnDelayTime);
-            GhoulTemp ghoul = Instantiate(ghoulPrefab, spawnPosition[i], rot[i]);
+            LivingEntity ghoul = Instantiate(enemyPrefab, spawnPosition[i], rot[i]);
             ghoulsList.Add(ghoul);
 
             ghoul.onDeath += () => ghoulsList.Remove(ghoul);
