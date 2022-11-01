@@ -10,7 +10,7 @@ public class EnemySpawner : LivingEntity
     [SerializeField] private LivingEntity enemyPrefab;
     public bool IsTriggerOn
     { get; set; }
-    [SerializeField] private const int numberOfSpawnAtOnce = 6;
+    [SerializeField] private int numberOfSpawnAtOnce = 6;
 
     //private List<GhoulTemp> ghoulsList = new List<GhoulTemp>();
     private List<LivingEntity> ghoulsList = new List<LivingEntity>();
