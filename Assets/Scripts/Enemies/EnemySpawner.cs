@@ -11,10 +11,11 @@ public class EnemySpawner : LivingEntity
     public bool IsTriggerOn
     { get; set; }
     [SerializeField] private int numberOfSpawnAtOnce = 6;
+    [SerializeField] private int maxEnemyCount = 20;
 
     //private List<GhoulTemp> ghoulsList = new List<GhoulTemp>();
     private List<LivingEntity> ghoulsList = new List<LivingEntity>();
-    private const float radius = 8f;
+    private const float radius = 12f;
     
 
     private const float nextSpawnTime = 5f;
@@ -23,7 +24,7 @@ public class EnemySpawner : LivingEntity
     private const float spawnDelayTime = 0.1f;
 
     private int totalEnemyCount;
-    private const int maxEnemyCount = 60;
+    
 
 
 

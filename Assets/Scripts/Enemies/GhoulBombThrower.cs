@@ -37,14 +37,14 @@ public class GhoulBombThrower : LivingEntity
     private float turnSmoothVelocity;
 
     // private float damage = 30f;
-    public float attackRadius = 10f;
+    public float attackRadius = 40f;
     private float attackDistance;
 
     private float fieldOfView = 360f;
-    private float viewDistance = 10f;
-    private float lostDistance = 10f;
-    private float patrolSpeed = 10f;
-    private float chaseSpeed = 20f;
+    private float viewDistance = 60f;
+    private float lostDistance = 90f;
+    private float patrolSpeed = 5f;
+    private float chaseSpeed = 10f;
 
 
 
@@ -193,6 +193,7 @@ public class GhoulBombThrower : LivingEntity
         }
         if (state == State.Chase)
         {
+            Debug.Log("Bomb Thrower : "+targetEntity.name);
             var distance = Vector3.Distance(targetEntity.position, transform.position);
             //Debug.Log("current:" + distance+"   ,   attkDis:"+ attackDistance);
             if (distance <= attackDistance + 2f)  //this is to make 

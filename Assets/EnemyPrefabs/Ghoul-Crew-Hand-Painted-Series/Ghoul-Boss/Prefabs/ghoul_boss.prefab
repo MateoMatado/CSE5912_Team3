@@ -2835,7 +2835,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 6e43d052aed07fc40b28cf7f6ff54f72, type: 3}
   onDamageSound: {fileID: 8300000, guid: e23c1348148115649813a7baa9c314a0, type: 3}
   turnSmoothTime: 0.1
-  attackRadius: 10
+  attackRadius: 30
   targetEntity: {fileID: 0}
   whatIsTarget:
     serializedVersion: 2
@@ -2851,7 +2851,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 12
+  m_Speed: 5
   m_Acceleration: 14
   avoidancePriority: 50
   m_AngularSpeed: 180
