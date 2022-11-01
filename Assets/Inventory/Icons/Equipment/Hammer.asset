@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 105
   itemName: Hammer
   icon: {fileID: 21300000, guid: 23f261493e4b99145a971208193e4269, type: 3}
-  EffectValue: 0
+  Value: 200
   Effect: 

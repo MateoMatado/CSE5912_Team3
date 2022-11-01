@@ -22,7 +22,7 @@ public class EquipmentManager : MonoBehaviour
     private Item tempEquipment;
     public Sprite NoEquip;
     public List<Image> WeaponHUD;
-
+    public Item initiateWeapon;
     private bool EquipFirst = true;
     private bool EquipSecond = false;
     AvatarIKGoal lastHand = AvatarIKGoal.RightHand;
@@ -31,6 +31,7 @@ public class EquipmentManager : MonoBehaviour
     {
         Equipped.Add(null);
         Equipped.Add(null);
+        Add(initiateWeapon);
         Instance = this;
 
     }
