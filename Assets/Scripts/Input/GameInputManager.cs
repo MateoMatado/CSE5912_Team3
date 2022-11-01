@@ -43,8 +43,9 @@ namespace Team3.Input
             inputs.Player.Target.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Target", null, inputs.Player.Target); };
             inputs.Player.ChangeBanana.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "banana"); };
             inputs.Player.ChangeBaby.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "baby"); };
+            inputs.Player.ChangeBananaRag.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "bananaRag"); };
             inputs.Player.SwapHands.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("SwapHands", null, null); };
-
+            
             inputs.Player.Unequip.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, null); };
             inputs.Player.EquipHand.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKUnarmed()); };
             inputs.Player.EquipSword.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKSword(sword)); };
@@ -71,6 +72,7 @@ namespace Team3.Input
             inputs.Player.RightArmActivate.Enable();
             inputs.Player.ChangeBanana.Enable();
             inputs.Player.ChangeBaby.Enable();
+            inputs.Player.ChangeBananaRag.Enable();
 
             inputs.Player.LookPad.Enable();
             inputs.Player.LookMouse.Enable();
@@ -100,6 +102,7 @@ namespace Team3.Input
             inputs.Player.MoveArm.Disable();
             inputs.Player.ChangeBanana.Disable();
             inputs.Player.ChangeBaby.Disable();
+            inputs.Player.ChangeBananaRag.Disable();
 
             inputs.Player.LookPad.Disable();
             inputs.Player.LookMouse.Disable();

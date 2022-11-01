@@ -132,6 +132,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ChangeBananaRag",
+                    "type": "Button",
+                    "id": "dec324be-d5d9-4a11-bfc4-4c328c084aa7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ChangeBaby",
                     "type": "Button",
                     "id": "6d50f9b5-f5df-4b55-bef6-6efcb2e2c187",
@@ -771,6 +780,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EquipConfettiGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e99fd6ac-4bc2-4680-a0ec-e51ec569a3b6",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeBananaRag",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
