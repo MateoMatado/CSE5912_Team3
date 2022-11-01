@@ -1,56 +1,111 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.Rendering.DebugUI.Table;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : LivingEntity
 {
-    [SerializeField] private GameObject enemyToSpawn;
-    [SerializeField] private float radius = 10f;
-    [SerializeField] private int numberOfSpawn = 20;
-    //private bool wasTriggeredOn = false;
-    private bool isTriggerOn = false;
-    private float nextSpawnTime = 3f;
+    [SerializeField] private GhoulTemp ghoulPrefab;
+    public bool IsTriggerOn
+    { get; set; }
+
+    private List<GhoulTemp> ghoulsList = new List<GhoulTemp>();
+
+    private const float radius = 8f;
+    private const int numberOfSpawnAtOnce = 10; 
+
+    private const float nextSpawnTime = 5f;
     private float spawnTimer = 0;
-    private int totalSpawnCount = 2;
+
+    private const float spawnDelayTime = 0.1f;
+
+    private int totalEnemyCount;
+    private const int maxEnemyCount = 100;
+
+
+
+    private void Start()
+    {
+        IsTriggerOn = false;
+    }
+
 
     
     private void Update()
     {
-        if (isTriggerOn)
+        if (IsTriggerOn)
         {
+            totalEnemyCount = ghoulsList.Count;
             spawnTimer -= Time.deltaTime;
-            if (spawnTimer < 0)
+
+            if (spawnTimer < 0 && totalEnemyCount < maxEnemyCount)
             {
-                totalSpawnCount --;
-                if(totalSpawnCount > 0)
-                {
-                    Spawn();
-                }
+                Spawn();
                 spawnTimer = nextSpawnTime;
             }
-
-        }
+        }       
     }
-    private void Spawn()
+    
+
+    //Enemies will spawn around the beacon making a circle
+    public void Spawn()
     {
-        for (int i = 0; i < numberOfSpawn; i++)
+        Vector3[] spawnPosition = new Vector3[numberOfSpawnAtOnce];
+        Quaternion[] rot = new Quaternion[numberOfSpawnAtOnce];
+        for (int i = 0; i < numberOfSpawnAtOnce; i++)
         {
-            float angle = i * Mathf.PI * 2 / numberOfSpawn;
+            float angle = i * Mathf.PI * 2 / numberOfSpawnAtOnce;
             float x = Mathf.Cos(angle) * radius;
             float z = Mathf.Sin(angle) * radius;
 
-            Vector3 spawnPosition = transform.position + new Vector3(x, 0, z);
+            spawnPosition[i] = transform.position + new Vector3(x, 0, z);
             float angleDegrees = -angle * Mathf.Rad2Deg;
-            Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+            rot[i] = Quaternion.Euler(0, angleDegrees, 0);
+        }
 
-            Instantiate(enemyToSpawn, spawnPosition, rot);
+         StartCoroutine(CreateEnemy(spawnPosition, rot));
+    }
+
+
+    IEnumerator CreateEnemy(Vector3[] spawnPosition, Quaternion[] rot)
+    {       
+        for (int i = 0; i < numberOfSpawnAtOnce; i++)
+        {
+            yield return new WaitForSeconds(spawnDelayTime);
+            GhoulTemp ghoul = Instantiate(ghoulPrefab, spawnPosition[i], rot[i]);
+            ghoulsList.Add(ghoul);
+
+            ghoul.onDeath += () => ghoulsList.Remove(ghoul);
+            ghoul.onDeath += () => Destroy(ghoul.gameObject, 10f);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+
+
+
+    public override void OnDamage(float damage)
     {
-        Debug.Log("Spawn Enemy!!!");
-        Spawn();
-        isTriggerOn = true;        
+        if (!isDead)
+        {
+            //hitEffect2.Play();
+            //ghoulAudioPlayer.clip = onDamageSound;
+            //ghoulAudioPlayer.PlayOneShot(onDamageSound);
+        }
+
+        //affect damage on hp
+        base.OnDamage(damage);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        //ghoulAnimator.SetTrigger("Die");
+        //ghoulAudioPlayer.clip = deathSound;
+        //ghoulAudioPlayer.PlayOneShot(deathSound);
+
+        Collider BeaconCollider = GetComponent<Collider>();
+        BeaconCollider.enabled = false;
+        Destroy(gameObject);
     }
 }

@@ -154,7 +154,7 @@ public class GhoulTemp : LivingEntity
                 if (navMeshAgent.remainingDistance <= remainingDistance)
                 {
                     //var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
-                    var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
+                    var patrolTargetPosition = GameObject.Find("FinalEnemySpawner").GetComponent<EnemyUtility>().randomPoint;
                     //var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
                 }
