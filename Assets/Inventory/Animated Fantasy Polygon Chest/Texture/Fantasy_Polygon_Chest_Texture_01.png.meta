@@ -1,18 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/japanese_lanterns/Textures/lantern_1_m.tga.meta
-guid: 6fe5d5a9090ccef438fb0dd09141a652
-timeCreated: 1509953896
-licenseType: Store
-TextureImporter:
-  fileIDToRecycleName: {}
-  serializedVersion: 4
-========
 guid: 83ecfd78ea611854fbac7d0127c17e00
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
->>>>>>>> 9d3c73a5908f12a262f7048c9839d29db57d5e82:Assets/Inventory/Animated Fantasy Polygon Chest/Texture/Fantasy_Polygon_Chest_Texture_01.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -30,6 +21,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -40,7 +33,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: -1
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: -1
     wrapV: -1
     wrapW: -1
@@ -52,49 +45,44 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 0
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-<<<<<<<< HEAD:Assets/japanese_lanterns/Textures/lantern_1_m.tga.meta
-  - buildTarget: DefaultTexturePlatform
-========
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
->>>>>>>> 9d3c73a5908f12a262f7048c9839d29db57d5e82:Assets/Inventory/Animated Fantasy Polygon Chest/Texture/Fantasy_Polygon_Chest_Texture_01.png.meta
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<<< HEAD:Assets/japanese_lanterns/Textures/lantern_1_m.tga.meta
-========
     androidETC2FallbackOverride: 0
->>>>>>>> 9d3c73a5908f12a262f7048c9839d29db57d5e82:Assets/Inventory/Animated Fantasy Polygon Chest/Texture/Fantasy_Polygon_Chest_Texture_01.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
     physicsShape: []
-<<<<<<<< HEAD:Assets/japanese_lanterns/Textures/lantern_1_m.tga.meta
-========
     bones: []
     spriteID: 
     vertices: []
     indices: 
     edges: []
     weights: []
->>>>>>>> 9d3c73a5908f12a262f7048c9839d29db57d5e82:Assets/Inventory/Animated Fantasy Polygon Chest/Texture/Fantasy_Polygon_Chest_Texture_01.png.meta
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

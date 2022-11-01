@@ -1769,7 +1769,7 @@ MonoBehaviour:
   EquipmentInventory: {fileID: 1554986663}
   Inventoty: {fileID: 1647976557}
   smallInventory: {fileID: 295536956}
-  Player: {fileID: 0}
+  Player: {fileID: 559928290}
   inventory:
   - {fileID: 2131750160}
   - {fileID: 106157379}
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   NumberMenuForUse: {fileID: 1405307038}
   InputNumberDrop: {fileID: 197639640}
   InputNumberUse: {fileID: 960933898}
-  Player: {fileID: 0}
+  Player: {fileID: 559928290}
   QuickItemsSystem: {fileID: 855378977}
   QuickItems: []
   Keys:
