@@ -2696,7 +2696,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 65
+  field of view: 56
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2722,7 +2722,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559928286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.634705, y: 108.562775, z: 107.127014}
+  m_LocalPosition: {x: 1246.9215, y: 90.75461, z: 2463.5403}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5314,7 +5314,7 @@ MonoBehaviour:
   - {fileID: 1891037396360784119, guid: 5184d25ec5dc24a429c4fa7d669f6c7b, type: 3}
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
   FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
-  StartingIsland: {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
+  StartingIsland: {fileID: 9207809040663074471, guid: 9670816195ef8b44090145da6f5fc533, type: 3}
   BossIsland: {fileID: 6413008049201610010, guid: 1bfdc02b57f20064c941499cb85c90c4, type: 3}
   IslandList: []
 --- !u!4 &1006411364
