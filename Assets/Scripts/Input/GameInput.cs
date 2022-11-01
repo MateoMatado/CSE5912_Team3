@@ -296,6 +296,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleRagdoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b50902e-1924-4afe-bb97-0bd0660cb23d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -813,6 +822,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeBananaRag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3357adae-c5b7-4545-b654-c0d38b488179"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleRagdoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1430,6 +1450,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_SwapHands = m_Player.FindAction("SwapHands", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_Player_EquipConfettiGun = m_Player.FindAction("EquipConfettiGun", throwIfNotFound: true);
+        m_Player_ToggleRagdoll = m_Player.FindAction("ToggleRagdoll", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1531,6 +1552,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwapHands;
     private readonly InputAction m_Player_SwitchWeapon;
     private readonly InputAction m_Player_EquipConfettiGun;
+    private readonly InputAction m_Player_ToggleRagdoll;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1565,6 +1587,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @SwapHands => m_Wrapper.m_Player_SwapHands;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputAction @EquipConfettiGun => m_Wrapper.m_Player_EquipConfettiGun;
+        public InputAction @ToggleRagdoll => m_Wrapper.m_Player_ToggleRagdoll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1664,6 +1687,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipConfettiGun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
                 @EquipConfettiGun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
                 @EquipConfettiGun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
+                @ToggleRagdoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @ToggleRagdoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @ToggleRagdoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1758,6 +1784,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipConfettiGun.started += instance.OnEquipConfettiGun;
                 @EquipConfettiGun.performed += instance.OnEquipConfettiGun;
                 @EquipConfettiGun.canceled += instance.OnEquipConfettiGun;
+                @ToggleRagdoll.started += instance.OnToggleRagdoll;
+                @ToggleRagdoll.performed += instance.OnToggleRagdoll;
+                @ToggleRagdoll.canceled += instance.OnToggleRagdoll;
             }
         }
     }
@@ -1944,6 +1973,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnSwapHands(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnEquipConfettiGun(InputAction.CallbackContext context);
+        void OnToggleRagdoll(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

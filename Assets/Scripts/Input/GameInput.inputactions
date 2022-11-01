@@ -274,6 +274,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleRagdoll",
+                    "type": "Button",
+                    "id": "7b50902e-1924-4afe-bb97-0bd0660cb23d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -791,6 +800,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeBananaRag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3357adae-c5b7-4545-b654-c0d38b488179",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleRagdoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
