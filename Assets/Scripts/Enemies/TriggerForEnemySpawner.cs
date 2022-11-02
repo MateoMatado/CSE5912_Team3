@@ -9,7 +9,7 @@ public class TriggerForEnemySpawner : MonoBehaviour
 
     private bool isTriggerOn = false;
     [SerializeField] List<EnemySpawner> enemySpawner = new List<EnemySpawner>();
-
+    [SerializeField] BossSpawner bossSpawner;
     //Check Player enters Beacon Area. If then, start spawning enemies
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +17,10 @@ public class TriggerForEnemySpawner : MonoBehaviour
         foreach (EnemySpawner spawner in enemySpawner)
         {
             spawner.IsTriggerOn = true;
+        }
+        if(bossSpawner != null)
+        {
+            bossSpawner.IsTriggerOn = true;
         }
     }
 
@@ -26,6 +30,10 @@ public class TriggerForEnemySpawner : MonoBehaviour
         foreach (EnemySpawner spawner in enemySpawner)
         {
             spawner.IsTriggerOn = false;
+        }
+        if (bossSpawner != null)
+        {
+            bossSpawner.IsTriggerOn = false;
         }
     }
 }
