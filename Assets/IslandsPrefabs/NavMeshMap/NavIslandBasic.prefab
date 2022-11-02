@@ -1724,7 +1724,7 @@ GameObject:
   - component: {fileID: 2070914281333398460}
   - component: {fileID: -7282381335516095018}
   m_Layer: 8
-  m_Name: IslandBasic
+  m_Name: NavIslandBasic
   m_TagString: IslandParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

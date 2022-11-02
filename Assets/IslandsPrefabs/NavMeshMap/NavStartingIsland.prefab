@@ -2607,6 +2607,51 @@ Transform:
   m_Father: {fileID: 2820513411661742198}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1429912872035979956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6821041773645123539}
+  - component: {fileID: 85308532472613169}
+  m_Layer: 0
+  m_Name: BossSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6821041773645123539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429912872035979956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 41, y: -12.08, z: 0.15879154}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1955545904385064689}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &85308532472613169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429912872035979956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd92a33000c342e43a4c2d4687c05715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 6561348267047967803, guid: 128214d13765b4ab2860bb108de796c7, type: 3}
 --- !u!1 &1585451193914555447
 GameObject:
   m_ObjectHideFlags: 0
@@ -20262,7 +20307,7 @@ GameObject:
   - component: {fileID: 9207809040868931555}
   - component: {fileID: 9207809040867860729}
   - component: {fileID: 9207809040869814972}
-  - component: {fileID: 8719314368297014445}
+  - component: {fileID: 7935399227799836689}
   m_Layer: 8
   m_Name: Ocean_D
   m_TagString: Untagged
@@ -20349,7 +20394,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: f54c3049110f90d489e27f12da0bbf50, type: 3}
---- !u!114 &8719314368297014445
+--- !u!114 &7935399227799836689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20377,7 +20422,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3428e5d30c00fda47bc955d86d64ab07, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 29c473dde9ae1ed4abd48d28d00ca3cd, type: 2}
 --- !u!1 &9207809040970599173
 GameObject:
   m_ObjectHideFlags: 0
@@ -22937,31 +22982,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2081077856, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2076111
+      value: -1.2044563
       objectReference: {fileID: 0}
     - target: {fileID: 2081077856, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5079994
+      value: 0.5079956
       objectReference: {fileID: 0}
     - target: {fileID: 2081077856, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6514931
+      value: 0.65376854
       objectReference: {fileID: 0}
     - target: {fileID: 2081077856, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3067294
+      value: 0.30672526
       objectReference: {fileID: 0}
     - target: {fileID: 2081077856, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.023697881
+      value: -0.023697563
       objectReference: {fileID: 0}
     - target: {fileID: 2081077856, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.94867456
+      value: 0.94867593
       objectReference: {fileID: 0}
     - target: {fileID: 2081077856, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.073294505
+      value: 0.0732946
       objectReference: {fileID: 0}
     - target: {fileID: 4520910968986401104, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
       propertyPath: m_RootOrder
@@ -23530,7 +23575,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3014551854052384906, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014551854052477873, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3744995092512214907, guid: d9c686f862ff7406ea2fa3a0285ba6ec, type: 3}
+    - target: {fileID: 3014551854052477873, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: maxEnemyCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014551854052477873, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: numberOfSpawnAtOnce
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854052635472, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23560,6 +23617,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -30.61
       objectReference: {fileID: 0}
+    - target: {fileID: 3014551854156497711, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: bossSpawner
+      value: 
+      objectReference: {fileID: 85308532472613169}
     - target: {fileID: 3014551854156497745, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -23615,14 +23676,14 @@ PrefabInstance:
     - target: {fileID: 3014551854176274485, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 57280224200543022, guid: 51dd74121c92d41669007310df82787d, type: 3}
+      objectReference: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
     - target: {fileID: 3014551854176274485, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: maxEnemyCount
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854176274485, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: numberOfSpawnAtOnce
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854545860437, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23636,9 +23697,17 @@ PrefabInstance:
       propertyPath: maxEnemyCount
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3014551854545964938, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: numberOfSpawnAtOnce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014551854973558804, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: maxEnemyCount
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3014551854973651733, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
