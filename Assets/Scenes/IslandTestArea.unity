@@ -26926,7 +26926,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  ghoulPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  numberOfSpawnAtOnce: 6
+  maxEnemyCount: 20
 --- !u!1001 &705185206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88795,5 +88797,21 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 4520910968986690943, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+      propertyPath: names.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520910968986690943, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+      propertyPath: prefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520910968986690943, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+      propertyPath: names.Array.data[2]
+      value: bananaRag
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520910968986690943, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+      propertyPath: prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5362607997023986780, guid: f60fe9f378c3e064199966f8d20d0b2c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}

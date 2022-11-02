@@ -154,6 +154,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ChangeBananaRag"",
+                    ""type"": ""Button"",
+                    ""id"": ""dec324be-d5d9-4a11-bfc4-4c328c084aa7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""ChangeBaby"",
                     ""type"": ""Button"",
                     ""id"": ""6d50f9b5-f5df-4b55-bef6-6efcb2e2c187"",
@@ -283,6 +292,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""name"": ""EquipConfettiGun"",
                     ""type"": ""Button"",
                     ""id"": ""d8603fa7-9afe-4024-b315-d4e3bc72d689"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleRagdoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b50902e-1924-4afe-bb97-0bd0660cb23d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -793,6 +811,28 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""EquipConfettiGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e99fd6ac-4bc2-4680-a0ec-e51ec569a3b6"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeBananaRag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3357adae-c5b7-4545-b654-c0d38b488179"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleRagdoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1394,6 +1434,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
         m_Player_ChangeBanana = m_Player.FindAction("ChangeBanana", throwIfNotFound: true);
+        m_Player_ChangeBananaRag = m_Player.FindAction("ChangeBananaRag", throwIfNotFound: true);
         m_Player_ChangeBaby = m_Player.FindAction("ChangeBaby", throwIfNotFound: true);
         m_Player_EquipmentInventory = m_Player.FindAction("EquipmentInventory", throwIfNotFound: true);
         m_Player_QuickKey1 = m_Player.FindAction("QuickKey1", throwIfNotFound: true);
@@ -1409,6 +1450,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_SwapHands = m_Player.FindAction("SwapHands", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_Player_EquipConfettiGun = m_Player.FindAction("EquipConfettiGun", throwIfNotFound: true);
+        m_Player_ToggleRagdoll = m_Player.FindAction("ToggleRagdoll", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1494,6 +1536,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Target;
     private readonly InputAction m_Player_ChangeBanana;
+    private readonly InputAction m_Player_ChangeBananaRag;
     private readonly InputAction m_Player_ChangeBaby;
     private readonly InputAction m_Player_EquipmentInventory;
     private readonly InputAction m_Player_QuickKey1;
@@ -1509,6 +1552,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwapHands;
     private readonly InputAction m_Player_SwitchWeapon;
     private readonly InputAction m_Player_EquipConfettiGun;
+    private readonly InputAction m_Player_ToggleRagdoll;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1527,6 +1571,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Target => m_Wrapper.m_Player_Target;
         public InputAction @ChangeBanana => m_Wrapper.m_Player_ChangeBanana;
+        public InputAction @ChangeBananaRag => m_Wrapper.m_Player_ChangeBananaRag;
         public InputAction @ChangeBaby => m_Wrapper.m_Player_ChangeBaby;
         public InputAction @EquipmentInventory => m_Wrapper.m_Player_EquipmentInventory;
         public InputAction @QuickKey1 => m_Wrapper.m_Player_QuickKey1;
@@ -1542,6 +1587,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @SwapHands => m_Wrapper.m_Player_SwapHands;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputAction @EquipConfettiGun => m_Wrapper.m_Player_EquipConfettiGun;
+        public InputAction @ToggleRagdoll => m_Wrapper.m_Player_ToggleRagdoll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1593,6 +1639,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ChangeBanana.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBanana;
                 @ChangeBanana.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBanana;
                 @ChangeBanana.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBanana;
+                @ChangeBananaRag.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBananaRag;
+                @ChangeBananaRag.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBananaRag;
+                @ChangeBananaRag.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBananaRag;
                 @ChangeBaby.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
                 @ChangeBaby.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
                 @ChangeBaby.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeBaby;
@@ -1638,6 +1687,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipConfettiGun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
                 @EquipConfettiGun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
                 @EquipConfettiGun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEquipConfettiGun;
+                @ToggleRagdoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @ToggleRagdoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @ToggleRagdoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1684,6 +1736,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ChangeBanana.started += instance.OnChangeBanana;
                 @ChangeBanana.performed += instance.OnChangeBanana;
                 @ChangeBanana.canceled += instance.OnChangeBanana;
+                @ChangeBananaRag.started += instance.OnChangeBananaRag;
+                @ChangeBananaRag.performed += instance.OnChangeBananaRag;
+                @ChangeBananaRag.canceled += instance.OnChangeBananaRag;
                 @ChangeBaby.started += instance.OnChangeBaby;
                 @ChangeBaby.performed += instance.OnChangeBaby;
                 @ChangeBaby.canceled += instance.OnChangeBaby;
@@ -1729,6 +1784,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @EquipConfettiGun.started += instance.OnEquipConfettiGun;
                 @EquipConfettiGun.performed += instance.OnEquipConfettiGun;
                 @EquipConfettiGun.canceled += instance.OnEquipConfettiGun;
+                @ToggleRagdoll.started += instance.OnToggleRagdoll;
+                @ToggleRagdoll.performed += instance.OnToggleRagdoll;
+                @ToggleRagdoll.canceled += instance.OnToggleRagdoll;
             }
         }
     }
@@ -1899,6 +1957,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnTarget(InputAction.CallbackContext context);
         void OnChangeBanana(InputAction.CallbackContext context);
+        void OnChangeBananaRag(InputAction.CallbackContext context);
         void OnChangeBaby(InputAction.CallbackContext context);
         void OnEquipmentInventory(InputAction.CallbackContext context);
         void OnQuickKey1(InputAction.CallbackContext context);
@@ -1914,6 +1973,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnSwapHands(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnEquipConfettiGun(InputAction.CallbackContext context);
+        void OnToggleRagdoll(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

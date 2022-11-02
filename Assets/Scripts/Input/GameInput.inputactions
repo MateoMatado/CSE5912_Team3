@@ -132,6 +132,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ChangeBananaRag",
+                    "type": "Button",
+                    "id": "dec324be-d5d9-4a11-bfc4-4c328c084aa7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ChangeBaby",
                     "type": "Button",
                     "id": "6d50f9b5-f5df-4b55-bef6-6efcb2e2c187",
@@ -261,6 +270,15 @@
                     "name": "EquipConfettiGun",
                     "type": "Button",
                     "id": "d8603fa7-9afe-4024-b315-d4e3bc72d689",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleRagdoll",
+                    "type": "Button",
+                    "id": "7b50902e-1924-4afe-bb97-0bd0660cb23d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -771,6 +789,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "EquipConfettiGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e99fd6ac-4bc2-4680-a0ec-e51ec569a3b6",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeBananaRag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3357adae-c5b7-4545-b654-c0d38b488179",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleRagdoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
