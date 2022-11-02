@@ -192,8 +192,9 @@ MonoBehaviour:
   animated: {fileID: 5614224117950055899}
   ragdoll: {fileID: 5010068696162819461}
   anim: {fileID: 1171577394601231643}
-  transSteps: 60
-  rotSpeed: 3
+  transSteps: 30
+  rotSpeed: 6
+  offset: {x: 0, y: 1.5, z: 0}
 --- !u!1001 &4695234364141025418
 PrefabInstance:
   m_ObjectHideFlags: 0
