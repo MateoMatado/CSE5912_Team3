@@ -274,8 +274,14 @@ public class CannonAimState : PlayerState
         }
         else
         {
-            ragRoot.body.velocity = Vector3.zero;
-            ragRoot.body.AddForce(cannonBarrel.forward * force);
+            //ragRoot.rootBody.velocity = Vector3.zero;
+            //ragRoot.rootBody.AddForce(cannonBarrel.forward * force);
+
+            foreach (Rigidbody body in ragRoot.bodies)
+            {
+                body.velocity = Vector3.zero;
+                body.AddForce(cannonBarrel.forward * force);
+            }
         }
 
     }

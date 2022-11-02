@@ -85,7 +85,8 @@ namespace Team3.Ragdoll
                 return;
             }
             rag = true;
-            ragRoot.body.velocity = parentBody != null ? parentBody.velocity : new Vector3(0, 0, 0);
+
+            ragRoot.rootBody.velocity = (parentBody != null) ? parentBody.velocity : new Vector3(0, 0, 0);
 
             for(int i = 0; i < animatedTransforms.Length; i++)
             {
