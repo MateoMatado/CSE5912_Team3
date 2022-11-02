@@ -45,7 +45,7 @@ namespace Team3.Animation.Player
         {
             while(true)
             {
-                while(moving)
+                while(moving && !Ragdoll.ToggleRagdoll.isRag)
                 {
                     Vector3 target = body.velocity;
                     if (stateManager.StateMachine.CurrentState is TargetingState)

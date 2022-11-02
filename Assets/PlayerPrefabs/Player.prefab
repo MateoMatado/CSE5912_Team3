@@ -195,7 +195,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.2
   m_ScreenY: 0.5
-  m_CameraDistance: 2.5
+  m_CameraDistance: 5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -5450,7 +5450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8302ef2aad18f4cb4ea4ec50b00507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 3
+  jumpHeight: 20
   rayLength: 0.1
   bottom: {fileID: 4520910969773060749}
 --- !u!114 &4520910968986690942
@@ -5529,12 +5529,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   names:
-  - banana
   - baby
+  - banana
   - bananaRag
   prefabs:
+  - {fileID: 7816086343481335076, guid: 850f7724b5ecd455c8102bb9c45bbabf, type: 3}
   - {fileID: 5362607997023986780, guid: 846b74daa45ed2b43b570a930e69fe13, type: 3}
-  - {fileID: 7816086343481335076, guid: 9f0b4c017ae495e4e82baa472bf311ba, type: 3}
   - {fileID: 5362607997023986780, guid: f60fe9f378c3e064199966f8d20d0b2c, type: 3}
 --- !u!114 &4520910968986690938
 MonoBehaviour:
