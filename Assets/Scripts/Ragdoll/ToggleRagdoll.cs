@@ -8,6 +8,10 @@ namespace Team3.Ragdoll
     {
         [SerializeField] GameObject animated;
         [SerializeField] GameObject ragdoll;
+        [SerializeField] Animator anim;
+        [SerializeField] int transSteps = 60;
+        [SerializeField] float rotSpeed = 5;
+        [SerializeField] Vector3 offset = new Vector3(0, 1.5f, 0);
 
         Transform[] animatedTransforms;
         Transform[] ragdollTransforms;
@@ -17,7 +21,8 @@ namespace Team3.Ragdoll
         RagRoot ragRoot;
         Rigidbody parentBody;
 
-        bool rag = false;
+        private static bool rag = false;
+        public static bool isRag { get { return rag; } }
 
         // Start is called before the first frame update
         void Start()
@@ -50,6 +55,17 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.UnsubscribeToEvent("TurnRagdoll", TurnRagdoll);
         }
 
+        private void LateUpdate() // Need to move the player box to the ragdoll for the camera movement
+        {
+            if (rag)
+            {
+                Transform tempParent = ragRoot.transform.parent;
+                ragRoot.transform.parent = transform.parent.parent;
+                transform.parent.position = ragRoot.transform.position + offset;
+                ragRoot.transform.parent = tempParent;
+            }
+        }
+
         void Toggle(object data, object sender)
         {
             if (rag)
@@ -64,6 +80,10 @@ namespace Team3.Ragdoll
 
         void TurnRagdoll(object sender, object data)
         {
+            if (rag)
+            {
+                return;
+            }
             rag = true;
             ragRoot.body.velocity = parentBody != null ? parentBody.velocity : new Vector3(0, 0, 0);
 
@@ -85,8 +105,55 @@ namespace Team3.Ragdoll
 
         void TurnAnimated(object sender, object data)
         {
-            rag = false;
+            if (!rag)
+            {
+                return;
+            }
+            EnAnimDisenRag();
+            StartCoroutine(MoveRagToAnim());
+        }
 
+        IEnumerator MoveRagToAnim()
+        {
+            anim.enabled = false;
+
+            Vector3[] posInc = new Vector3[ragdollTransforms.Length];
+            Vector3[] posResult = new Vector3[ragdollTransforms.Length];
+            Quaternion[] rotResult = new Quaternion[ragdollTransforms.Length];
+
+            for (int i = 0; i < posResult.Length; i++)
+            {
+                posResult[i] = animatedTransforms[i].position;
+                rotResult[i] = animatedTransforms[i].rotation;
+            }
+
+            for (int i = 0; i < posInc.Length; i++)
+            {
+                posInc[i] = animatedTransforms[i].position - ragdollTransforms[i].position;
+            }
+
+            for (int i = 0; i < animatedTransforms.Length; i++)
+            {
+                animatedTransforms[i].position = ragdollTransforms[i].position;
+                animatedTransforms[i].rotation = ragdollTransforms[i].rotation;
+            }
+            for (int j = 0; j < transSteps; j++)
+            {
+                for (int i = 0; i < animatedTransforms.Length; i++)
+                {
+                    animatedTransforms[i].position = Vector3.MoveTowards(animatedTransforms[i].position, posResult[i], posInc[i].magnitude / transSteps);
+                    animatedTransforms[i].rotation = Quaternion.RotateTowards(animatedTransforms[i].rotation, rotResult[i], rotSpeed);
+                }
+                yield return null;
+            }
+
+            rag = false;
+            anim.enabled = true;
+            yield return null;
+        }
+
+        void EnAnimDisenRag()
+        {
             foreach (SkinnedMeshRenderer mesh in ragMesh)
             {
                 mesh.enabled = false;
