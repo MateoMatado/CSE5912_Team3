@@ -52,6 +52,7 @@ public class CannonAimState : PlayerState
 
     private void HandleEnterCannon(object sender, object data)
     {
+        EventsPublisher.Instance.PublishEvent("TurnAnimated", null, null);
         var tuple = ((GameObject, GameObject, CinemachineVirtualCamera))data;
         cannon = tuple.Item1;
         player = tuple.Item2;
@@ -264,8 +265,19 @@ public class CannonAimState : PlayerState
         mouth.Find("CannonShot").GetComponent<ParticleSystem>().Play();
         player.GetComponent<MoveWithCamera>().StartFlying();
         player.transform.position = mouth.position;
-        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().AddForce(cannonBarrel.forward * force);
+        EventsPublisher.Instance.PublishEvent("TurnRagdoll", null, null);
+        Team3.Ragdoll.RagRoot ragRoot = player.GetComponentInChildren<Team3.Ragdoll.RagRoot>();
+        if (ragRoot == null)
+        {
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.GetComponent<Rigidbody>().AddForce(cannonBarrel.forward * force);
+        }
+        else
+        {
+            ragRoot.body.velocity = Vector3.zero;
+            ragRoot.body.AddForce(cannonBarrel.forward * force);
+        }
+
     }
 
 

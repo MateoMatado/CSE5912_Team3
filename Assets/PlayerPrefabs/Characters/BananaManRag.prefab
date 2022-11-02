@@ -191,6 +191,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animated: {fileID: 5614224117950055899}
   ragdoll: {fileID: 5010068696162819461}
+  anim: {fileID: 1171577394601231643}
+  transSteps: 60
+  rotSpeed: 3
 --- !u!1001 &4695234364141025418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1303,7 +1306,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 5c21f602d4eefcc4dbcdd55321142ed8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5c21f602d4eefcc4dbcdd55321142ed8, type: 3}
 --- !u!1 &123766776882162867 stripped
 GameObject:
