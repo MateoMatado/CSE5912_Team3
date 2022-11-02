@@ -2675,7 +2675,7 @@ GameObject:
   - component: {fileID: -1497763485984837873}
   m_Layer: 6
   m_Name: ghoul_boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
