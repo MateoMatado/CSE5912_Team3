@@ -5450,7 +5450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8302ef2aad18f4cb4ea4ec50b00507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 3
+  jumpHeight: 20
   rayLength: 0.1
   bottom: {fileID: 4520910969773060749}
 --- !u!114 &4520910968986690942
