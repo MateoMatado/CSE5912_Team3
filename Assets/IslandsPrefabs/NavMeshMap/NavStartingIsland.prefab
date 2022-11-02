@@ -20307,7 +20307,7 @@ GameObject:
   - component: {fileID: 9207809040868931555}
   - component: {fileID: 9207809040867860729}
   - component: {fileID: 9207809040869814972}
-  - component: {fileID: 8719314368297014445}
+  - component: {fileID: 7935399227799836689}
   m_Layer: 8
   m_Name: Ocean_D
   m_TagString: Untagged
@@ -20394,7 +20394,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: f54c3049110f90d489e27f12da0bbf50, type: 3}
---- !u!114 &8719314368297014445
+--- !u!114 &7935399227799836689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20422,7 +20422,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3428e5d30c00fda47bc955d86d64ab07, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 29c473dde9ae1ed4abd48d28d00ca3cd, type: 2}
 --- !u!1 &9207809040970599173
 GameObject:
   m_ObjectHideFlags: 0
