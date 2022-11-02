@@ -195,7 +195,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.2
   m_ScreenY: 0.5
-  m_CameraDistance: 2.5
+  m_CameraDistance: 5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051578686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6999998, z: -5}
+  m_LocalPosition: {x: 0, y: 0.6999999, z: -5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5451,7 +5451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 3
-  rayLength: 0.1
+  rayLength: 0.3
   bottom: {fileID: 4520910969773060749}
 --- !u!114 &4520910968986690942
 MonoBehaviour:
@@ -5529,11 +5529,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   names:
-  - banana
   - baby
+  - banana
+  - bananaRag
   prefabs:
+  - {fileID: 7816086343481335076, guid: 850f7724b5ecd455c8102bb9c45bbabf, type: 3}
   - {fileID: 5362607997023986780, guid: 846b74daa45ed2b43b570a930e69fe13, type: 3}
-  - {fileID: 7816086343481335076, guid: 9f0b4c017ae495e4e82baa472bf311ba, type: 3}
+  - {fileID: 5362607997023986780, guid: f60fe9f378c3e064199966f8d20d0b2c, type: 3}
 --- !u!114 &4520910968986690938
 MonoBehaviour:
   m_ObjectHideFlags: 0
