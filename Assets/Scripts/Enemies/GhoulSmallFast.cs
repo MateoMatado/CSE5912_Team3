@@ -44,8 +44,8 @@ public class GhoulSmallFast : LivingEntity
     private float fieldOfView = 360f;
     private float viewDistance = 10f;
     private float lostDistance = 10f;
-    private float patrolSpeed = 10f;
-    private float chaseSpeed = 20f;
+    private float patrolSpeed = 20f;
+    private float chaseSpeed = 30f;
 
 
 
@@ -62,7 +62,7 @@ public class GhoulSmallFast : LivingEntity
 
     //will use RaycastHit[] to implement range based attack
     private const float waitTimeForCoroutine = 0.2f; //0.05
-    private const float remainingDistance = 8f; //1
+    private const float remainingDistance = 5f; //1
 
 
 
@@ -86,6 +86,9 @@ public class GhoulSmallFast : LivingEntity
 
     private void Start()
     {
+        //temp
+        //targetEntity = GameObject.Find("Player").transform;
+
         StartCoroutine(UpdatePath());
     }
     private bool hasTarget
@@ -117,11 +120,12 @@ public class GhoulSmallFast : LivingEntity
             }
             // if no target, then patrol
             else
-            {
+            {                
                 if (targetEntity != null)
                 {
                     targetEntity = null;
                 }
+                
                 if (state != State.Patrol)
                 {
                     state = State.Patrol;
@@ -136,6 +140,7 @@ public class GhoulSmallFast : LivingEntity
                 {
                     //var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
                     var patrolTargetPosition = GameObject.Find("FinalEnemySpawner").GetComponent<EnemyUtility>().randomPoint;
+                    Debug.Log("Random Point NAv:" + patrolTargetPosition);
                     //var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
                 }
@@ -237,7 +242,7 @@ public class GhoulSmallFast : LivingEntity
     public void EndAttack()
     {
         if (!isDead)
-        {
+        {            
             state = State.Chase;
             navMeshAgent.isStopped = false;
         }
