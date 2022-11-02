@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GhoulBombThrower : LivingEntity
 {
+    public GameObject bombPrefab;
     private enum State
     {
         Patrol,
         Chase,
-        Attack
+        Attack,
+        Dead
     }
 
     private State state;
@@ -41,7 +43,7 @@ public class GhoulBombThrower : LivingEntity
     private float attackDistance;
 
     private float fieldOfView = 360f;
-    private float viewDistance = 60f;
+    private float viewDistance = 20f;
     private float lostDistance = 90f;
     private float patrolSpeed = 5f;
     private float chaseSpeed = 10f;
@@ -219,10 +221,13 @@ public class GhoulBombThrower : LivingEntity
     {
         if (state == State.Attack)
         {
+            /*
             if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)
             {
                 transform.rotation = Quaternion.LookRotation(navMeshAgent.velocity.normalized);
             }
+            */
+            transform.LookAt(targetEntity);
         }
 
     }
@@ -232,6 +237,19 @@ public class GhoulBombThrower : LivingEntity
         state = State.Attack;
         navMeshAgent.isStopped = true;
         ghoulAnimator.SetTrigger("Attack");
+
+        //Throw Bomb
+        //gameObject.transform.Find("BombLowPoly").gameObject.SetActive(true);
+        //Vector3 offset = new Vector3(2, 2, 2);
+        //Instantiate(bombPrefab, transform.position + offset, transform.rotation);
+        StartCoroutine(ThrowBomb());
+    }
+
+    IEnumerator ThrowBomb()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Vector3 offset = new Vector3(0, 4, -4);
+        Instantiate(bombPrefab, transform.position + offset, transform.rotation);
     }
 
     public void EndAttack()
@@ -261,6 +279,7 @@ public class GhoulBombThrower : LivingEntity
 
     public override void Die()
     {
+        state = State.Dead;
         base.Die();
         ghoulAnimator.SetTrigger("Die");
         ghoulAudioPlayer.clip = deathSound;
