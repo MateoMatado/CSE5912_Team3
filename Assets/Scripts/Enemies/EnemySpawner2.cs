@@ -22,7 +22,7 @@ public class EnemySpawner2 : MonoBehaviour
     }
 
     private void CreateGhouls()
-    {
+    {        
         GhoulTemp ghoul = Instantiate(ghoulPrefab, transform.position, transform.rotation);
         ghoulsList.Add(ghoul);
 

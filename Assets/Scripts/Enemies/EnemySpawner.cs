@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.HID;
 using static UnityEngine.Rendering.DebugUI.Table;
 
 public class EnemySpawner : LivingEntity
@@ -76,6 +77,12 @@ public class EnemySpawner : LivingEntity
         for (int i = 0; i < numberOfSpawnAtOnce; i++)
         {
             yield return new WaitForSeconds(spawnDelayTime);
+            //Instantiate enemies as child of this
+
+            //var originalScale = enemyPrefab.transform.localScale;
+            //LivingEntity ghoul = Instantiate(enemyPrefab, spawnPosition[i], rot[i], transform);
+            //ghoul.transform.localScale /= 4;
+
             LivingEntity ghoul = Instantiate(enemyPrefab, spawnPosition[i], rot[i]);
             ghoulsList.Add(ghoul);
 

@@ -5315,7 +5315,7 @@ MonoBehaviour:
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
   FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
   StartingIsland: {fileID: 9207809040663074471, guid: 9670816195ef8b44090145da6f5fc533, type: 3}
-  BossIsland: {fileID: 6413008049201610010, guid: 1bfdc02b57f20064c941499cb85c90c4, type: 3}
+  BossIsland: {fileID: 6413008049201610010, guid: ce448cf07fc91e74f8474ac15fc8146a, type: 3}
   IslandList: []
 --- !u!4 &1006411364
 Transform:
