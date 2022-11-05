@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3862970939384799838
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -99,12 +112,12 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StarDensity: 10
-    - _StarPower: 50
+    - _StarPower: 80
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HorizonColor: {r: 0, g: 0.019528864, b: 0.35686275, a: 0}
-    - _SkyColor: {r: 0.65248215, g: 0.15686274, b: 1, a: 0}
+    - _HorizonColor: {r: 0.06977572, g: 0.082154974, b: 0.3018868, a: 0}
+    - _SkyColor: {r: 0.5243508, g: 0.1715023, b: 0.7735849, a: 0}
   m_BuildTextureStacks: []
