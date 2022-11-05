@@ -18577,6 +18577,8 @@ GameObject:
   - component: {fileID: 6891552101434141694}
   - component: {fileID: 4507031497658618232}
   - component: {fileID: -628475781065156363}
+  - component: {fileID: 8201068188432866559}
+  - component: {fileID: 1665205384089982293}
   m_Layer: 8
   m_Name: DonutIsland
   m_TagString: IslandParent
@@ -18639,6 +18641,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer: 8
+--- !u!114 &8201068188432866559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891552101434141695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d04501f6b6645e2accf6ddee3ecd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveSpeed: 0.1
+  eventName: Dissolve
+--- !u!114 &1665205384089982293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891552101434141695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff58b281a4e41ae99d04a5edb983d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sinkSpeed: 1
+  eventName: Sink
 --- !u!1 &6891552101628652529
 GameObject:
   m_ObjectHideFlags: 0
@@ -19124,6 +19154,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6891552101878490238}
+  - component: {fileID: 1893008666851405025}
+  - component: {fileID: 3430299021900501465}
   m_Layer: 8
   m_Name: Lower Rocks
   m_TagString: Untagged
@@ -19170,6 +19202,34 @@ Transform:
   m_Father: {fileID: 6891552101434141694}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1893008666851405025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891552101878490239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d04501f6b6645e2accf6ddee3ecd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveSpeed: 0.1
+  eventName: Dissolve
+--- !u!114 &3430299021900501465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891552101878490239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff58b281a4e41ae99d04a5edb983d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sinkSpeed: 1
+  eventName: Sink
 --- !u!1 &6891552101954803180
 GameObject:
   m_ObjectHideFlags: 0
