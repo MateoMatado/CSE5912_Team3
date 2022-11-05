@@ -101,7 +101,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.055579986, g: 0.09779003, b: 0.14, a: 1}
-    - _EdgeColor: {r: 0, g: 10.680627, b: 0, a: 0}
+    - _EdgeColor: {r: 14.259475, g: 14.259475, b: 14.259475, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HeightFogColor: {r: 1, g: 0.3206745, b: 0.0039215684, a: 1}
   m_BuildTextureStacks: []
