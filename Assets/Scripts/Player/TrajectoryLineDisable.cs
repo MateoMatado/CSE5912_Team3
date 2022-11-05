@@ -15,6 +15,7 @@ public class TrajectoryLineDisable : MonoBehaviour
 
     private void StopFlying(object sender, object data)
     {
-        line.positionCount = 0;
+        if (line != null)
+            line.positionCount = 0;
     }
 }
