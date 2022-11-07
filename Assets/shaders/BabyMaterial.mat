@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BabyMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 05c77eed92e9944278f2ac0d19382dd6, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 03a8a685b73664d298c4a40a5ab58357, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -56,10 +56,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
+    - _BloodThickness: 0.1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -67,6 +72,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _GutsRemap: 0.98
+    - _GutsVoronoiDensity: 13.7
+    - _Health: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -76,10 +84,16 @@ Material:
     - _Speed: 0.1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _VeinNoise: 2
     - _ZWrite: 1
+    - _test: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BloodColor: {r: 0.7264151, g: 0, b: 0, a: 0}
+    - _BloodOutlineColor: {r: 0.8113208, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 1, b: 0.4000001, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GutColor: {r: 0.7735849, g: 0.43422928, b: 0.43422928, a: 0}
+    - _VeinColor: {r: 0.26698068, g: 0, b: 0.62264144, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7435054513595157842
 MonoBehaviour:
