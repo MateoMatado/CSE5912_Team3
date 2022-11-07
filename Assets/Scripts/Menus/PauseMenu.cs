@@ -26,7 +26,7 @@ namespace Team3.Menus
         }
         public void Save()
         {
-            //TODO: after having save
+            DataManager.Instance.SaveGame();
         }
 
         public void Setting()

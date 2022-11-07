@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HUDManager : MonoBehaviour
+public class HUDManager : MonoBehaviour, IData
 {
     [SerializeField] private Slider HP;
     [SerializeField] private Slider Mana;
@@ -15,6 +15,7 @@ public class HUDManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+        coin = 500;
     }
     public void DisplayCollectPanel(string name, int price)
     {
@@ -52,5 +53,16 @@ public class HUDManager : MonoBehaviour
         HP.value = PlayerStatus.Instance.GetValue("HP") / 100;
         Mana.value = PlayerStatus.Instance.GetValue("Mana") / 100;
         number.text = coin + "";
+    }
+
+    public void LoadData(GameData data)
+    {
+        coin = data.Coin;
+
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.Coin = coin;
     }
 }
