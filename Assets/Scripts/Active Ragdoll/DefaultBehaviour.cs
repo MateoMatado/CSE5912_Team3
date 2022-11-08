@@ -59,7 +59,7 @@ public class DefaultBehaviour : MonoBehaviour {
     
     private void UpdateMovement() {
         if (_movement == Vector2.zero || !_enableMovement) {
-            _animationModule.Animator.SetBool("moving", false);
+            _animationModule.Animator?.SetBool("moving", false);
             return;
         }
 
