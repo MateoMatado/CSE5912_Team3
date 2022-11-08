@@ -54,7 +54,11 @@ public class HUDManager : MonoBehaviour, IData
         Mana.value = PlayerStatus.Instance.GetValue("Mana") / 100;
         number.text = coin + "";
     }
+    public void NewData(ref GameData data)
+    {
+        data.Coin = 500;
 
+    }
     public void LoadData(GameData data)
     {
         coin = data.Coin;

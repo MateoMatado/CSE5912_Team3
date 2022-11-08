@@ -123,7 +123,11 @@ public class PlayerStatus : MonoBehaviour, IData
     }
 
 
-
+    public void NewData(ref GameData data)
+    {
+        data.HP = 50;
+        data.MP = 50;
+    }
     public void LoadData(GameData data)
     {
         HP = data.HP;

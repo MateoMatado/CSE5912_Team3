@@ -25,11 +25,17 @@ public class DataManager : MonoBehaviour
     {
         this.fileDataHandler = new FileDataHandler("Assets/Scripts/Save&Load/Data", fileName);
         this.dataObjects = FindAllData();
-        NewGame();
+        LoadGame();
     }
     public void NewGame()
     {
-        this.gameData = fileDataHandler.NewGame();
+        foreach (IData data in dataObjects)
+        {
+            data.NewData(ref gameData);
+        }
+        fileDataHandler.Save(gameData);
+        
+
     }
 
     public void LoadGame()
