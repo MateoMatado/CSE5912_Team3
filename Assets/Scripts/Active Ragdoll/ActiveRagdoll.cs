@@ -15,6 +15,8 @@ namespace ActiveRagdoll {
         [SerializeField] private int _solverIterations = 12;
         [SerializeField] private int _velSolverIterations = 4;
         [SerializeField] private float _maxAngularVelocity = 50;
+        [SerializeField] private float springForce = 1000;
+        [SerializeField] private float posDamper = 5;
         public int SolverIterations { get { return _solverIterations; } }
         public int VelSolverIterations { get { return _velSolverIterations; } }
         public float MaxAngularVelocity { get { return _maxAngularVelocity; } }
@@ -81,12 +83,34 @@ namespace ActiveRagdoll {
                 }
             }
             if (Joints == null) Joints = _physicalTorso?.GetComponentsInChildren<ConfigurableJoint>();
+
+            foreach(ConfigurableJoint joint in Joints)
+            {
+                //joint.angularXMotion = ConfigurableJointMotion.Free;
+                //joint.angularYMotion = ConfigurableJointMotion.Free;
+                //joint.angularZMotion = ConfigurableJointMotion.Free;
+
+                JointDrive tempDrive = new JointDrive();
+                tempDrive.positionSpring = springForce;
+                tempDrive.positionDamper = posDamper;
+                tempDrive.maximumForce = float.MaxValue;
+
+                joint.angularXDrive = tempDrive;
+                joint.angularYZDrive = tempDrive;
+            }
+
             if (Rigidbodies == null) Rigidbodies = _physicalTorso?.GetComponentsInChildren<Rigidbody>();
 
             foreach (Rigidbody rb in Rigidbodies) {
                 rb.solverIterations = _solverIterations;
                 rb.solverVelocityIterations = _velSolverIterations;
                 rb.maxAngularVelocity = _maxAngularVelocity;
+            }
+
+            _bodyParts = new List<BodyPart>();
+            for (int i = 0; i < Joints.Length; i++)
+            {
+                BodyPart tempBodyPart = new BodyPart("", new List<ConfigurableJoint>() { Joints[i] });
             }
 
             foreach (BodyPart bodyPart in _bodyParts)

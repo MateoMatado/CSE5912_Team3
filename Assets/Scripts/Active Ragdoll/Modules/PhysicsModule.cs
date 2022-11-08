@@ -11,6 +11,9 @@ namespace ActiveRagdoll {
     public class PhysicsModule : Module {
         // --- BALANCE ---
 
+        [SerializeField] float springForce = 1000;
+        [SerializeField] float posDamper = 5;
+
         public enum BALANCE_MODE {
             UPRIGHT_TORQUE,
             MANUAL_TORQUE,
@@ -78,12 +81,19 @@ namespace ActiveRagdoll {
 
             var joint = _stabilizerGameobject.GetComponent<ConfigurableJoint>();
             joint.connectedBody = _activeRagdoll.PhysicalTorso;
+            //JointDrive tempDrive = new JointDrive();
+            //tempDrive.positionSpring = springForce;
+            //tempDrive.positionDamper = posDamper;
+            //tempDrive.maximumForce = float.MaxValue;
+            //joint.angularXDrive = tempDrive;
+            //joint.angularYZDrive = tempDrive;
         }
 
         private void FixedUpdate() {
             UpdateTargetRotation();
             ApplyCustomDrag();
-
+            //Debug.Log(_balanceMode);
+            _balanceMode = BALANCE_MODE.UPRIGHT_TORQUE;
             switch (_balanceMode) {
                 case BALANCE_MODE.UPRIGHT_TORQUE:
                     var balancePercent = Vector3.Angle(_activeRagdoll.PhysicalTorso.transform.up,
@@ -91,7 +101,7 @@ namespace ActiveRagdoll {
                     balancePercent = uprightTorqueFunction.Evaluate(balancePercent);
                     var rot = Quaternion.FromToRotation(_activeRagdoll.PhysicalTorso.transform.up,
                                                          Vector3.up).normalized;
-
+                    //Debug.Log("duck");
                     _activeRagdoll.PhysicalTorso.AddTorque(new Vector3(rot.x, rot.y, rot.z)
                                                                 * uprightTorque * balancePercent);
 
