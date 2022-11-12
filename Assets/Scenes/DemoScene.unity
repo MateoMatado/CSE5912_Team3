@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007189589, g: 0.008705851, b: 0.0753863, a: 1}
+  m_IndirectSpecularColor: {r: 0.0071888696, g: 0.008704975, b: 0.07538541, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5373,6 +5373,7 @@ MonoBehaviour:
   FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
   StartingIsland: {fileID: 9207809040663074471, guid: 9670816195ef8b44090145da6f5fc533, type: 3}
   BossIsland: {fileID: 6413008049201610010, guid: ce448cf07fc91e74f8474ac15fc8146a, type: 3}
+  ShopIsland: {fileID: 2070914281333398461, guid: 792f2a368b8fedb4496653fd62c163cd, type: 3}
   IslandList: []
 --- !u!4 &1006411364
 Transform:

@@ -21,6 +21,7 @@ public class IslandGeneration : MonoBehaviour
     [SerializeField] private GameObject FloatingRock;
     [SerializeField] private GameObject StartingIsland;
     [SerializeField] private GameObject BossIsland;
+    [SerializeField] private GameObject ShopIsland;
 
     private Dictionary<String,Vector2> DIslands = new Dictionary<String,Vector2>();
     private enum EIslands{Empty,Filled};
@@ -119,6 +120,18 @@ public class IslandGeneration : MonoBehaviour
         gameObjectIslands[2000, 2000] = GameObject.Instantiate(BossIsland);
         gameObjectIslands[2000, 2000].transform.position = new Vector3((float)(Width/2.3), RandomHeightLimit + RandomHeightLimit/3, (float)(Length / 2.3));
         gameObjectIslands[2000, 2000].transform.SetParent(transform);
+
+        Vector2 ShopPos = new Vector2(Random.Range(0, Width), Random.Range(0, Length));
+        for (int x = 0; x < DIslands["IslandBasic"].x; x++)
+        {
+            for (int y = 0; y < DIslands["IslandBasic"].y; y++)
+            {
+                EIslandArray[x + (int)ShopPos.x, y + (int)ShopPos.y] = (int)EIslands.Filled;
+            }
+        }
+        gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y] = GameObject.Instantiate(ShopIsland);
+        gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.position = new Vector3((int)ShopPos.x, Random.Range(100, RandomHeightLimit), (int)ShopPos.y);
+        gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.SetParent(transform);
 
         while (BiasDec >= 0)
         {
