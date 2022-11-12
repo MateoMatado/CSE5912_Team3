@@ -7,14 +7,14 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 public class StartMenuController : MonoBehaviour
-{    
+{
     string levelToLoad;
     [SerializeField] private GameObject unableToLoad = null;
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
 
 
-    
+
 
 
 
@@ -28,6 +28,7 @@ public class StartMenuController : MonoBehaviour
 
     public void NewGameYes()
     {
+        DataManager.Instance.NewGame();
         GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
     }
     public void LoadGameYes()
@@ -37,7 +38,8 @@ public class StartMenuController : MonoBehaviour
           loadFile();
         }
         */
-        unableToLoad.SetActive(true);
+        DataManager.Instance.LoadGame();
+        GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
     }
 
     public void ExitYes()
@@ -48,7 +50,7 @@ public class StartMenuController : MonoBehaviour
 
     public void SetVolume(float volumeValue)
     {
-        AudioListener.volume = volumeValue/100;
+        AudioListener.volume = volumeValue / 100;
         volumeTextValue.text = ((int)volumeValue).ToString();
     }
 

@@ -2655,6 +2655,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2916570678104877122}
   - component: {fileID: 7585859103224099237}
+  - component: {fileID: 3249659786334399904}
+  - component: {fileID: 5105155381009479649}
   m_Layer: 8
   m_Name: IslandRound
   m_TagString: IslandParent
@@ -2698,6 +2700,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer: 8
+--- !u!114 &3249659786334399904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916570678104877123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d04501f6b6645e2accf6ddee3ecd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveSpeed: 0.1
+  eventName: Dissolve
+--- !u!114 &5105155381009479649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916570678104877123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff58b281a4e41ae99d04a5edb983d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sinkSpeed: 1
+  eventName: Sink
 --- !u!1 &2916570678111815596
 GameObject:
   m_ObjectHideFlags: 0

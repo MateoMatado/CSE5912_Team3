@@ -80,13 +80,13 @@ namespace Team3
             var angles = cameraTarget.transform.localEulerAngles;
             angles.z = 0;
             var angle = angles.x;
-            if (angle > 180 && angle < 340)
+            if (angle > 180 && angle < 300)
             {
-                angles.x = 340;
+                angles.x = 300;
             }
-            else if (angle < 180 && angle > 40)
+            else if (angle < 180 && angle > 80)
             {
-                angles.x = 40;
+                angles.x = 80;
             }
 
             // transform.rotation = Quaternion.Euler(0, cameraTarget.transform.rotation.eulerAngles.y, 0);

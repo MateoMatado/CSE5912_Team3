@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatus : MonoBehaviour
+public class PlayerStatus : MonoBehaviour, IData
 {
     public static PlayerStatus Instance = new PlayerStatus();
     public static float HP = 20;
@@ -19,6 +19,8 @@ public class PlayerStatus : MonoBehaviour
     {
         /*make it Instance*/
         Instance = this;
+        HP = 20;
+        HP = 20;
 
     }
     public float GetValue(string name)
@@ -118,5 +120,23 @@ public class PlayerStatus : MonoBehaviour
                 ChangeValueMana +=ChangeSpeed;
             }
         }
+    }
+
+
+    public void NewData(ref GameData data)
+    {
+        data.HP = 50;
+        data.MP = 50;
+    }
+    public void LoadData(GameData data)
+    {
+        HP = data.HP;
+        Mana = data.MP;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.HP = HP;
+        data.MP = Mana;
     }
 }

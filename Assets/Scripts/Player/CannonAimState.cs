@@ -260,6 +260,8 @@ public class CannonAimState : PlayerState
 
     private void ShootCannon()
     {
+        EventsPublisher.Instance.PublishEvent("Dissolve", null, GetParentIsland(cannon.transform));
+        EventsPublisher.Instance.PublishEvent("Sink", null, GetParentIsland(cannon.transform));
         LeaveCannon();
         cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         mouth.Find("CannonShot").GetComponent<ParticleSystem>().Play();
