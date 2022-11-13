@@ -4938,7 +4938,7 @@ GameObject:
   - component: {fileID: 8978273929300816092}
   m_Layer: 0
   m_Name: Bottle_Mana
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

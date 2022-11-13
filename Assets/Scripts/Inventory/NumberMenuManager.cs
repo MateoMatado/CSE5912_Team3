@@ -11,6 +11,7 @@ public class NumberMenuManager : MonoBehaviour
     public static NumberMenuManager Instance;
     public InputField InputNumberForUse;
     public InputField InputNumberForDrop;
+    public InputField InputNumberForShop;
     private static int count = 1;
 
     // Normal Set up
@@ -42,5 +43,6 @@ public class NumberMenuManager : MonoBehaviour
     {
         InputNumberForUse.text = count + "";
         InputNumberForDrop.text = count + "";
+        InputNumberForShop.text = count + "";
     }
 }

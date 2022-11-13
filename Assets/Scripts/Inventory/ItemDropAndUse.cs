@@ -39,6 +39,19 @@ public class ItemDropAndUse : MonoBehaviour, IPointerClickHandler
     {
         InventoryManager.Instance.NotDisplay();
     }
+    /*shop part*/
+    public void ShopDropMenu()
+    {
+        ShopManager.Instance.DropWithNumberMenu(name);
+    }
+    public void ShopDisplayInformation()
+    {
+        ShopManager.Instance.Display(name.text, Effect.text, transform.position);
+    }
+    public void ShopNotDisplayInformation()
+    {
+        ShopManager.Instance.NotDisplay();
+    }
     public void Use()
     {
         if (!ItemEffectFactory.Instance.InCD())
