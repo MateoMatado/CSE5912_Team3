@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class ShopTable : MonoBehaviour
 {
-    public GameObject Shop;
-    public GameObject Hint;
+
     private bool isInRange = false;
     private GameInput inputs;
 
@@ -29,22 +28,22 @@ public class ShopTable : MonoBehaviour
     {
         if (isInRange )
         {
-            Shop.SetActive(true);
-            Hint.SetActive(false);
+            ShopManager.Instance.Active();
+            ShopManager.Instance.StopHints();
         }
 
     }
     void OnTriggerEnter(Collider col)
     {
         isInRange = true;
-        Hint.SetActive(true);
+        ShopManager.Instance.ActiveHints();
 
     }
 
     void OnTriggerExit(Collider col)
     {
         isInRange = false;
-        Hint.SetActive(false);
-        Shop.SetActive(false);
+        ShopManager.Instance.Stop();
+        ShopManager.Instance.StopHints();
     }
 }

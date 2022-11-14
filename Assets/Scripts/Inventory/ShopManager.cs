@@ -13,6 +13,7 @@ public class ShopManager : MonoBehaviour
     public GameObject InventoryItem;
     public static Dictionary<Item, int> ItemList = new Dictionary<Item, int>();
     public GameObject Shop;
+    public GameObject Hints;
     public InputField InputNumberDrop;
     public GameObject NumberMenuForDrop;
     /*temp variable*/
@@ -23,16 +24,56 @@ public class ShopManager : MonoBehaviour
     private GameObject currentInformation = null;
     public GameObject informationBox;
     public Transform canvas;
-
+    /*number Menu*/
+    public InputField InputNumberForShop;
+    private int count = 1;
     public void Awake()
     {
         /*make it Instance*/
         Instance = this;
 
     }
+    /*number Menu part*/
+    public void Reset()
+    {
+        count = 1;
+    }
+
+    public void Increase()
+    {
+        count++;
+    }
+
+    public void Decrease()
+    {
+        if (count > 0)
+        {
+            count--;
+        }
+
+    }
+
+    public void Update()
+    {
+
+        InputNumberForShop.text = count + "";
+    }
+    /*active shop system*/
     public void Active()
     {
         Shop.SetActive(true);
+    }
+    public void Stop()
+    {
+        Shop.SetActive(false);
+    }
+    public void ActiveHints()
+    {
+        Hints.SetActive(true);
+    }
+    public void StopHints()
+    {
+        Hints.SetActive(false);
     }
     /*to get item and drop item*/
     public void Add(Item item)
