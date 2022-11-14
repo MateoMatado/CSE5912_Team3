@@ -22,7 +22,7 @@ public class DataManager : MonoBehaviour
     private bool canEnter = false;
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         inputs = new GameInput();
         inputs.UI.Yes.performed += Yes_performed;
         if (Instance != null)
@@ -30,6 +30,8 @@ public class DataManager : MonoBehaviour
             Debug.LogError("Found more than one data");
         }
         Instance = this;
+
+
     }
     private void OnEnable()
     {
@@ -46,7 +48,7 @@ public class DataManager : MonoBehaviour
             canEnter = false;
             fileName.text = InputFileName.text;
             InputField.SetActive(false);
-            this.fileDataHandler = new FileDataHandler("Assets/Scripts/Save&Load/Data", fileName.text);
+            this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName.text);
             this.dataObjects = FindAllData();
             LoadGame();
             GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
@@ -55,7 +57,7 @@ public class DataManager : MonoBehaviour
     }
     public void Start()
     {
-        this.fileDataHandler = new FileDataHandler("Assets/Scripts/Save&Load/Data", fileName.text);
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, "test");
         this.dataObjects = FindAllData();
         LoadGame();
     }

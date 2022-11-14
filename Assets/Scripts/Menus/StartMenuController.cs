@@ -28,8 +28,9 @@ public class StartMenuController : MonoBehaviour
 
     public void NewGameYes()
     {
-        DataManager.Instance.NewGame();
+
         GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
+        DataManager.Instance.NewGame();
     }
     public void LoadGameYes()
     {
@@ -38,8 +39,9 @@ public class StartMenuController : MonoBehaviour
           loadFile();
         }
         */
-        DataManager.Instance.LoadGame();
+
         GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
+        DataManager.Instance.LoadGame();
     }
 
     public void ExitYes()
