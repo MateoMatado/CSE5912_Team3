@@ -10,7 +10,7 @@ scopes = {
 	"last_search.DA949528" = ""
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
-	"last_search.DD5CDD96" = "HealthBar"
+	"last_search.DD5CDD96" = "character"
 	"OpenInspectorPreview.DD5CDD96" = "0"
 	"currentGroup.DD5CDD96" = "scene"
 }
@@ -59,7 +59,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"HealthBar"
+	"character"
 ]
 searchItemFavorites = [
 ]
