@@ -3419,8 +3419,8 @@ MonoBehaviour:
   Desk: {fileID: 0}
   ItemContent: {fileID: 862167583}
   InventoryItem: {fileID: 3340476601635950074, guid: 4f8462cdf8e07df43b332a8ff4d8584b, type: 3}
-  Shop: {fileID: 1412069896}
-  Hints: {fileID: 0}
+  Shop: {fileID: 185435247}
+  Hints: {fileID: 1412069896}
   InputNumberDrop: {fileID: 1763662569}
   NumberMenuForDrop: {fileID: 710517235}
   informationBox: {fileID: 1547923277906263603, guid: 16b048332e211094ea664494c580936e, type: 3}
@@ -13412,6 +13412,8 @@ MonoBehaviour:
   fileName: {fileID: 0}
   InputField: {fileID: 0}
   InputFileName: {fileID: 0}
+  game: {fileID: 0}
+  Menu: {fileID: 0}
 --- !u!4 &2093264544
 Transform:
   m_ObjectHideFlags: 0

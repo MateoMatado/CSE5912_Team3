@@ -22,7 +22,7 @@ namespace Team3.Menus
         public void Resume()
         {
             pauseMenu.SetActive(false);
-            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
+            Time.timeScale = 1f;
         }
         public void Save()
         {

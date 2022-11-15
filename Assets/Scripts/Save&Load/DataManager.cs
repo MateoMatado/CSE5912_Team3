@@ -20,6 +20,8 @@ public class DataManager : MonoBehaviour
     public GameObject InputField;
     public TMP_InputField InputFileName;
     private bool canEnter = false;
+    public GameObject game;
+    public GameObject Menu;
     private void Awake()
     {
         //DontDestroyOnLoad(this.gameObject);
@@ -50,8 +52,10 @@ public class DataManager : MonoBehaviour
             InputField.SetActive(false);
             this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName.text);
             this.dataObjects = FindAllData();
+            Instantiate(game);
+            Menu.SetActive(false);
             LoadGame();
-            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
+
         }
 
     }
@@ -59,7 +63,7 @@ public class DataManager : MonoBehaviour
     {
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, "test");
         this.dataObjects = FindAllData();
-        LoadGame();
+        
     }
 
     public void Pressed()
@@ -69,16 +73,31 @@ public class DataManager : MonoBehaviour
             InputField.SetActive(true);
             canEnter = true;
         }
+        else
+        {
+            this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName.text);
+            this.dataObjects = FindAllData();
+            LoadGame();
+            Instantiate(game);
+            Menu.SetActive(false);
+        }
     }
 
     public void NewGame()
     {
-        foreach (IData data in dataObjects)
+        /**
+         * 
+         * foreach (IData data in dataObjects)
         {
             data.NewData(ref gameData);
         }
         fileDataHandler.Save(gameData);
-        
+         */
+        this.gameData = new GameData();
+        foreach (IData data in dataObjects)
+        {
+            data.LoadData(gameData);
+        }
 
     }
 
