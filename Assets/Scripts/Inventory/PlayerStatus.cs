@@ -20,7 +20,7 @@ public class PlayerStatus : MonoBehaviour, IData
         /*make it Instance*/
         Instance = this;
         HP = 20;
-        HP = 20;
+        //HP = 20;
 
     }
     public float GetValue(string name)
@@ -92,6 +92,7 @@ public class PlayerStatus : MonoBehaviour, IData
     /*Normal Update*/
     public void Update()
     {
+        /* Jimmy commented out
         if(ChangeValueHP != 0)
         {
             if(ChangeValueHP > 0)
@@ -106,6 +107,7 @@ public class PlayerStatus : MonoBehaviour, IData
                 ChangeValueHP  +=ChangeSpeed;
             }
         }
+        */
         if (ChangeValueMana != 0)
         {
             if (ChangeValueMana > 0)

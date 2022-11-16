@@ -50,7 +50,10 @@ public class HUDManager : MonoBehaviour, IData
     // Update is called once per frame
     void Update()
     {
-        HP.value = PlayerStatus.Instance.GetValue("HP") / 100;
+        //Jimmy Commented Out
+        //HP.value = PlayerStatus.Instance.GetValue("HP") / 100;
+
+
         Mana.value = PlayerStatus.Instance.GetValue("Mana") / 100;
         number.text = coin + "";
     }

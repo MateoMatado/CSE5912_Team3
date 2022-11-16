@@ -195,7 +195,7 @@ public class GhoulBombThrower : LivingEntity
         }
         if (state == State.Chase)
         {
-            Debug.Log("Bomb Thrower : "+targetEntity.name);
+            //Debug.Log("Bomb Thrower : "+targetEntity.name);
             var distance = Vector3.Distance(targetEntity.position, transform.position);
             //Debug.Log("current:" + distance+"   ,   attkDis:"+ attackDistance);
             if (distance <= attackDistance + 2f)  //this is to make 

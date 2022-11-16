@@ -5603,6 +5603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 1000
+  playerStatus: {fileID: 3472710603226543316}
 --- !u!1 &4520910969144574984
 GameObject:
   m_ObjectHideFlags: 0

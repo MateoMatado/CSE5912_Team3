@@ -144,6 +144,7 @@ public class BossTypeA : LivingEntity
         //transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
+    /*
     void DoDash2()
     {
         state = State.DashAttack;
@@ -156,6 +157,7 @@ public class BossTypeA : LivingEntity
 
         //transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+    */
 
     private void Start()
     {
