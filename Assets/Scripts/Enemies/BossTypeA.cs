@@ -38,8 +38,8 @@ public class BossTypeA : LivingEntity
 
     private float speed = 3f;
     private const float chaseSpeed = 10f;
-    private const float dashSpeed = 40f;
-    private const float spinTowardSpeed = 13f;
+    private const float dashSpeed = 20f;
+    private const float spinTowardSpeed = 10f;
     private const float rotateSpeed = 720f;
 
     public Transform attackRoot;
@@ -50,6 +50,7 @@ public class BossTypeA : LivingEntity
 
     private void Awake()
     {
+        targetEntity = GameObject.Find("Player").transform;
         startingHealth = 1000f;
         speed = chaseSpeed;
         //GetComponentInParent!
@@ -79,8 +80,13 @@ public class BossTypeA : LivingEntity
             
             speed = spinTowardSpeed;
             //transform.position += Vector3.forward * speed * Time.deltaTime;
-            var targetPos = (targetEntity.position - transform.position).normalized;
-            transform.position += targetPos * speed * Time.deltaTime;
+
+
+            //var targetPos = (targetEntity.position - transform.position).normalized;
+            //transform.position += targetPos * speed * Time.deltaTime;
+
+
+
             //transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
         //State: Spinning -> Faint
@@ -148,7 +154,8 @@ public class BossTypeA : LivingEntity
         {
             //Chase To Target
             speed = chaseSpeed;
-            transform.LookAt(targetEntity);
+            //transform.LookAt(targetEntity);
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
             //Check Distance whether to Change State 
