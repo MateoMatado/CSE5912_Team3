@@ -8,26 +8,22 @@ using System;
 using TMPro;
 using System.IO;
 
-public class DataManager : MonoBehaviour
+public class GameDataManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     private GameData gameData;
     private FileSave fileSave;
     private GameInput inputs;
     private List<IData> dataObjects;
-    public static DataManager Instance { get; private set; }
+    public static GameDataManager Instance { get; private set; }
     private FileDataHandler fileDataHandler;
     /*file Name*/
-    public TMP_Text fileName;
-    public GameObject InputField;
-    public TMP_InputField InputFileName;
+
     private bool canEnter = false;
 
     private void Awake()
     {
-        //DontDestroyOnLoad(this.gameObject);
-        inputs = new GameInput();
-        inputs.UI.Yes.performed += Yes_performed;
+
         if (Instance != null)
         {
             Debug.LogError("Found more than one data");
@@ -38,56 +34,19 @@ public class DataManager : MonoBehaviour
     }
     public void Start()
     {
-
         fileSave = LoadFile();
         if (this.fileSave == null)
         {
             this.fileSave = new FileSave();
         }
-        SaveFile(fileSave);
-        fileName.text = fileSave.file1;
+
+        
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
         this.dataObjects = FindAllData();
         LoadGame();
     }
-    private void OnEnable()
-    {
-        inputs.UI.Yes.Enable();
-    }
-    private void OnDisable()
-    {
-        inputs.UI.Yes.Enable();
-    }
-    private void Yes_performed(InputAction.CallbackContext context)
-    {
-        if (canEnter)
-        {
-            canEnter = false;
-            fileName.text = InputFileName.text;
-            InputField.SetActive(false);
-            UpdateFile(ref fileSave,InputFileName.text);
-            this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
-            this.dataObjects = FindAllData();
-            LoadGame();
-            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
-        }
-
-    }
 
 
-    public void Pressed()
-    {
-        if (fileName.text.Equals("New Data"))
-        {
-            InputField.SetActive(true);
-            canEnter = true;
-        }
-        else
-        {
-            fileSave.fileRead = fileName.text;
-            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
-        }
-    }
 
     public void NewGame()
     {
@@ -132,7 +91,6 @@ public class DataManager : MonoBehaviour
         return new List<IData>(dataObject);
     }
 
-
     public FileSave LoadFile()
     {
         //create direcotry path
@@ -161,38 +119,5 @@ public class DataManager : MonoBehaviour
             }
         }
         return loadedFile;
-    }
-
-    public void SaveFile(FileSave data)
-    {
-        //create direcotry path
-        string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
-        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
-        try
-        {
-            //create direcotry
-            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
-            //change data into Json
-            string dataToStore = JsonUtility.ToJson(data, true);
-            //write data to file
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.Write(dataToStore);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Error occured when trying to save data to file" + fullPath + "\n" + e);
-        }
-    }
-
-    public void UpdateFile(ref FileSave fileSave, string fileName)
-    {
-        fileSave.file1 = InputFileName.text;
-        fileSave.fileRead = InputFileName.text;
-        SaveFile(fileSave);
     }
 }

@@ -15,38 +15,13 @@ public class FileDataHandler
         this.dataFileName = dataFileName;
     }
 
-    public GameData NewGame()
-    {
-        string fullPath = Path.Combine(dataDir, "NewGameData");
-        GameData loadedDate = null;
-        if (File.Exists(fullPath))
-        {
-            try
-            {
-                //Load Data from the file
-                string dataToLoad = "";
-                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        dataToLoad = reader.ReadToEnd();
-                    }
-                }
 
-                loadedDate = JsonUtility.FromJson<GameData>(dataToLoad);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Error occured when trying to load data to file" + fullPath + "\n" + e);
-            }
-        }
-        return loadedDate;
-    }
     public GameData Load()
     {
         //create direcotry path
-        string fullPath = Path.Combine(dataDir, dataFileName);
-        GameData loadedDate = null;
+        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", dataFileName);
+        //string fullPath = Path.Combine(dataDir, dataFileName);
+        GameData loadedData = null;
         if (File.Exists(fullPath))
         {
             try
@@ -61,20 +36,21 @@ public class FileDataHandler
                     }
                 }
 
-                loadedDate = JsonUtility.FromJson<GameData>(dataToLoad);
+                loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
             catch (Exception e)
             {
                 Debug.LogError("Error occured when trying to load data to file" + fullPath + "\n" + e);
             }
         }
-        return loadedDate;
+        return loadedData;
     }
 
     public void Save(GameData data)
     {
         //create direcotry path
-        string fullPath = Path.Combine(dataDir, dataFileName);
+        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", dataFileName);
+        //string fullPath = Path.Combine(dataDir, dataFileName);
         try
         {
             //create direcotry
