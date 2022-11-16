@@ -200,25 +200,49 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public void UpdateFile(ref FileSave fileSave, string fileName, int num)
+    public void UpdateFile(ref FileSave FileSave, string fileName, int num)
     {
+        bool check = false;
+        while (!check)
+        {
+            if (fileName.Equals(fileSave.file1))
+            {
+                fileName += "(1)";
+            }
+            else if (fileName.Equals(fileSave.file2))
+            {
+                fileName += "(1)";
+            }
+            else if (fileName.Equals(fileSave.file3))
+            {
+                fileName += "(1)";
+            }
+            else if (fileName.Equals(fileSave.file4))
+            {
+                fileName += "(1)";
+            }
+            if(!fileName.Equals(fileSave.file1) && !fileName.Equals(fileSave.file2)&& !fileName.Equals(fileSave.file3)&& !fileName.Equals(fileSave.file4))
+            {
+                check = true;
+            }
+        }
         switch (num)
         {
             case 1:
-                fileSave.file1 = fileName;
+                FileSave.file1 = fileName;
                 break;
             case 2:
-                fileSave.file2 = fileName;
+                FileSave.file2 = fileName;
                 break;
             case 3:
-                fileSave.file3 = fileName;
+                FileSave.file3 = fileName;
                 break;
             case 4:
-                fileSave.file4 = fileName;
+                FileSave.file4 = fileName;
                 break;
         }
-        fileSave.fileRead = fileName;
-        SaveFile(fileSave);
+        FileSave.fileRead = fileName;
+        SaveFile(FileSave);
     }
 
     public void Reset(int num)
