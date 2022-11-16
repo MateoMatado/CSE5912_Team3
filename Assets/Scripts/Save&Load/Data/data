@@ -1,7 +1,7 @@
 {
     "HP": 50.0,
     "MP": 50.0,
-    "Coin": 200,
+    "Coin": 400,
     "playerPosition": {
         "x": 0.0,
         "y": 0.0,

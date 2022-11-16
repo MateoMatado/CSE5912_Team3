@@ -82,10 +82,7 @@ public class ShopManager : MonoBehaviour
         {
             ItemList.Add(item, 999);
         }
-        else
-        {
-            ItemList[item] += 1;
-        }
+
         ListItems();
     }
 
