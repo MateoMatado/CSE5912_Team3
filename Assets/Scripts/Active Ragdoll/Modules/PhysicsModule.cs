@@ -101,9 +101,17 @@ namespace ActiveRagdoll {
                     balancePercent = uprightTorqueFunction.Evaluate(balancePercent);
                     var rot = Quaternion.FromToRotation(_activeRagdoll.PhysicalTorso.transform.up,
                                                          Vector3.up).normalized;
-                    //Debug.Log("duck");
-                    _activeRagdoll.PhysicalTorso.AddTorque(new Vector3(rot.x, rot.y, rot.z)
-                                                                * uprightTorque * balancePercent);
+                    //Debug.Log(balancePercent);
+                    Debug.Log(_activeRagdoll.AnimatedAnimator.GetCurrentAnimatorStateInfo(0).ToString());
+                    _activeRagdoll.PhysicalTorso.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePercent);
+                    if (balancePercent > 0.7 && _activeRagdoll.AnimatedAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                    {
+                        Debug.Log("In foreach");
+                        foreach (Rigidbody body in _activeRagdoll.Rigidbodies)
+                        {
+                            body.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePercent);
+                        }
+                    }
 
                     var directionAnglePercent = Vector3.SignedAngle(_activeRagdoll.PhysicalTorso.transform.forward,
                                         TargetDirection, Vector3.up) / 180;

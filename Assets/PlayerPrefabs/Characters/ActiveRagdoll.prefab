@@ -307,7 +307,7 @@ MonoBehaviour:
   posDamper: 5
   _balanceMode: 0
   customTorsoAngularDrag: 0.05
-  uprightTorque: 500000000
+  uprightTorque: 100000000
   uprightTorqueFunction:
     serializedVersion: 2
     m_Curve:
