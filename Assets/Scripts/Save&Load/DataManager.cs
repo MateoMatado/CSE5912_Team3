@@ -18,7 +18,11 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance { get; private set; }
     private FileDataHandler fileDataHandler;
     /*file Name*/
-    public TMP_Text fileName;
+    private int number = 0;
+    public TMP_Text fileName1;
+    public TMP_Text fileName2;
+    public TMP_Text fileName3;
+    public TMP_Text fileName4;
     public GameObject InputField;
     public TMP_InputField InputFileName;
     private bool canEnter = false;
@@ -45,7 +49,10 @@ public class DataManager : MonoBehaviour
             this.fileSave = new FileSave();
         }
         SaveFile(fileSave);
-        fileName.text = fileSave.file1;
+        fileName1.text = fileSave.file1;
+        fileName2.text = fileSave.file2;
+        fileName3.text = fileSave.file3;
+        fileName4.text = fileSave.file4;
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
         this.dataObjects = FindAllData();
         LoadGame();
@@ -62,21 +69,25 @@ public class DataManager : MonoBehaviour
     {
         if (canEnter)
         {
-            canEnter = false;
-            fileName.text = InputFileName.text;
-            InputField.SetActive(false);
-            UpdateFile(ref fileSave,InputFileName.text);
-            this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
-            this.dataObjects = FindAllData();
-            LoadGame();
-            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
+            CreateGame();
         }
 
     }
 
-
-    public void Pressed()
+    public void CreateGame()
     {
+        canEnter = false;
+        InputField.SetActive(false);
+        UpdateFile(ref fileSave, InputFileName.text, number);
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
+        this.dataObjects = FindAllData();
+        LoadGame();
+        GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
+    }
+
+    public void Pressed(TMP_Text fileName, int num)
+    {
+        number = num;
         if (fileName.text.Equals("New Data"))
         {
             InputField.SetActive(true);
@@ -189,9 +200,23 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public void UpdateFile(ref FileSave fileSave, string fileName)
+    public void UpdateFile(ref FileSave fileSave, string fileName, int num)
     {
-        fileSave.file1 = InputFileName.text;
+        switch (num)
+        {
+            case 1:
+                fileSave.file1 = InputFileName.text;
+                break;
+            case 2:
+                fileSave.file2 = InputFileName.text;
+                break;
+            case 3:
+                fileSave.file3 = InputFileName.text;
+                break;
+            case 4:
+                fileSave.file4 = InputFileName.text;
+                break;
+        }
         fileSave.fileRead = InputFileName.text;
         SaveFile(fileSave);
     }
