@@ -21,10 +21,30 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         //Debug.Log("Ahh~ ondamage");
         currentHealth -= damage;
+        StopCoroutine("EaseDamageMaterial");
+        StartCoroutine("EaseDamageMaterial");
 
         if(currentHealth <= 0 && !isDead)
         {
             Die();
+        }
+    }
+
+    private IEnumerator EaseDamageMaterial()
+    {
+        float pct = Math.Clamp(currentHealth / startingHealth, 0, 1);
+        float lerpSpeed = .1f;
+        while (!isDead)
+        {
+            Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
+            float healthPct = Math.Clamp(currentHealth / startingHealth, 0, 1);
+            pct += (healthPct - pct) * lerpSpeed * Time.deltaTime;
+            Debug.Log(gameObject.name + ' ' + pct);
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                renderers[i].material.SetFloat("_Health", pct);
+            }
+            yield return null;
         }
     }
 
@@ -37,5 +57,10 @@ public class LivingEntity : MonoBehaviour, IDamageable
             onDeath();
         }
         isDead = true;
+        Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material.SetFloat("_Health", 0);
+        }
     }
 }
