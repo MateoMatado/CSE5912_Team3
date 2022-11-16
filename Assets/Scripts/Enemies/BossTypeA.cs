@@ -82,8 +82,9 @@ public class BossTypeA : LivingEntity
             //transform.position += Vector3.forward * speed * Time.deltaTime;
 
 
-            //var targetPos = (targetEntity.position - transform.position).normalized;
-            //transform.position += targetPos * speed * Time.deltaTime;
+            var targetPos = (targetEntity.position - transform.position).normalized;
+            targetPos.y = 0;
+            transform.position += targetPos * speed * Time.deltaTime;
 
 
 
@@ -130,11 +131,30 @@ public class BossTypeA : LivingEntity
             timer = 0.0f;
         }
     }
-    void DoDash()
+    void DoDash(Vector3 oldTargetPosition)
     {
         state = State.DashAttack;                
         speed = dashSpeed;
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        //transform.position += Vector3.forward * speed * Time.deltaTime;
+
+        var targetPos = (oldTargetPosition - transform.position).normalized;
+        targetPos.y = 0;
+        transform.position += targetPos * speed * Time.deltaTime;
+
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+
+    void DoDash2()
+    {
+        state = State.DashAttack;
+        speed = dashSpeed;
+        //transform.position += Vector3.forward * speed * Time.deltaTime;
+
+        var targetPos = (targetEntity.position - transform.position).normalized;
+        targetPos.y = 0;
+        transform.position += targetPos * speed * Time.deltaTime;
+
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     private void Start()
@@ -178,9 +198,9 @@ public class BossTypeA : LivingEntity
         else if(state == State.DashAttack)
         {
             var oldTargetdistance = Vector3.Distance(oldTargetPosition, transform.position);            
-            if (oldTargetdistance > 1f)
+            if (oldTargetdistance > 3f)
             {
-                DoDash(); 
+                DoDash(oldTargetPosition); 
             }
             else
             {
