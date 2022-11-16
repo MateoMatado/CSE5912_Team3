@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Team3.Events;
 
 public class PlayerHealth : LivingEntity
 {
@@ -15,7 +16,8 @@ public class PlayerHealth : LivingEntity
 
     private void Start()
     {
-        currentHealth = 1000;
+        startingHealth = 100;
+        currentHealth = startingHealth;
     }
 
     public override void OnDamage(float damage)
