@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Bomb : MonoBehaviour
 {
@@ -14,14 +15,17 @@ public class Bomb : MonoBehaviour
     private float explosionRadius = 10f;
     private bool isTriggered = false;
 
-    private float power = 1500f;
+    private float power = 1000f;
     //public Transform targetEntity;
 
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.AddForce(transform.forward * power);
+
+        //Add Force with given Degree
+        rigidbody.AddForce((transform.forward + transform.up) * power/2);
+
         StartCoroutine(Explosion());
         Destroy(gameObject,lifeTime);
     }
