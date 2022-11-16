@@ -111,13 +111,13 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StarDensity: 10
+    - _StarDensity: 30
     - _StarPower: 80
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HorizonColor: {r: 0.06977572, g: 0.082154974, b: 0.3018868, a: 0}
-    - _SkyColor: {r: 0.5243508, g: 0.1715023, b: 0.7735849, a: 0}
+    - _HorizonColor: {r: 0.15044565, g: 0.16078432, b: 0.06666667, a: 0}
+    - _SkyColor: {r: 0.24417052, g: 0.32165387, b: 0.5566038, a: 0}
   m_BuildTextureStacks: []

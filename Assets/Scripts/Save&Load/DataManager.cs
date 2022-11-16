@@ -6,22 +6,27 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
 using TMPro;
+using System.IO;
 
 public class DataManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     private GameData gameData;
+    private FileSave fileSave;
     private GameInput inputs;
     private List<IData> dataObjects;
     public static DataManager Instance { get; private set; }
     private FileDataHandler fileDataHandler;
     /*file Name*/
-    public TMP_Text fileName;
+    private int number = 0;
+    public TMP_Text fileName1;
+    public TMP_Text fileName2;
+    public TMP_Text fileName3;
+    public TMP_Text fileName4;
     public GameObject InputField;
     public TMP_InputField InputFileName;
     private bool canEnter = false;
-    public GameObject game;
-    public GameObject Menu;
+
     private void Awake()
     {
         //DontDestroyOnLoad(this.gameObject);
@@ -35,6 +40,23 @@ public class DataManager : MonoBehaviour
 
 
     }
+    public void Start()
+    {
+
+        fileSave = LoadFile();
+        if (this.fileSave == null)
+        {
+            this.fileSave = new FileSave();
+        }
+        SaveFile(fileSave);
+        fileName1.text = fileSave.file1;
+        fileName2.text = fileSave.file2;
+        fileName3.text = fileSave.file3;
+        fileName4.text = fileSave.file4;
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
+        this.dataObjects = FindAllData();
+        LoadGame();
+    }
     private void OnEnable()
     {
         inputs.UI.Yes.Enable();
@@ -47,27 +69,25 @@ public class DataManager : MonoBehaviour
     {
         if (canEnter)
         {
-            canEnter = false;
-            fileName.text = InputFileName.text;
-            InputField.SetActive(false);
-            this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName.text);
-            this.dataObjects = FindAllData();
-            Instantiate(game);
-            Menu.SetActive(false);
-            LoadGame();
-
+            CreateGame();
         }
 
     }
-    public void Start()
+
+    public void CreateGame()
     {
-        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, "test");
+        canEnter = false;
+        InputField.SetActive(false);
+        UpdateFile(ref fileSave, InputFileName.text, number);
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
         this.dataObjects = FindAllData();
-        
+        LoadGame();
+        GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
     }
 
-    public void Pressed()
+    public void Pressed(TMP_Text fileName, int num)
     {
+        number = num;
         if (fileName.text.Equals("New Data"))
         {
             InputField.SetActive(true);
@@ -75,11 +95,8 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName.text);
-            this.dataObjects = FindAllData();
-            LoadGame();
-            Instantiate(game);
-            Menu.SetActive(false);
+            fileSave.fileRead = fileName.text;
+            GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
         }
     }
 
@@ -94,10 +111,6 @@ public class DataManager : MonoBehaviour
         fileDataHandler.Save(gameData);
          */
         this.gameData = new GameData();
-        foreach (IData data in dataObjects)
-        {
-            data.LoadData(gameData);
-        }
 
     }
 
@@ -128,5 +141,114 @@ public class DataManager : MonoBehaviour
     {
         IEnumerable<IData> dataObject = FindObjectsOfType<MonoBehaviour>().OfType<IData>();
         return new List<IData>(dataObject);
+    }
+
+
+    public FileSave LoadFile()
+    {
+        //create direcotry path
+        string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
+        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
+        FileSave loadedFile = null;
+        if (File.Exists(fullPath))
+        {
+            try
+            {
+                //Load Data from the file
+                string dataToLoad = "";
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        dataToLoad = reader.ReadToEnd();
+                    }
+                }
+
+                loadedFile = JsonUtility.FromJson<FileSave>(dataToLoad);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error occured when trying to load data to file" + fullPath + "\n" + e);
+            }
+        }
+        return loadedFile;
+    }
+
+    public void SaveFile(FileSave data)
+    {
+        //create direcotry path
+        string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
+        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
+        try
+        {
+            //create direcotry
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+            //change data into Json
+            string dataToStore = JsonUtility.ToJson(data, true);
+            //write data to file
+            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.Write(dataToStore);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error occured when trying to save data to file" + fullPath + "\n" + e);
+        }
+    }
+
+    public void UpdateFile(ref FileSave FileSave, string fileName, int num)
+    {
+        bool check = false;
+        while (!check)
+        {
+            if (fileName.Equals(fileSave.file1))
+            {
+                fileName += "(1)";
+            }
+            else if (fileName.Equals(fileSave.file2))
+            {
+                fileName += "(1)";
+            }
+            else if (fileName.Equals(fileSave.file3))
+            {
+                fileName += "(1)";
+            }
+            else if (fileName.Equals(fileSave.file4))
+            {
+                fileName += "(1)";
+            }
+            if(!fileName.Equals(fileSave.file1) && !fileName.Equals(fileSave.file2)&& !fileName.Equals(fileSave.file3)&& !fileName.Equals(fileSave.file4))
+            {
+                check = true;
+            }
+        }
+        switch (num)
+        {
+            case 1:
+                FileSave.file1 = fileName;
+                break;
+            case 2:
+                FileSave.file2 = fileName;
+                break;
+            case 3:
+                FileSave.file3 = fileName;
+                break;
+            case 4:
+                FileSave.file4 = fileName;
+                break;
+        }
+        FileSave.fileRead = fileName;
+        SaveFile(FileSave);
+    }
+
+    public void Reset(int num)
+    {
+
+        UpdateFile(ref fileSave, "New Data", num);
+        SaveFile(fileSave);
     }
 }
