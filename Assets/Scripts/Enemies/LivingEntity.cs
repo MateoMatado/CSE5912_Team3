@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Team3.Events;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
@@ -30,6 +31,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public virtual void Die()
     {
         //event listener
+        EventsPublisher.Instance.PublishEvent("DeadEntity", null, gameObject);
         if(onDeath != null)
         {
             onDeath();

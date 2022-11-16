@@ -31,6 +31,15 @@ namespace Team3.Player
             Events.EventsPublisher.Instance.SubscribeToEvent("EnterTargetingState", StartTargeting);
             Events.EventsPublisher.Instance.SubscribeToEvent("ExitTargetingState", StopTargeting);
             Events.EventsPublisher.Instance.SubscribeToEvent("Target", HandleTargetEvent);
+            Events.EventsPublisher.Instance.SubscribeToEvent("DeadEntity", CheckDeadEnemy);
+        }
+
+        private void CheckDeadEnemy(object sender, object data)
+        {
+            if (((GameObject)data) == currentEnemy)
+            {
+                stateManager.StopTargeting();
+            }
         }
 
         private void StartTargeting(object sender, object data)
