@@ -19,7 +19,7 @@ public class PlayerStatus : MonoBehaviour, IData
     {
         /*make it Instance*/
         Instance = this;
-        HP = 20;
+        //HP = 20;
         //HP = 20;
 
     }

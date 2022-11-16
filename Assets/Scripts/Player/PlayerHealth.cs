@@ -6,16 +6,27 @@ using UnityEngine.UI;
 
 public class PlayerHealth : LivingEntity
 {
-    //[SerializeField] PlayerStatus playerStatus;
+    public static PlayerHealth Instance = new PlayerHealth();
+
     //OnEnable is for when player revives  
     protected override void OnEnable()
     {
         base.OnEnable();
     }
-
+    /*
+    private void Awake()
+    {
+        Instance = this;
+    }
+    */
     private void Start()
     {
-        currentHealth = 1000;
+        Instance.currentHealth = 1000;
+    }
+
+    private void Update()
+    {
+        Debug.Log("PlayerHealth.cs : " + Instance.currentHealth);
     }
 
     public override void OnDamage(float damage)
@@ -25,11 +36,19 @@ public class PlayerHealth : LivingEntity
             //on damage sound effect code here
         }
 
-        base.OnDamage(damage);
+        //base.OnDamage(damage);
+        //OnDamage(damage);
+        Instance.currentHealth -= damage;
 
-        Debug.Log("PLAYER HP:" + currentHealth);
+        if (Instance.currentHealth <= 0 && !isDead)
+        {
+            Die();
+        }
+
+        Debug.Log("PLAYER HP:" + Instance.currentHealth);
         //change in HP UI code here
         //playerStatus.HealthChange(-damage);
+        //slider.value = currentHealth;
     }
 
     public override void Die()
@@ -41,6 +60,11 @@ public class PlayerHealth : LivingEntity
         //disable player movement here
 
 
+    }
+
+    public float GetHP()
+    {
+        return Instance.currentHealth;
     }
 
 }

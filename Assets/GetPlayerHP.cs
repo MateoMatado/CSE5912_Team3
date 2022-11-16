@@ -7,7 +7,6 @@ public class GetPlayerHP : MonoBehaviour
 {
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] Slider slider;
-    //[SerializeField] PlayerStatus playerStatus;
 
     private void Start()
     {
@@ -15,12 +14,14 @@ public class GetPlayerHP : MonoBehaviour
         slider.value = 1000;
     }
 
+    
     private void Update()
     {
-        Debug.Log("PLAYER HP in UI: " + playerHealth.currentHealth );
-        //slider.value = 500;
-        //playerStatus.HealthChange();
-        slider.value = playerHealth.currentHealth;
-    }
+        //Debug.Log("GetPlayerHP.cs : " + playerHealth.currentHealth);
+        //slider.value = playerHealth.currentHealth;
 
+        Debug.Log("GetPlayerHP.cs : " + playerHealth.GetHP());
+        slider.value = playerHealth.GetHP();
+    }
+    
 }
