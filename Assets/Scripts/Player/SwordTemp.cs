@@ -11,7 +11,7 @@ public class SwordTemp : MonoBehaviour
         IDamageable target = other.GetComponent<IDamageable>();
         if (target != null)
         {
-            Debug.Log(other.name+" HIT!");
+            //Debug.Log(other.name+" HIT!");
             target.OnDamage(attackpoint);
         }
     }

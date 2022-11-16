@@ -40,7 +40,7 @@ public class GhoulTemp : LivingEntity
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
-    // private float damage = 30f;
+    private float attackDamage = 30f;
     public float attackRadius = 3f;
     private float attackDistance;
 
@@ -250,9 +250,23 @@ public class GhoulTemp : LivingEntity
     {
         state = State.Attack;
         navMeshAgent.isStopped = true;
-        ghoulAnimator.SetTrigger("Attack");        
+        ghoulAnimator.SetTrigger("Attack");
     }
-    
+
+
+    //To affect damage to Player
+    void OnCollisionEnter(Collision collision)
+    {
+        if (state == State.Attack)
+        {
+            Rigidbody hitTarget = collision.rigidbody;
+            if (collision.collider.name == "Player")
+            {
+                collision.collider.GetComponent<IDamageable>().OnDamage(attackDamage);
+            }
+        }        
+    }
+
     public void EndAttack()
     {
         if (!isDead)

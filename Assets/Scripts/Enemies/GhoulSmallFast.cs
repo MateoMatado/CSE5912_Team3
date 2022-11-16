@@ -140,7 +140,7 @@ public class GhoulSmallFast : LivingEntity
                 {
                     //var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
                     var patrolTargetPosition = GameObject.Find("FinalEnemySpawner").GetComponent<EnemyUtility>().randomPoint;
-                    Debug.Log("Random Point NAv:" + patrolTargetPosition);
+                    //Debug.Log("Random Point NAv:" + patrolTargetPosition);
                     //var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
                 }

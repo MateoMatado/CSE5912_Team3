@@ -25,6 +25,7 @@ public class PlayerHealth : LivingEntity
 
         base.OnDamage(damage);
 
+        Debug.Log("PLAYER HP:" + currentHealth);
         //change in HP UI code here
     }
 
