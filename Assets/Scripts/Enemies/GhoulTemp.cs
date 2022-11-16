@@ -68,7 +68,7 @@ public class GhoulTemp : LivingEntity
     private const float remainingDistance = 8f; //1
 
 
-
+/*
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
@@ -86,7 +86,7 @@ public class GhoulTemp : LivingEntity
         }
     }
 #endif
-
+*/
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();        

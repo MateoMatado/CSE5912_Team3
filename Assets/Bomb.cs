@@ -35,7 +35,7 @@ public class Bomb : MonoBehaviour
         {
             
         }
-        Debug.Log("Bomb----Player");
+        //Debug.Log("Bomb----Player");
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, damageables);
         for (int i = 0; i < colliders.Length; i++)
         {
