@@ -205,19 +205,26 @@ public class DataManager : MonoBehaviour
         switch (num)
         {
             case 1:
-                fileSave.file1 = InputFileName.text;
+                fileSave.file1 = fileName;
                 break;
             case 2:
-                fileSave.file2 = InputFileName.text;
+                fileSave.file2 = fileName;
                 break;
             case 3:
-                fileSave.file3 = InputFileName.text;
+                fileSave.file3 = fileName;
                 break;
             case 4:
-                fileSave.file4 = InputFileName.text;
+                fileSave.file4 = fileName;
                 break;
         }
-        fileSave.fileRead = InputFileName.text;
+        fileSave.fileRead = fileName;
+        SaveFile(fileSave);
+    }
+
+    public void Reset(int num)
+    {
+
+        UpdateFile(ref fileSave, "New Data", num);
         SaveFile(fileSave);
     }
 }
