@@ -3346,7 +3346,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 56
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3372,7 +3372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559928286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -515, y: 11.12, z: 223}
+  m_LocalPosition: {x: -607.62885, y: 113.8533, z: 759.20026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6255,9 +6255,9 @@ MonoBehaviour:
   RandomHeightLimit: 1000
   Islands:
   - {fileID: 2070914281333398461, guid: 5634004bfd5d24e4c81b463d2375c3d9, type: 3}
-  - {fileID: 2916570678104877123, guid: cca340d613f5ff94ab60d397f745707a, type: 3}
-  - {fileID: 6891552101434141695, guid: 31d1fffe46012574b9e14ec5e5864c5a, type: 3}
-  - {fileID: 1891037396360784119, guid: 5184d25ec5dc24a429c4fa7d669f6c7b, type: 3}
+  - {fileID: 2916570678104877123, guid: 2759810af7c3a62469ab763a1ef5bc99, type: 3}
+  - {fileID: 6891552101434141695, guid: 54095a83b46154748b186336a2a5048d, type: 3}
+  - {fileID: 1891037396360784119, guid: b52a3195631c3c442adba6f14a166cf8, type: 3}
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
   FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
   StartingIsland: {fileID: 9207809040663074471, guid: 9670816195ef8b44090145da6f5fc533, type: 3}

@@ -13842,7 +13842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9139271711270672089}
-  - component: {fileID: 6096100901884012490}
+  - component: {fileID: 1788272600642337761}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -13894,7 +13894,7 @@ Transform:
   m_Father: {fileID: 1747576188176015697}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6096100901884012490
+--- !u!114 &1788272600642337761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13922,7 +13922,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 31784b2fe0ad8b64c896650ae04c4d26, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: eaebf909b709b9945a8423ca600d9ab7, type: 2}
 --- !u!1 &4451511771781155259
 GameObject:
   m_ObjectHideFlags: 0

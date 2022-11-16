@@ -89,7 +89,8 @@ public class GhoulSmallFast : LivingEntity
         //temp
         //targetEntity = GameObject.Find("Player").transform;
 
-        StartCoroutine(UpdatePath());
+        //StartCoroutine(UpdatePath());
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
     private bool hasTarget
     {
