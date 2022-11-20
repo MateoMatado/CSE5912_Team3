@@ -13,7 +13,7 @@ public class ShopTable : MonoBehaviour
     {
         inputs = new GameInput();
         inputs.Player.Collect.performed += Collect_performed;
-        
+        ShopManager.Instance.getTable(transform);
     }
     private void OnEnable()
     {

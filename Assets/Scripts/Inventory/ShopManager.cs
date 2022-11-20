@@ -8,7 +8,7 @@ using System;
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager Instance;
-    public Transform Desk;
+    private Transform Desk;
     public Transform ItemContent;
     public GameObject InventoryItem;
     public static Dictionary<Item, int> ItemList = new Dictionary<Item, int>();
@@ -32,6 +32,11 @@ public class ShopManager : MonoBehaviour
         /*make it Instance*/
         Instance = this;
 
+    }
+
+    public void getTable(Transform table)
+    {
+        Desk = table;
     }
     /*number Menu part*/
     public void Reset()
