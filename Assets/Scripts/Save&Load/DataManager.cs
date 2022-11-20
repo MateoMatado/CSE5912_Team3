@@ -95,7 +95,7 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            fileSave.fileRead = fileName.text;
+            UpdateReadFile(ref fileSave, fileName.text);
             GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
         }
     }
@@ -147,8 +147,8 @@ public class DataManager : MonoBehaviour
     public FileSave LoadFile()
     {
         //create direcotry path
-        string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
-        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
+        //string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
+        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
         FileSave loadedFile = null;
         if (File.Exists(fullPath))
         {
@@ -177,8 +177,8 @@ public class DataManager : MonoBehaviour
     public void SaveFile(FileSave data)
     {
         //create direcotry path
-        string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
-        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
+        //string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
+        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
         try
         {
             //create direcotry
@@ -244,7 +244,11 @@ public class DataManager : MonoBehaviour
         FileSave.fileRead = fileName;
         SaveFile(FileSave);
     }
-
+    public void UpdateReadFile(ref FileSave FileSave, string fileName)
+    {
+        FileSave.fileRead = fileName;
+        SaveFile(FileSave);
+    }
     public void Reset(int num)
     {
 
