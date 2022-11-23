@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IData
 {
-    void NewData(ref GameData data);
+
 
     void LoadData(GameData data);
 

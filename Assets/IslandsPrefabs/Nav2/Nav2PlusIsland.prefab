@@ -8436,6 +8436,7 @@ GameObject:
   - component: {fileID: 2476649061602473588}
   - component: {fileID: 4827058537100225093}
   - component: {fileID: 3133408066340822161}
+  - component: {fileID: -7605931574795558152}
   m_Layer: 8
   m_Name: Nav2PlusIsland
   m_TagString: IslandParent
@@ -8516,6 +8517,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sinkSpeed: 1
   eventName: Sink
+--- !u!114 &-7605931574795558152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891037396360784119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2561c3579e3ede4796b04aae086f0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IslandNumber: 3
 --- !u!1 &1913504003615651063
 GameObject:
   m_ObjectHideFlags: 0

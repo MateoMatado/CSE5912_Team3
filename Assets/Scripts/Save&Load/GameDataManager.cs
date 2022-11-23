@@ -29,21 +29,17 @@ public class GameDataManager : MonoBehaviour
             Debug.LogError("Found more than one data");
         }
         Instance = this;
-
-
-    }
-    public void Start()
-    {
         fileSave = LoadFile();
         if (this.fileSave == null)
         {
             this.fileSave = new FileSave();
         }
 
-        
+
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileSave.fileRead);
         this.dataObjects = FindAllData();
         LoadGame();
+
     }
 
 

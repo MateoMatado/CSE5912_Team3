@@ -2353,6 +2353,7 @@ GameObject:
   - component: {fileID: -7282381335516095018}
   - component: {fileID: 988956255132683891}
   - component: {fileID: 4040048002370405910}
+  - component: {fileID: -7541892961622231484}
   m_Layer: 8
   m_Name: Shop Island
   m_TagString: IslandParent
@@ -2428,6 +2429,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sinkSpeed: 1
   eventName: Sink
+--- !u!114 &-7541892961622231484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070914281333398461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2561c3579e3ede4796b04aae086f0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IslandNumber: 12
 --- !u!1 &2070914281580103199
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,26 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : LivingEntity
 {
     public static PlayerHealth Instance = new PlayerHealth();
+    private float currentHealth = 1000;
 
     //OnEnable is for when player revives  
     protected override void OnEnable()
     {
         base.OnEnable();
     }
-    /*
+    
     private void Awake()
     {
-        Instance = this;
+        //Instance = this;
+        Instance.currentHealth = 1000;
+
     }
-    */
     private void Start()
     {
-        Instance.currentHealth = 1000;
+        Instance.currentHealth = HUDManager.Instance.hp;
+
     }
+
+
 
     private void Update()
     {
@@ -66,5 +72,6 @@ public class PlayerHealth : LivingEntity
     {
         return Instance.currentHealth;
     }
+
 
 }

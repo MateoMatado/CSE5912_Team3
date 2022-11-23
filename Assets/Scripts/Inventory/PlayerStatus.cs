@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerStatus : MonoBehaviour, IData
+public class PlayerStatus : MonoBehaviour
 {
     public static PlayerStatus Instance = new PlayerStatus();
     public static float HP = 20;
-    public static float Mana = 20;
+    public float Mana = 100;
     private static float ChangeValueHP = 0;
     private static float ChangeValueMana = 0;
     private static float AccelerateTime = 0;
@@ -21,6 +22,12 @@ public class PlayerStatus : MonoBehaviour, IData
         Instance = this;
         //HP = 20;
         //HP = 20;
+        Mana = 100;
+        
+    }
+    private void Start()
+    {
+        transform.localPosition = HUDManager.Instance.position;
 
     }
     public float GetValue(string name)
@@ -88,7 +95,10 @@ public class PlayerStatus : MonoBehaviour, IData
         transform.localScale = new Vector3(3, 3, 3);
         transform.position += transform.up * 25f;
     }
-
+    public Vector3 position()
+    {
+        return transform.position;
+    }
     /*Normal Update*/
     public void Update()
     {
@@ -124,21 +134,4 @@ public class PlayerStatus : MonoBehaviour, IData
         }
     }
 
-
-    public void NewData(ref GameData data)
-    {
-        data.HP = 50;
-        data.MP = 50;
-    }
-    public void LoadData(GameData data)
-    {
-        HP = data.HP;
-        Mana = data.MP;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.HP = HP;
-        data.MP = Mana;
-    }
 }

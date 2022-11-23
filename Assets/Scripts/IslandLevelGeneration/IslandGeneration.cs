@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
-public class IslandGeneration : MonoBehaviour
+public class IslandGeneration : MonoBehaviour, IData
 {
     [SerializeField] private int Bias = 3;
     [SerializeField] private int Width = 100;
@@ -29,7 +29,10 @@ public class IslandGeneration : MonoBehaviour
     private GameObject[,] gameObjectIslands;
 
     [SerializeField] private List<GameObject> IslandList = new List<GameObject>();
-
+    //save and load
+    //private Dictionary<int, Vector3> Island = new Dictionary<int, Vector3>();
+    [SerializeField] private List<int> Island = new List<int>();
+    [SerializeField] private List<Vector3> Location = new List<Vector3>();
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +40,20 @@ public class IslandGeneration : MonoBehaviour
         DIslands.Add(Islands[1].name.ToString(), new Vector2(500, 500));
         DIslands.Add(Islands[2].name.ToString(), new Vector2(800, 600));
         DIslands.Add(Islands[3].name.ToString(), new Vector2(800, 800));
+        if(Island.Count != 0)
+        {
+            for(int i = 0; i< Island.Count; i++)
+            {
+                LoadIsland(Island[i],Location[i]);
+                //Debug.Log(Island[i]);
+            }
+        }
+        else
+        {
+            GenerateIslands();
+            GenerateChains();
+        }
 
-        GenerateIslands();
-        GenerateChains();
         
     }
     private void GenerateChains()
@@ -109,6 +123,8 @@ public class IslandGeneration : MonoBehaviour
         gameObjectIslands[2000, 2000] = GameObject.Instantiate(StartingIsland);
         gameObjectIslands[2000, 2000].transform.position = new Vector3(2000, Random.Range(100, RandomHeightLimit), 2000);
         gameObjectIslands[2000, 2000].transform.SetParent(transform);
+        Island.Add(10);
+        Location.Add(gameObjectIslands[2000, 2000].transform.position);
 
         for (int x = 0; x < 1000; x++)
         {
@@ -120,6 +136,8 @@ public class IslandGeneration : MonoBehaviour
         gameObjectIslands[2000, 2000] = GameObject.Instantiate(BossIsland);
         gameObjectIslands[2000, 2000].transform.position = new Vector3((float)(Width/2.3), RandomHeightLimit + RandomHeightLimit/3, (float)(Length / 2.3));
         gameObjectIslands[2000, 2000].transform.SetParent(transform);
+        Island.Add(11);
+        Location.Add(gameObjectIslands[2000, 2000].transform.position);
 
         Vector2 ShopPos = new Vector2(Random.Range(0, Width), Random.Range(0, Length));
         for (int x = 0; x < DIslands["IslandBasic"].x; x++)
@@ -132,6 +150,8 @@ public class IslandGeneration : MonoBehaviour
         gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y] = GameObject.Instantiate(ShopIsland);
         gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.position = new Vector3((int)ShopPos.x, Random.Range(100, RandomHeightLimit), (int)ShopPos.y);
         gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.SetParent(transform);
+        Island.Add(12);
+        Location.Add(gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.position);
 
         while (BiasDec >= 0)
         {
@@ -196,6 +216,8 @@ public class IslandGeneration : MonoBehaviour
                         }
                     }
                     IslandList.Add(gameObjectIslands[(int)pos.x, (int)pos.y]);
+                    Island.Add(IslRand);
+                    Location.Add(gameObjectIslands[(int)pos.x, (int)pos.y].transform.position);
                 }
             }
             BiasDec--;
@@ -226,5 +248,53 @@ public class IslandGeneration : MonoBehaviour
             }
         }
         return check;
+    }
+    private void LoadIsland(int num, Vector3 position)
+    {
+        GameObject temp = null;
+        if(num >=0 && num < 4)
+        {
+            temp = Islands[num];
+        }
+        else if(num == 10)
+        {
+            temp = StartingIsland;
+        }
+        else if (num == 11)
+        {
+            temp = BossIsland;
+        }
+        else if (num == 12)
+        {
+            temp = ShopIsland;
+        }
+        Instantiate(temp, position, new Quaternion(0, 0, 0, 0));
+    }
+    public void LoadData(GameData data)
+    {
+        foreach (int num in data.Islands)
+        {
+            Island.Add(num);
+        }
+        foreach (Vector3 num in data.Location)
+        {
+            Location.Add(num);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        //data.Islands = new List<int>();
+        //data.Location = new List<Vector3>();
+        data.Islands = new List<int>();
+        foreach(int num in Island)
+        {
+            data.Islands.Add(num);
+        }
+        data.Location = new List<Vector3>();
+        foreach (Vector3 num in Location)
+        {
+            data.Location.Add(num);
+        }
     }
 }

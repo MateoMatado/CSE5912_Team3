@@ -43961,6 +43961,7 @@ GameObject:
   - component: {fileID: 6413008049201610011}
   - component: {fileID: 4165851150656309149}
   - component: {fileID: 8078074902505655824}
+  - component: {fileID: -6024259839738954911}
   m_Layer: 8
   m_Name: NavBossIsland
   m_TagString: IslandParent
@@ -44030,6 +44031,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer: 8
+--- !u!114 &-6024259839738954911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413008049201610010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2561c3579e3ede4796b04aae086f0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IslandNumber: 11
 --- !u!1 &6413008049221391093
 GameObject:
   m_ObjectHideFlags: 0

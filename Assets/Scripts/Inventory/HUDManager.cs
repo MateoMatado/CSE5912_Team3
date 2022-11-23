@@ -12,10 +12,13 @@ public class HUDManager : MonoBehaviour, IData
     public GameObject CollectPanel;
     public Text number;
     private int coin = 500;
+    public float hp = 1000;
+    public Vector3 position;
     public void Awake()
     {
         Instance = this;
         coin = 500;
+        position = new Vector3(0,0,0);
     }
     public void DisplayCollectPanel(string name, int price)
     {
@@ -57,19 +60,20 @@ public class HUDManager : MonoBehaviour, IData
         Mana.value = PlayerStatus.Instance.GetValue("Mana") / 100;
         number.text = coin + "";
     }
-    public void NewData(ref GameData data)
-    {
-        data.Coin = 500;
 
-    }
     public void LoadData(GameData data)
     {
         coin = data.Coin;
-
+        hp = data.HP;
+        position = data.playerPosition;
+        //PlayerStatus.Instance.Mana = data.MP;
     }
 
     public void SaveData(ref GameData data)
     {
         data.Coin = coin;
+        data.HP = PlayerHealth.Instance.GetHP();
+        data.playerPosition = PlayerStatus.Instance.position();
+        //data.MP = PlayerStatus.Instance.Mana;
     }
 }

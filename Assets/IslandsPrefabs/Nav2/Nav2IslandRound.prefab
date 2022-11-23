@@ -2657,6 +2657,7 @@ GameObject:
   - component: {fileID: 7585859103224099237}
   - component: {fileID: 3249659786334399904}
   - component: {fileID: 5105155381009479649}
+  - component: {fileID: 5593910155742125217}
   m_Layer: 8
   m_Name: Nav2IslandRound
   m_TagString: IslandParent
@@ -2729,6 +2730,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sinkSpeed: 1
   eventName: Sink
+--- !u!114 &5593910155742125217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916570678104877123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2561c3579e3ede4796b04aae086f0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IslandNumber: 1
 --- !u!1 &2916570678111815596
 GameObject:
   m_ObjectHideFlags: 0

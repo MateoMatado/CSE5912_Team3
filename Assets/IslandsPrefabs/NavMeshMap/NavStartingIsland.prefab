@@ -19853,6 +19853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9207809040663074470}
   - component: {fileID: 5799411064790667080}
+  - component: {fileID: -8172006860315786004}
   m_Layer: 8
   m_Name: NavStartingIsland
   m_TagString: IslandParent
@@ -19903,6 +19904,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer: 8
+--- !u!114 &-8172006860315786004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207809040663074471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2561c3579e3ede4796b04aae086f0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IslandNumber: 10
 --- !u!1 &9207809040685758792
 GameObject:
   m_ObjectHideFlags: 0

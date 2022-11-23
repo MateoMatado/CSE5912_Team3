@@ -1725,6 +1725,7 @@ GameObject:
   - component: {fileID: -7282381335516095018}
   - component: {fileID: 988956255132683891}
   - component: {fileID: 4040048002370405910}
+  - component: {fileID: -519665192996123191}
   m_Layer: 8
   m_Name: IslandBasic
   m_TagString: IslandParent
@@ -1798,6 +1799,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sinkSpeed: 1
   eventName: Sink
+--- !u!114 &-519665192996123191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070914281333398461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2561c3579e3ede4796b04aae086f0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IslandNumber: 0
 --- !u!1 &2070914281392159482
 GameObject:
   m_ObjectHideFlags: 0
