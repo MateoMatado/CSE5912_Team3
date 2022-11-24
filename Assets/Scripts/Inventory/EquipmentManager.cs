@@ -44,6 +44,8 @@ public class EquipmentManager : MonoBehaviour, IData
     {
         Equipment = new List<Item>();
         Equipped = new List<Item>();
+        Equipped.Add(null);
+        Equipped.Add(null);
         foreach (int number in EquipmentSave)
         {
             Equipment.Add(ItemsFactory.Instance.GetEquip(number));
