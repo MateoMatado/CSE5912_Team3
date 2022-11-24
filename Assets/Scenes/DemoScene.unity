@@ -2034,6 +2034,8 @@ MonoBehaviour:
   - {fileID: 874677880}
   - {fileID: 471628612}
   initiateWeapon: {fileID: 11400000, guid: f83e573e287a7814c99fcd8326fefd46, type: 2}
+  EquippedSave: 
+  EquipmentSave: 
 --- !u!4 &334210286
 Transform:
   m_ObjectHideFlags: 0
@@ -3059,6 +3061,8 @@ MonoBehaviour:
   - {fileID: 734900005}
   informationBox: {fileID: 1547923277906263603, guid: 16b048332e211094ea664494c580936e, type: 3}
   canvas: {fileID: 888781233}
+  ItemsSave: 
+  Amount: 
 --- !u!114 &521379548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3098,6 +3102,18 @@ MonoBehaviour:
   FoamFinger: {fileID: 2223283866969300754, guid: 1082c247e567aad41a7dc6e69f8f9c76, type: 3}
   Hammer: {fileID: 2223283866969300754, guid: 9ec7626a676dd8a4999cdb43673c6b48, type: 3}
   coin: {fileID: 1000011365394840, guid: 5142a683d65bbf84abea6f07db9099c7, type: 3}
+  RedPot1: {fileID: 11400000, guid: dcaebbb676f3f6c4d83adccf2ea4dff8, type: 2}
+  RedPotions1: {fileID: 11400000, guid: 68dc93250736f46478a0d764aa44a127, type: 2}
+  BluePot1: {fileID: 11400000, guid: 3fb017ecf7e31e240ac32a231b05ab40, type: 2}
+  BluePotions1: {fileID: 11400000, guid: 1256d832d3a380e4482585d2e337db26, type: 2}
+  GreenPot1: {fileID: 11400000, guid: 06f3a38bd4af8044494176b1e81bc2fe, type: 2}
+  GreenPotions1: {fileID: 11400000, guid: 22819fa4ea4729c4ca4669ad78eeb0ef, type: 2}
+  BerserkPotions1: {fileID: 11400000, guid: f7a0e3c87160c6d449568c6dc804aaea, type: 2}
+  BiggerPot1: {fileID: 11400000, guid: a2348ce6fbee6b0419604df63bba36c4, type: 2}
+  PurplePot1: {fileID: 11400000, guid: 737902d41f3d2144eb9bf5c6c1620a2c, type: 2}
+  Sword1: {fileID: 11400000, guid: 52474ba99b1a3fe4f98ee653a66a62dd, type: 2}
+  FoamFinger1: {fileID: 11400000, guid: f83e573e287a7814c99fcd8326fefd46, type: 2}
+  Hammer1: {fileID: 11400000, guid: aa9beabb21c5b4a489b04d14fd10e65d, type: 2}
 --- !u!4 &521379551
 Transform:
   m_ObjectHideFlags: 0
@@ -3416,7 +3432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e698cedcf714b7a4db487e275a529ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Desk: {fileID: 0}
   ItemContent: {fileID: 862167583}
   InventoryItem: {fileID: 3340476601635950074, guid: 4f8462cdf8e07df43b332a8ff4d8584b, type: 3}
   Shop: {fileID: 185435247}
@@ -6264,6 +6279,8 @@ MonoBehaviour:
   BossIsland: {fileID: 6413008049201610010, guid: ce448cf07fc91e74f8474ac15fc8146a, type: 3}
   ShopIsland: {fileID: 2070914281333398461, guid: 792f2a368b8fedb4496653fd62c163cd, type: 3}
   IslandList: []
+  Island: 
+  Location: []
 --- !u!4 &1006411364
 Transform:
   m_ObjectHideFlags: 0
@@ -9405,6 +9422,8 @@ MonoBehaviour:
   Mana: {fileID: 654264390}
   CollectPanel: {fileID: 1076386096}
   number: {fileID: 1927593729}
+  hp: 1000
+  position: {x: 0, y: 0, z: 0}
 --- !u!4 &1448095332
 Transform:
   m_ObjectHideFlags: 0

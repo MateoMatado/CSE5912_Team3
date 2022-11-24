@@ -1,7 +1,7 @@
 {
-    "file1": "abc",
-    "file2": "12",
+    "file1": "123",
+    "file2": "6",
     "file3": "test",
-    "file4": "test2",
-    "fileRead": "abc"
+    "file4": "1",
+    "fileRead": "6"
 }

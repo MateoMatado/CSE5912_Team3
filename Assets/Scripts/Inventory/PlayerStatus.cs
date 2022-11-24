@@ -97,7 +97,7 @@ public class PlayerStatus : MonoBehaviour
     }
     public Vector3 position()
     {
-        return transform.position;
+        return transform.localPosition;
     }
     /*Normal Update*/
     public void Update()

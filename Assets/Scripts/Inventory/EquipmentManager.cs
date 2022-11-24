@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using System;
 using Team3.Events;
 
-public class EquipmentManager : MonoBehaviour
+public class EquipmentManager : MonoBehaviour, IData
 {
     public static EquipmentManager Instance;
     public List<Item> Equipment = new List<Item>();
@@ -26,6 +26,10 @@ public class EquipmentManager : MonoBehaviour
     private bool EquipFirst = true;
     private bool EquipSecond = false;
     AvatarIKGoal lastHand = AvatarIKGoal.RightHand;
+
+    /*Save and Load*/
+    [SerializeField] private List<int> EquippedSave = new List<int>();
+    [SerializeField] private List<int> EquipmentSave = new List<int>();
     // Normal Set up
     public void Awake()
     {
@@ -35,7 +39,19 @@ public class EquipmentManager : MonoBehaviour
         Instance = this;
 
     }
+    /*Load Data*/
+    public void Start()
+    {
+        Equipment = new List<Item>();
+        Equipped = new List<Item>();
+        foreach (int number in EquipmentSave)
+        {
+            Equipment.Add(ItemsFactory.Instance.GetEquip(number));
+        }
+        Equipped[0] = ItemsFactory.Instance.GetEquip(EquippedSave[0]);
+        Equipped[1] = ItemsFactory.Instance.GetEquip(EquippedSave[1]);
 
+    }
 
     /*to get item and drop item*/
     public void Add(Item item)
@@ -212,5 +228,42 @@ public class EquipmentManager : MonoBehaviour
             EquipFirst = true;
         }
         EquipWeapon();
+    }
+
+    public void LoadData(GameData data)
+    {
+        foreach (int num in data.Equipped)
+        {
+            EquippedSave.Add(num);
+        }
+        foreach (int num in data.Equipment)
+        {
+            EquipmentSave.Add(num);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        //data.Islands = new List<int>();
+        //data.Location = new List<Vector3>();
+        data.Equipped = new List<int>();
+        data.Equipment = new List<int>();
+        foreach (var item in Equipped)
+        {
+            if(item == null)
+            {
+                data.Equipped.Add(-1);
+            }
+            else
+            {
+                data.Equipped.Add(item.id);
+            }
+
+        }
+        foreach (var item in Equipment)
+        {
+            data.Equipment.Add(item.id);
+        }
+
     }
 }

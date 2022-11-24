@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, IData
 {
     /*inventory item*/
     public static InventoryManager Instance;
@@ -36,6 +36,10 @@ public class InventoryManager : MonoBehaviour
     private GameObject currentInformation = null;
     public GameObject informationBox;
     public Transform canvas;
+
+    /*Save and Load*/
+    [SerializeField] private List<int> ItemsSave = new List<int>();
+    [SerializeField] private List<int> Amount = new List<int>();
     // Normal Set up
     public void Awake()
     {
@@ -47,7 +51,16 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
 
     }
-
+    public void Start()
+    {
+        /*Load Data*/
+        ItemList = new Dictionary<Item, int>();
+        for(int i = 0; i < Amount.Count; i++)
+        {
+            Item temp = ItemsFactory.Instance.GetItem(ItemsSave[i]);
+            ItemList.Add(temp, Amount[i]);
+        }
+    }
 
     /*to get item and drop item*/
     public void Add(Item item)
@@ -230,7 +243,32 @@ public class InventoryManager : MonoBehaviour
         
         
     }
+    public void LoadData(GameData data)
+    {
+        foreach (int num in data.Items)
+        {
+            ItemsSave.Add(num);
+        }
+        foreach (int num in data.ItemsAmount)
+        {
+            Amount.Add(num);
+        }
+    }
 
+    public void SaveData(ref GameData data)
+    {
+        //data.Islands = new List<int>();
+        //data.Location = new List<Vector3>();
+        data.Items = new List<int>();
+        data.ItemsAmount = new List<int>();
+        foreach (var item in ItemList)
+        {
+            data.Items.Add(item.Key.id);
+            data.ItemsAmount.Add(item.Value);
+        }
+
+
+    }
 
 
 

@@ -22,6 +22,20 @@ public class ItemsFactory : MonoBehaviour
     [SerializeField] GameObject Hammer;
     /*coin*/
     [SerializeField] GameObject coin;
+    /*Items for inventory*/
+    [SerializeField] Item RedPot1;
+    [SerializeField] Item RedPotions1;
+    [SerializeField] Item BluePot1;
+    [SerializeField] Item BluePotions1;
+    [SerializeField] Item GreenPot1;
+    [SerializeField] Item GreenPotions1;
+    [SerializeField] Item BerserkPotions1;
+    [SerializeField] Item BiggerPot1;
+    [SerializeField] Item PurplePot1;
+    /*Items for Equipment*/
+    [SerializeField] Item Sword1;
+    [SerializeField] Item FoamFinger1;
+    [SerializeField] Item Hammer1;
     // Start is called before the first frame update
     void Awake()
     {
@@ -131,5 +145,62 @@ public class ItemsFactory : MonoBehaviour
 
         }
         return obj;
+    }
+
+    public Item GetItem(int id)
+    {
+        Item res = null;
+        switch (id)
+        {
+            case 0:
+                res = PurplePot1;
+                break;
+            case 1:
+                res = RedPot1;
+                break;
+            case 2:
+                res = BluePot1;
+                break;
+            case 3:
+                res = GreenPot1;
+                break;
+            case 4:
+                res = RedPotions1;
+                break;
+            case 5:
+                res = BluePotions1;
+                break;
+            case 6:
+                res = GreenPotions1;
+                break;
+            case 7:
+                res = BerserkPotions1;
+                break;
+            case 8:
+                res = BiggerPot1;
+                break;
+        }
+        return res;
+    }
+
+    public Item GetEquip(int id)
+    {
+        Item res = null;
+        switch (id)
+        {
+            case -1:
+                res = null;
+                break;
+            case 102:
+                res = Sword1;
+                break;
+            case 106:
+                res = FoamFinger1;
+                break;
+            case 105:
+                res = Hammer1;
+                break;
+        }
+        return res;
     }
 }
