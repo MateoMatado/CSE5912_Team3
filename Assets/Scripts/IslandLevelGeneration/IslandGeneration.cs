@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class IslandGeneration : MonoBehaviour, IData
 {
+    public static IslandGeneration Instance;
     [SerializeField] private int Bias = 3;
     [SerializeField] private int Width = 100;
     [SerializeField] private int Length = 100;
@@ -34,6 +35,10 @@ public class IslandGeneration : MonoBehaviour, IData
     [SerializeField] private List<int> Island = new List<int>();
     [SerializeField] private List<Vector3> Location = new List<Vector3>();
     // Start is called before the first frame update
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         DIslands.Add(Islands[0].name.ToString(), new Vector2(250, 200));
@@ -42,10 +47,10 @@ public class IslandGeneration : MonoBehaviour, IData
         DIslands.Add(Islands[3].name.ToString(), new Vector2(800, 800));
         if(Island.Count != 0)
         {
-            for(int i = 0; i< Island.Count; i++)
+            Debug.Log("Total Island: " + Island.Count);
+            for (int i = 0; i< Island.Count; i++)
             {
                 LoadIsland(Island[i],Location[i]);
-                //Debug.Log(Island[i]);
             }
         }
         else
@@ -295,6 +300,20 @@ public class IslandGeneration : MonoBehaviour, IData
         foreach (Vector3 num in Location)
         {
             data.Location.Add(num);
+        }
+    }
+
+    public void RemoveIsland(Vector3 position)
+    {
+        for (int i = 0; i < Location.Count; i++){
+            //Debug.Log("Island: " + Location[i] + "  +"+ position);
+            if (Location[i].x == position.x)
+            {
+                Location.RemoveAt(i);
+                Island.RemoveAt(i);
+                Debug.Log("Total Island: " + Island.Count);
+                break;
+            }
         }
     }
 }

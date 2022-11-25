@@ -203,7 +203,7 @@ public class DataManager : MonoBehaviour
     public void UpdateFile(ref FileSave FileSave, string fileName, int num)
     {
         bool check = false;
-        while (!check)
+        while (!check && !fileName.Equals("New Data"))
         {
             if (fileName.Equals(fileSave.file1))
             {
