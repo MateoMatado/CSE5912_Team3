@@ -10,7 +10,7 @@ public class TrajectoryLineDisable : MonoBehaviour
     void Start()
     {
         line = GetComponent<LineRenderer>();
-        EventsPublisher.Instance.SubscribeToEvent("StopFlying", StopFlying);
+        EventsPublisher.Instance.SubscribeToEvent("LaunchedCannon", StopFlying);
     }
 
     private void StopFlying(object sender, object data)
