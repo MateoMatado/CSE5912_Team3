@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : LivingEntity
 {
-    public static PlayerHealth Instance = new PlayerHealth();
-    private float currentHealth = 1000;
+    public static PlayerHealth Instance = null;
 
     //OnEnable is for when player revives  
     protected override void OnEnable()
@@ -18,17 +17,38 @@ public class PlayerHealth : LivingEntity
     
     private void Awake()
     {
-        //Instance = this;
-        Instance.currentHealth = 1000;
+        Instance = this;
+        // currentHealth = 1000;
+        Instance.currentHealth = HUDManager.Instance.hp;
+        Instance.startingHealth = HUDManager.Instance.hp;
+        StartCoroutine(EaseDamageMaterial());
 
     }
     private void Start()
     {
-        Instance.currentHealth = HUDManager.Instance.hp;
+        // Instance.currentHealth = HUDManager.Instance.hp;
 
     }
 
 
+
+    private IEnumerator EaseDamageMaterial()
+    {
+        float pct = Math.Clamp(currentHealth / startingHealth, 0, 1);
+        float lerpSpeed = 1f;
+        while (!isDead)
+        {
+            Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
+            float healthPct = Math.Clamp(currentHealth / startingHealth, 0, 1);
+            pct += (healthPct - pct) * lerpSpeed * Time.deltaTime;
+            Debug.Log(gameObject.name + ' ' + pct);
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                renderers[i].material.SetFloat("_Health", pct);
+            }
+            yield return null;
+        }
+    }
 
     private void Update()
     {

@@ -17,12 +17,15 @@ public class LivingEntity : MonoBehaviour, IDamageable
         currentHealth = startingHealth;
     }
 
+    private void Awake()
+    {
+        StartCoroutine(EaseDamageMaterial());
+    }
+
     public virtual void OnDamage(float damage)
     {
         //Debug.Log("Ahh~ ondamage");
         currentHealth -= damage;
-        StopCoroutine("EaseDamageMaterial");
-        StartCoroutine("EaseDamageMaterial");
 
         if(currentHealth <= 0 && !isDead)
         {
@@ -33,7 +36,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     private IEnumerator EaseDamageMaterial()
     {
         float pct = Math.Clamp(currentHealth / startingHealth, 0, 1);
-        float lerpSpeed = .1f;
+        float lerpSpeed = 1f;
         while (!isDead)
         {
             Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();

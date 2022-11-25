@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public static PlayerStatus Instance = new PlayerStatus();
+    public static PlayerStatus Instance = null;
     public static float HP = 20;
     public float Mana = 100;
     private static float ChangeValueHP = 0;
