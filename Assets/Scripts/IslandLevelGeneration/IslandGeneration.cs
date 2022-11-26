@@ -49,7 +49,7 @@ public class IslandGeneration : MonoBehaviour, IData
         DIslands.Add(Islands[5].name.ToString(), new Vector2(800, 800));
         DIslands.Add(Islands[6].name.ToString(), new Vector2(800, 600));
         DIslands.Add(Islands[7].name.ToString(), new Vector2(350, 350));
-        DIslands.Add(Islands[7].name.ToString(), new Vector2(100, 100));
+        DIslands.Add(Islands[8].name.ToString(), new Vector2(100, 100));
         if (Island.Count != 0)
         {
             Debug.Log("Total Island: " + Island.Count);
