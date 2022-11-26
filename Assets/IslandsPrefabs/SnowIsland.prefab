@@ -8437,7 +8437,7 @@ GameObject:
   - component: {fileID: 4827058537100225093}
   - component: {fileID: 3133408066340822161}
   m_Layer: 8
-  m_Name: PlusIsland
+  m_Name: SnowIsland
   m_TagString: IslandParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
