@@ -262,7 +262,7 @@ public class IslandGeneration : MonoBehaviour, IData
     private void LoadIsland(int num, Vector3 position)
     {
         GameObject temp = null;
-        if(num >=0 && num < 4)
+        if(num >=0 && num < Islands.Count)
         {
             temp = Islands[num];
         }
