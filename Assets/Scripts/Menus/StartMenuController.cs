@@ -30,7 +30,7 @@ public class StartMenuController : MonoBehaviour
     {
 
         GameStateMachine.Instance.SwitchState(GameStateMachine.RunningState);
-        DataManager.Instance.NewGame();
+        //DataManager.Instance.NewGame();
     }
     public void LoadGameYes()
     {
