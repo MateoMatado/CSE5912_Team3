@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 4107843460147162}
   - component: {fileID: 95494210871697228}
   - component: {fileID: 8881062580568083447}
+  - component: {fileID: 1883327469511465655}
   m_Layer: 0
   m_Name: BOSS_A
   m_TagString: Untagged
@@ -155,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 1049403487954978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1491177846943329539}
@@ -207,7 +208,23 @@ MonoBehaviour:
   onDamageSound: {fileID: 8300000, guid: e23c1348148115649813a7baa9c314a0, type: 3}
   targetEntity: {fileID: 4520910968986401104, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
   attackRadius: 3
-  attackRoot: {fileID: 0}
+  attackRoot: {fileID: 1491177846943329539}
+--- !u!54 &1883327469511465655
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049403487954978}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!1 &1056519258857930
 GameObject:
   m_ObjectHideFlags: 0
