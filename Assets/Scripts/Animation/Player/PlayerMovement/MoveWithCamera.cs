@@ -54,8 +54,13 @@ namespace Team3.PlayerMovement
         {
             while(true)
             {
-                while (moving && !flying)
+                while (moving)
                 {
+                    if (moveAction.ReadValue<Vector2>() != Vector2.zero)
+                    {
+                        StopFlying();
+                    }
+                    if (flying) break;
                     Vector2 moveVector = moveAction.ReadValue<Vector2>() * speed * PlayerStatus.Instance.GetValue("Speed");
                     Vector3 cameraVector = Vector3.Normalize(new Vector3(cameraTarget.forward.x, 0, cameraTarget.forward.z));
                     float yVel = body.velocity.y;
@@ -75,10 +80,15 @@ namespace Team3.PlayerMovement
         {
             if (flying)
             {
-                flying = false;
-                transform.Find("SmokeTrail").gameObject.SetActive(false);
-                Events.EventsPublisher.Instance.PublishEvent("StopFlying", null, null);
+                StopFlying();
             }
+        }
+
+        private void StopFlying()
+        {
+            flying = false;
+            transform.Find("SmokeTrail").gameObject.SetActive(false);
+            Events.EventsPublisher.Instance.PublishEvent("StopFlying", null, null);
         }
     }
 }
