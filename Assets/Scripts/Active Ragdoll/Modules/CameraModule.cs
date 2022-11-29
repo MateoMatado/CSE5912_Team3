@@ -4,10 +4,12 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace ActiveRagdoll {
+namespace ActiveRagdoll
+{
     // Author: Sergio Abreu García | https://sergioabreu.me
 
-    public class CameraModule : Module {
+    public class CameraModule : Module
+    {
         [Header("--- GENERAL ---")]
         [Tooltip("Where the camera should point to. Head by default.")]
         public Transform _lookPoint;
@@ -55,12 +57,14 @@ namespace ActiveRagdoll {
         [Tooltip("How far to reposition the camera from an obstacle.")]
         public float cameraRepositionOffset = 0.15f;
 
-        private void OnValidate() {
+        private void OnValidate()
+        {
             if (_lookPoint == null)
                 _lookPoint = _activeRagdoll.GetPhysicalBone(HumanBodyBones.Head);
         }
 
-        void Start() {
+        void Start()
+        {
             Camera = new GameObject("Active Ragdoll Camera", typeof(UnityEngine.Camera));
             Camera.transform.parent = transform;
 
@@ -70,28 +74,32 @@ namespace ActiveRagdoll {
             _startDirection = _lookPoint.forward;
         }
 
-        void Update() {
+        void Update()
+        {
             UpdateCameraInput();
             UpdateCameraPosRot();
             AvoidObstacles();
         }
 
-        private void UpdateCameraInput() {
+        private void UpdateCameraInput()
+        {
             _cameraRotation.x = Mathf.Repeat(_cameraRotation.x + _inputDelta.x * (invertX ? -1 : 1) * lookSensitivity, 360);
             _cameraRotation.y = Mathf.Clamp(_cameraRotation.y + _inputDelta.y * (invertY ? 1 : -1) * lookSensitivity,
                                     minVerticalAngle, maxVerticalAngle);
         }
 
-        private void UpdateCameraPosRot() {
+        private void UpdateCameraPosRot()
+        {
             // Improve steep inclinations
             Vector3 movedLookPoint = _lookPoint.position;
-            if (improveSteepInclinations) {
+            if (improveSteepInclinations)
+            {
                 float anglePercent = (_cameraRotation.y - minVerticalAngle) / (maxVerticalAngle - minVerticalAngle);
                 float currentDistance = ((anglePercent * inclinationDistance) - inclinationDistance / 2);
                 movedLookPoint += (Quaternion.Euler(inclinationAngle, 0, 0)
                     * Auxiliary.GetFloorProjection(Camera.transform.forward)) * currentDistance;
             }
-            
+
             // Smooth
             _smoothedLookPoint = Vector3.Lerp(_smoothedLookPoint, movedLookPoint, smooth ? smoothSpeed * Time.deltaTime : 1);
 
@@ -101,12 +109,14 @@ namespace ActiveRagdoll {
             Camera.transform.LookAt(_smoothedLookPoint);
         }
 
-        private void AvoidObstacles() {
+        private void AvoidObstacles()
+        {
             Ray cameraRay = new Ray(_lookPoint.position, Camera.transform.position - _lookPoint.position);
             bool hit = Physics.Raycast(cameraRay, out RaycastHit hitInfo,
                                        Vector3.Distance(Camera.transform.position, _lookPoint.position), ~dontBlockCamera);
 
-            if (hit) {
+            if (hit)
+            {
                 Camera.transform.position = hitInfo.point + (hitInfo.normal * cameraRepositionOffset);
                 Camera.transform.LookAt(_smoothedLookPoint);
             }
@@ -116,13 +126,15 @@ namespace ActiveRagdoll {
 
         // ------------- Input Handlers -------------
 
-        public void OnLook(InputValue value) {
-            _inputDelta = value.Get<Vector2>() / 10 ;
+        public void OnLook(InputValue value)
+        {
+            _inputDelta = value.Get<Vector2>() / 10;
         }
 
-        public void OnScrollWheel(InputValue value) {
+        public void OnScrollWheel(InputValue value)
+        {
             var scrollValue = value.Get<Vector2>();
-            _currentDistance = Mathf.Clamp(_currentDistance + scrollValue.y / 1200 * - scrollSensitivity,
+            _currentDistance = Mathf.Clamp(_currentDistance + scrollValue.y / 1200 * -scrollSensitivity,
                                     minDistance, maxDistance);
         }
     }

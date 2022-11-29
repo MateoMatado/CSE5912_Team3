@@ -5,16 +5,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ActiveRagdoll {
+namespace ActiveRagdoll
+{
     // Author: Sergio Abreu García | https://sergioabreu.me
 
-    public class PhysicsModule : Module {
+    public class PhysicsModule : Module
+    {
         // --- BALANCE ---
 
         [SerializeField] float springForce = 1000;
         [SerializeField] float posDamper = 5;
 
-        public enum BALANCE_MODE {
+        public enum BALANCE_MODE
+        {
             UPRIGHT_TORQUE,
             MANUAL_TORQUE,
             STABILIZER_JOINT,
@@ -41,11 +44,14 @@ namespace ActiveRagdoll {
 
         [Header("--- STABILIZER JOINT ---")]
         [SerializeField] private JointDriveConfig _stabilizerJointDrive;
-        public JointDriveConfig StabilizerJointDrive {
+        public JointDriveConfig StabilizerJointDrive
+        {
             get { return _stabilizerJointDrive; }
-            set { if (_stabilizerJoint != null)
+            set
+            {
+                if (_stabilizerJoint != null)
                     _stabilizerJoint.angularXDrive = _stabilizerJoint.angularXDrive = (JointDrive)value;
-                }
+            }
         }
 
         private GameObject _stabilizerGameobject;
@@ -62,7 +68,8 @@ namespace ActiveRagdoll {
 
 
 
-        private void Start() {
+        private void Start()
+        {
             UpdateTargetRotation();
             InitializeStabilizerJoint();
             StartBalance();
@@ -70,7 +77,8 @@ namespace ActiveRagdoll {
 
         /// <summary> Creates the stabilizer GameObject with a Rigidbody and a ConfigurableJoint,
         /// and connects this last one to the torso. </summary>
-        private void InitializeStabilizerJoint() {
+        private void InitializeStabilizerJoint()
+        {
             _stabilizerGameobject = new GameObject("Stabilizer", typeof(Rigidbody), typeof(ConfigurableJoint));
             _stabilizerGameobject.transform.parent = _activeRagdoll.PhysicalTorso.transform.parent;
             _stabilizerGameobject.transform.rotation = _activeRagdoll.PhysicalTorso.rotation;
@@ -89,12 +97,14 @@ namespace ActiveRagdoll {
             //joint.angularYZDrive = tempDrive;
         }
 
-        private void FixedUpdate() {
+        private void FixedUpdate()
+        {
             UpdateTargetRotation();
             ApplyCustomDrag();
             //Debug.Log(_balanceMode);
             _balanceMode = BALANCE_MODE.UPRIGHT_TORQUE;
-            switch (_balanceMode) {
+            switch (_balanceMode)
+            {
                 case BALANCE_MODE.UPRIGHT_TORQUE:
                     var balancePercent = Vector3.Angle(_activeRagdoll.PhysicalTorso.transform.up,
                                                          Vector3.up) / 180;
@@ -133,7 +143,8 @@ namespace ActiveRagdoll {
                     break;
 
                 case BALANCE_MODE.MANUAL_TORQUE:
-                    if (_activeRagdoll.PhysicalTorso.angularVelocity.magnitude < maxManualRotSpeed) {
+                    if (_activeRagdoll.PhysicalTorso.angularVelocity.magnitude < maxManualRotSpeed)
+                    {
                         var force = _torqueInput * manualTorque;
                         _activeRagdoll.PhysicalTorso.AddRelativeTorque(force.y, 0, force.x);
                     }
@@ -144,21 +155,25 @@ namespace ActiveRagdoll {
             }
         }
 
-        private void UpdateTargetRotation() {
+        private void UpdateTargetRotation()
+        {
             if (TargetDirection != Vector3.zero)
                 _targetRotation = Quaternion.LookRotation(TargetDirection, Vector3.up);
             else
                 _targetRotation = Quaternion.identity;
         }
 
-        private void ApplyCustomDrag() {
+        private void ApplyCustomDrag()
+        {
             var angVel = _activeRagdoll.PhysicalTorso.angularVelocity;
             angVel -= (Mathf.Pow(angVel.magnitude, 2) * customTorsoAngularDrag) * angVel.normalized;
             _activeRagdoll.PhysicalTorso.angularVelocity = angVel;
         }
 
-        public void SetBalanceMode(BALANCE_MODE balanceMode) {
-            if (_balanceMode == balanceMode) {
+        public void SetBalanceMode(BALANCE_MODE balanceMode)
+        {
+            if (_balanceMode == balanceMode)
+            {
 #if UNITY_EDITOR
                 Debug.LogWarning("SetBalanceMode was called but the mode selected was the same as " +
                                 "the current one. No changes made."); ;
@@ -172,8 +187,10 @@ namespace ActiveRagdoll {
         }
 
         /// <summary> Starts to balance depending on the balance mode selected </summary>
-        private void StartBalance() {
-            switch (_balanceMode) {
+        private void StartBalance()
+        {
+            switch (_balanceMode)
+            {
                 case BALANCE_MODE.UPRIGHT_TORQUE:
                     break;
 
@@ -182,7 +199,7 @@ namespace ActiveRagdoll {
                     break;
 
                 case BALANCE_MODE.STABILIZER_JOINT:
-                    var jointDrive = (JointDrive) _stabilizerJointDrive;
+                    var jointDrive = (JointDrive)_stabilizerJointDrive;
                     _stabilizerJoint.angularXDrive = _stabilizerJoint.angularYZDrive = jointDrive;
                     break;
 
@@ -194,8 +211,10 @@ namespace ActiveRagdoll {
         }
 
         /// <summary> Cleans up everything that was being used for the current balance mode. </summary>
-        private void StopBalance() {
-            switch (_balanceMode) {
+        private void StopBalance()
+        {
+            switch (_balanceMode)
+            {
                 case BALANCE_MODE.UPRIGHT_TORQUE:
                     break;
 
@@ -204,7 +223,7 @@ namespace ActiveRagdoll {
                     break;
 
                 case BALANCE_MODE.STABILIZER_JOINT:
-                    var jointDrive = (JointDrive) JointDriveConfig.ZERO;
+                    var jointDrive = (JointDrive)JointDriveConfig.ZERO;
                     _stabilizerJoint.angularXDrive = _stabilizerJoint.angularYZDrive = jointDrive;
                     break;
 
@@ -215,7 +234,8 @@ namespace ActiveRagdoll {
             }
         }
 
-        public void ManualTorqueInput(Vector2 torqueInput) {
+        public void ManualTorqueInput(Vector2 torqueInput)
+        {
             _torqueInput = torqueInput;
         }
     }

@@ -94,7 +94,7 @@ namespace ActiveRagdoll {
             _animator.SetLookAtWeight(LookIKWeight, ((LeftArmIKWeight + RightArmIKWeight) / 2) * ChestMaxLookWeight, 1, 1, 0);
 
             Vector3 lookPos = Vector3.zero;
-            if (CurrentLookMode == LookMode.TARGET) lookPos = LookTarget != null ? LookTarget.position : transform.position;
+            if (CurrentLookMode == LookMode.TARGET) lookPos = LookTarget.position;
             if (CurrentLookMode == LookMode.POINT) lookPos = LookPoint;
 
             _animator.SetLookAtPosition(lookPos);
