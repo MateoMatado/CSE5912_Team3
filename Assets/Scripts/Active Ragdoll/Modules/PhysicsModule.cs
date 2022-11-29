@@ -123,6 +123,7 @@ namespace ActiveRagdoll
                         }
                     }
 
+                    Debug.DrawLine(_activeRagdoll.Rigidbodies[0].transform.position, _activeRagdoll.Rigidbodies[0].transform.position + 10*Vector3.Normalize(TargetDirection), Color.blue);
                     var directionAnglePercent = Vector3.SignedAngle(_activeRagdoll.PhysicalTorso.transform.forward,
                                         TargetDirection, Vector3.up) / 180;
                     _activeRagdoll.PhysicalTorso.AddRelativeTorque(0, directionAnglePercent * rotationTorque, 0);
