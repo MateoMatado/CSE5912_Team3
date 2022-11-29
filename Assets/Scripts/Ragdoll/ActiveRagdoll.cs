@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Team3.Ragdoll
 {
@@ -32,11 +33,14 @@ namespace Team3.Ragdoll
         private Quaternion[] initRotations;
 
         private Transform cameraFollow;
+        private Camera cam;
+
+        private InputAction moveAction;
 
 
         void Start()
         {
-            Events.EventsPublisher.Instance.SubscribeToEvent("ReceiveCamera", RecCam);
+            SubToEvents();
             Events.EventsPublisher.Instance.PublishEvent("GrabCamera", null, cameraFollow);
 
             defaultDrive = new JointDrive();
@@ -66,18 +70,28 @@ namespace Team3.Ragdoll
 
         private void OnDestroy()
         {
-            Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCamera", RecCam);
+            UnsubToEvents();
         }
 
         void FixedUpdate()
         {
             UpdateCamera();
+
             for (int i = 0; i < physJoints.Length; i++)
             {
                 Team3.ConfigurableJointExtensions.SetTargetRotationLocal(physJoints[i], animTransforms[i].localRotation, initRotations[i]);
             }
 
 
+
+
+            if (moveAction != null)
+            {
+                Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position + 10 * ConvertToWorldInput(moveAction.ReadValue<Vector2>()), Color.blue);
+            }
+
+            Vector3 TargetDirection = (moveAction != null) ? -ConvertToWorldInput(moveAction.ReadValue<Vector2>()) : new Vector3();
+            //Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position + 10 * Vector3.Normalize(TargetDirection), Color.cyan);
 
             /*         BALANCING         */
             Vector3 bodyUpVector = -verticalGoal.transform.right; // Frustratingly, this isn't always body.transform.up
@@ -87,25 +101,33 @@ namespace Team3.Ragdoll
 
             verticalGoal.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePercent);
 
-            Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position+10 * bodyUpVector, Color.yellow);
-            Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position+10 * Vector3.up, Color.blue);
-            Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position + new Vector3(rot.x, rot.y, rot.z) * balancePercent * 10, Color.red);
+            //Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position+10 * bodyUpVector, Color.yellow);
+            //Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position+10 * Vector3.up, Color.blue);
 
-            /*foreach (ConfigurableJoint j in physJoints)
+            //Debug.Log("bPercent:" + balancePercent);
+            /*var directionAnglePercent = Vector3.SignedAngle(bodyUpVector, TargetDirection, Vector3.up) / 180;
+            Vector3 rotationForce = new Vector3(directionAnglePercent * rotationTorque, 0, 0);
+            Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position + 10 * Vector3.Normalize(rotationForce), Color.cyan);
+            verticalGoal.AddTorque(rotationForce);*/
+
+            Vector3 bodyForward = verticalGoal.transform.up;
+            bodyForward = new Vector3(bodyForward.x, 0, bodyForward.z);
+            DrawDebugLine(verticalGoal.position, bodyForward, Color.cyan);
+            Quaternion moveTorque = Quaternion.FromToRotation(bodyForward, TargetDirection);
+            Vector3 rotTorque = moveTorque.eulerAngles;
+            if (rotTorque.magnitude <= 180)
             {
-                Rigidbody part = j.GetComponent<Rigidbody>();
-                part?.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePercent);
-                //part?.AddForce(Vector3.up * 10);
-            }*/
-            Debug.Log("bPercent:" + balancePercent);
-            /*var directionAnglePercent = Vector3.SignedAngle(verticalGoal.transform.forward,
-                                TargetDirection, Vector3.up) / 180;
-            verticalGoal.AddRelativeTorque(0, directionAnglePercent * rotationTorque, 0);*/
+                rotTorque *= -1;
+            }
+
+            DrawDebugLine(verticalGoal.position, rotTorque, Color.red);
+            verticalGoal.AddTorque(rotTorque * rotationTorque);
+            Debug.Log("Torque Magnitude: " + rotTorque.magnitude);
         }
 
-        void RecCam(object sender, object data)
+        private void DrawDebugLine(Vector3 startPos, Vector3 vec, Color col)
         {
-            cameraFollow = (Transform)data;
+            Debug.DrawLine(startPos, startPos + 10 * Vector3.Normalize(vec), col);
         }
 
         private void UpdateCamera()
@@ -118,5 +140,50 @@ namespace Team3.Ragdoll
             sum /= 3;
             cameraFollow.position = sum;
         }
+
+        private Vector3 ConvertToWorldInput(Vector2 inVec)
+        {
+            Vector3 cameraForward = cam.transform.forward;
+            Vector3 cameraRight = cam.transform.right;
+            cameraForward = new Vector3(cameraForward.x, 0, cameraForward.z);
+            cameraRight = new Vector3(cameraRight.x, 0, cameraRight.z);
+
+            return Vector3.Normalize((cameraForward * inVec.y) + (cameraRight * inVec.x));
+        }
+
+        #region EVENTS
+
+        void SubToEvents()
+        {
+
+            Events.EventsPublisher.Instance.SubscribeToEvent("ReceiveCameraTransform", RecCam);
+            Events.EventsPublisher.Instance.SubscribeToEvent("ReceiveCamera", RecCamObj);
+            Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", GetInput);
+        }
+
+        void UnsubToEvents()
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerMove", GetInput);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCameraTransform", RecCam);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCamera", RecCamObj);
+        }
+
+        void GetInput(object sender, object data)
+        {
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerMove", GetInput);
+            moveAction = (InputAction)data;
+        }
+
+        void RecCam(object sender, object data)
+        {
+            cameraFollow = (Transform)data;
+        }
+
+        void RecCamObj(object sender, object data)
+        {
+            cam = (Camera)data;
+        }
+
+        #endregion
     }
 }
