@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.IO;
 
 public class LoadPointPressed : MonoBehaviour, IPointerClickHandler
 {
@@ -76,5 +77,14 @@ public class LoadPointPressed : MonoBehaviour, IPointerClickHandler
         fileName.text = "New Data";
         DataManager.Instance.Reset(4);
         Back();
+    }
+
+    public void DeleteFile()
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, fileName.text);
+        File.Delete(fullPath);
+#if UNITY_EDITOR
+         UnityEditor.AssetDatabase.Refresh();
+#endif
     }
 }

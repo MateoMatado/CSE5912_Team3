@@ -147,8 +147,8 @@ public class DataManager : MonoBehaviour
     public FileSave LoadFile()
     {
         //create direcotry path
-        //string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
-        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
+        string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
+        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
         FileSave loadedFile = null;
         if (File.Exists(fullPath))
         {
@@ -177,8 +177,8 @@ public class DataManager : MonoBehaviour
     public void SaveFile(FileSave data)
     {
         //create direcotry path
-        //string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
-        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
+        string fullPath = Path.Combine(Application.persistentDataPath, "fileSaved");
+        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", "fileSaved");
         try
         {
             //create direcotry

@@ -14,6 +14,8 @@ public class HUDManager : MonoBehaviour, IData
     private int coin = 500;
     public float hp = 1000;
     public Vector3 position;
+
+    public GameObject DieScene;
     public void Awake()
     {
         Instance = this;
@@ -49,6 +51,10 @@ public class HUDManager : MonoBehaviour, IData
             return false;
         }
         return true;
+    }
+    public void Die()
+    {
+        DieScene.SetActive(true);
     }
     // Update is called once per frame
     void Update()

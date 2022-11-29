@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : LivingEntity
 {
     public static PlayerHealth Instance = null;
+    private static float ChangeValueHP = 0;
+    [SerializeField] private float ChangeSpeed = 0.2f;
+    public GameObject DieScene;
 
     //OnEnable is for when player revives  
     protected override void OnEnable()
@@ -52,6 +55,21 @@ public class PlayerHealth : LivingEntity
 
     private void Update()
     {
+        /*for health potions*/
+        if (ChangeValueHP != 0)
+        {
+            if (ChangeValueHP > 0)
+            {
+                Instance.currentHealth += ChangeSpeed;
+                ChangeValueHP -= ChangeSpeed;
+
+            }
+            else
+            {
+                Instance.currentHealth -= ChangeSpeed;
+                ChangeValueHP += ChangeSpeed;
+            }
+        }
         Debug.Log("PlayerHealth.cs : " + Instance.currentHealth);
     }
 
@@ -84,14 +102,25 @@ public class PlayerHealth : LivingEntity
         //death sound and animation here
 
         //disable player movement here
-
-
+        StartCoroutine(DieSceneAction());
     }
 
+    private IEnumerator DieSceneAction()
+    {
+        HUDManager.Instance.Die();
+        yield return new WaitForSeconds(3f);
+        GameStateMachine.Instance.SwitchState(GameStateMachine.MainMenuState);
+
+    }
     public float GetHP()
     {
         return Instance.currentHealth;
     }
 
+
+    public void HealthChange(float amount)
+    {
+        ChangeValueHP += amount;
+    }
 
 }

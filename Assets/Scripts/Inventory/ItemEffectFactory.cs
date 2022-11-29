@@ -23,7 +23,7 @@ public class ItemEffectFactory : MonoBehaviour
         switch (name)
         {
             case "Red Pot":
-                PlayerStatus.Instance.HealthChange(50);
+                PlayerHealth.Instance.HealthChange(50);
                 ps.startColor = new Color(245/255f, 121 / 255f, 121 / 255f); //red
                 light.color = new Color(245 / 255f, 121 / 255f, 121 / 255f);
                 break;
@@ -43,7 +43,7 @@ public class ItemEffectFactory : MonoBehaviour
                 light.color = new Color(255 / 255f, 167 / 255f, 42 / 255f);
                 break;
             case "Potions Red":
-                PlayerStatus.Instance.HealthChange(20);
+                PlayerHealth.Instance.HealthChange(20);
                 ps.startColor = new Color(245 / 255f, 121 / 255f, 121 / 255f); //red
                 light.color = new Color(245 / 255f, 121 / 255f, 121 / 255f);
                 break;
