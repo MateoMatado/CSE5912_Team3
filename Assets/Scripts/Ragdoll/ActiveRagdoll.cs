@@ -124,7 +124,7 @@ namespace Team3.Ragdoll
         private void UpdateCamera()
         {
             Vector3 sum = new Vector3();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
                 sum += physJoints[i].transform.position;
             }
