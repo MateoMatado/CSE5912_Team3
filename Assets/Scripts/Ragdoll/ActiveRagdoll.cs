@@ -101,15 +101,6 @@ namespace Team3.Ragdoll
 
             verticalGoal.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePercent);
 
-            //Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position+10 * bodyUpVector, Color.yellow);
-            //Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position+10 * Vector3.up, Color.blue);
-
-            //Debug.Log("bPercent:" + balancePercent);
-            /*var directionAnglePercent = Vector3.SignedAngle(bodyUpVector, TargetDirection, Vector3.up) / 180;
-            Vector3 rotationForce = new Vector3(directionAnglePercent * rotationTorque, 0, 0);
-            Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position + 10 * Vector3.Normalize(rotationForce), Color.cyan);
-            verticalGoal.AddTorque(rotationForce);*/
-
             Vector3 bodyForward = verticalGoal.transform.up;
             bodyForward = new Vector3(bodyForward.x, 0, bodyForward.z);
             DrawDebugLine(verticalGoal.position, bodyForward, Color.cyan);
@@ -133,7 +124,7 @@ namespace Team3.Ragdoll
         private void UpdateCamera()
         {
             Vector3 sum = new Vector3();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
                 sum += physJoints[i].transform.position;
             }
