@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ActiveRagdoll {
+namespace Team3 {
 	public static class ConfigurableJointExtensions {
 		// Author: Michael Stevenson | https://www.mstevenson.net/
 
