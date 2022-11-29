@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace ActiveRagdoll {
+namespace ActiveRagdoll
+{
     // Author: Sergio Abreu García | https://sergioabreu.me
 
     [RequireComponent(typeof(InputModule))]
-    public class ActiveRagdoll : MonoBehaviour {
+    public class ActiveRagdoll : MonoBehaviour
+    {
         [Header("--- GENERAL ---")]
         [SerializeField] private int _solverIterations = 12;
         [SerializeField] private int _velSolverIterations = 4;
@@ -44,7 +46,8 @@ namespace ActiveRagdoll {
         [Header("--- ANIMATORS ---")]
         [SerializeField] private Animator _animatedAnimator;
         [SerializeField] private Animator _physicalAnimator;
-        public Animator AnimatedAnimator {
+        public Animator AnimatedAnimator
+        {
             get { return _animatedAnimator; }
             private set { _animatedAnimator = value; }
         }
@@ -54,7 +57,8 @@ namespace ActiveRagdoll {
         public bool SyncTorsoPositions { get; set; } = true;
         public bool SyncTorsoRotations { get; set; } = true;
 
-        private void OnValidate() {
+        private void OnValidate()
+        {
             // Automatically retrieve the necessary references
             var animators = GetComponentsInChildren<Animator>();
             if (animators.Length >= 2)
@@ -69,7 +73,8 @@ namespace ActiveRagdoll {
             }
         }
 
-        private void Awake() {
+        private void Awake()
+        {
             ID = _ID_COUNT++;
 
             if (AnimatedBones == null)
@@ -77,14 +82,14 @@ namespace ActiveRagdoll {
                 var AnimatedBonesTemp = _animatedTorso?.GetComponentsInChildren<Team3.Ragdoll.TransformStore>();
                 AnimatedBones = new Transform[AnimatedBonesTemp.Length];
 
-                for (int i = 0; i <AnimatedBones.Length; i++)
+                for (int i = 0; i < AnimatedBones.Length; i++)
                 {
                     AnimatedBones[i] = AnimatedBonesTemp[i].transform;
                 }
             }
             if (Joints == null) Joints = _physicalTorso?.GetComponentsInChildren<ConfigurableJoint>();
 
-            foreach(ConfigurableJoint joint in Joints)
+            foreach (ConfigurableJoint joint in Joints)
             {
                 //joint.angularXMotion = ConfigurableJointMotion.Free;
                 //joint.angularYMotion = ConfigurableJointMotion.Free;
@@ -101,7 +106,8 @@ namespace ActiveRagdoll {
 
             if (Rigidbodies == null) Rigidbodies = _physicalTorso?.GetComponentsInChildren<Rigidbody>();
 
-            foreach (Rigidbody rb in Rigidbodies) {
+            foreach (Rigidbody rb in Rigidbodies)
+            {
                 rb.solverIterations = _solverIterations;
                 rb.solverVelocityIterations = _velSolverIterations;
                 rb.maxAngularVelocity = _maxAngularVelocity;
@@ -126,9 +132,11 @@ namespace ActiveRagdoll {
 #endif
         }
 
-        private List<ConfigurableJoint> TryGetJoints(params HumanBodyBones[] bones) {
+        private List<ConfigurableJoint> TryGetJoints(params HumanBodyBones[] bones)
+        {
             List<ConfigurableJoint> jointList = new List<ConfigurableJoint>();
-            foreach (HumanBodyBones bone in bones) {
+            foreach (HumanBodyBones bone in bones)
+            {
                 Transform boneTransform = _physicalAnimator.GetBoneTransform(bone);
                 if (boneTransform != null && (boneTransform.TryGetComponent(out ConfigurableJoint joint)))
                     jointList.Add(joint);
@@ -137,13 +145,15 @@ namespace ActiveRagdoll {
             return jointList;
         }
 
-        private void FixedUpdate() {
+        private void FixedUpdate()
+        {
             SyncAnimatedBody();
         }
 
         /// <summary> Updates the rotation and position of the animated body's root
         /// to match the ones of the physical.</summary>
-        private void SyncAnimatedBody() {
+        private void SyncAnimatedBody()
+        {
             // This is needed for the IK movements to be synchronized between
             // the animated and physical bodies. e.g. when looking at something,
             // if the animated and physical bodies are not in the same spot and
@@ -163,25 +173,29 @@ namespace ActiveRagdoll {
         /// <summary> Gets the transform of the given ANIMATED BODY'S BONE </summary>
         /// <param name="bone">Bone you want the transform of</param>
         /// <returns>The transform of the given ANIMATED bone</returns>
-        public Transform GetAnimatedBone(HumanBodyBones bone) {
+        public Transform GetAnimatedBone(HumanBodyBones bone)
+        {
             return _animatedAnimator.GetBoneTransform(bone);
         }
 
         /// <summary> Gets the transform of the given PHYSICAL BODY'S BONE </summary>
         /// <param name="bone">Bone you want the transform of</param>
         /// <returns>The transform of the given PHYSICAL bone</returns>
-        public Transform GetPhysicalBone(HumanBodyBones bone) {
+        public Transform GetPhysicalBone(HumanBodyBones bone)
+        {
             return _physicalAnimator.GetBoneTransform(bone);
         }
 
-        public BodyPart GetBodyPart(string name) {
+        public BodyPart GetBodyPart(string name)
+        {
             foreach (BodyPart bodyPart in _bodyParts)
                 if (bodyPart.bodyPartName == name) return bodyPart;
 
             return null;
         }
 
-        public void SetStrengthScaleForAllBodyParts (float scale) {
+        public void SetStrengthScaleForAllBodyParts(float scale)
+        {
             foreach (BodyPart bodyPart in _bodyParts)
                 bodyPart.SetStrengthScale(scale);
         }

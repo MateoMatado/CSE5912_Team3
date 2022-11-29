@@ -2,10 +2,12 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace ActiveRagdoll {
+namespace ActiveRagdoll
+{
     // Author: Sergio Abreu García | https://sergioabreu.me
 
-    public class AnimationModule : Module {
+    public class AnimationModule : Module
+    {
         [Header("--- BODY ---")]
         /// <summary> Required to set the target rotations of the joints </summary>
         private Quaternion[] _initialJointsRotation;
@@ -18,7 +20,7 @@ namespace ActiveRagdoll {
         public bool _enableIK = true;
 
         [Tooltip("Those values define the rotation range in which the target direction influences arm movement.")]
-        public float minTargetDirAngle = - 30,
+        public float minTargetDirAngle = -30,
                      maxTargetDirAngle = 60;
 
         [Space(10)]
@@ -43,7 +45,7 @@ namespace ActiveRagdoll {
         [Tooltip("The distance from the body to the hands in relation to how high/low they are. " +
                  "Allows to create more realistic movement patterns.")]
         public AnimationCurve armsDistance;
-        
+
         public Vector3 AimDirection { get; set; }
         private Vector3 _armsDir, _lookDir, _targetDir2D;
         private Transform _animTorso, _chest;
@@ -51,32 +53,39 @@ namespace ActiveRagdoll {
 
 
 
-        private void Start() {
+        private void Start()
+        {
             _joints = _activeRagdoll.Joints;
             _animatedBones = _activeRagdoll.AnimatedBones;
             _animatorHelper = _activeRagdoll.AnimatorHelper;
             Animator = _activeRagdoll.AnimatedAnimator;
 
             _initialJointsRotation = new Quaternion[_joints.Length];
-            for (int i = 0; i < _joints.Length; i++) {
+            for (int i = 0; i < _joints.Length; i++)
+            {
                 _initialJointsRotation[i] = _joints[i].transform.localRotation;
             }
         }
 
-        void FixedUpdate() {
+        void FixedUpdate()
+        {
             UpdateJointTargets();
             UpdateIK();
         }
 
         /// <summary> Makes the physical bones match the rotation of the animated ones </summary>
-        private void UpdateJointTargets() {
-            for (int i = 0; i < _joints.Length; i++) {
-                ConfigurableJointExtensions.SetTargetRotationLocal(_joints[i], _animatedBones[i + 1].localRotation, _initialJointsRotation[i]);
+        private void UpdateJointTargets()
+        {
+            for (int i = 0; i < _joints.Length; i++)
+            {
+                Team3.ConfigurableJointExtensions.SetTargetRotationLocal(_joints[i], _animatedBones[i + 1].localRotation, _initialJointsRotation[i]);
             }
         }
 
-        private void UpdateIK() {
-            if (!_enableIK) {
+        private void UpdateIK()
+        {
+            if (!_enableIK)
+            {
                 _animatorHelper.LeftArmIKWeight = 0;
                 _animatorHelper.RightArmIKWeight = 0;
                 _animatorHelper.LookIKWeight = 0;
@@ -97,20 +106,23 @@ namespace ActiveRagdoll {
 
         /// <summary> Reflect the direction when looking backwards, avoids neck-breaking twists </summary>
         /// <param name=""></param>
-        private void ReflectBackwards() {
+        private void ReflectBackwards()
+        {
             bool lookingBackwards = Vector3.Angle(AimDirection, _animTorso.forward) > 90;
             if (lookingBackwards) AimDirection = Vector3.Reflect(AimDirection, _animTorso.forward);
         }
 
         /// <summary> Calculate the vertical inlinacion percentage of the target direction
         /// (how much it is looking up) </summary>
-        private void CalculateVerticalPercent() {
+        private void CalculateVerticalPercent()
+        {
             float directionAngle = Vector3.Angle(AimDirection, Vector3.up);
             directionAngle -= 90;
             _targetDirVerticalPercent = 1 - Mathf.Clamp01((directionAngle - minTargetDirAngle) / Mathf.Abs(maxTargetDirAngle - minTargetDirAngle));
         }
 
-        private void UpdateLookIK() {
+        private void UpdateLookIK()
+        {
             float lookVerticalAngle = _targetDirVerticalPercent * Mathf.Abs(maxLookAngle - minLookAngle) + minLookAngle;
             lookVerticalAngle += lookAngleOffset;
             _lookDir = Quaternion.AngleAxis(-lookVerticalAngle, _animTorso.right) * _targetDir2D;
@@ -119,7 +131,8 @@ namespace ActiveRagdoll {
             _animatorHelper.LookAtPoint(lookPoint);
         }
 
-        private void UpdateArmsIK() {
+        private void UpdateArmsIK()
+        {
             float armsVerticalAngle = _targetDirVerticalPercent * Mathf.Abs(maxArmsAngle - minArmsAngle) + minArmsAngle;
             armsVerticalAngle += armsAngleOffset;
             _armsDir = Quaternion.AngleAxis(-armsVerticalAngle, _animTorso.right) * _targetDir2D;
@@ -129,7 +142,7 @@ namespace ActiveRagdoll {
             Vector3 armsMiddleTarget = _chest.position + _armsDir * currentArmsDistance;
             Vector3 upRef = Vector3.Cross(_armsDir, _animTorso.right).normalized;
             Vector3 armsHorizontalVec = Vector3.Cross(_armsDir, upRef).normalized;
-            Quaternion handsRot = _armsDir != Vector3.zero? Quaternion.LookRotation(_armsDir, upRef)
+            Quaternion handsRot = _armsDir != Vector3.zero ? Quaternion.LookRotation(_armsDir, upRef)
                                                             : Quaternion.identity;
 
             _animatorHelper.LeftHandTarget.position = armsMiddleTarget + armsHorizontalVec * armsHorizontalSeparation / 2;
@@ -147,19 +160,22 @@ namespace ActiveRagdoll {
         /// the speed of certain animations. </summary>
         /// <param name="animation">The name of the animation state to be played</param>
         /// <param name="speed">The speed to be set</param>
-        public void PlayAnimation(string animation, float speed = 1) {
+        public void PlayAnimation(string animation, float speed = 1)
+        {
             Animator.Play(animation);
             Animator.SetFloat("speed", speed);
         }
-        
-        public void UseLeftArm(float weight) {
+
+        public void UseLeftArm(float weight)
+        {
             if (!_enableIK)
                 return;
 
             _animatorHelper.LeftArmIKWeight = weight;
         }
 
-        public void UseRightArm(float weight) {
+        public void UseRightArm(float weight)
+        {
             if (!_enableIK)
                 return;
 
