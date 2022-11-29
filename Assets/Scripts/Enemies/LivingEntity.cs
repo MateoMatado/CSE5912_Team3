@@ -42,7 +42,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
             Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
             float healthPct = Math.Clamp(currentHealth / startingHealth, 0, 1);
             pct += (healthPct - pct) * lerpSpeed * Time.deltaTime;
-            Debug.Log(gameObject.name + ' ' + pct);
+            //Debug.Log(gameObject.name + ' ' + pct);
             for (int i = 0; i < renderers.Length; i++)
             {
                 renderers[i].material.SetFloat("_Health", pct);
