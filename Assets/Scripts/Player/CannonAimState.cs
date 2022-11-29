@@ -165,7 +165,7 @@ public class CannonAimState : PlayerState
                             UpdateHitIsland(parentIsland);
                         }
 
-                        hitSomething = true;
+                        hitSomething = hit.collider.gameObject.name.Contains("Spawner");
                         trajectory.positionCount = i + 1;
 
                         break;
