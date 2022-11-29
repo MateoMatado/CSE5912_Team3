@@ -6,7 +6,8 @@ namespace Team3
 {
     public class GiveCamera : MonoBehaviour
     {
-        [SerializeField] Transform cam;
+        [SerializeField] Transform cameraFollow;
+        [SerializeField] Camera cam;
 
         void Start()
         {
@@ -20,6 +21,7 @@ namespace Team3
 
         void GiveCam(object sender, object data)
         {
+            Events.EventsPublisher.Instance.PublishEvent("ReceiveCameraTransform", null, cameraFollow);
             Events.EventsPublisher.Instance.PublishEvent("ReceiveCamera", null, cam);
         }
     }

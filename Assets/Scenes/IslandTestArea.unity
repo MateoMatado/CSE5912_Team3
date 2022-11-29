@@ -74399,6 +74399,7 @@ GameObject:
   - component: {fileID: 583307363199828803}
   - component: {fileID: 8553916218567584426}
   - component: {fileID: 1048225416266619058}
+  - component: {fileID: 8553916218567584427}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -82484,10 +82485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a588e34bae58e2c4a92a8a0cdb851659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras:
-  - {fileID: 963194227}
-  - {fileID: 51076414}
-  - {fileID: 189584145}
+  cameras: []
   defaultCamera: {fileID: 963194227}
 --- !u!1 &1990162739
 GameObject:
@@ -94016,6 +94014,20 @@ MonoBehaviour:
   effect: {fileID: 8566984512540487486}
   ps: {fileID: 3909528959182957045}
   light: {fileID: 5505030133011314976}
+--- !u!114 &8553916218567584427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804142870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4626dd06bbeef594d95d0ae1b791e3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &8566984512540487486
 GameObject:
   m_ObjectHideFlags: 0
