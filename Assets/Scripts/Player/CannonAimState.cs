@@ -22,6 +22,8 @@ public class CannonAimState : PlayerState
     private LineRenderer trajectory;
     private GameObject island = null;
     private Material outlineMaterial;
+    private float scrollSpeed = 1f;
+    private float minDistance = 20, maxDistance = 100;
 
     public override void Enter()
     {
@@ -33,6 +35,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.SubscribeToEvent("PlayerJump", HandleJump);
         EventsPublisher.Instance.SubscribeToEvent("LookMouse", HandleLook);
         EventsPublisher.Instance.SubscribeToEvent("PauseUnpause", HandleEscape);
+        EventsPublisher.Instance.SubscribeToEvent("Scroll", HandleScroll);
         if (outlineMaterial == null) outlineMaterial = Resources.Load("IslandOutline") as Material;
     }
 
@@ -48,7 +51,16 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.PublishEvent("ExitCannonAimState", null, null);
     }
 
-    
+
+
+    private void HandleScroll(object sender, object data)
+    {
+        float value = -((InputAction)data).ReadValue<Vector2>().normalized.y;
+        float current = camera.GetCinemachineComponent<Cinemachine3rdPersonFollow>().CameraDistance;
+        current += value * scrollSpeed;
+        current = Mathf.Clamp(current, minDistance, maxDistance);
+        camera.GetCinemachineComponent<Cinemachine3rdPersonFollow>().CameraDistance = current;
+    }
 
     private void HandleEnterCannon(object sender, object data)
     {
@@ -244,9 +256,19 @@ public class CannonAimState : PlayerState
         Transform target = camera.Follow;
 
         target.transform.rotation *= Quaternion.AngleAxis(look.x, Vector3.up);
+        target.transform.rotation *= Quaternion.AngleAxis(-look.y, Vector3.right);
 
         var angles = target.transform.localEulerAngles;
         angles.z = 0;
+        var angle = angles.x;
+        if (angle > 180 && angle < 300)
+        {
+            angles.x = 300;
+        }
+        else if (angle < 180 && angle > 80)
+        {
+            angles.x = 80;
+        }
 
         target.transform.localEulerAngles = new Vector3(angles.x, angles.y, 0);
     }
