@@ -80,9 +80,9 @@ namespace Team3
             var angles = cameraTarget.transform.localEulerAngles;
             angles.z = 0;
             var angle = angles.x;
-            if (angle > 180 && angle < 300)
+            if (angle > 180 && angle < 350)
             {
-                angles.x = 300;
+                angles.x = 350;
             }
             else if (angle < 180 && angle > 80)
             {
