@@ -235,6 +235,7 @@ public class CannonAimState : PlayerState
         {
             foreach (var meshRenderer in g.GetComponentsInChildren<MeshRenderer>())
             {
+                if (meshRenderer.gameObject.name == "ForceField") continue;
                 var currentMaterials = meshRenderer.materials;
                 List<Material> newMaterials = new List<Material>();
                 foreach (Material material in currentMaterials)
