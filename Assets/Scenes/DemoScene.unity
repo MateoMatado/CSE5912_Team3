@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.019916486, g: 0.022380248, b: 0.0058178143, a: 1}
+  m_IndirectSpecularColor: {r: 0.019917056, g: 0.022380816, b: 0.0058184317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
