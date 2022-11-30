@@ -232,9 +232,9 @@ public class GhoulSmallFast : LivingEntity
     
     IEnumerator PlantMine()
     {
-        for(int i=0; i<100; i++)
+        for(int i=0; i<1000; i++)
         {
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(1f);
             Vector3 offset = new Vector3(0, 0.5f, 0);
             Instantiate(landMinePrefab, transform.position+ offset, transform.rotation);
         }        
