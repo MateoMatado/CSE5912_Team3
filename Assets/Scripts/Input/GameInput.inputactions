@@ -285,15 +285,6 @@
                     "initialStateCheck": false
                 },
                 {
-<<<<<<< HEAD
-                    "name": "Scroll",
-                    "type": "Value",
-                    "id": "ac8c1d56-4d18-4039-8024-dfae83ab5773",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-=======
                     "name": "ToggleRoll",
                     "type": "Button",
                     "id": "add3f99d-8798-4601-91df-df745526ac2e",
@@ -301,7 +292,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
                 }
             ],
             "bindings": [
@@ -835,21 +825,12 @@
                 },
                 {
                     "name": "",
-<<<<<<< HEAD
-                    "id": "972e0f9c-e5bf-4817-96e4-082634fe7aba",
-                    "path": "<Mouse>/scroll",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Scroll",
-=======
                     "id": "1b17c898-a073-4312-a748-c1488e202a26",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ToggleRoll",
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
