@@ -16,7 +16,6 @@ namespace Team3.Ragdoll
         [SerializeField] float positionSpring = 1000;
         [SerializeField] float positionDamper = 50;
 
-        // The code relating to balancing was modified from https://github.com/sergioabreu-g/active-ragdolls
         [Header("BALANCING")]
         [Tooltip("Which body part should be upright")]
         [SerializeField] private Rigidbody verticalGoal;
@@ -36,6 +35,8 @@ namespace Team3.Ragdoll
         private Camera cam;
 
         private InputAction moveAction;
+
+        private ActiveRagdollToggle toggle;
 
 
         void Start()
@@ -66,6 +67,8 @@ namespace Team3.Ragdoll
             {
                 initRotations[i] = physJoints[i].transform.localRotation;
             }
+
+            toggle = new ActiveRagdollToggle(physJoints);
         }
 
         private void OnDestroy()
@@ -123,12 +126,13 @@ namespace Team3.Ragdoll
 
         private void UpdateCamera()
         {
+            int numCameraPoints = 12;
             Vector3 sum = new Vector3();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < numCameraPoints; i++)
             {
                 sum += physJoints[i].transform.position;
             }
-            sum /= 3;
+            sum /= numCameraPoints;
             cameraFollow.position = sum;
         }
 
@@ -176,5 +180,28 @@ namespace Team3.Ragdoll
         }
 
         #endregion
+
+        IEnumerator CheckFreefall()
+        {
+            while (true)
+            {
+                yield return null;
+            }
+        }
+
+        IEnumerator CheckGround()
+        {
+            while (true)
+            {
+                while (toggle.rag)
+                {
+                    yield return null;
+                }
+                while (!toggle.rag)
+                {
+                    yield return null;
+                }
+            }
+        }
     }
 }
