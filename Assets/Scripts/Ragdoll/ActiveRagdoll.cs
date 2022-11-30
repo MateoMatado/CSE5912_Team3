@@ -25,6 +25,9 @@ namespace Team3.Ragdoll
         public AnimationCurve uprightTorqueFunction;
         public float rotationTorque = 500;
 
+        [Header("ROLLING")]
+        [SerializeField] public float rollForce = 100;
+
         JointDrive defaultDrive;
 
         private Transform[] animTransforms;
@@ -42,7 +45,6 @@ namespace Team3.Ragdoll
         void Start()
         {
             SubToEvents();
-            Events.EventsPublisher.Instance.PublishEvent("GrabCamera", null, cameraFollow);
 
             defaultDrive = new JointDrive();
             defaultDrive.maximumForce = maximumForce;
@@ -68,7 +70,10 @@ namespace Team3.Ragdoll
                 initRotations[i] = physJoints[i].transform.localRotation;
             }
 
-            toggle = new ActiveRagdollToggle(physJoints);
+            toggle = new ActiveRagdollToggle(physJoints, physRoot, rollForce);
+            Events.EventsPublisher.Instance.PublishEvent("GrabCamera", null, cameraFollow);
+            //StartCoroutine(CheckGround());
+            //StartCoroutine(CheckFreefall());
         }
 
         private void OnDestroy()
@@ -177,6 +182,7 @@ namespace Team3.Ragdoll
         void RecCamObj(object sender, object data)
         {
             cam = (Camera)data;
+            toggle.GetCamera(cam);
         }
 
         #endregion
