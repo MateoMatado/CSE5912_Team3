@@ -14,6 +14,10 @@ public class BossTypeA : LivingEntity
         Idle,
         Roar
     }
+
+    private float attackDamage = 3f;
+
+
     private State state;
 
     private Animator bossAnimator;
@@ -223,7 +227,17 @@ public class BossTypeA : LivingEntity
 
     }
 
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (state == State.Spinning || state == State.DashAttack)
+        {        
+            Rigidbody hitTarget = collision.rigidbody;
+            if (collision.collider.name == "Player")
+            {
+                collision.collider.GetComponent<IDamageable>().OnDamage(attackDamage);
+            }
+        }
+    }
 
 
 

@@ -15,7 +15,7 @@ public class GhoulTemp : LivingEntity
         Chase,
         Attack
     }
-
+    private float attackDamage = 90f;
     private State state;
      
     private NavMeshAgent navMeshAgent;
@@ -40,7 +40,7 @@ public class GhoulTemp : LivingEntity
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
-    private float attackDamage = 30f;
+    
     public float attackRadius = 3f;
     private float attackDistance;
 

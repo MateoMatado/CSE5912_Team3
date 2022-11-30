@@ -137,6 +137,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -231,6 +235,10 @@ PrefabInstance:
     - target: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -327,6 +335,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -421,6 +433,10 @@ PrefabInstance:
     - target: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}

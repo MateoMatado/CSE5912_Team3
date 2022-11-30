@@ -57,7 +57,7 @@ public class PlayerHealth : LivingEntity
             Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
             float healthPct = Math.Clamp(currentHealth / startingHealth, 0, 1);
             pct += (healthPct - pct) * lerpSpeed * Time.deltaTime;
-            Debug.Log(gameObject.name + ' ' + pct);
+            //Debug.Log(gameObject.name + ' ' + pct);
             for (int i = 0; i < renderers.Length; i++)
             {
                 renderers[i].material.SetFloat("_Health", pct);
@@ -83,7 +83,7 @@ public class PlayerHealth : LivingEntity
                 ChangeValueHP += ChangeSpeed;
             }
         }
-        Debug.Log("PlayerHealth.cs : " + Instance.currentHealth);
+        //Debug.Log("PlayerHealth.cs : " + Instance.currentHealth);
     }
 
     public override void OnDamage(float damage)
