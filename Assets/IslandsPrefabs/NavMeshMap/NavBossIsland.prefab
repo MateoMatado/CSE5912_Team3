@@ -37072,7 +37072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killsForBossIsland: 0
-  islandClearsForBossIsland: 1
+  islandClearsForBossIsland: 3
   cutsceneCam: {fileID: 6328786660105116642}
 --- !u!1 &2478930065513343740
 GameObject:
