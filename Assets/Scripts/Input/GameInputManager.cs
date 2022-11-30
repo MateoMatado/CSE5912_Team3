@@ -43,9 +43,10 @@ namespace Team3.Input
             inputs.Player.Target.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Target", null, inputs.Player.Target); };
             inputs.Player.ChangeBanana.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "banana"); };
             inputs.Player.ChangeBaby.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "baby"); };
-            inputs.Player.ChangeBananaRag.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "bananaRag"); };
+            inputs.Player.ChangeBananaRag.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", null, "babyRag"); };
             inputs.Player.SwapHands.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("SwapHands", null, null); };
             inputs.Player.ToggleRagdoll.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("ToggleRagdoll", null, null); };
+            inputs.Player.ToggleRoll.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Roll", null, inputs.Player.Move); };
 
             inputs.Player.Unequip.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, null); };
             inputs.Player.EquipHand.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKUnarmed()); };
@@ -78,6 +79,7 @@ namespace Team3.Input
             inputs.Player.ChangeBananaRag.Enable();
 
             inputs.Player.ToggleRagdoll.Enable();
+            inputs.Player.ToggleRoll.Enable();
 
             inputs.Player.LookPad.Enable();
             inputs.Player.LookMouse.Enable();
@@ -112,6 +114,7 @@ namespace Team3.Input
             inputs.Player.ChangeBananaRag.Disable();
 
             inputs.Player.ToggleRagdoll.Disable();
+            inputs.Player.ToggleRoll.Disable();
 
             inputs.Player.LookPad.Disable();
             inputs.Player.LookMouse.Disable();
