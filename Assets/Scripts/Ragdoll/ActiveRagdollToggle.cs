@@ -7,17 +7,25 @@ namespace Team3.Ragdoll
 {
     public class ActiveRagdollToggle
     {
+        GameObject root;
+        private Rigidbody[] bodies;
+        Camera cam;
         private ConfigurableJoint[] joints;
         private (JointDrive, JointDrive)[] drives;
         private JointDrive zeroDrive;
 
+        private float rollForce;
+
         private bool _rag = false;
         public bool rag { get { return _rag; } }
 
-        public ActiveRagdollToggle(ConfigurableJoint[] joints)
+        public ActiveRagdollToggle(ConfigurableJoint[] joints, GameObject bodyRoot, float rollForce)
         {
             this.joints = joints;
+            this.rollForce = rollForce;
+            bodies = bodyRoot.GetComponentsInChildren<Rigidbody>();
             Events.EventsPublisher.Instance.SubscribeToEvent("ToggleRagdoll", ToggleRagdoll);
+            Events.EventsPublisher.Instance.SubscribeToEvent("Roll", Roll);
 
             zeroDrive = new JointDrive();
             zeroDrive.maximumForce = 0;
@@ -30,6 +38,7 @@ namespace Team3.Ragdoll
         ~ActiveRagdollToggle()
         {
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ToggleRagdoll", ToggleRagdoll);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("Roll", Roll);
         }
 
         private void ToggleRagdoll(object data, object sender)
@@ -63,6 +72,40 @@ namespace Team3.Ragdoll
                 }
                 _rag = true;
             }
+        }
+
+        void Roll(object sender, object data)
+        {
+            if (!rag || Application.isEditor)
+            {
+                Vector3 force = ConvertToWorldInput(((InputAction)data).ReadValue<Vector2>()) + new Vector3(0, 1, 0);
+                force = force.normalized * rollForce;
+
+                foreach (Rigidbody body in bodies)
+                {
+                    body.AddForce(force, ForceMode.Impulse);
+                }
+
+                if (!rag)
+                {
+                    Events.EventsPublisher.Instance.PublishEvent("ToggleRagdoll", null, null);
+                }
+            }
+        }
+
+        public void GetCamera(Camera cam)
+        {
+            this.cam = cam;
+        }
+
+        private Vector3 ConvertToWorldInput(Vector2 inVec)
+        {
+            Vector3 cameraForward = cam.transform.forward;
+            Vector3 cameraRight = cam.transform.right;
+            cameraForward = new Vector3(cameraForward.x, 0, cameraForward.z);
+            cameraRight = new Vector3(cameraRight.x, 0, cameraRight.z);
+
+            return Vector3.Normalize((cameraForward * inVec.y) + (cameraRight * inVec.x));
         }
     }
 }
