@@ -74512,13 +74512,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   names:
+  - babyRag
   - baby
   - banana
-  - bananaRag
   prefabs:
+  - {fileID: 8894856259471134342, guid: f453db1e4a8ec1b4b8840db6be45cff2, type: 3}
   - {fileID: 7816086343481335076, guid: 850f7724b5ecd455c8102bb9c45bbabf, type: 3}
   - {fileID: 5362607997023986780, guid: 846b74daa45ed2b43b570a930e69fe13, type: 3}
-  - {fileID: 8894856259471134342, guid: f453db1e4a8ec1b4b8840db6be45cff2, type: 3}
 --- !u!114 &1804142874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94088,8 +94088,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4626dd06bbeef594d95d0ae1b791e3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 0}
-  cam: {fileID: 0}
+  cameraFollow: {fileID: 321734463}
+  cam: {fileID: 963194227}
 --- !u!1 &8566984512540487486
 GameObject:
   m_ObjectHideFlags: 0
