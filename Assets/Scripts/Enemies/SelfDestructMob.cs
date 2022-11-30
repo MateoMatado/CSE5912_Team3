@@ -13,6 +13,10 @@ public class SelfDestructMob : LivingEntity
         Dead
     }
 
+    [SerializeField] GameObject iDamageablePlayer;
+    public ParticleSystem explosionParticle;
+    public AudioClip explosionAudio;
+
     private State state;
 
     private NavMeshAgent navMeshAgent;
@@ -42,10 +46,10 @@ public class SelfDestructMob : LivingEntity
     private float attackDistance;
 
     private float fieldOfView = 360f;
-    private float viewDistance = 10f;
-    private float lostDistance = 10f;
-    private float patrolSpeed = 3f;
-    private float chaseSpeed = 10f;
+    private float viewDistance = 15f;
+    private float lostDistance = 30f;
+    private float patrolSpeed = 6f;
+    private float chaseSpeed = 12f;
 
 
 
@@ -225,6 +229,8 @@ public class SelfDestructMob : LivingEntity
 
     }
 
+
+    //Self-Destruct Mob will jump 
     public void BeginAttack()
     {
         state = State.Attack;
@@ -232,8 +238,30 @@ public class SelfDestructMob : LivingEntity
         ghoulAnimator.SetTrigger("Attack");
     }
 
+    //After the end of Attack Animation, do self-destruct
+    public void EndAttack()
+    {
+        isDead = true;
+        iDamageablePlayer.GetComponent<IDamageable>().OnDamage(attackDamage);
+        //Play Explode Effect 
+        
+        navMeshAgent.isStopped = true;
+        navMeshAgent.enabled = false;
+
+        explosionParticle.transform.parent = null;
+        explosionParticle.Play();
+        ghoulAudioPlayer.clip = explosionAudio;
+        ghoulAudioPlayer.PlayOneShot(explosionAudio);
+
+        Destroy(explosionParticle.gameObject, explosionParticle.duration);
+        ghoulAnimator.SetTrigger("Die");
+        Destroy(gameObject, 2f);
+    }
+
+
 
     //To affect damage to Player
+    /*
     void OnCollisionEnter(Collision collision)
     {
         if (state == State.Attack)
@@ -245,16 +273,8 @@ public class SelfDestructMob : LivingEntity
             }
         }
     }
+    */
 
-    public void EndAttack()
-    {
-        if (!isDead)
-        {
-            state = State.Chase;
-            navMeshAgent.isStopped = false;
-        }
-
-    }
 
 
 
@@ -282,7 +302,5 @@ public class SelfDestructMob : LivingEntity
         ghoulCollider.enabled = false;
         navMeshAgent.isStopped = true;
         navMeshAgent.enabled = false;
-
-
     }
 }
