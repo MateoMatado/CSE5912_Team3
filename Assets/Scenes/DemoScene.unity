@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.020648664, g: 0.023112329, b: 0.006549972, a: 1}
+  m_IndirectSpecularColor: {r: 0.020640591, g: 0.023104375, b: 0.0065418663, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6615,6 +6615,10 @@ MonoBehaviour:
   - {fileID: 2916570678104877123, guid: 6fe6ef70baa9744448d65b70026f1ea7, type: 3}
   - {fileID: 6891552101434141695, guid: 59cf0ba557d74b54caa5cbe2659cdd87, type: 3}
   - {fileID: 1891037396360784119, guid: 07724b1b98b737f46bde46625d1742cb, type: 3}
+  - {fileID: 1522881269466504791, guid: 9f059d61520c87b438288fd267ddc1c8, type: 3}
+  - {fileID: 3128118076527748873, guid: aaa90a35a53d67847a6b8d888cb6a1b4, type: 3}
+  - {fileID: 6256844462741390225, guid: e7f18a06b639751428bc45928a209021, type: 3}
+  - {fileID: 2762065947467053827, guid: e9339f6af1b12b843818ebde5e81ae1d, type: 3}
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
   FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
   StartingIsland: {fileID: 9207809040663074471, guid: 9670816195ef8b44090145da6f5fc533, type: 3}

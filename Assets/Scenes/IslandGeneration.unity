@@ -327,7 +327,7 @@ MonoBehaviour:
   - {fileID: 1522881269466504791, guid: cfe7b0b9bc716ff43bf15e47d9bb2417, type: 3}
   - {fileID: 3128118076527748873, guid: 9d30186052b0d374f83958d39139701f, type: 3}
   - {fileID: 6256844462741390225, guid: 960417a2de48e4f48948c29eed29d366, type: 3}
-  - {fileID: 1711623815489409060, guid: 8134ce2a93a27ae4dbd1d75171510cd2, type: 3}
+  - {fileID: 2762065947467053827, guid: 525b920ff6ddbeb4da015aad77fc724c, type: 3}
   Chainlink: {fileID: 1033360243138236938, guid: 3db95718236ff4647a0a1ca3bf4334ef, type: 3}
   FloatingRock: {fileID: 136694, guid: bb75656da45a48b41828ec258430b0df, type: 3}
   StartingIsland: {fileID: 9207809040663074471, guid: 989dba86aa9781f44885f60081bc7904, type: 3}
