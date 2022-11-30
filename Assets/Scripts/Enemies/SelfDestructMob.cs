@@ -35,10 +35,10 @@ public class SelfDestructMob : LivingEntity
     private ParticleSystem hitEffect2;
     public AudioClip deathSound;
     public AudioClip onDamageSound;
+    public AudioClip chaseSound;
 
 
-
-    [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
+    [Range(0.01f, 2f)] public float turnSmoothTime = 1f;
     private float turnSmoothVelocity;
 
     private float attackDamage = 30f;
@@ -46,8 +46,8 @@ public class SelfDestructMob : LivingEntity
     private float attackDistance;
 
     private float fieldOfView = 360f;
-    private float viewDistance = 15f;
-    private float lostDistance = 30f;
+    private float viewDistance = 40f;
+    private float lostDistance = 60f;
     private float patrolSpeed = 6f;
     private float chaseSpeed = 12f;
 
@@ -235,6 +235,8 @@ public class SelfDestructMob : LivingEntity
     {
         state = State.Attack;
         navMeshAgent.isStopped = true;
+        ghoulAudioPlayer.clip = chaseSound;
+        ghoulAudioPlayer.PlayOneShot(chaseSound);
         ghoulAnimator.SetTrigger("Attack");
     }
 

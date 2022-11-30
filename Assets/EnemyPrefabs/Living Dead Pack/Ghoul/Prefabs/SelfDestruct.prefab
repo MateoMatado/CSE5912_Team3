@@ -110,12 +110,13 @@ MonoBehaviour:
   maxCoins: 5
   iDamageablePlayer: {fileID: 4520910968986690928, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
   explosionParticle: {fileID: 5226863121503364334}
-  explosionAudio: {fileID: 8300000, guid: aa15e5a8789ed6146a4ff773e7780448, type: 3}
+  explosionAudio: {fileID: 8300000, guid: 831f8ce7f6b0ea448b21da84f9d1becd, type: 3}
   attackRoot: {fileID: 6268266601505076493}
   eyeTransform: {fileID: 6268266601505076493}
   hitEffect: {fileID: 5226863121503364334}
   deathSound: {fileID: 8300000, guid: 6e43d052aed07fc40b28cf7f6ff54f72, type: 3}
   onDamageSound: {fileID: 8300000, guid: e23c1348148115649813a7baa9c314a0, type: 3}
+  chaseSound: {fileID: 8300000, guid: 5cb0e627d323d6441a1620123ff83635, type: 3}
   turnSmoothTime: 0.1
   attackRadius: 3
   targetEntity: {fileID: 0}
