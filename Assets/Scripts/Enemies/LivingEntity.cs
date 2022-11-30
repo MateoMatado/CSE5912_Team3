@@ -10,6 +10,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public float currentHealth { get; set; }
     public bool isDead { get; set; }
     public event Action onDeath;        //trigger this event when dead
+    [SerializeField] private int minCoins = 1;
+    [SerializeField] private int maxCoins = 5;
 
     protected virtual void OnEnable()
     {
@@ -55,11 +57,16 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         //event listener
         EventsPublisher.Instance.PublishEvent("DeadEntity", null, gameObject);
+        if (gameObject.layer == 6)
+        {
+            EventsPublisher.Instance.PublishEvent("DeadEnemy", gameObject, (minCoins, maxCoins));
+        }
         if(onDeath != null)
         {
             onDeath();
         }
         isDead = true;
+
         Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
         for (int i = 0; i < renderers.Length; i++)
         {

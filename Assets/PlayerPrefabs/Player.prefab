@@ -5343,7 +5343,6 @@ GameObject:
   - component: {fileID: 5190431454059497164}
   - component: {fileID: 3472710603226543316}
   - component: {fileID: 6812081502813927940}
-  - component: {fileID: 5178595044749387391}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -5606,19 +5605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 1000
---- !u!114 &5178595044749387391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4520910968986690928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b933b6afc49460f8777df9ffe70c53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  killsForBossIsland: 1
+  ChangeSpeed: 0.2
+  DieScene: {fileID: 37640651276939767, guid: bdae2a63f80687c44ba2617575643caa, type: 3}
 --- !u!1 &4520910969144574984
 GameObject:
   m_ObjectHideFlags: 0

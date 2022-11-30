@@ -132,7 +132,7 @@ public class IslandGeneration : MonoBehaviour, IData
         gameObjectIslands[2000, 2000] = GameObject.Instantiate(StartingIsland);
         gameObjectIslands[2000, 2000].transform.position = new Vector3(2000, Random.Range(100, RandomHeightLimit), 2000);
         gameObjectIslands[2000, 2000].transform.SetParent(transform);
-        Island.Add(10);
+        Island.Add(-1);
         Location.Add(gameObjectIslands[2000, 2000].transform.position);
 
         for (int x = 0; x < 1000; x++)
@@ -145,7 +145,7 @@ public class IslandGeneration : MonoBehaviour, IData
         gameObjectIslands[2000, 2000] = GameObject.Instantiate(BossIsland);
         gameObjectIslands[2000, 2000].transform.position = new Vector3((float)(Width/2.3), RandomHeightLimit + RandomHeightLimit/3, (float)(Length / 2.3));
         gameObjectIslands[2000, 2000].transform.SetParent(transform);
-        Island.Add(11);
+        Island.Add(-2);
         Location.Add(gameObjectIslands[2000, 2000].transform.position);
 
         Vector2 ShopPos = new Vector2(Random.Range(0, Width), Random.Range(0, Length));
@@ -159,7 +159,7 @@ public class IslandGeneration : MonoBehaviour, IData
         gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y] = GameObject.Instantiate(ShopIsland);
         gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.position = new Vector3((int)ShopPos.x, Random.Range(100, RandomHeightLimit), (int)ShopPos.y);
         gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.SetParent(transform);
-        Island.Add(12);
+        Island.Add(-3);
         Location.Add(gameObjectIslands[(int)ShopPos.x, (int)ShopPos.y].transform.position);
 
         while (BiasDec >= 0)
@@ -265,15 +265,15 @@ public class IslandGeneration : MonoBehaviour, IData
         {
             temp = Islands[num];
         }
-        else if(num == 10)
+        else if(num == -1)
         {
             temp = StartingIsland;
         }
-        else if (num == 11)
+        else if (num == -2)
         {
             temp = BossIsland;
         }
-        else if (num == 12)
+        else if (num == -3)
         {
             temp = ShopIsland;
         }

@@ -30,9 +30,9 @@ public class LoadingState : MonoBehaviour
         while(slider.value != 1)
         {
             /*update Message*/
-            slider.value += 0.01f;
+            slider.value += 0.02f;
             ValueText.text = (int)(slider.value * 100f) + "%";
-            count++;
+            count += 2;
             /*change text*/
             if (count == 20)
             {

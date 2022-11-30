@@ -19,8 +19,8 @@ public class FileDataHandler
     public GameData Load()
     {
         //create direcotry path
-        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", dataFileName);
-        //string fullPath = Path.Combine(dataDir, dataFileName);
+        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", dataFileName);
+        string fullPath = Path.Combine(dataDir, dataFileName);
         GameData loadedData = null;
         if (File.Exists(fullPath))
         {
@@ -49,8 +49,8 @@ public class FileDataHandler
     public void Save(GameData data)
     {
         //create direcotry path
-        string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", dataFileName);
-        //string fullPath = Path.Combine(dataDir, dataFileName);
+        //string fullPath = Path.Combine("Assets/Scripts/Save&Load/Data", dataFileName);
+        string fullPath = Path.Combine(dataDir, dataFileName);
         try
         {
             //create direcotry
