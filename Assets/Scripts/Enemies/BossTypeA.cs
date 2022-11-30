@@ -212,10 +212,12 @@ public class BossTypeA : LivingEntity
         }
         else if(state == State.Spinning)
         {
+            isInvincible = true;
             DoSpinning();
         }
         else if(state == State.Faint)
         {
+            isInvincible = false;
             DoFaint();
         }
 
@@ -236,7 +238,7 @@ public class BossTypeA : LivingEntity
 
     public override void OnDamage(float damage)
     {
-        if (!isDead)
+        if (!isDead && !isInvincible)
         {
             hitEffect2.Play();
             bossAudioPlayer.clip = onDamageSound;
