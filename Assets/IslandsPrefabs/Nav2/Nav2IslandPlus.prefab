@@ -14365,7 +14365,7 @@ GameObject:
   - component: {fileID: 347203898229982756}
   m_Layer: 8
   m_Name: Ocean_D
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19861,7 +19861,7 @@ GameObject:
   - component: {fileID: 136130288111555653}
   m_Layer: 8
   m_Name: Ocean_D (4)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52827,7 +52827,7 @@ GameObject:
   - component: {fileID: 8552939658736600510}
   m_Layer: 8
   m_Name: Ocean_D (2)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65295,7 +65295,7 @@ GameObject:
   - component: {fileID: 173750092927647820}
   m_Layer: 8
   m_Name: Ocean_D (3)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

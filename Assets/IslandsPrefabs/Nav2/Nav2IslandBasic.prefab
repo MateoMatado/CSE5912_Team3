@@ -2108,7 +2108,7 @@ GameObject:
   - component: {fileID: 4853978140274026499}
   m_Layer: 8
   m_Name: Ocean_D
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

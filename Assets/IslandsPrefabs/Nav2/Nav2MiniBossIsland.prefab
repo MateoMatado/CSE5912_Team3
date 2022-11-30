@@ -1755,7 +1755,7 @@ GameObject:
   - component: {fileID: 1121913807847779350}
   m_Layer: 8
   m_Name: Rock_ground1 (16)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1951,7 +1951,7 @@ GameObject:
   - component: {fileID: 1121913808581194460}
   m_Layer: 8
   m_Name: Cliff_N (32)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2049,7 +2049,7 @@ GameObject:
   - component: {fileID: 1121913808763095140}
   m_Layer: 8
   m_Name: Cliff_N (33)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3733,7 +3733,7 @@ GameObject:
   - component: {fileID: 5150801871667310595}
   m_Layer: 8
   m_Name: Rock_ground1
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7910,7 +7910,7 @@ GameObject:
   - component: {fileID: 2681207547794861346}
   m_Layer: 8
   m_Name: Cliff_N (34)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14229,7 +14229,7 @@ GameObject:
   - component: {fileID: 9185895950574264649}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14327,7 +14327,7 @@ GameObject:
   - component: {fileID: 5150801873231702257}
   m_Layer: 8
   m_Name: Rock_ground1
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22601,7 +22601,7 @@ GameObject:
   - component: {fileID: 1041441363428348274}
   m_Layer: 8
   m_Name: Cliff_N (35)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26671,7 +26671,7 @@ GameObject:
   - component: {fileID: 5150801872044255198}
   m_Layer: 8
   m_Name: Rock_ground1 (4)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28563,7 +28563,7 @@ GameObject:
   - component: {fileID: 5150801871806421158}
   m_Layer: 8
   m_Name: Rock_ground1 (1)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31055,7 +31055,7 @@ GameObject:
   - component: {fileID: 9118722624917737364}
   m_Layer: 8
   m_Name: Rock_ground1 (2)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33930,7 +33930,7 @@ GameObject:
   - component: {fileID: 9118722625324015907}
   m_Layer: 8
   m_Name: Rock_ground1 (3)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

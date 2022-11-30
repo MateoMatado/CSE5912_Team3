@@ -143,6 +143,7 @@ public class CannonAimState : PlayerState
         Vector3 initialVelocity = cannonBarrel.forward * force * Time.fixedDeltaTime / playerMass;
         Vector3 prevPoint = startPosition;
         bool hitSomething = false;
+        bool hitSurface = false;
 
         for (int i = 1; i < 300; i++)
         {
@@ -165,7 +166,8 @@ public class CannonAimState : PlayerState
                             UpdateHitIsland(parentIsland);
                         }
 
-                        hitSomething = hit.collider.gameObject.name.Contains("Spawner");
+                        hitSomething = true;
+                        hitSurface = hitSurface || hit.collider.gameObject.tag == "Surface";
                         trajectory.positionCount = i + 1;
 
                         break;
@@ -175,11 +177,17 @@ public class CannonAimState : PlayerState
 
             prevPoint = point;
         }
-        if (hitSomething)
+        if (hitSurface)
         {
             Color green = new Color(0, 1, 0, .5f);
             trajectory.startColor = green;
             trajectory.endColor = green;
+        }
+        else if (hitSomething)
+        {
+            Color yellow = new Color(1, 1, 0, .5f);
+            trajectory.startColor = yellow;
+            trajectory.endColor = yellow;
         }
         else
         {
@@ -231,6 +239,7 @@ public class CannonAimState : PlayerState
 
     private void EnableOutline(GameObject g)
     {
+        return;
         if (g != null && g != GetParentIsland(cannon.transform))
         {
             foreach (var meshRenderer in g.GetComponentsInChildren<MeshRenderer>())

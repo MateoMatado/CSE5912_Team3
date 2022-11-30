@@ -8,6 +8,7 @@ TagManager:
   - IslandParent
   - Chain
   - Item
+  - Surface
   layers:
   - Default
   - TransparentFX
