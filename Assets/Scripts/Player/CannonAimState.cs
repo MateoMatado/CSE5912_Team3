@@ -170,7 +170,7 @@ public class CannonAimState : PlayerState
                         hitSurface = hitSurface || hit.collider.gameObject.tag == "Surface";
                         trajectory.positionCount = i + 1;
 
-                        break;
+                        if (hitSurface) break;
                     }
                 }
             }

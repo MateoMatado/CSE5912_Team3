@@ -88,7 +88,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RippleDissolve: 5
-    - _RippleScale: 7.4
+    - _RippleScale: 9.04
     - _RippleSpeed: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -96,8 +96,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.09030433, g: 0.9851412, b: 3.8289042, a: 1}
+    - _Color: {r: 0.10023306, g: 1.5727772, b: 3.828904, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 0.27490938, g: 0.3521812, b: 0.37892914, a: 0}
-    - _RippleColor: {r: 0.113725476, g: 0.5065761, b: 0.6117647, a: 0}
+    - _FoamColor: {r: 0.057671774, g: 0.0663505, b: 0.4528302, a: 0}
+    - _RippleColor: {r: 0.23017226, g: 1.2211918, b: 1.2211918, a: 0}
   m_BuildTextureStacks: []

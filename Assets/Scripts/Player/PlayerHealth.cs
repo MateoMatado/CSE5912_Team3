@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Team3.Events;
 
 public class PlayerHealth : LivingEntity
 {
@@ -29,10 +30,15 @@ public class PlayerHealth : LivingEntity
     }
     private void Start()
     {
-        // Instance.currentHealth = HUDManager.Instance.hp;
-
+        EventsPublisher.Instance.SubscribeToEvent("HealPlayer", HandleHeal);        
     }
 
+
+    private void HandleHeal(object sender, object data)
+    {
+        float amount = (float)data;
+        currentHealth = Math.Clamp(currentHealth + amount, 0, startingHealth);
+    }
 
 
     private IEnumerator EaseDamageMaterial()
