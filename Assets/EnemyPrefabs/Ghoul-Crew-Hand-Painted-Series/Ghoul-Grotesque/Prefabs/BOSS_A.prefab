@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 2000
+  minCoins: 1
+  maxCoins: 5
   hitEffect: {fileID: 198104090543139058, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
   deathSound: {fileID: 8300000, guid: 6e43d052aed07fc40b28cf7f6ff54f72, type: 3}
   onDamageSound: {fileID: 8300000, guid: e23c1348148115649813a7baa9c314a0, type: 3}
@@ -223,7 +225,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &1056519258857930
 GameObject:

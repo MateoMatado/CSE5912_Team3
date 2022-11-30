@@ -295,14 +295,17 @@ public class SelfDestructMob : LivingEntity
 
     public override void Die()
     {
-        base.Die();
+        //base.Die();
+        isDead = true;
         ghoulAnimator.SetTrigger("Die");
         ghoulAudioPlayer.clip = deathSound;
         ghoulAudioPlayer.PlayOneShot(deathSound);
-
-        Collider ghoulCollider = GetComponent<Collider>();
-        ghoulCollider.enabled = false;
+        
+        //Collider ghoulCollider = GetComponent<Collider>();
+        //ghoulCollider.enabled = false;
         navMeshAgent.isStopped = true;
         navMeshAgent.enabled = false;
+
+        Destroy(gameObject, 3f);
     }
 }

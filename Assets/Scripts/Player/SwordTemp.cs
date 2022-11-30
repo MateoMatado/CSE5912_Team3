@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordTemp : MonoBehaviour
-{
+{    
     int attackpoint = 120;
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("============OnTriggerEnter==============");
+        Debug.Log("============SWORD--OnTriggerEnter==============");
         IDamageable target = other.GetComponent<IDamageable>();
-        if (target != null)
+
+
+
+        if (other.CompareTag("Enemy"))
         {
-            //Debug.Log(other.name+" HIT!");
+            target = other.GetComponentInParent<IDamageable>();
+            target.OnDamage(attackpoint);
+        }
+        else if (target != null)
+        {
+            Debug.Log("============"+other.name+" HIT!");
             target.OnDamage(attackpoint);
         }
     }
