@@ -7,7 +7,7 @@ public class SwordTemp : MonoBehaviour
     int attackpoint = 120;
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("============SWORD--OnTriggerEnter==============");
+        //Debug.Log("============SWORD--OnTriggerEnter==============");
         IDamageable target = other.GetComponent<IDamageable>();
 
 

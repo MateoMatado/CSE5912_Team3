@@ -8,6 +8,7 @@ using Team3.Events;
 
 public class EnemySpawner : LivingEntity
 {
+     
     //[SerializeField] private GhoulTemp ghoulPrefab;
     [SerializeField] private LivingEntity enemyPrefab;
     public bool IsTriggerOn
@@ -26,12 +27,20 @@ public class EnemySpawner : LivingEntity
     private const float spawnDelayTime = 0.1f;
 
     private int totalEnemyCount;
-    
+
+
+    private AudioSource audioPlayer;
+    public ParticleSystem hitEffect;
+    public AudioClip deathSound;
+    public AudioClip onDamageSound;
+
 
 
 
     private void Start()
     {
+        audioPlayer = GetComponent<AudioSource>();
+        currentHealth = 1000;
         IsTriggerOn = false;
     }
 
@@ -99,9 +108,9 @@ public class EnemySpawner : LivingEntity
     {
         if (!isDead)
         {
-            //hitEffect2.Play();
-            //ghoulAudioPlayer.clip = onDamageSound;
-            //ghoulAudioPlayer.PlayOneShot(onDamageSound);
+            hitEffect.Play();
+            audioPlayer.clip = onDamageSound;
+            audioPlayer.PlayOneShot(onDamageSound);
         }
 
         //affect damage on hp
@@ -114,8 +123,8 @@ public class EnemySpawner : LivingEntity
         if (dying) return;
         base.Die();
         //ghoulAnimator.SetTrigger("Die");
-        //ghoulAudioPlayer.clip = deathSound;
-        //ghoulAudioPlayer.PlayOneShot(deathSound);
+        audioPlayer.clip = deathSound;
+        audioPlayer.PlayOneShot(deathSound);
 
         Collider BeaconCollider = GetComponent<Collider>();
         BeaconCollider.enabled = false;

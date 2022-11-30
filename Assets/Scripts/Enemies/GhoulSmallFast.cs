@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.VR;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,9 +9,15 @@ public class GhoulSmallFast : LivingEntity
     private enum State
     {
         Patrol,
-        Chase,
+        Flee,
         Attack
     }
+
+    private float startFleeDistance = 10f;
+    private float fleeDisplacement = 30f;
+
+    public GameObject landMinePrefab;
+
 
     private State state;
 
@@ -18,7 +25,6 @@ public class GhoulSmallFast : LivingEntity
     private Animator ghoulAnimator;
 
     //temp code for debug (to see the attack area and fov)
-    
     public Transform attackRoot;
     public Transform eyeTransform;
 
@@ -37,15 +43,15 @@ public class GhoulSmallFast : LivingEntity
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
-    // private float damage = 30f;
+    private float attackDamage = 30f;
     public float attackRadius = 3f;
     private float attackDistance;
 
     private float fieldOfView = 360f;
-    private float viewDistance = 10f;
-    private float lostDistance = 10f;
-    private float patrolSpeed = 20f;
-    private float chaseSpeed = 30f;
+    private float viewDistance = 40f;
+    private float lostDistance = 60f;
+    private float patrolSpeed = 10f;
+    private float fleeSpeed = 16f;
 
 
 
@@ -62,11 +68,7 @@ public class GhoulSmallFast : LivingEntity
 
     //will use RaycastHit[] to implement range based attack
     private const float waitTimeForCoroutine = 0.2f; //0.05
-    private const float remainingDistance = 5f; //1
-
-
-
-
+    private const float remainingDistance = 8f; //1
 
     private void Awake()
     {
@@ -86,11 +88,8 @@ public class GhoulSmallFast : LivingEntity
 
     private void Start()
     {
-        //temp
-        //targetEntity = GameObject.Find("Player").transform;
-
-        //StartCoroutine(UpdatePath());
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        StartCoroutine(UpdatePath());
+        StartCoroutine(PlantMine());
     }
     private bool hasTarget
     {
@@ -113,40 +112,32 @@ public class GhoulSmallFast : LivingEntity
             {
                 if (state == State.Patrol)
                 {
-                    state = State.Chase;
-                    navMeshAgent.speed = chaseSpeed;
-                    //Debug.Log("Enemy State : Chasing...");
+                    state = State.Flee;
+                    navMeshAgent.speed = fleeSpeed;
                 }
-                navMeshAgent.SetDestination(targetEntity.position);
+                //navMeshAgent.SetDestination(targetEntity.position);
             }
             // if no target, then patrol
             else
-            {                
+            {
                 if (targetEntity != null)
                 {
                     targetEntity = null;
                 }
-                
                 if (state != State.Patrol)
                 {
                     state = State.Patrol;
-                    navMeshAgent.speed = patrolSpeed;
-                    //Debug.Log("Enemy State : Patrol...");                    
+                    navMeshAgent.speed = patrolSpeed;                   
                 }
 
                 //first, move to random position
-                //Debug.Log("remainingDistance" + navMeshAgent.remainingDistance);
-
                 if (navMeshAgent.remainingDistance <= remainingDistance)
                 {
                     //var patrolTargetPosition = GameObject.Find("EnemySpawnerType2").GetComponent<EnemyUtility>().randomPoint;
                     var patrolTargetPosition = GameObject.Find("FinalEnemySpawner").GetComponent<EnemyUtility>().randomPoint;
-                    //Debug.Log("Random Point NAv:" + patrolTargetPosition);
                     //var patrolTargetPosition = EnemyUtility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     navMeshAgent.SetDestination(patrolTargetPosition);
                 }
-
-
 
                 //Then, check nearby object whether it is target(player) by checking colliders nearby
                 var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
@@ -159,7 +150,6 @@ public class GhoulSmallFast : LivingEntity
                     else
                     {
                         targetEntity = collider.transform;
-                        //Debug.Log("Target Detected");
                         break;
                     }
                 }
@@ -197,30 +187,28 @@ public class GhoulSmallFast : LivingEntity
         if (isDead)
         {
             return;
-        }
-        if (state == State.Chase)
+        }    
+        if (state == State.Flee)
         {
             var distance = Vector3.Distance(targetEntity.position, transform.position);
-            //Debug.Log("current:" + distance+"   ,   attkDis:"+ attackDistance);
-            if (distance <= attackDistance + 2f)  //this is to make 
+            //if (distance <= attackDistance + 2f)  
+            if (distance <= startFleeDistance)
             {
-                BeginAttack();
+                BeginFlee();
             }
 
-            //when lost target
+            //when flee enough from target
             if (distance >= lostDistance)
             {
                 targetEntity = null;
                 state = State.Patrol;
                 navMeshAgent.speed = patrolSpeed;
             }
-
-
         }
-
         ghoulAnimator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 
+    /*
     private void FixedUpdate()
     {
         if (state == State.Attack)
@@ -232,24 +220,48 @@ public class GhoulSmallFast : LivingEntity
         }
 
     }
-
-    public void BeginAttack()
+    */
+    public void BeginFlee()
     {
-        state = State.Attack;
-        navMeshAgent.isStopped = true;
-        ghoulAnimator.SetTrigger("Attack");
+        state = State.Flee;
+        Vector3 normDir = (targetEntity.position - transform.position).normalized;
+        normDir = Quaternion.AngleAxis(110, Vector3.up) * normDir;
+        var newPos = (transform.position - (normDir * fleeDisplacement));
+        navMeshAgent.SetDestination(newPos);
+    }
+    
+    IEnumerator PlantMine()
+    {
+        yield return new WaitForSeconds(1f);
+        Instantiate(landMinePrefab, transform.position, transform.rotation);
     }
 
+    //To affect damage to Player
+    /*
+    void OnCollisionEnter(Collision collision)
+    {
+        if (state == State.Attack)
+        {
+            Rigidbody hitTarget = collision.rigidbody;
+            if (collision.collider.name == "Player")
+            {
+                collision.collider.GetComponent<IDamageable>().OnDamage(attackDamage);
+            }
+        }
+    }
+    */
+
+    /*
     public void EndAttack()
     {
         if (!isDead)
-        {            
+        {
             state = State.Chase;
             navMeshAgent.isStopped = false;
         }
 
     }
-
+    */
 
 
     public override void OnDamage(float damage)
@@ -279,10 +291,5 @@ public class GhoulSmallFast : LivingEntity
 
 
     }
-
-
-
-
-
 
 }
