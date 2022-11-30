@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2161097644017162659}
   - component: {fileID: 2161097644007847473}
   m_Layer: 0
-  m_Name: BOSS_B
+  m_Name: SelfDestruct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
