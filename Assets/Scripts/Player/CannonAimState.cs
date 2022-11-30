@@ -297,6 +297,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.PublishEvent("LaunchedCannon", null, null);
         LeaveCannon();
         cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+        cannon.GetComponent<AudioSource>().Play();
         mouth.Find("CannonShot").GetComponent<ParticleSystem>().Play();
         player.GetComponent<MoveWithCamera>().StartFlying();
         player.transform.position = mouth.position;
