@@ -26,7 +26,7 @@ public class GameData
     {
         this.HP = 1000;
         this.MP = 100;
-        this.Coin = 500;
+        this.Coin = 0;
         playerPosition = new Vector3(33.76378f, 44.6773f, -6.12925f);
         Island = new Dictionary<int, Vector3>();
         Islands = new List<int>();
