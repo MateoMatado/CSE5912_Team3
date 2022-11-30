@@ -53283,6 +53283,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6413008049201610011}
     m_Modifications:
+    - target: {fileID: 699562055406829869, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 8881062580568083447, guid: 2c56312a4e7739a4f92fc3f907f41509, type: 3}
+    - target: {fileID: 2738369488098475007, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264549241711886371, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941121140127026928, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134367620308, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 8392309503400359714, guid: 7b3754c12e5a20545ba087f6541b0118, type: 3}
+    - target: {fileID: 6528701134367620308, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: maxEnemyCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134367620308, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: numberOfSpawnAtOnce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134645122293, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: maxEnemyCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6528701134690066321, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -53330,6 +53362,18 @@ PrefabInstance:
     - target: {fileID: 6528701134690066412, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: m_Name
       value: FinalEnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134789498737, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3744995092512214907, guid: d9c686f862ff7406ea2fa3a0285ba6ec, type: 3}
+    - target: {fileID: 6528701134789498737, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: maxEnemyCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134789498737, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: numberOfSpawnAtOnce
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
