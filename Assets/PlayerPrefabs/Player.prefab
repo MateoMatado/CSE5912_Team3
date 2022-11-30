@@ -5417,7 +5417,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4520910968986690928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29bd6214a1a92f3488751c005201f4b0, type: 3}
   m_Name: 
@@ -5431,7 +5431,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4520910968986690928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d79e594aff9b45345a3483b216ab292d, type: 3}
   m_Name: 
@@ -5446,7 +5446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4520910968986690928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef8302ef2aad18f4cb4ea4ec50b00507, type: 3}
   m_Name: 
@@ -5530,13 +5530,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   names:
+  - babyRag
   - baby
   - banana
-  - bananaRag
   prefabs:
+  - {fileID: 8894856259471134342, guid: f453db1e4a8ec1b4b8840db6be45cff2, type: 3}
   - {fileID: 7816086343481335076, guid: 850f7724b5ecd455c8102bb9c45bbabf, type: 3}
   - {fileID: 5362607997023986780, guid: 846b74daa45ed2b43b570a930e69fe13, type: 3}
-  - {fileID: 5362607997023986780, guid: f60fe9f378c3e064199966f8d20d0b2c, type: 3}
 --- !u!114 &4520910968986690938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5561,6 +5561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f25115e624d982499f82ab22eee4db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mana: 100
   ChangeSpeed: 0.2
 --- !u!114 &5190431454059497164
 MonoBehaviour:
@@ -5589,6 +5590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f25115e624d982499f82ab22eee4db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mana: 100
   ChangeSpeed: 0.2
 --- !u!114 &6812081502813927940
 MonoBehaviour:
@@ -5603,7 +5605,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 1000
-  playerStatus: {fileID: 3472710603226543316}
 --- !u!1 &4520910969144574984
 GameObject:
   m_ObjectHideFlags: 0
