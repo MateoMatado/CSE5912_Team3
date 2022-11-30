@@ -307,15 +307,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-<<<<<<< HEAD
-                    ""name"": ""Scroll"",
-                    ""type"": ""Value"",
-                    ""id"": ""ac8c1d56-4d18-4039-8024-dfae83ab5773"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-=======
                     ""name"": ""ToggleRoll"",
                     ""type"": ""Button"",
                     ""id"": ""add3f99d-8798-4601-91df-df745526ac2e"",
@@ -323,7 +314,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
                 }
             ],
             ""bindings"": [
@@ -857,21 +847,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-<<<<<<< HEAD
-                    ""id"": ""972e0f9c-e5bf-4817-96e4-082634fe7aba"",
-                    ""path"": ""<Mouse>/scroll"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Scroll"",
-=======
                     ""id"": ""1b17c898-a073-4312-a748-c1488e202a26"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ToggleRoll"",
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1510,11 +1491,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_Player_EquipConfettiGun = m_Player.FindAction("EquipConfettiGun", throwIfNotFound: true);
         m_Player_ToggleRagdoll = m_Player.FindAction("ToggleRagdoll", throwIfNotFound: true);
-<<<<<<< HEAD
-        m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
-=======
         m_Player_ToggleRoll = m_Player.FindAction("ToggleRoll", throwIfNotFound: true);
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1618,11 +1595,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwitchWeapon;
     private readonly InputAction m_Player_EquipConfettiGun;
     private readonly InputAction m_Player_ToggleRagdoll;
-<<<<<<< HEAD
-    private readonly InputAction m_Player_Scroll;
-=======
     private readonly InputAction m_Player_ToggleRoll;
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1658,11 +1631,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputAction @EquipConfettiGun => m_Wrapper.m_Player_EquipConfettiGun;
         public InputAction @ToggleRagdoll => m_Wrapper.m_Player_ToggleRagdoll;
-<<<<<<< HEAD
-        public InputAction @Scroll => m_Wrapper.m_Player_Scroll;
-=======
         public InputAction @ToggleRoll => m_Wrapper.m_Player_ToggleRoll;
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1765,15 +1734,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ToggleRagdoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
                 @ToggleRagdoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
                 @ToggleRagdoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
-<<<<<<< HEAD
-                @Scroll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
-                @Scroll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
-                @Scroll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
-=======
                 @ToggleRoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRoll;
                 @ToggleRoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRoll;
                 @ToggleRoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRoll;
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1871,15 +1834,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ToggleRagdoll.started += instance.OnToggleRagdoll;
                 @ToggleRagdoll.performed += instance.OnToggleRagdoll;
                 @ToggleRagdoll.canceled += instance.OnToggleRagdoll;
-<<<<<<< HEAD
-                @Scroll.started += instance.OnScroll;
-                @Scroll.performed += instance.OnScroll;
-                @Scroll.canceled += instance.OnScroll;
-=======
                 @ToggleRoll.started += instance.OnToggleRoll;
                 @ToggleRoll.performed += instance.OnToggleRoll;
                 @ToggleRoll.canceled += instance.OnToggleRoll;
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
             }
         }
     }
@@ -2075,11 +2032,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnEquipConfettiGun(InputAction.CallbackContext context);
         void OnToggleRagdoll(InputAction.CallbackContext context);
-<<<<<<< HEAD
-        void OnScroll(InputAction.CallbackContext context);
-=======
         void OnToggleRoll(InputAction.CallbackContext context);
->>>>>>> d685b0f (Ragdoll now toggles on and off and active ragdoll is default)
     }
     public interface IUIActions
     {
