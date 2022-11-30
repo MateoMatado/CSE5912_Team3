@@ -16,7 +16,10 @@ namespace Team3.Animation.Player
         [SerializeField] float swingThreshold = 0.2f;
         [SerializeField] float mouseSensitivity = 0.01f;
         [SerializeField] float swingDelay = 0.2f;
-        Rigidbody body;
+        [SerializeField] Rigidbody body;
+        [SerializeField] Transform leftHandObject;
+        [SerializeField] Transform rightHandObject;
+        [SerializeField] Animator physAnim;
 
         Vector2 inVector = new Vector2();
         Vector2 dPos = new Vector2();
@@ -37,8 +40,6 @@ namespace Team3.Animation.Player
             Events.EventsPublisher.Instance.SubscribeToEvent("MoveArmMouse", StartMouse);
             Events.EventsPublisher.Instance.SubscribeToEvent("EquipWeapon", EquipWeapon);
             Events.EventsPublisher.Instance.SubscribeToEvent("SwapHands", SwapHands);
-
-            body = transform.parent.parent.gameObject.GetComponent<Rigidbody>();
 
             //StartCoroutine(PushOnSwing());
 
@@ -209,8 +210,16 @@ namespace Team3.Animation.Player
 
         private void LateUpdate()
         {
-            right?.MoveWeapon(anim, AvatarIKGoal.RightHand);
-            left?.MoveWeapon(anim, AvatarIKGoal.LeftHand);
+            right?.MoveWeapon(physAnim, AvatarIKGoal.RightHand);
+            left?.MoveWeapon(physAnim, AvatarIKGoal.LeftHand);
+            if (right != null)
+            {
+                right.Weapon.transform.parent = rightHandObject.transform;
+            }
+            if (left != null)
+            {
+                left.Weapon.transform.parent = leftHandObject.transform;
+            }
         }
     }
 }

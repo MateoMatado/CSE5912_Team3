@@ -41,10 +41,14 @@ namespace Team3.Ragdoll
 
         private ActiveRagdollToggle toggle;
 
+        private Transform effectTarget;
+        private Transform enemyTarget;
+
 
         void Start()
         {
             SubToEvents();
+            GrabStores();
 
             defaultDrive = new JointDrive();
             defaultDrive.maximumForce = maximumForce;
@@ -139,6 +143,8 @@ namespace Team3.Ragdoll
             }
             sum /= numCameraPoints;
             cameraFollow.position = sum;
+            //enemyTarget.position = sum;
+            if (effectTarget != null) { effectTarget.position = verticalGoal.position; }
         }
 
         private Vector3 ConvertToWorldInput(Vector2 inVec)
@@ -187,27 +193,11 @@ namespace Team3.Ragdoll
 
         #endregion
 
-        IEnumerator CheckFreefall()
+        void GrabStores()
         {
-            while (true)
-            {
-                yield return null;
-            }
-        }
-
-        IEnumerator CheckGround()
-        {
-            while (true)
-            {
-                while (toggle.rag)
-                {
-                    yield return null;
-                }
-                while (!toggle.rag)
-                {
-                    yield return null;
-                }
-            }
+            Transform par = this.transform.parent;
+            effectTarget = par.GetComponentInChildren<EffectStore>()?.transform;
+            enemyTarget = par.GetComponentInChildren<EnemyTargetStore>().transform;
         }
     }
 }
