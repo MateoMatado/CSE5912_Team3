@@ -28,6 +28,10 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         //Debug.Log("Ahh~ ondamage");
         currentHealth -= damage;
+        if (gameObject.layer == 6)
+        {
+            EventsPublisher.Instance.PublishEvent("DamageEnemy", null, null);
+        }
 
         if(currentHealth <= 0 && !isDead)
         {

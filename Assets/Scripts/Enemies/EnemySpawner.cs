@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.HID;
 using static UnityEngine.Rendering.DebugUI.Table;
+using Team3.Events;
 
 public class EnemySpawner : LivingEntity
 {
@@ -107,8 +108,10 @@ public class EnemySpawner : LivingEntity
         base.OnDamage(damage);
     }
 
+    private bool dying = false;
     public override void Die()
     {
+        if (dying) return;
         base.Die();
         //ghoulAnimator.SetTrigger("Die");
         //ghoulAudioPlayer.clip = deathSound;
@@ -116,6 +119,20 @@ public class EnemySpawner : LivingEntity
 
         Collider BeaconCollider = GetComponent<Collider>();
         BeaconCollider.enabled = false;
+        dying = true;
+        EventsPublisher.Instance.PublishEvent("SinkSpawner", null, gameObject);
+        GetComponent<AudioSource>().Play();
+        var ps = transform.Find("ExplosionEffect").GetComponentsInChildren<ParticleSystem>();
+        foreach (var p in ps)
+        {
+            p.Play();
+        }
+        StartCoroutine(Dying());
+    }
+
+    private IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }

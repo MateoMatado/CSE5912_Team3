@@ -170,7 +170,7 @@ public class CannonAimState : PlayerState
                         hitSurface = hitSurface || hit.collider.gameObject.tag == "Surface";
                         trajectory.positionCount = i + 1;
 
-                        break;
+                        if (hitSurface) break;
                     }
                 }
             }
@@ -297,6 +297,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.PublishEvent("LaunchedCannon", null, null);
         LeaveCannon();
         cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+        cannon.GetComponent<AudioSource>().Play();
         mouth.Find("CannonShot").GetComponent<ParticleSystem>().Play();
         player.GetComponent<MoveWithCamera>().StartFlying();
         player.transform.position = mouth.position;
