@@ -209,6 +209,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   rotationTorque: 1e+14
+  rollForce: 12
 --- !u!114 &4901050038276324422
 MonoBehaviour:
   m_ObjectHideFlags: 0
