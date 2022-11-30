@@ -88,6 +88,7 @@ public class GhoulSmallFast : LivingEntity
 
     private void Start()
     {
+        currentHealth = 300f;
         StartCoroutine(UpdatePath());
         StartCoroutine(PlantMine());
     }
