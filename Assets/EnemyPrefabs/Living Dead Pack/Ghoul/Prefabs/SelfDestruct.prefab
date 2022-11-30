@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
+  isInvincible: 0
   minCoins: 1
   maxCoins: 5
   iDamageablePlayer: {fileID: 4520910968986690928, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
@@ -202,7 +203,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
