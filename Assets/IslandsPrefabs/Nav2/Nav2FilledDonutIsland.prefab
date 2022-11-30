@@ -109017,6 +109017,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 5573997231700426263}
     m_Modifications:
     - target: {fileID: 3014551854052477873, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014551854052477873, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 57280224200543022, guid: 21a9b19e2af6a1e4b988a6d817c9c45a, type: 3}
+    - target: {fileID: 3014551854052477873, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: maxEnemyCount
       value: 2
       objectReference: {fileID: 0}
@@ -109034,7 +109042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854156497708, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_Name
-      value: FinalEnemySpawner
+      value: FinalEnemySpawner1
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854156497710, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_Size.x
