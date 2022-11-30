@@ -963,8 +963,8 @@ MonoBehaviour:
   picture1: {fileID: 2860459528070791164, guid: eb15f0f954ecfcc458f325e7e00661d8, type: 3}
   picture2: {fileID: 1588558275852662960, guid: b9e8eab936b63d5498826be85142b874, type: 3}
   picture3: {fileID: 3765460945768534202, guid: db5cec2e4c2f9d649a985a741a021ff3, type: 3}
-  slideDuration: 1
-  loadDuration: 1
+  slideDuration: 0.5
+  loadDuration: 0.5
   slider: {fileID: 1368479601}
   ValueText: {fileID: 235997254}
   LoadingText: {fileID: 131822757}
