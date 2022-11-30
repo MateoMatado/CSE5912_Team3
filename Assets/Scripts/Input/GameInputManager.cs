@@ -55,7 +55,7 @@ namespace Team3.Input
             inputs.Player.EquipHammer.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKHammer(hammer)); };
             inputs.Player.EquipConfettiGun.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("EquipWeapon", lastHand, new Team3.Animation.Player.Weapons.IKConfettiGun(confettiGun)); };
 
-            //inputs.Player.Scroll.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Scroll", null, inputs.Player.Scroll); };
+            inputs.Player.Scroll.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Scroll", null, inputs.Player.Scroll); };
 
             //for temporary camera switching, by Jimmy 
             // inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
@@ -94,7 +94,7 @@ namespace Team3.Input
             inputs.Player.EquipConfettiGun.Enable();
             inputs.Player.SwapHands.Enable();
 
-            //inputs.Player.Scroll.Enable();
+            inputs.Player.Scroll.Enable();
 
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.Enable();
@@ -129,7 +129,7 @@ namespace Team3.Input
             inputs.Player.EquipConfettiGun.Disable();
             inputs.Player.SwapHands.Disable();
 
-            //inputs.Player.Scroll.Disable();
+            inputs.Player.Scroll.Disable();
 
             //for temporary camera switching, by Jimmy 
             inputs.Player.CameraSwitch.Disable();
