@@ -232,8 +232,12 @@ public class GhoulSmallFast : LivingEntity
     
     IEnumerator PlantMine()
     {
-        yield return new WaitForSeconds(1f);
-        Instantiate(landMinePrefab, transform.position, transform.rotation);
+        for(int i=0; i<100; i++)
+        {
+            yield return new WaitForSeconds(0.8f);
+            Vector3 offset = new Vector3(0, 0.5f, 0);
+            Instantiate(landMinePrefab, transform.position+ offset, transform.rotation);
+        }        
     }
 
     //To affect damage to Player

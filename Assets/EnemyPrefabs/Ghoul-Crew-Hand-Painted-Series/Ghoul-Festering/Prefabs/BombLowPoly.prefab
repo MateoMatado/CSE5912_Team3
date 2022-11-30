@@ -94,7 +94,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135746}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 917c41d601fd8ae4ba3fa2fee7d945b9, type: 3}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageables:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
   explosionParticle: {fileID: 4401422652607700676}
   explosionAudio: {fileID: 4587813929242526985}
 --- !u!135 &-7289100734585362529
