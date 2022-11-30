@@ -53287,17 +53287,29 @@ PrefabInstance:
       propertyPath: bossPrefab
       value: 
       objectReference: {fileID: 8881062580568083447, guid: 2c56312a4e7739a4f92fc3f907f41509, type: 3}
+    - target: {fileID: 1167516073463703595, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738369488098475007, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.92
+      objectReference: {fileID: 0}
     - target: {fileID: 2738369488098475007, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.44
+      value: -13.84
       objectReference: {fileID: 0}
     - target: {fileID: 3264549241711886371, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.2
+      value: -4.36
       objectReference: {fileID: 0}
+    - target: {fileID: 4853332127193133812, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 8881062580568083447, guid: 2c56312a4e7739a4f92fc3f907f41509, type: 3}
     - target: {fileID: 5941121140127026928, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528701134367620308, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: enemyPrefab
