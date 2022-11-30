@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Team3.Events;
+using Cinemachine;
 
 public class PlayerHealth : LivingEntity
 {
@@ -29,10 +31,21 @@ public class PlayerHealth : LivingEntity
     }
     private void Start()
     {
-        // Instance.currentHealth = HUDManager.Instance.hp;
-
+        EventsPublisher.Instance.SubscribeToEvent("HealPlayer", HandleHeal);        
+        EventsPublisher.Instance.SubscribeToEvent("DamageEnemy", HandleDamage);        
     }
 
+
+    private void HandleHeal(object sender, object data)
+    {
+        float amount = (float)data;
+        currentHealth = Math.Clamp(currentHealth + amount, 0, startingHealth);
+    }
+
+    private void HandleDamage(object sender, object data)
+    {
+        GetComponent<CinemachineImpulseSource>()?.GenerateImpulse();
+    }
 
 
     private IEnumerator EaseDamageMaterial()
@@ -44,7 +57,7 @@ public class PlayerHealth : LivingEntity
             Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
             float healthPct = Math.Clamp(currentHealth / startingHealth, 0, 1);
             pct += (healthPct - pct) * lerpSpeed * Time.deltaTime;
-            Debug.Log(gameObject.name + ' ' + pct);
+            //Debug.Log(gameObject.name + ' ' + pct);
             for (int i = 0; i < renderers.Length; i++)
             {
                 renderers[i].material.SetFloat("_Health", pct);
@@ -70,7 +83,7 @@ public class PlayerHealth : LivingEntity
                 ChangeValueHP += ChangeSpeed;
             }
         }
-        Debug.Log("PlayerHealth.cs : " + Instance.currentHealth);
+        //Debug.Log("PlayerHealth.cs : " + Instance.currentHealth);
     }
 
     public override void OnDamage(float damage)
@@ -83,6 +96,7 @@ public class PlayerHealth : LivingEntity
         //base.OnDamage(damage);
         //OnDamage(damage);
         Instance.currentHealth -= damage;
+        GetComponent<CinemachineImpulseSource>()?.GenerateImpulse();
 
         if (Instance.currentHealth <= 0 && !isDead)
         {

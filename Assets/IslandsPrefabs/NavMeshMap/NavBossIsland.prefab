@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 11106603064755216}
   m_Layer: 8
   m_Name: Cliff_N (12)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1583,7 +1583,7 @@ GameObject:
   - component: {fileID: 11106603098179543}
   m_Layer: 8
   m_Name: Cliff_N (14)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2466,7 +2466,7 @@ GameObject:
   - component: {fileID: 11106603192537168}
   m_Layer: 8
   m_Name: Cliff_N (16)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6489,7 +6489,7 @@ GameObject:
   - component: {fileID: 11106603450853178}
   m_Layer: 8
   m_Name: Rock_ground1 (3)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7304,7 +7304,7 @@ GameObject:
   - component: {fileID: 11106603514152722}
   m_Layer: 8
   m_Name: Cliff_N (19)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11236,7 +11236,7 @@ GameObject:
   - component: {fileID: 11106603785498970}
   m_Layer: 8
   m_Name: Cliff_N (16)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12161,7 +12161,7 @@ GameObject:
   - component: {fileID: 11106603830525588}
   m_Layer: 8
   m_Name: Cliff_N (11)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12848,7 +12848,7 @@ GameObject:
   - component: {fileID: 11106603876036070}
   m_Layer: 8
   m_Name: Cliff_M (8)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13534,7 +13534,7 @@ GameObject:
   - component: {fileID: 11106603952387422}
   m_Layer: 8
   m_Name: Cliff_N (20)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13828,7 +13828,7 @@ GameObject:
   - component: {fileID: 11106603970389783}
   m_Layer: 8
   m_Name: Cliff_N (26)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14205,7 +14205,7 @@ GameObject:
   - component: {fileID: 11106603981085449}
   m_Layer: 8
   m_Name: Cliff_N (21)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14681,7 +14681,7 @@ GameObject:
   - component: {fileID: 11106604032894970}
   m_Layer: 8
   m_Name: Cliff_N (19)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15367,7 +15367,7 @@ GameObject:
   - component: {fileID: 11106604095504485}
   m_Layer: 8
   m_Name: Cliff_N (11)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17533,7 +17533,7 @@ GameObject:
   - component: {fileID: 11106604275502108}
   m_Layer: 8
   m_Name: Cliff_N (10)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18433,7 +18433,7 @@ GameObject:
   - component: {fileID: 11106604342888850}
   m_Layer: 8
   m_Name: Cliff_N (25)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23594,7 +23594,7 @@ GameObject:
   - component: {fileID: 11106604860376609}
   m_Layer: 8
   m_Name: Cliff_N (21)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24183,7 +24183,7 @@ GameObject:
   - component: {fileID: 11106604894288712}
   m_Layer: 8
   m_Name: Cliff_N (23)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29087,7 +29087,7 @@ GameObject:
   - component: {fileID: 4165851150371086791}
   m_Layer: 8
   m_Name: Rock_ground1 (4)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31077,7 +31077,7 @@ GameObject:
   - component: {fileID: 4165851150083972799}
   m_Layer: 8
   m_Name: Rock_ground1 (1)
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36877,7 +36877,7 @@ GameObject:
   - component: {fileID: 4165851151578459880}
   m_Layer: 8
   m_Name: Rock_ground1
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37072,7 +37072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killsForBossIsland: 0
-  islandClearsForBossIsland: 1
+  islandClearsForBossIsland: 3
   cutsceneCam: {fileID: 6328786660105116642}
 --- !u!1 &2478930065513343740
 GameObject:
@@ -41926,7 +41926,7 @@ GameObject:
   - component: {fileID: 7575896500925573155}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45909,7 +45909,7 @@ GameObject:
   - component: {fileID: 4165851149946959386}
   m_Layer: 8
   m_Name: Rock_ground1
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46017,7 +46017,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6822155861923144253}
-  m_LocalRotation: {x: 0.21096036, y: -0.3345273, z: 0.077108696, w: 0.9152276}
+  m_LocalRotation: {x: 0.21096034, y: -0.3345273, z: 0.07710868, w: 0.9152276}
   m_LocalPosition: {x: 351, y: 365, z: -416}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -53283,6 +53283,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6413008049201610011}
     m_Modifications:
+    - target: {fileID: 699562055406829869, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 8881062580568083447, guid: 2c56312a4e7739a4f92fc3f907f41509, type: 3}
+    - target: {fileID: 1167516073463703595, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738369488098475007, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738369488098475007, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264549241711886371, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853332127193133812, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 8881062580568083447, guid: 2c56312a4e7739a4f92fc3f907f41509, type: 3}
+    - target: {fileID: 5941121140127026928, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134367620308, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 8392309503400359714, guid: 7b3754c12e5a20545ba087f6541b0118, type: 3}
+    - target: {fileID: 6528701134367620308, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: maxEnemyCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134367620308, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: numberOfSpawnAtOnce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134645122293, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: maxEnemyCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6528701134690066321, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -53329,7 +53373,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6528701134690066412, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
       propertyPath: m_Name
-      value: FinalEnemySpawner
+      value: FinalEnemySpawner1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134789498737, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3744995092512214907, guid: d9c686f862ff7406ea2fa3a0285ba6ec, type: 3}
+    - target: {fileID: 6528701134789498737, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: maxEnemyCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528701134789498737, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}
+      propertyPath: numberOfSpawnAtOnce
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75632f8ec56cdb44e88ee77c5d920319, type: 3}

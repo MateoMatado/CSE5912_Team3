@@ -8,6 +8,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
 {
     public float startingHealth = 100f;
     public float currentHealth { get; set; }
+    public bool isInvincible = false;
     public bool isDead { get; set; }
     public event Action onDeath;        //trigger this event when dead
     [SerializeField] private int minCoins = 1;
@@ -27,7 +28,15 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public virtual void OnDamage(float damage)
     {
         //Debug.Log("Ahh~ ondamage");
-        currentHealth -= damage;
+        if (!isInvincible)
+        {
+            currentHealth -= damage;
+        }
+        
+        if (gameObject.layer == 6)
+        {
+            EventsPublisher.Instance.PublishEvent("DamageEnemy", null, null);
+        }
 
         if(currentHealth <= 0 && !isDead)
         {

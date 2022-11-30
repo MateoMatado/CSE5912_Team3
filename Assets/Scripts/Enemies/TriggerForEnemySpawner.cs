@@ -11,8 +11,14 @@ public class TriggerForEnemySpawner : MonoBehaviour
     [SerializeField] List<EnemySpawner> enemySpawner = new List<EnemySpawner>();
     [SerializeField] BossSpawner bossSpawner;
     //Check Player enters Beacon Area. If then, start spawning enemies
+
+    private void Start()
+    {
+        //GameObject.Find("NavStartingIsland").g
+    }
     private void OnTriggerEnter(Collider other)
     {
+        this.name = "FinalEnemySpawner";
         isTriggerOn = true;
         foreach (EnemySpawner spawner in enemySpawner)
         {
@@ -27,6 +33,7 @@ public class TriggerForEnemySpawner : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         isTriggerOn = false;
+        this.name = "ExpiredSpawner";
         foreach (EnemySpawner spawner in enemySpawner)
         {
             spawner.IsTriggerOn = false;

@@ -111,8 +111,8 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StarDensity: 30
-    - _StarPower: 80
+    - _StarDensity: 20
+    - _StarPower: 150
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

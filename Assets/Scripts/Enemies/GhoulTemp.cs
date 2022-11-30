@@ -15,7 +15,7 @@ public class GhoulTemp : LivingEntity
         Chase,
         Attack
     }
-
+    private float attackDamage = 50f;
     private State state;
      
     private NavMeshAgent navMeshAgent;
@@ -40,7 +40,7 @@ public class GhoulTemp : LivingEntity
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
-    private float attackDamage = 30f;
+    
     public float attackRadius = 3f;
     private float attackDistance;
 
@@ -89,6 +89,7 @@ public class GhoulTemp : LivingEntity
 */
     private void Awake()
     {
+        currentHealth = 200f;
         navMeshAgent = GetComponent<NavMeshAgent>();        
         ghoulAnimator = GetComponent<Animator>();
         ghoulAudioPlayer = GetComponent<AudioSource>();

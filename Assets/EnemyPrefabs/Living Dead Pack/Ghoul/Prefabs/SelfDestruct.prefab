@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2161097644017162657}
   m_Layer: 0
   m_Name: root
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,9 +42,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2161097644017162659}
   - component: {fileID: 2161097644007847473}
+  - component: {fileID: 8392309503400359714}
+  - component: {fileID: 763758601785100053}
+  - component: {fileID: 1309006380261397368}
   m_Layer: 0
-  m_Name: BOSS_B
-  m_TagString: Untagged
+  m_Name: SelfDestruct
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,13 +61,15 @@ Transform:
   m_GameObject: {fileID: 2161097644017189955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2161097644017162657}
   - {fileID: 2161097644017162661}
   - {fileID: 2161097644017162663}
   - {fileID: 2161097644017162665}
+  - {fileID: 8520587486866050401}
+  - {fileID: 6268266601505076493}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88,6 +93,156 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8392309503400359714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2161097644017189955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d936888d0296de540bc807cf4789551b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  isInvincible: 0
+  minCoins: 1
+  maxCoins: 5
+  iDamageablePlayer: {fileID: 4520910968986690928, guid: 5888fd5f7fb2f496dae8b1d4742436af, type: 3}
+  explosionParticle: {fileID: 5226863121503364334}
+  explosionAudio: {fileID: 8300000, guid: 831f8ce7f6b0ea448b21da84f9d1becd, type: 3}
+  attackRoot: {fileID: 6268266601505076493}
+  eyeTransform: {fileID: 6268266601505076493}
+  hitEffect: {fileID: 5226863121503364334}
+  deathSound: {fileID: 8300000, guid: 6e43d052aed07fc40b28cf7f6ff54f72, type: 3}
+  onDamageSound: {fileID: 8300000, guid: e23c1348148115649813a7baa9c314a0, type: 3}
+  chaseSound: {fileID: 8300000, guid: 5cb0e627d323d6441a1620123ff83635, type: 3}
+  turnSmoothTime: 0.1
+  attackRadius: 3
+  targetEntity: {fileID: 0}
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 8
+  timeBetweenAttack: 1.3
+--- !u!195 &763758601785100053
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2161097644017189955}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 8
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!82 &1309006380261397368
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2161097644017189955}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2161097644017189957
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +255,7 @@ GameObject:
   - component: {fileID: 2161097644011981047}
   m_Layer: 0
   m_Name: SK_Ghoul
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +392,7 @@ GameObject:
   - component: {fileID: 2161097644011981049}
   m_Layer: 0
   m_Name: SK_GhouldRightArmBoils
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +499,7 @@ GameObject:
   - component: {fileID: 2161097644011981051}
   m_Layer: 0
   m_Name: SK_GhoulLeftLegBoils
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,7 +603,7 @@ GameObject:
   - component: {fileID: 2161097644017162673}
   m_Layer: 0
   m_Name: GHOUL_ R Hand
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,7 +639,7 @@ GameObject:
   - component: {fileID: 2161097644017162675}
   m_Layer: 0
   m_Name: GHOUL_ R Thigh
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,7 +671,7 @@ GameObject:
   - component: {fileID: 2161097644017162677}
   m_Layer: 0
   m_Name: GHOUL_ R Toe0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,7 +702,7 @@ GameObject:
   - component: {fileID: 2161097644017162679}
   m_Layer: 0
   m_Name: GHOUL_ R UpperArm
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -580,7 +735,7 @@ GameObject:
   - component: {fileID: 4690266370937258346}
   m_Layer: 0
   m_Name: GHOUL_ Spine
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -625,7 +780,7 @@ GameObject:
   - component: {fileID: 2161097644017162683}
   m_Layer: 0
   m_Name: GHOUL_ Spine1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -659,7 +814,7 @@ GameObject:
   - component: {fileID: 2161097644017162721}
   m_Layer: 0
   m_Name: GHOUL_ L Toe0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -690,7 +845,7 @@ GameObject:
   - component: {fileID: 2161097644017162723}
   m_Layer: 0
   m_Name: GHOUL_ L UpperArm
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -722,7 +877,7 @@ GameObject:
   - component: {fileID: 2161097644017162725}
   m_Layer: 0
   m_Name: GHOUL_ Neck
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,7 +909,7 @@ GameObject:
   - component: {fileID: 2161097644017162727}
   m_Layer: 0
   m_Name: GHOUL_ Pelvis
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,7 +943,7 @@ GameObject:
   - component: {fileID: 2161097644017162729}
   m_Layer: 0
   m_Name: GHOUL_ Ponytail1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -820,7 +975,7 @@ GameObject:
   - component: {fileID: 8720880200230151561}
   m_Layer: 0
   m_Name: GHOUL_ R Calf
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -866,7 +1021,7 @@ GameObject:
   - component: {fileID: 2161097644017162733}
   m_Layer: 0
   m_Name: GHOUL_ R Clavicle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -898,7 +1053,7 @@ GameObject:
   - component: {fileID: 2161097644017162735}
   m_Layer: 0
   m_Name: GHOUL_ R Finger0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -930,7 +1085,7 @@ GameObject:
   - component: {fileID: 2161097644017162737}
   m_Layer: 0
   m_Name: GHOUL_ L Finger32
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -961,7 +1116,7 @@ GameObject:
   - component: {fileID: 2161097644017162739}
   m_Layer: 0
   m_Name: GHOUL_ L Finger4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -993,7 +1148,7 @@ GameObject:
   - component: {fileID: 2161097644017162741}
   m_Layer: 0
   m_Name: GHOUL_ L Finger41
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1025,7 +1180,7 @@ GameObject:
   - component: {fileID: 2161097644017162743}
   m_Layer: 0
   m_Name: GHOUL_ L Finger42
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1057,7 +1212,7 @@ GameObject:
   - component: {fileID: 1928305732721748771}
   m_Layer: 0
   m_Name: GHOUL_ L Foot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1104,7 +1259,7 @@ GameObject:
   - component: {fileID: 7083112445144012841}
   m_Layer: 0
   m_Name: GHOUL_ L Forearm
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1150,7 +1305,7 @@ GameObject:
   - component: {fileID: 2161097644017162749}
   m_Layer: 0
   m_Name: GHOUL_ L Hand
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1186,7 +1341,7 @@ GameObject:
   - component: {fileID: 2161097644017162751}
   m_Layer: 0
   m_Name: GHOUL_ L Thigh
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1218,7 +1373,7 @@ GameObject:
   - component: {fileID: 2161097644017162625}
   m_Layer: 0
   m_Name: GHOUL_ R Finger3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1250,7 +1405,7 @@ GameObject:
   - component: {fileID: 2161097644017162627}
   m_Layer: 0
   m_Name: GHOUL_ R Finger31
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1282,7 +1437,7 @@ GameObject:
   - component: {fileID: 2161097644017162629}
   m_Layer: 0
   m_Name: GHOUL_ R Finger32
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1313,7 +1468,7 @@ GameObject:
   - component: {fileID: 2161097644017162631}
   m_Layer: 0
   m_Name: GHOUL_ R Finger4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1345,7 +1500,7 @@ GameObject:
   - component: {fileID: 2161097644017162633}
   m_Layer: 0
   m_Name: GHOUL_ R Finger41
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1377,7 +1532,7 @@ GameObject:
   - component: {fileID: 2161097644017162635}
   m_Layer: 0
   m_Name: GHOUL_ R Finger42
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1409,7 +1564,7 @@ GameObject:
   - component: {fileID: 7559656534534793884}
   m_Layer: 0
   m_Name: GHOUL_ R Foot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1456,7 +1611,7 @@ GameObject:
   - component: {fileID: 1621847021809825595}
   m_Layer: 0
   m_Name: GHOUL_ R Forearm
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1502,7 +1657,7 @@ GameObject:
   - component: {fileID: 2161097644017162641}
   m_Layer: 0
   m_Name: GHOUL_ R Finger01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1534,7 +1689,7 @@ GameObject:
   - component: {fileID: 2161097644017162643}
   m_Layer: 0
   m_Name: GHOUL_ R Finger02
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1566,7 +1721,7 @@ GameObject:
   - component: {fileID: 6188201126323550541}
   m_Layer: 0
   m_Name: GHOUL_ R Finger1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1611,7 +1766,7 @@ GameObject:
   - component: {fileID: 2161097644017162647}
   m_Layer: 0
   m_Name: GHOUL_ R Finger11
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1643,7 +1798,7 @@ GameObject:
   - component: {fileID: 2161097644017162649}
   m_Layer: 0
   m_Name: GHOUL_ R Finger12
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1674,7 +1829,7 @@ GameObject:
   - component: {fileID: 2161097644017162651}
   m_Layer: 0
   m_Name: GHOUL_ R Finger2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1706,7 +1861,7 @@ GameObject:
   - component: {fileID: 2161097644017162653}
   m_Layer: 0
   m_Name: GHOUL_ R Finger21
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1738,7 +1893,7 @@ GameObject:
   - component: {fileID: 2161097644017162655}
   m_Layer: 0
   m_Name: GHOUL_ R Finger22
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1770,7 +1925,7 @@ GameObject:
   - component: {fileID: 7650673217004693617}
   m_Layer: 0
   m_Name: GHOUL_ L Finger1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1815,7 +1970,7 @@ GameObject:
   - component: {fileID: 2161097644017162691}
   m_Layer: 0
   m_Name: GHOUL_ L Finger11
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1847,7 +2002,7 @@ GameObject:
   - component: {fileID: 2161097644017162693}
   m_Layer: 0
   m_Name: GHOUL_ L Finger12
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1878,7 +2033,7 @@ GameObject:
   - component: {fileID: 2161097644017162695}
   m_Layer: 0
   m_Name: GHOUL_ L Finger2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1910,7 +2065,7 @@ GameObject:
   - component: {fileID: 2161097644017162697}
   m_Layer: 0
   m_Name: GHOUL_ L Finger21
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1942,7 +2097,7 @@ GameObject:
   - component: {fileID: 2161097644017162699}
   m_Layer: 0
   m_Name: GHOUL_ L Finger22
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1973,7 +2128,7 @@ GameObject:
   - component: {fileID: 2161097644017162701}
   m_Layer: 0
   m_Name: GHOUL_ L Finger3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2005,7 +2160,7 @@ GameObject:
   - component: {fileID: 2161097644017162703}
   m_Layer: 0
   m_Name: GHOUL_ L Finger31
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2037,7 +2192,7 @@ GameObject:
   - component: {fileID: 2161097644017162707}
   m_Layer: 0
   m_Name: GHOUL_
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2070,7 +2225,7 @@ GameObject:
   - component: {fileID: 99284311569706041}
   m_Layer: 0
   m_Name: GHOUL_ Head
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2116,7 +2271,7 @@ GameObject:
   - component: {fileID: 7194976381193703842}
   m_Layer: 0
   m_Name: GHOUL_ L Calf
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2162,7 +2317,7 @@ GameObject:
   - component: {fileID: 2161097644017162713}
   m_Layer: 0
   m_Name: GHOUL_ L Clavicle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2194,7 +2349,7 @@ GameObject:
   - component: {fileID: 2161097644017162715}
   m_Layer: 0
   m_Name: GHOUL_ L Finger0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2226,7 +2381,7 @@ GameObject:
   - component: {fileID: 2161097644017162717}
   m_Layer: 0
   m_Name: GHOUL_ L Finger01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2258,7 +2413,7 @@ GameObject:
   - component: {fileID: 2161097644017162719}
   m_Layer: 0
   m_Name: GHOUL_ L Finger02
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2278,3 +2433,193 @@ Transform:
   m_Father: {fileID: 2161097644017162717}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3542581870104758800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8520587486866050401}
+  m_Layer: 0
+  m_Name: Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8520587486866050401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542581870104758800}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5357430212215583112}
+  m_Father: {fileID: 2161097644017162659}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4554176870841724288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6268266601505076493}
+  m_Layer: 0
+  m_Name: AttackRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6268266601505076493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4554176870841724288}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.392, z: 0.394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2161097644017162659}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5352879826427903584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8520587486866050401}
+    m_Modifications:
+    - target: {fileID: 1277154925287174, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_Name
+      value: FX_Explosion_Body_Bloody_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198027391745543122, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198027391745543122, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: scalingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198087647727163214, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198087647727163214, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: scalingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198355779183106702, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198355779183106702, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: scalingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198531521579340364, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198531521579340364, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: scalingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199146105760861778, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199168678241948164, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199298478915647496, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199984788572563202, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+--- !u!198 &5226863121503364334 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198355779183106702, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+  m_PrefabInstance: {fileID: 5352879826427903584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5357430212215583112 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4597830263558120, guid: 537c03e43d1e4a440a41882d891e1e46, type: 3}
+  m_PrefabInstance: {fileID: 5352879826427903584}
+  m_PrefabAsset: {fileID: 0}

@@ -14,16 +14,28 @@ public class BossTypeA : LivingEntity
         Idle,
         Roar
     }
+
+    private float attackDamage = 3f;
+
+
     private State state;
 
     private Animator bossAnimator;
     private AudioSource bossAudioPlayer;
-    public ParticleSystem hitEffect;
-    private ParticleSystem hitEffect2;
+    public ParticleSystem leftFootEffect;
+    public ParticleSystem rightFootEffect;
+    public ParticleSystem bodyEffect;
+    public ParticleSystem headEffect;
+
+
+    //private ParticleSystem hitEffect2;
     public AudioClip deathSound;
     public AudioClip onDamageSound;
     public Transform targetEntity;
 
+    public AudioClip roarSound;
+    public AudioClip spinSound;
+    public AudioClip faintSound;
 
     private Vector3 oldTargetPosition;
     public float attackRadius = 3f;
@@ -46,12 +58,15 @@ public class BossTypeA : LivingEntity
     Rigidbody rb;
 
     float timer = 0f;
-    
+
+    private bool didRoarSound = false;
+    private bool didSpinSound = false;
+    private bool didFaintSound = false;
 
     private void Awake()
     {
         targetEntity = GameObject.Find("Player").transform;
-        startingHealth = 1000f;
+        currentHealth = 9000f;
         speed = chaseSpeed;
         //GetComponentInParent!
         bossAnimator = GetComponent<Animator>();
@@ -63,7 +78,7 @@ public class BossTypeA : LivingEntity
 
         rb=GetComponent<Rigidbody>();
 
-        hitEffect2 = GetComponentInChildren<ParticleSystem>();
+        //hitEffect2 = GetComponentInChildren<ParticleSystem>();
     }
 
     
@@ -71,6 +86,13 @@ public class BossTypeA : LivingEntity
     {
         state = State.Spinning;
         timer += Time.deltaTime;
+
+        if (!didSpinSound)
+        {
+            bossAudioPlayer.clip = spinSound;
+            bossAudioPlayer.PlayOneShot(spinSound);
+            didSpinSound = true;
+        }
 
         //Perform Spinning
         if (timer < spinTime)
@@ -96,6 +118,7 @@ public class BossTypeA : LivingEntity
             timer = 0.0f;
             state = State.Faint;
             bossAnimator.SetTrigger("Die");
+            didSpinSound = false;
         }
     }
 
@@ -105,18 +128,31 @@ public class BossTypeA : LivingEntity
         state = State.Faint;
         speed = 0f;
         timer += Time.deltaTime;
+        if (!didFaintSound)
+        {
+            bossAudioPlayer.clip = faintSound;
+            bossAudioPlayer.PlayOneShot(faintSound);
+            didFaintSound = true;
+        }
         //State: Faint -> Chase
         if (timer > faintTime)
         {
             state = State.Chase;
             bossAnimator.SetTrigger("Chase");
             timer = 0.0f;
+            didFaintSound = false;
         }
     }
 
     void DoRoarBeforeDash()
     {
         //bossAnimator.SetTrigger("Angry");
+        if (!didRoarSound)
+        {
+            bossAudioPlayer.clip = roarSound;
+            bossAudioPlayer.PlayOneShot(roarSound);
+            didRoarSound = true;
+        }
         state = State.Roar;
         speed = 0f;
         timer += Time.deltaTime;
@@ -133,6 +169,7 @@ public class BossTypeA : LivingEntity
     }
     void DoDash(Vector3 oldTargetPosition)
     {
+        didRoarSound = false;
         state = State.DashAttack;                
         speed = dashSpeed;
         //transform.position += Vector3.forward * speed * Time.deltaTime;
@@ -143,6 +180,7 @@ public class BossTypeA : LivingEntity
 
         //transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+
 
     /*
     void DoDash2()
@@ -194,7 +232,7 @@ public class BossTypeA : LivingEntity
             }
         }
         else if(state == State.Roar)
-        {
+        {            
             DoRoarBeforeDash();
         }
         else if(state == State.DashAttack)
@@ -212,16 +250,31 @@ public class BossTypeA : LivingEntity
         }
         else if(state == State.Spinning)
         {
+            isInvincible = true;
+            bossAudioPlayer.clip = spinSound;
+            //bossAudioPlayer.PlayOneShot(spinSound);
+            //bossAudioPlayer.Play(10);
             DoSpinning();
         }
         else if(state == State.Faint)
         {
+            isInvincible = false;
             DoFaint();
         }
 
     }
 
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (state == State.Spinning || state == State.DashAttack)
+        {        
+            Rigidbody hitTarget = collision.rigidbody;
+            if (collision.collider.name == "Player")
+            {
+                collision.collider.GetComponent<IDamageable>().OnDamage(attackDamage);
+            }
+        }
+    }
 
 
 
@@ -236,9 +289,13 @@ public class BossTypeA : LivingEntity
 
     public override void OnDamage(float damage)
     {
-        if (!isDead)
+        if (!isDead && !isInvincible)
         {
-            hitEffect2.Play();
+            //hitEffect2.Play();
+            leftFootEffect.Play();
+            rightFootEffect.Play();
+            headEffect.Play();
+            bodyEffect.Play();
             bossAudioPlayer.clip = onDamageSound;
             bossAudioPlayer.PlayOneShot(onDamageSound);
         }

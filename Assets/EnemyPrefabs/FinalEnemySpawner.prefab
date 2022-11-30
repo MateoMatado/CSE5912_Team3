@@ -68,6 +68,7 @@ MonoBehaviour:
   - {fileID: 3014551854545964938}
   - {fileID: 3014551854973558804}
   - {fileID: 3014551854052477873}
+  bossSpawner: {fileID: 0}
 --- !u!114 &3014551854156497744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,8 +137,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+--- !u!198 &226126406198385499 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3095813750645674199, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+  m_PrefabInstance: {fileID: 3014551854052477836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3014551854052384906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 174854, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -155,9 +166,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7f0195f27029941834e662de97386c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1000
+  isInvincible: 0
+  minCoins: 1
+  maxCoins: 5
   enemyPrefab: {fileID: 57280224200543022, guid: 51dd74121c92d41669007310df82787d, type: 3}
   numberOfSpawnAtOnce: 6
+  maxEnemyCount: 20
+  hitEffect: {fileID: 226126406198385499}
+  deathSound: {fileID: 8300000, guid: ba7759614d7b2834db74df3855db58a0, type: 3}
+  onDamageSound: {fileID: 8300000, guid: dba644ec41aa3ca48a5492bd244de84f, type: 3}
 --- !u!4 &3014551854052635472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -218,8 +236,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+--- !u!198 &278692402056153414 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3029739147536646518, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+  m_PrefabInstance: {fileID: 3014551854176274480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3014551854176170220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -242,9 +270,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7f0195f27029941834e662de97386c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1000
+  isInvincible: 0
+  minCoins: 1
+  maxCoins: 5
   enemyPrefab: {fileID: 3744995092512214907, guid: d9c686f862ff7406ea2fa3a0285ba6ec, type: 3}
   numberOfSpawnAtOnce: 2
+  maxEnemyCount: 20
+  hitEffect: {fileID: 278692402056153414}
+  deathSound: {fileID: 8300000, guid: ba7759614d7b2834db74df3855db58a0, type: 3}
+  onDamageSound: {fileID: 8300000, guid: dba644ec41aa3ca48a5492bd244de84f, type: 3}
 --- !u!1001 &3014551854545964937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,8 +335,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+--- !u!198 &226126406087892830 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3095813750645674199, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+  m_PrefabInstance: {fileID: 3014551854545964937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3014551854545860437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -324,9 +369,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7f0195f27029941834e662de97386c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1000
+  isInvincible: 0
+  minCoins: 1
+  maxCoins: 5
   enemyPrefab: {fileID: 3377834570470476013, guid: 7e1271502f5e79e4d8086be1b1de578e, type: 3}
   numberOfSpawnAtOnce: 6
+  maxEnemyCount: 20
+  hitEffect: {fileID: 226126406087892830}
+  deathSound: {fileID: 8300000, guid: ba7759614d7b2834db74df3855db58a0, type: 3}
+  onDamageSound: {fileID: 8300000, guid: dba644ec41aa3ca48a5492bd244de84f, type: 3}
 --- !u!1001 &3014551854973558803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,8 +434,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2902216444276843619, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8118943861786371787, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+--- !u!198 &226126405508853956 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3095813750645674199, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
+  m_PrefabInstance: {fileID: 3014551854973558803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3014551854973651733 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 174854, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}
@@ -401,9 +463,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7f0195f27029941834e662de97386c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1000
+  isInvincible: 0
+  minCoins: 1
+  maxCoins: 5
   enemyPrefab: {fileID: 57280224200543022, guid: 51dd74121c92d41669007310df82787d, type: 3}
   numberOfSpawnAtOnce: 6
+  maxEnemyCount: 20
+  hitEffect: {fileID: 226126405508853956}
+  deathSound: {fileID: 8300000, guid: ba7759614d7b2834db74df3855db58a0, type: 3}
+  onDamageSound: {fileID: 8300000, guid: dba644ec41aa3ca48a5492bd244de84f, type: 3}
 --- !u!4 &3014551854973966543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424156, guid: 8c4a7d4546ea5ad42902336f00fae7c0, type: 3}

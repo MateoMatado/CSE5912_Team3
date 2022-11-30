@@ -15470,7 +15470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854156497708, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_Name
-      value: FinalEnemySpawner
+      value: FinalEnemySpawner1
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854156497745, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_RootOrder
@@ -15557,8 +15557,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854973558804, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: maxEnemyCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014551854973558804, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: numberOfSpawnAtOnce
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3014551854973966543, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_LocalScale.y

@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.HID;
 using static UnityEngine.Rendering.DebugUI.Table;
+using Team3.Events;
 
 public class EnemySpawner : LivingEntity
 {
+     
     //[SerializeField] private GhoulTemp ghoulPrefab;
     [SerializeField] private LivingEntity enemyPrefab;
     public bool IsTriggerOn
@@ -25,12 +27,20 @@ public class EnemySpawner : LivingEntity
     private const float spawnDelayTime = 0.1f;
 
     private int totalEnemyCount;
-    
+
+
+    private AudioSource audioPlayer;
+    public ParticleSystem hitEffect;
+    public AudioClip deathSound;
+    public AudioClip onDamageSound;
+
 
 
 
     private void Start()
     {
+        audioPlayer = GetComponent<AudioSource>();
+        currentHealth = 1000;
         IsTriggerOn = false;
     }
 
@@ -98,24 +108,40 @@ public class EnemySpawner : LivingEntity
     {
         if (!isDead)
         {
-            //hitEffect2.Play();
-            //ghoulAudioPlayer.clip = onDamageSound;
-            //ghoulAudioPlayer.PlayOneShot(onDamageSound);
+            hitEffect.Play();
+            audioPlayer.clip = onDamageSound;
+            audioPlayer.PlayOneShot(onDamageSound);
         }
 
         //affect damage on hp
         base.OnDamage(damage);
     }
 
+    private bool dying = false;
     public override void Die()
     {
+        if (dying) return;
         base.Die();
         //ghoulAnimator.SetTrigger("Die");
-        //ghoulAudioPlayer.clip = deathSound;
-        //ghoulAudioPlayer.PlayOneShot(deathSound);
+        audioPlayer.clip = deathSound;
+        audioPlayer.PlayOneShot(deathSound);
 
         Collider BeaconCollider = GetComponent<Collider>();
         BeaconCollider.enabled = false;
+        dying = true;
+        EventsPublisher.Instance.PublishEvent("SinkSpawner", null, gameObject);
+        GetComponent<AudioSource>().Play();
+        var ps = transform.Find("ExplosionEffect").GetComponentsInChildren<ParticleSystem>();
+        foreach (var p in ps)
+        {
+            p.Play();
+        }
+        StartCoroutine(Dying());
+    }
+
+    private IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }

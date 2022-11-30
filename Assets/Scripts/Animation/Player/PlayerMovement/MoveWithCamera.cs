@@ -58,6 +58,7 @@ namespace Team3.PlayerMovement
                 {
                     if (moveAction.ReadValue<Vector2>() != Vector2.zero)
                     {
+                        transform.Find("SmokeBlast").GetComponent<ParticleSystem>().Play();
                         StopFlying();
                     }
                     if (flying) break;
