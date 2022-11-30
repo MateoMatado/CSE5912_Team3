@@ -12,6 +12,8 @@ public class SelfDestructMob : LivingEntity
         Attack,
         Dead
     }
+    private float attackDamage = 200f;
+
 
     [SerializeField] GameObject iDamageablePlayer;
     public ParticleSystem explosionParticle;
@@ -41,7 +43,7 @@ public class SelfDestructMob : LivingEntity
     [Range(0.01f, 2f)] public float turnSmoothTime = 1f;
     private float turnSmoothVelocity;
 
-    private float attackDamage = 30f;
+    
     public float attackRadius = 3f;
     private float attackDistance;
 
@@ -73,6 +75,7 @@ public class SelfDestructMob : LivingEntity
 
     private void Awake()
     {
+        currentHealth = 600f;
         navMeshAgent = GetComponent<NavMeshAgent>();
         ghoulAnimator = GetComponent<Animator>();
         ghoulAudioPlayer = GetComponent<AudioSource>();

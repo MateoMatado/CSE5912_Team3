@@ -71,6 +71,7 @@ public class GhoulBombThrower : LivingEntity
 
     private void Awake()
     {
+        currentHealth = 1000f;
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         ghoulAnimator = GetComponent<Animator>();
         ghoulAudioPlayer = GetComponent<AudioSource>();
