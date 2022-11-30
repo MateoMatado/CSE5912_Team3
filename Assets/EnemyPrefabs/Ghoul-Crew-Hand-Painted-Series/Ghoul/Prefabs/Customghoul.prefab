@@ -662,6 +662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
+  minCoins: 1
+  maxCoins: 5
   attackRoot: {fileID: 3377834570201493105}
   eyeTransform: {fileID: 3377834569736095706}
   hitEffect: {fileID: 198615267133080452, guid: ed67c2cb8e3a7fb418c6fbb1b001dce2, type: 3}
@@ -752,7 +754,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

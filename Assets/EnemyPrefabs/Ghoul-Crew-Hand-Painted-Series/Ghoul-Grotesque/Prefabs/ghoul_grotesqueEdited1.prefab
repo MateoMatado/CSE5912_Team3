@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 1000
+  minCoins: 1
+  maxCoins: 5
   hitEffect: {fileID: 198104090543139058, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
   deathSound: {fileID: 8300000, guid: 6e43d052aed07fc40b28cf7f6ff54f72, type: 3}
   onDamageSound: {fileID: 8300000, guid: e23c1348148115649813a7baa9c314a0, type: 3}
@@ -294,7 +296,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
