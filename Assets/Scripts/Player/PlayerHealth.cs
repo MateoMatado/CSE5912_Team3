@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Team3.Events;
+using Cinemachine;
 
 public class PlayerHealth : LivingEntity
 {
@@ -31,6 +32,7 @@ public class PlayerHealth : LivingEntity
     private void Start()
     {
         EventsPublisher.Instance.SubscribeToEvent("HealPlayer", HandleHeal);        
+        EventsPublisher.Instance.SubscribeToEvent("DamageEnemy", HandleDamage);        
     }
 
 
@@ -38,6 +40,11 @@ public class PlayerHealth : LivingEntity
     {
         float amount = (float)data;
         currentHealth = Math.Clamp(currentHealth + amount, 0, startingHealth);
+    }
+
+    private void HandleDamage(object sender, object data)
+    {
+        GetComponent<CinemachineImpulseSource>()?.GenerateImpulse();
     }
 
 
@@ -89,6 +96,7 @@ public class PlayerHealth : LivingEntity
         //base.OnDamage(damage);
         //OnDamage(damage);
         Instance.currentHealth -= damage;
+        GetComponent<CinemachineImpulseSource>()?.GenerateImpulse();
 
         if (Instance.currentHealth <= 0 && !isDead)
         {
