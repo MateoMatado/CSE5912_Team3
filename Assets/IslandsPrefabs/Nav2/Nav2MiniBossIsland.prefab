@@ -14273,6 +14273,7 @@ GameObject:
   - component: {fileID: 9016360981220754596}
   - component: {fileID: 3078622970785012041}
   - component: {fileID: 9185895950574264649}
+  - component: {fileID: 228720253736457829}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Surface
@@ -14359,6 +14360,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &228720253736457829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817831714799393151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176b4e420417a468cab009317809f0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageRate: 25
 --- !u!1 &6897002521358363603
 GameObject:
   m_ObjectHideFlags: 0

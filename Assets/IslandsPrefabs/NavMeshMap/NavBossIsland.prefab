@@ -37072,7 +37072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killsForBossIsland: 0
-  islandClearsForBossIsland: 3
+  islandClearsForBossIsland: 1
   cutsceneCam: {fileID: 6328786660105116642}
 --- !u!1 &2478930065513343740
 GameObject:
@@ -41924,6 +41924,7 @@ GameObject:
   - component: {fileID: 2308881983688892533}
   - component: {fileID: 5518005999815950367}
   - component: {fileID: 7575896500925573155}
+  - component: {fileID: 8664059084799679570}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Surface
@@ -42010,6 +42011,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &8664059084799679570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5984688352370922750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176b4e420417a468cab009317809f0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageRate: 25
 --- !u!1 &6001724940150478894
 GameObject:
   m_ObjectHideFlags: 0

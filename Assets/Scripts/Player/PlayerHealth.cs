@@ -32,6 +32,7 @@ public class PlayerHealth : LivingEntity
     private void Start()
     {
         EventsPublisher.Instance.SubscribeToEvent("HealPlayer", HandleHeal);        
+        EventsPublisher.Instance.SubscribeToEvent("LavaDamagePlayer", HandleLavaDamage);        
         EventsPublisher.Instance.SubscribeToEvent("DamageEnemy", HandleDamage);        
     }
 
@@ -45,6 +46,12 @@ public class PlayerHealth : LivingEntity
     private void HandleDamage(object sender, object data)
     {
         GetComponent<CinemachineImpulseSource>()?.GenerateImpulse();
+    }
+
+    private void HandleLavaDamage(object sender, object data)
+    {
+        float amount = (float)data;
+        OnDamage(amount);
     }
 
 
