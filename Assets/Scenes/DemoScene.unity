@@ -6604,11 +6604,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bias: 2
-  Width: 3000
-  Length: 3000
+  Width: 4000
+  Length: 4000
   Height: 0
   Attempts: 100
-  ChainNum: 0
+  ChainNum: 10
   RandomHeightLimit: 1000
   Islands:
   - {fileID: 2070914281333398461, guid: 5634004bfd5d24e4c81b463d2375c3d9, type: 3}
