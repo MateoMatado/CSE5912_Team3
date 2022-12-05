@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animRoot: {fileID: 4401001414642818128}
   physRoot: {fileID: 4182111771660755309}
+  PlayerObject: {fileID: 0}
   maximumForce: 1e+10
   positionSpring: 100000
   positionDamper: 50
@@ -251,6 +252,10 @@ PrefabInstance:
     - target: {fileID: 115978, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 115978, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 117000, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Layer
@@ -2519,6 +2524,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 117000, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 118638, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -2699,6 +2708,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 192956, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 194842, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -2706,6 +2719,10 @@ PrefabInstance:
     - target: {fileID: 196160, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 196160, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 196572, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Layer
@@ -2877,11 +2894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 13722998, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13724364, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13724364, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2889,7 +2906,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1ead27377d812524abf9691f3b3626c9, type: 2}
     - target: {fileID: 13752882, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13752882, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2897,11 +2914,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c4996e553d15c467892a5a0cc567d507, type: 2}
     - target: {fileID: 13753892, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13796372, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13796372, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Materials.Array.data[0]
