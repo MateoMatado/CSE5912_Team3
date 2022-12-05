@@ -8434,6 +8434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1747576188176015697}
   - component: {fileID: 2476649061602473588}
+  - component: {fileID: 6187948418401309168}
   m_Layer: 8
   m_Name: NavPlusIsland
   m_TagString: IslandParent
@@ -8486,6 +8487,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer: 8
+--- !u!114 &6187948418401309168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891037396360784119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe27dd38c16f4b6993f445242416d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
 --- !u!1 &1913504003615651063
 GameObject:
   m_ObjectHideFlags: 0

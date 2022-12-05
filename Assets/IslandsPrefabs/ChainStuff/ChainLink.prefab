@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1033360243138237047}
   - component: {fileID: 1033360243138237044}
   - component: {fileID: -2601022161966641675}
+  - component: {fileID: -3074851613064066581}
   m_Layer: 7
   m_Name: ChainLink
   m_TagString: Untagged
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff32b73d09e12343858144f62802bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3074851613064066581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033360243138236938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe27dd38c16f4b6993f445242416d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
 --- !u!1 &2436416385520378637
 GameObject:
   m_ObjectHideFlags: 0
