@@ -13,6 +13,7 @@ public class EquipmentPickUp : MonoBehaviour
     {
         inputs = new GameInput();
         inputs.Player.Collect.performed += Collect_performed;
+        ShopManager.Instance.Add(Item);
     }
 
     private void OnEnable()
