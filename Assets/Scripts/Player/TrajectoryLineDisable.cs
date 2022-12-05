@@ -13,6 +13,11 @@ public class TrajectoryLineDisable : MonoBehaviour
         EventsPublisher.Instance.SubscribeToEvent("LaunchedCannon", StopFlying);
     }
 
+    void OnDestroy()
+    {
+        EventsPublisher.Instance.UnsubscribeToEvent("LaunchedCannon", StopFlying);
+    }
+
     private void StopFlying(object sender, object data)
     {
         if (line != null)

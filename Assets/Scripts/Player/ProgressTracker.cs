@@ -20,6 +20,11 @@ public class ProgressTracker : MonoBehaviour
         EventsPublisher.Instance.SubscribeToEvent("LaunchedCannon", HandleIslandClear);
     }
 
+    void OnDestroy()
+    {
+        EventsPublisher.Instance.UnsubscribeToEvent("LaunchedCannon", HandleIslandClear);
+    }
+
     private void HandleDeadEntity(object sender, object data)
     {
         deaths++;
