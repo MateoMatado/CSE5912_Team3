@@ -9,6 +9,7 @@ TagManager:
   - Chain
   - Item
   - Surface
+  - recorderTag
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ namespace Team3.Ragdoll
         [Header("ROOTS")]
         [SerializeField] GameObject animRoot;
         [SerializeField] GameObject physRoot;
+        public GameObject PlayerObject;
 
         [Header("JOINT DRIVE")]
         [SerializeField] float maximumForce = 800;
@@ -76,6 +77,9 @@ namespace Team3.Ragdoll
 
             toggle = new ActiveRagdollToggle(physJoints, physRoot, rollForce);
             Events.EventsPublisher.Instance.PublishEvent("GrabCamera", null, cameraFollow);
+
+            PlayerObject = transform.parent.gameObject;
+            transform.parent = transform.parent.parent;
             //StartCoroutine(CheckGround());
             //StartCoroutine(CheckFreefall());
         }
@@ -142,8 +146,9 @@ namespace Team3.Ragdoll
                 sum += physJoints[i].transform.position;
             }
             sum /= numCameraPoints;
-            cameraFollow.position = sum;
+            //cameraFollow.position = sum;
             //enemyTarget.position = sum;
+            PlayerObject.transform.position = sum;
             if (effectTarget != null) { effectTarget.position = verticalGoal.position; }
         }
 
