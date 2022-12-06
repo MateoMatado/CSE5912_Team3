@@ -17,8 +17,8 @@ public class CannonCollision : MonoBehaviour
             PlayerStateManager stateManager = collider.GetComponent<PlayerStateManager>();
             if (stateManager != null && stateManager.StateMachine.SwitchState(PlayerStateMachine.CannonAimState))
             {
-                EventsPublisher.Instance.PublishEvent("EnterCannon", null, (
-                    gameObject, collider.gameObject, cannonCamera
+                EventsPublisher.Instance.PublishEvent("EnterCannon", this, (
+                    gameObject, collider.gameObject.GetComponent<Team3.Scripts.Player.PlayerSwap>().current, cannonCamera
                 ));
             }
         }

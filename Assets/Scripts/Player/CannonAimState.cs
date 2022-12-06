@@ -75,7 +75,7 @@ public class CannonAimState : PlayerState
         mouth = cannonBarrel.Find("Mouth");
         trajectory = mouth.Find("Line").GetComponent<LineRenderer>();
         inCannon = true;
-        DummyMonoBehavior.Dummy.StartCoroutine(HoldPlayer());
+        //DummyMonoBehavior.Dummy.StartCoroutine(HoldPlayer());
     }
 
     private IEnumerator HoldPlayer()
@@ -133,6 +133,7 @@ public class CannonAimState : PlayerState
         }
     }
 
+    float playerMass = 0;
     private void UpdateTrajectory()
     {
         trajectory.positionCount = 300;
@@ -140,7 +141,13 @@ public class CannonAimState : PlayerState
         List<Vector3> points = new List<Vector3>() {
             startPosition
         };
-        float playerMass = player.GetComponent<Rigidbody>().mass;
+        playerMass = 0;
+
+        foreach (Rigidbody body in player.GetComponentsInChildren<Rigidbody>())
+        {
+            playerMass += body.mass;
+        }
+
         Vector3 initialVelocity = cannonBarrel.forward * force * Time.fixedDeltaTime / playerMass;
         Vector3 prevPoint = startPosition;
         bool hitSomething = false;
@@ -301,25 +308,12 @@ public class CannonAimState : PlayerState
         cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         cannon.GetComponent<AudioSource>().Play();
         mouth.Find("CannonShot").GetComponent<ParticleSystem>().Play();
-        player.GetComponent<MoveWithCamera>().StartFlying();
+        player.transform.parent.GetComponentInChildren<MoveWithCamera>().StartFlying();
         player.transform.position = mouth.position;
-        EventsPublisher.Instance.PublishEvent("TurnRagdoll", null, null);
-        Team3.Ragdoll.RagRoot ragRoot = player.GetComponentInChildren<Team3.Ragdoll.RagRoot>();
-        if (ragRoot == null)
+        foreach (Rigidbody body in player.GetComponentsInChildren<Rigidbody>())
         {
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            player.GetComponent<Rigidbody>().AddForce(cannonBarrel.forward * force);
-        }
-        else
-        {
-            //ragRoot.rootBody.velocity = Vector3.zero;
-            //ragRoot.rootBody.AddForce(cannonBarrel.forward * force);
-
-            foreach (Rigidbody body in ragRoot.bodies)
-            {
-                body.velocity = Vector3.zero;
-                body.AddForce(cannonBarrel.forward * force);
-            }
+            //body.velocity = Vector3.zero;
+            body.AddForce(cannonBarrel.forward * force * (body.mass/playerMass));
         }
 
     }

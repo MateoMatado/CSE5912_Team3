@@ -88,7 +88,7 @@ namespace Team3.Ragdoll
 
             //ragRoot.rootBody.velocity = (parentBody != null) ? parentBody.velocity : new Vector3(0, 0, 0);
 
-            if (ragRoot != null)
+            if (ragRoot != null && !(sender is CannonAimState))
             {
                 foreach (Rigidbody body in ragRoot.bodies)
                 {

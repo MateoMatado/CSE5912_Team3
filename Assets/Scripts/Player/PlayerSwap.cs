@@ -9,7 +9,7 @@ namespace Team3.Scripts.Player
         [SerializeField] List<string> names;
         [SerializeField] List<GameObject> prefabs;
 
-        GameObject current;
+        public GameObject current;
         
         Dictionary<string, GameObject> characterMap = new Dictionary<string, GameObject>();
         
