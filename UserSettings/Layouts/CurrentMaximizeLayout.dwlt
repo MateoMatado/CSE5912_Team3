@@ -35,7 +35,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
 <<<<<<< HEAD
-<<<<<<< HEAD
   m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -300,8 +299,6 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 =======
 >>>>>>> dc1c8c0... Added some camera and recording stuff
-=======
->>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Script: {fileID: 12013, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -334,10 +331,7 @@ MonoBehaviour:
     y: 73.6
     width: 881.2001
     height: 406.2
-<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
-=======
->>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1028,14 +1022,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SearchFilter:
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_NameFilter: demo
 =======
     m_NameFilter: boss_A
 >>>>>>> dc1c8c0... Added some camera and recording stuff
-=======
-    m_NameFilter: boss_A
->>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -1054,14 +1044,10 @@ MonoBehaviour:
     - Assets/EnemyPrefabs
     m_Globs: []
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_OriginalText: demo
 =======
     m_OriginalText: boss_A
 >>>>>>> dc1c8c0... Added some camera and recording stuff
-=======
-    m_OriginalText: boss_A
->>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
@@ -1204,7 +1190,6 @@ MonoBehaviour:
     x: 1172.8
     y: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
     width: 454
     height: 939
 <<<<<<< HEAD
@@ -1221,31 +1206,22 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
 =======
-=======
->>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     width: 363.19995
     height: 722.8
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
-<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
-=======
->>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Panes:
   - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 0
-<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!114 &13
 >>>>>>> 2e93e02... Added jumping
 =======
 --- !u!114 &14
 >>>>>>> dc1c8c0... Added some camera and recording stuff
-=======
---- !u!114 &14
->>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}

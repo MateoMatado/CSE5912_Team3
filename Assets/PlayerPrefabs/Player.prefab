@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 102849294}
   - component: {fileID: 697068276093496669}
-  - component: {fileID: 697068276093496669}
   m_Layer: 0
   m_Name: EnemyTarget
   m_TagString: Untagged
@@ -33,18 +32,6 @@ Transform:
   m_Father: {fileID: 4520910968986401104}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697068276093496669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 102849293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb71c7d548b86ef43a1c684fe7c01000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &697068276093496669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +334,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2081077856}
   - component: {fileID: 2081077857}
-  - component: {fileID: 4139052079644928882}
   - component: {fileID: 4139052079644928882}
   m_Layer: 0
   m_Name: TargetingCamera
