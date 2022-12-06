@@ -22,6 +22,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Title:
 =======
   m_Title: 
@@ -32,6 +33,8 @@ MonoBehaviour:
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 371}
 =======
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
@@ -47,6 +50,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< HEAD
@@ -78,6 +82,9 @@ MonoBehaviour:
 =======
   m_Script: {fileID: 12008, guid: 0000000000000000e000000000000000, type: 0}
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_Script: {fileID: 12008, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
@@ -87,6 +94,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     y: 30
     width: 1920
@@ -103,6 +111,8 @@ MonoBehaviour:
   controlID: 273
 >>>>>>> 95a23bc... Ragdoll can now hold weapons
 =======
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     y: 0
     width: 1536
     height: 772.8
@@ -112,7 +122,10 @@ MonoBehaviour:
   m_TopViewHeight: 30
   m_UseBottomView: 1
   m_BottomViewHeight: 20
+<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 --- !u!114 &3
 =======
 >>>>>>> 7b32cfe... Fixed some merge conflicts
@@ -125,6 +138,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< HEAD
   m_Name:
@@ -136,6 +150,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 >>>>>>> 7b32cfe... Fixed some merge conflicts
+=======
+  m_Script: {fileID: 12011, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Children: []
   m_Position:
     serializedVersion: 2
@@ -156,6 +175,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< HEAD
   m_Name:
@@ -167,6 +187,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 >>>>>>> 7b32cfe... Fixed some merge conflicts
+=======
+  m_Script: {fileID: 12042, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Children: []
   m_Position:
     serializedVersion: 2
@@ -206,14 +231,18 @@ MonoBehaviour:
     x: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     y: 30
     width: 1536
     height: 722.8
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
   controlID: 1171
 =======
@@ -232,6 +261,9 @@ MonoBehaviour:
 =======
   controlID: 3455
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  controlID: 3455
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -243,6 +275,7 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
 =======
   m_Script: {fileID: 12008, guid: 0000000000000000e000000000000000, type: 0}
@@ -250,6 +283,9 @@ MonoBehaviour:
 =======
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
@@ -261,13 +297,17 @@ MonoBehaviour:
     y: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     width: 1172.8
     height: 722.8
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
   controlID: 1224
 =======
@@ -283,6 +323,9 @@ MonoBehaviour:
 =======
   controlID: 3456
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  controlID: 3456
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -294,12 +337,16 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 8}
   - {fileID: 9}
+<<<<<<< HEAD
 =======
   m_Script: {fileID: 12011, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -314,10 +361,13 @@ MonoBehaviour:
   - {fileID: 8}
   - {fileID: 9}
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -344,13 +394,18 @@ MonoBehaviour:
   m_LastLoadedLayoutName: 
 >>>>>>> 95a23bc... Ragdoll can now hold weapons
 =======
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     width: 1172.8
     height: 427.2
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
   controlID: 3412
+<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -362,6 +417,7 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
 =======
   m_Script: {fileID: 12042, guid: 0000000000000000e000000000000000, type: 0}
@@ -369,12 +425,16 @@ MonoBehaviour:
 =======
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     y: 0
@@ -385,6 +445,11 @@ MonoBehaviour:
     width: 289.6
     height: 427.2
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+    y: 0
+    width: 289.6
+    height: 427.2
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
@@ -392,6 +457,7 @@ MonoBehaviour:
   - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     y: 969
@@ -402,6 +468,8 @@ MonoBehaviour:
 >>>>>>> 95a23bc... Ragdoll can now hold weapons
 =======
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -413,10 +481,14 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
+<<<<<<< HEAD
 =======
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -444,6 +516,14 @@ MonoBehaviour:
     width: 883.2001
     height: 427.2
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_Position:
+    serializedVersion: 2
+    x: 289.6
+    y: 0
+    width: 883.2001
+    height: 427.2
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 12}
@@ -452,6 +532,7 @@ MonoBehaviour:
   - {fileID: 12}
   - {fileID: 15}
   m_Selected: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_LastSelected: 0
 =======
@@ -465,6 +546,9 @@ MonoBehaviour:
 =======
   m_LastSelected: 2
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_LastSelected: 2
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -476,10 +560,14 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
+<<<<<<< HEAD
 =======
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -494,6 +582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children: []
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Position:
     serializedVersion: 2
     x: 0
@@ -521,6 +611,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Name:
   m_EditorClassIdentifier:
 =======
@@ -545,6 +636,14 @@ MonoBehaviour:
 =======
     x: 1172.8
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 1172.8
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     y: 0
     width: 363.19995
     height: 722.8
@@ -564,6 +663,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_Script: {fileID: 12014, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< HEAD
@@ -804,6 +904,17 @@ MonoBehaviour:
 >>>>>>> dc1c8c0... Added some camera and recording stuff
     m_Tooltip: 
 >>>>>>> 7b32cfe... Fixed some merge conflicts
+=======
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Game
+    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Pos:
     serializedVersion: 2
     x: -25310.4
@@ -814,6 +925,7 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_ObjectsLockedBeforeSerialization: []
 <<<<<<< HEAD
@@ -843,6 +955,8 @@ MonoBehaviour:
   m_PreviewWindow: {fileID: 0}
 --- !u!114 &14
 =======
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_SerializedViewNames: []
   m_SerializedViewValues: []
   m_PlayModeViewName: GameView
@@ -908,7 +1022,10 @@ MonoBehaviour:
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
 --- !u!114 &13
+<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -925,6 +1042,7 @@ MonoBehaviour:
   m_TitleContent:
     m_Text: Hierarchy
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Image: {fileID: 7966133145522015247, guid: 0000000000000000d000000000000000, type: 0}
 <<<<<<< HEAD
     m_Tooltip:
@@ -934,6 +1052,10 @@ MonoBehaviour:
 >>>>>>> dc1c8c0... Added some camera and recording stuff
     m_Tooltip: 
 >>>>>>> 7b32cfe... Fixed some merge conflicts
+=======
+    m_Image: {fileID: -3734745235275155857, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Pos:
     serializedVersion: 2
     x: -25600
@@ -946,6 +1068,7 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
+<<<<<<< HEAD
 <<<<<<< HEAD
       scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
@@ -967,6 +1090,12 @@ MonoBehaviour:
       m_LastClickedID: 0
       m_ExpandedIDs: caa9ffff66c5ffff66d5ffff14fbffff
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+      scrollPos: {x: 0, y: 180}
+      m_SelectedIDs: 1a960000
+      m_LastClickedID: 0
+      m_ExpandedIDs: caa9ffff66c5ffff66d5ffff14fbffff
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -984,10 +1113,14 @@ MonoBehaviour:
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_SearchString:
 =======
       m_SearchString: 
 >>>>>>> 7b32cfe... Fixed some merge conflicts
+=======
+      m_SearchString: 
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
     m_LockTracker:
@@ -1010,6 +1143,7 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Scene
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Image: {fileID: 2593428753322112591, guid: 0000000000000000d000000000000000, type: 0}
 <<<<<<< HEAD
@@ -1035,11 +1169,20 @@ MonoBehaviour:
     height: 534
 >>>>>>> 95a23bc... Ragdoll can now hold weapons
 =======
+=======
+    m_Image: {fileID: 8634526014445323508, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     x: 289.6
     y: 73.6
     width: 881.2001
     height: 406.2
+<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1375,22 +1518,29 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 362
     y: 73
     width: 1102
     height: 685
 =======
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     x: 289.6
     y: 73.6
     width: 881.2001
     height: 406.2
+<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_ViewTransforms:
     m_KeySerializationHelper:
+<<<<<<< HEAD
 <<<<<<< HEAD
     - {fileID: 1107620338678638050, guid: bf0bb28b7be76b14ab13b5ab0615c68e, type: 2}
     - {fileID: 1107429844075586492, guid: 0e7254c70951b4d5fb0831717917abf2, type: 2}
@@ -1471,6 +1621,8 @@ MonoBehaviour:
       e12: 0
       e13: -54.695084
 =======
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     - {fileID: 6878297119370305817, guid: 63f321ee5ce899b408699e02a7b6cb3f, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.9340073
@@ -1481,7 +1633,10 @@ MonoBehaviour:
       e11: 0.9340073
       e12: 0
       e13: 15.794998
+<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
       e20: 0
       e21: 0
       e22: 1
@@ -1492,6 +1647,7 @@ MonoBehaviour:
       e33: 1
   m_PreviewAnimator: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_AnimatorController: {fileID: 9100000, guid: 3bec83ed5ed0e4ea9a4338fc7957942d, type: 2}
   m_BreadCrumbs:
   - m_Target: {fileID: 1107558447012497280, guid: 3bec83ed5ed0e4ea9a4338fc7957942d, type: 2}
@@ -1500,6 +1656,11 @@ MonoBehaviour:
   m_BreadCrumbs:
   - m_Target: {fileID: 6878297119370305817, guid: 63f321ee5ce899b408699e02a7b6cb3f, type: 2}
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_AnimatorController: {fileID: 9100000, guid: 63f321ee5ce899b408699e02a7b6cb3f, type: 2}
+  m_BreadCrumbs:
+  - m_Target: {fileID: 6878297119370305817, guid: 63f321ee5ce899b408699e02a7b6cb3f, type: 2}
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -1510,10 +1671,14 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_CurrentEditor: 1
 =======
   m_CurrentEditor: 0
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+  m_CurrentEditor: 0
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_LayerEditor:
     m_SelectedLayerIndex: 0
 --- !u!114 &16
@@ -1527,12 +1692,16 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Script: {fileID: 12014, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MinSize: {x: 230, y: 250}
   m_MaxSize: {x: 10000, y: 10000}
   m_TitleContent:
+<<<<<<< HEAD
     m_Text: Game
     m_Image: {fileID: -6423792434712278376, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip:
@@ -1550,6 +1719,11 @@ MonoBehaviour:
     m_Image: {fileID: -5179483145760003458, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
 >>>>>>> 7b32cfe... Fixed some merge conflicts
+=======
+    m_Text: Project
+    m_Image: {fileID: -5179483145760003458, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_Pos:
     serializedVersion: 2
     x: -25600
@@ -1683,16 +1857,22 @@ MonoBehaviour:
   m_EditorHideFlags: 1
   m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Name:
   m_EditorClassIdentifier:
 =======
   m_Name: 
   m_EditorClassIdentifier: 
 >>>>>>> 7b32cfe... Fixed some merge conflicts
+=======
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Console
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
 <<<<<<< HEAD
@@ -1740,6 +1920,20 @@ MonoBehaviour:
 <<<<<<< HEAD
 >>>>>>> 95a23bc... Ragdoll can now hold weapons
 =======
+=======
+    m_Image: {fileID: -4950941429401207979, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: -1920
+    y: 628
+    width: 1465
+    height: 363
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1781,4 +1975,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
+<<<<<<< HEAD
 >>>>>>> dc1c8c0... Added some camera and recording stuff
+=======
+>>>>>>> dc1c8c0d0e454aabbf30cc69cab8608c32dfb1ab
