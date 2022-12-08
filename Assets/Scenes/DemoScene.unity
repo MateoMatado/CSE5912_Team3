@@ -1994,6 +1994,7 @@ GameObject:
   - component: {fileID: 310522755}
   - component: {fileID: 310522754}
   - component: {fileID: 310522759}
+  - component: {fileID: 310522760}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2091,6 +2092,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 1000011365394840, guid: 5142a683d65bbf84abea6f07db9099c7, type: 3}
   maxOffset: 3
+--- !u!114 &310522760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310522753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e03d3d6d9d8a45d4a47f9b660a5a6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yLevelLimit: -50
+  damage: 200
+  islandsParent: {fileID: 1306667707}
 --- !u!1 &332397021
 GameObject:
   m_ObjectHideFlags: 0

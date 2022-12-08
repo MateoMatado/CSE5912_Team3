@@ -36,6 +36,13 @@ public class PlayerHealth : LivingEntity
         EventsPublisher.Instance.SubscribeToEvent("DamageEnemy", HandleDamage);        
     }
 
+    void OnDestroy()
+    {
+        EventsPublisher.Instance.UnsubscribeToEvent("HealPlayer", HandleHeal);        
+        EventsPublisher.Instance.UnsubscribeToEvent("LavaDamagePlayer", HandleLavaDamage);        
+        EventsPublisher.Instance.UnsubscribeToEvent("DamageEnemy", HandleDamage);    
+    }
+
 
     private void HandleHeal(object sender, object data)
     {
