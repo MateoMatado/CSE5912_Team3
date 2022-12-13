@@ -18,7 +18,7 @@ public class CannonAimState : PlayerState
     private bool rotating = false;
     private bool inCannon = false;
     const float minAngle = 5, maxAngle = 80;
-    private float force = 70000;
+    private float force = 70000 * 2.4f;
     private LineRenderer trajectory;
     private GameObject island = null;
     private Material outlineMaterial;
@@ -147,6 +147,8 @@ public class CannonAimState : PlayerState
         {
             playerMass += body.mass;
         }
+
+        // Debug.Log("mass: " + playerMass);
 
         Vector3 initialVelocity = cannonBarrel.forward * force * Time.fixedDeltaTime / playerMass;
         Vector3 prevPoint = startPosition;
