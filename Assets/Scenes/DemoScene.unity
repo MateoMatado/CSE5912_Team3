@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.01991872, g: 0.022382457, b: 0.005820073, a: 1}
+  m_IndirectSpecularColor: {r: 0.019917056, g: 0.022380816, b: 0.0058184317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1995,6 +1995,7 @@ GameObject:
   - component: {fileID: 310522754}
   - component: {fileID: 310522759}
   - component: {fileID: 310522760}
+  - component: {fileID: 310522761}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2107,6 +2108,20 @@ MonoBehaviour:
   yLevelLimit: -50
   damage: 200
   islandsParent: {fileID: 1306667707}
+--- !u!114 &310522761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310522753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4626dd06bbeef594d95d0ae1b791e3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 0}
+  cam: {fileID: 559928289}
 --- !u!1 &332397021
 GameObject:
   m_ObjectHideFlags: 0
@@ -6637,7 +6652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1006411363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9194,7 +9209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1306667706
 MonoBehaviour:
   m_ObjectHideFlags: 0
