@@ -307,13 +307,22 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Scroll"",
-                    ""type"": ""Value"",
-                    ""id"": ""ac8c1d56-4d18-4039-8024-dfae83ab5773"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""ToggleRoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""add3f99d-8798-4601-91df-df745526ac2e"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7ce9055a-2d00-4bac-916b-b8aa03632a07"",
+                    ""expectedControlType"": ""Double"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -847,7 +856,40 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""972e0f9c-e5bf-4817-96e4-082634fe7aba"",
+                    ""id"": ""00a56495-c22d-4132-a685-e53c3d743d39"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleRagdoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b17c898-a073-4312-a748-c1488e202a26"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleRoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd0b1274-91d2-4905-aa5d-75b991a54788"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleRoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd7250a0-8671-458c-b735-0dcff7f2349a"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -1491,6 +1533,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_Player_EquipConfettiGun = m_Player.FindAction("EquipConfettiGun", throwIfNotFound: true);
         m_Player_ToggleRagdoll = m_Player.FindAction("ToggleRagdoll", throwIfNotFound: true);
+        m_Player_ToggleRoll = m_Player.FindAction("ToggleRoll", throwIfNotFound: true);
         m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1595,6 +1638,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwitchWeapon;
     private readonly InputAction m_Player_EquipConfettiGun;
     private readonly InputAction m_Player_ToggleRagdoll;
+    private readonly InputAction m_Player_ToggleRoll;
     private readonly InputAction m_Player_Scroll;
     public struct PlayerActions
     {
@@ -1631,6 +1675,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputAction @EquipConfettiGun => m_Wrapper.m_Player_EquipConfettiGun;
         public InputAction @ToggleRagdoll => m_Wrapper.m_Player_ToggleRagdoll;
+        public InputAction @ToggleRoll => m_Wrapper.m_Player_ToggleRoll;
         public InputAction @Scroll => m_Wrapper.m_Player_Scroll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -1734,6 +1779,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ToggleRagdoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
                 @ToggleRagdoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
                 @ToggleRagdoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRagdoll;
+                @ToggleRoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRoll;
+                @ToggleRoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRoll;
+                @ToggleRoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleRoll;
                 @Scroll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
                 @Scroll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
                 @Scroll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
@@ -1834,6 +1882,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @ToggleRagdoll.started += instance.OnToggleRagdoll;
                 @ToggleRagdoll.performed += instance.OnToggleRagdoll;
                 @ToggleRagdoll.canceled += instance.OnToggleRagdoll;
+                @ToggleRoll.started += instance.OnToggleRoll;
+                @ToggleRoll.performed += instance.OnToggleRoll;
+                @ToggleRoll.canceled += instance.OnToggleRoll;
                 @Scroll.started += instance.OnScroll;
                 @Scroll.performed += instance.OnScroll;
                 @Scroll.canceled += instance.OnScroll;
@@ -2032,6 +2083,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnEquipConfettiGun(InputAction.CallbackContext context);
         void OnToggleRagdoll(InputAction.CallbackContext context);
+        void OnToggleRoll(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
     }
     public interface IUIActions

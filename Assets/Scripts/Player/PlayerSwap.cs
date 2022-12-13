@@ -9,7 +9,7 @@ namespace Team3.Scripts.Player
         [SerializeField] List<string> names;
         [SerializeField] List<GameObject> prefabs;
 
-        GameObject current;
+        public GameObject current;
         
         Dictionary<string, GameObject> characterMap = new Dictionary<string, GameObject>();
         
@@ -26,19 +26,9 @@ namespace Team3.Scripts.Player
             {
                 Debug.Log("List of names and list of prefabs different lengths");
             }
-            try
-            {
-                current = Instantiate(characterMap[names[0]], this.transform.position, Quaternion.Euler(0, 0, 0));
-                current.transform.parent = this.transform;
-                current.transform.localScale = new Vector3(1, 1, 1);
-                current.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-            catch
-            {
-                Debug.Log("No selected prefabs");
-            }
 
             Events.EventsPublisher.Instance.SubscribeToEvent("ChangePrefab", ChangePrefab);
+            StartCoroutine(CreatePlayer());
         }
 
         private void OnDestroy()
@@ -61,6 +51,12 @@ namespace Team3.Scripts.Player
             {
                 Debug.Log("ERROR: No recognized prefab with name: " + name);
             }
+        }
+
+        IEnumerator CreatePlayer()
+        {
+            yield return new WaitForSeconds(0.5f);
+            Events.EventsPublisher.Instance.PublishEvent("ChangePrefab", this, names[0]);
         }
     }
 }
