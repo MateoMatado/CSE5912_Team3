@@ -4,8 +4,8 @@ using UnityEngine.AI;
 using System.Collections.Generic;
 
 #if UNITY_EDITOR
-using UnityEditor;
-using UnityEditor.Playables;
+// using UnityEditor;
+// using UnityEditor.Playables;
 #endif
 
 
@@ -63,22 +63,22 @@ public class Ghoul : LivingEntity
 
 
 #if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
-    {
-        if(attackRoot != null)
-        {
-            Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-            Gizmos.DrawSphere(attackRoot.position, attackRadius);
-        }
-        if(eyeTransform != null)
-        {
-            var leftEyeRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
-            var leftRayDirection = leftEyeRotation * transform.forward;
-            Handles.color = new Color(1f, 1f, 1f, 0.2f);
-            Handles.DrawSolidArc(eyeTransform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
-        }
+    // private void OnDrawGizmosSelected()
+    // {
+    //     if(attackRoot != null)
+    //     {
+    //         Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+    //         Gizmos.DrawSphere(attackRoot.position, attackRadius);
+    //     }
+    //     if(eyeTransform != null)
+    //     {
+    //         var leftEyeRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
+    //         var leftRayDirection = leftEyeRotation * transform.forward;
+    //         Handles.color = new Color(1f, 1f, 1f, 0.2f);
+    //         Handles.DrawSolidArc(eyeTransform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
+    //     }
         
-    }
+    // }
 #endif
 
     private bool hasTarget
