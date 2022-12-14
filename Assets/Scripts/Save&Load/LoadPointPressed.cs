@@ -83,8 +83,8 @@ public class LoadPointPressed : MonoBehaviour, IPointerClickHandler
     {
         string fullPath = Path.Combine(Application.persistentDataPath, fileName.text);
         File.Delete(fullPath);
-#if UNITY_EDITOR
-         UnityEditor.AssetDatabase.Refresh();
-#endif
+// #if UNITY_EDITOR
+//          UnityEditor.AssetDatabase.Refresh();
+// #endif
     }
 }
