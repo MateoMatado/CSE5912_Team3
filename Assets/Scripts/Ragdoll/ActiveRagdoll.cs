@@ -281,5 +281,15 @@ namespace Team3.Ragdoll
 
             pelvis.connectedBody = null;
         }
+
+        public void Dampen()
+        {
+            Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
+
+            foreach (Rigidbody r in bodies)
+            {
+                r.velocity = Vector3.zero;
+            }
+        }
     }
 }
