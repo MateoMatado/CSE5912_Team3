@@ -25,9 +25,13 @@ public class CoinManager : MonoBehaviour
         {
             Vector3 offset = new Vector3(
                 2 * Random.value * maxOffset - maxOffset,
-                2 * Random.value * maxOffset - maxOffset,
-                0
+                2,
+                2 * Random.value * maxOffset - maxOffset
             );
+            if (Physics.Raycast(pos + new Vector3(0, 10, 0), Vector3.down, out RaycastHit hit, 15, 8))
+            {
+                pos.y = hit.point.y;
+            }
             Instantiate(coin, pos + offset, transform.rotation);
         }
     }
