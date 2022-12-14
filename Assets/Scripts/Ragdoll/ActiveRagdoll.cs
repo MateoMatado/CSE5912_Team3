@@ -242,6 +242,7 @@ namespace Team3.Ragdoll
 
         Rigidbody prevHeadLock;
         Vector3 prevHeadAnchor;
+        Vector3 prevAnchor;
         void GetGrabbed(object sender, object data)
         {
             (Rigidbody, Rigidbody) rData = ((Rigidbody, Rigidbody))data;
@@ -253,10 +254,11 @@ namespace Team3.Ragdoll
 
             prevHeadLock = head.connectedBody;
             pelvis.connectedBody = pelvisLock;
-            head.connectedBody = headLock;
+            //head.connectedBody = headLock;
             prevHeadAnchor = head.anchor;
-            head.autoConfigureConnectedAnchor = false;
-            head.connectedAnchor = new Vector3();
+            //head.autoConfigureConnectedAnchor = false;
+            //head.connectedAnchor = new Vector3();
+            prevAnchor = head.anchor;
 
             physRoot.GetComponent<ConfigurableJoint>().xDrive = defaultDrive;
             physRoot.GetComponent<ConfigurableJoint>().yDrive = defaultDrive;
@@ -272,9 +274,10 @@ namespace Team3.Ragdoll
             physRoot.GetComponent<ConfigurableJoint>().yDrive = zeroDrive;
             physRoot.GetComponent<ConfigurableJoint>().zDrive = zeroDrive;
 
-            head.connectedAnchor = prevHeadAnchor;
-            head.connectedBody = prevHeadLock;
-            head.autoConfigureConnectedAnchor = true;
+            //head.connectedAnchor = prevHeadAnchor;
+            //head.connectedBody = prevHeadLock;
+            //head.anchor = prevAnchor;
+            //head.autoConfigureConnectedAnchor = true;
 
             pelvis.connectedBody = null;
         }
