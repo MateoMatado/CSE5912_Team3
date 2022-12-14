@@ -6290,6 +6290,8 @@ GameObject:
   - component: {fileID: 5150801872262365572}
   - component: {fileID: 1058441417711486985}
   - component: {fileID: 5425368059339825963}
+  - component: {fileID: 7587613027270845897}
+  - component: {fileID: 8735912343485913936}
   m_Layer: 8
   m_Name: Nav2MiniBossIsland
   m_TagString: IslandParent
@@ -6366,6 +6368,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+--- !u!136 &7587613027270845897
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762065947467053827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 184.10347
+  m_Height: 400.07108
+  m_Direction: 1
+  m_Center: {x: -2.8048553, y: 72.2151, z: 30.325317}
+--- !u!114 &8735912343485913936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762065947467053827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60318def87c6214ba118b9a9fdbb24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2762065947469010156
 GameObject:
   m_ObjectHideFlags: 0
@@ -42732,6 +42760,10 @@ PrefabInstance:
     - target: {fileID: 2283811409401766062, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 31.910004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283811409401766062, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5976817669905050619, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
       propertyPath: m_LocalPosition.y
