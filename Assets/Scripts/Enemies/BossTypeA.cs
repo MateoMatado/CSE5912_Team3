@@ -66,7 +66,7 @@ public class BossTypeA : LivingEntity
     private void Awake()
     {
         targetEntity = GameObject.Find("Player").transform;
-        currentHealth = 9000f;
+        currentHealth = 20000f;
         speed = chaseSpeed;
         //GetComponentInParent!
         bossAnimator = GetComponent<Animator>();
