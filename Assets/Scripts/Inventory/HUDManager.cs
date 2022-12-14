@@ -16,6 +16,8 @@ public class HUDManager : MonoBehaviour, IData
     public Vector3 position;
 
     public GameObject DieScene;
+    public GameObject EndScene;
+
     public void Awake()
     {
         Instance = this;
@@ -55,6 +57,11 @@ public class HUDManager : MonoBehaviour, IData
     public void Die()
     {
         DieScene.SetActive(true);
+    }
+
+    public void End()
+    {
+        EndScene.SetActive(true);
     }
     // Update is called once per frame
     void Update()

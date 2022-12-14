@@ -43,7 +43,7 @@ public class BossTypeA : LivingEntity
     private const float dashRange = 70f;
     private const float spinStartDistance = 50f;    
 
-    private const float faintTime = 3f;
+    private const float faintTime = 5f;
     private const float spinTime = 4f;
     private const float roarTime = 1f;
     private const float waitingTimeBeforeDash = 5f;
@@ -66,7 +66,7 @@ public class BossTypeA : LivingEntity
     private void Awake()
     {
         targetEntity = GameObject.Find("Player").transform;
-        currentHealth = 9000f;
+        currentHealth = 20000f;
         speed = chaseSpeed;
         //GetComponentInParent!
         bossAnimator = GetComponent<Animator>();
@@ -314,6 +314,22 @@ public class BossTypeA : LivingEntity
         //Collider bossCollider = GetComponent<Collider>();
         //bossCollider.enabled = false;
 
+        StartCoroutine(EndSceneAction());
+    }
 
+
+
+
+
+
+
+
+
+
+    private IEnumerator EndSceneAction()
+    {
+        HUDManager.Instance.End();
+        yield return new WaitForSeconds(3f);
+        GameStateMachine.Instance.SwitchState(GameStateMachine.MainMenuState);
     }
 }
