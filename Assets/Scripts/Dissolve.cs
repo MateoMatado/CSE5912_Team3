@@ -41,7 +41,7 @@ public class Dissolve : MonoBehaviour
         }
         //Debug.Log("Island: " + transform.position);
 
-        IslandGeneration.Instance.RemoveIsland(transform.position);
+        // IslandGeneration.Instance.RemoveIsland(transform.position);
         Destroy(gameObject);
     }
 }
