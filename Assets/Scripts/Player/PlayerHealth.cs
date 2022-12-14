@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Team3.Events;
+using Team3.Scripts.Player;
 using Cinemachine;
 
 public class PlayerHealth : LivingEntity
@@ -68,13 +69,21 @@ public class PlayerHealth : LivingEntity
         float lerpSpeed = 1f;
         while (!isDead)
         {
-            Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
-            float healthPct = Math.Clamp(currentHealth / startingHealth, 0, 1);
-            pct += (healthPct - pct) * lerpSpeed * Time.deltaTime;
-            //Debug.Log(gameObject.name + ' ' + pct);
-            for (int i = 0; i < renderers.Length; i++)
+            try
             {
-                renderers[i].material.SetFloat("_Health", pct);
+                Renderer[] renderers = gameObject.GetComponent<PlayerSwap>().current.GetComponentsInChildren<Renderer>();
+                
+                float healthPct = Math.Clamp(currentHealth / startingHealth, 0, 1);
+                pct += (healthPct - pct) * lerpSpeed * Time.deltaTime;
+                //Debug.Log(gameObject.name + ' ' + pct);
+                for (int i = 0; i < renderers.Length; i++)
+                {
+                    renderers[i].material.SetFloat("_Health", pct);
+                }
+            }
+            catch
+            {
+                
             }
             yield return null;
         }
