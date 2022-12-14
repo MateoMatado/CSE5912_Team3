@@ -41,7 +41,7 @@ namespace Team3.Animation.Player
             Events.EventsPublisher.Instance.SubscribeToEvent("EquipWeapon", EquipWeapon);
             Events.EventsPublisher.Instance.SubscribeToEvent("SwapHands", SwapHands);
 
-            //StartCoroutine(PushOnSwing());
+            StartCoroutine(PushOnSwing());
 
             //right = new Weapons.IKSword(sword);
             right = new Weapons.IKFoam(foamFinger);
@@ -204,7 +204,7 @@ namespace Team3.Animation.Player
                     body.AddForce(body.transform.forward * swingForce, ForceMode.Impulse);
                     yield return new WaitForSeconds(swingDelay);
                 }
-                while (dPos.magnitude < swingThreshold) { yield return null; }
+                yield return null;
             }
         }
 

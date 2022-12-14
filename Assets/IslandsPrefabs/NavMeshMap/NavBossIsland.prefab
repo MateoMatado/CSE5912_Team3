@@ -44139,6 +44139,9 @@ GameObject:
   - component: {fileID: 4165851150656309149}
   - component: {fileID: 8078074902505655824}
   - component: {fileID: -6024259839738954911}
+  - component: {fileID: 7776315941805368036}
+  - component: {fileID: 6617580471287634198}
+  - component: {fileID: 7952428780202634111}
   m_Layer: 8
   m_Name: NavBossIsland
   m_TagString: IslandParent
@@ -44224,6 +44227,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IslandNumber: 11
+--- !u!114 &7776315941805368036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413008049201610010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60318def87c6214ba118b9a9fdbb24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &6617580471287634198
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413008049201610010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 181.41989
+  m_Height: 362.83978
+  m_Direction: 1
+  m_Center: {x: -0.6599579, y: 39.950912, z: 8.108978}
+--- !u!65 &7952428780202634111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413008049201610010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 359.30536, y: 95.973724, z: 328.67285}
+  m_Center: {x: 0.5806885, y: 117.2852, z: 26.759155}
 --- !u!1 &6413008049221391093
 GameObject:
   m_ObjectHideFlags: 0

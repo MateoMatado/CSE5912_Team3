@@ -14303,6 +14303,7 @@ GameObject:
   - component: {fileID: 2495147652212962689}
   - component: {fileID: 3817074205710066154}
   - component: {fileID: 5600199347018094763}
+  - component: {fileID: 5196312384734593138}
   m_Layer: 8
   m_Name: Nav2SnowBasic
   m_TagString: IslandParent
@@ -14416,7 +14417,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 6256844462741390225}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 104.150055
   m_Height: 208.30011
   m_Direction: 1
@@ -14433,6 +14434,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60318def87c6214ba118b9a9fdbb24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5196312384734593138
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256844462741390225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 128.49754, y: 78.356735, z: 159.97752}
+  m_Center: {x: -1.015686, y: 83.680664, z: 30.407639}
 --- !u!1 &6256844462749210609
 GameObject:
   m_ObjectHideFlags: 0

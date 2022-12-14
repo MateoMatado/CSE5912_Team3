@@ -14,8 +14,11 @@ public class SwordTemp : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            target = other.GetComponentInParent<IDamageable>();
-            target.OnDamage(attackpoint);
+            if(true)
+            {
+                target = other.GetComponentInParent<IDamageable>();
+                target.OnDamage(attackpoint);
+            }
         }
         else if (target != null && other.gameObject.layer != 3 && other.gameObject.layer != 10)
         {

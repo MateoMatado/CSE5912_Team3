@@ -8515,6 +8515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sinkSpeed: 1
   eventName: Sink
+  onDestroySound: {fileID: 0}
 --- !u!1 &1913504003615651063
 GameObject:
   m_ObjectHideFlags: 0
