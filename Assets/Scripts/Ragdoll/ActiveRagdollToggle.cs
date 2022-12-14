@@ -41,8 +41,12 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.UnsubscribeToEvent("Roll", Roll);
         }
 
-        private void ToggleRagdoll(object data, object sender)
+        private void ToggleRagdoll(object sender, object data)
         {
+            if (data != null)
+            {
+                _rag = !((bool)data);
+            }
             if (rag)
             {
                 for (int i = 0; i < joints.Length; i++)
