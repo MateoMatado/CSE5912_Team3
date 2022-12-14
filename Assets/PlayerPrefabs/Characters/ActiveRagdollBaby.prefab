@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3223e80d028ca47b5ef8f0736037ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!153 &9028103934649634775
+--- !u!153 &878434996603286842
 ConfigurableJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
