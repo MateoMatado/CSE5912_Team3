@@ -89,11 +89,8 @@ namespace Team3.Ragdoll
             UnsubToEvents();
         }
 
-        Vector3 start = new Vector3();
         void FixedUpdate()
         {
-            start += new Vector3(0, 1f, 0);
-            Events.EventsPublisher.Instance.PublishEvent("ManualMove", null, start);
             UpdateCamera();
 
             for (int i = 0; i < physJoints.Length; i++)
@@ -174,6 +171,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.SubscribeToEvent("ReceiveCamera", RecCamObj);
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", GetInput);
             Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove", MoveTo);
+            Events.EventsPublisher.Instance.SubscribeToEvent("GrabRag", GetGrabbed);
         }
 
         void UnsubToEvents()
@@ -181,7 +179,8 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerMove", GetInput);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCameraTransform", RecCam);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCamera", RecCamObj);
-            Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove", MoveTo);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("ManualMove", MoveTo);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("GrabRag", GetGrabbed);
         }
 
         void GetInput(object sender, object data)
@@ -219,6 +218,21 @@ namespace Team3.Ragdoll
             {
                 j.transform.position += diff;
             }
+        }
+
+        Rigidbody prevHeadLock;
+        void GetGrabbed(object sender, object data)
+        {
+            (Rigidbody, Rigidbody) rData = ((Rigidbody, Rigidbody))data;
+            Rigidbody headLock = rData.Item2;
+            Rigidbody pelvisLock = rData.Item2;
+
+            ConfigurableJoint head = physRoot.GetComponentInChildren<HeadStore>().gameObject.GetComponent<ConfigurableJoint>();
+            ConfigurableJoint pelvis = physRoot.GetComponent<ConfigurableJoint>();
+
+            prevHeadLock = head.connectedBody;
+            pelvis.connectedBody = pelvisLock;
+            head.connectedBody = headLock;
         }
     }
 }
