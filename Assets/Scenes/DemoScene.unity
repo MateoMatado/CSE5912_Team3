@@ -1206,7 +1206,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.2
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yLevelLimit: -50
   damage: 200
-  islandsParent: {fileID: 1006411364}
+  islandsParent: {fileID: 1306667707}
 --- !u!114 &310522761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3715,8 +3715,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559928286}
-  m_LocalRotation: {x: 0.14521317, y: -1e-45, z: 0, w: 0.98940045}
-  m_LocalPosition: {x: -50.134705, y: 128.16278, z: 37.127014}
+  m_LocalRotation: {x: 0.43318874, y: -1e-45, z: 1e-45, w: 0.90130323}
+  m_LocalPosition: {x: 2000, y: 2700, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3877,7 +3877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &600671593
 AudioSource:
   m_ObjectHideFlags: 0
