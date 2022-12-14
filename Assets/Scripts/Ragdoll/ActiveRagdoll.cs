@@ -89,8 +89,11 @@ namespace Team3.Ragdoll
             UnsubToEvents();
         }
 
+        Vector3 start = new Vector3();
         void FixedUpdate()
         {
+            start += new Vector3(0, 1f, 0);
+            Events.EventsPublisher.Instance.PublishEvent("ManualMove", null, start);
             UpdateCamera();
 
             for (int i = 0; i < physJoints.Length; i++)
@@ -170,6 +173,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.SubscribeToEvent("ReceiveCameraTransform", RecCam);
             Events.EventsPublisher.Instance.SubscribeToEvent("ReceiveCamera", RecCamObj);
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", GetInput);
+            Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove", MoveTo);
         }
 
         void UnsubToEvents()
@@ -177,6 +181,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.UnsubscribeToEvent("PlayerMove", GetInput);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCameraTransform", RecCam);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCamera", RecCamObj);
+            Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove", MoveTo);
         }
 
         void GetInput(object sender, object data)
@@ -203,6 +208,17 @@ namespace Team3.Ragdoll
             Transform par = this.transform.parent;
             effectTarget = par.GetComponentInChildren<EffectStore>()?.transform;
             enemyTarget = par.GetComponentInChildren<EnemyTargetStore>().transform;
+        }
+
+        void MoveTo(object sender, object data)
+        {
+            Vector3 diff = (Vector3)data - physRoot.transform.position;
+            physRoot.transform.position += diff;
+
+            foreach (ConfigurableJoint j in physJoints)
+            {
+                j.transform.position += diff;
+            }
         }
     }
 }
