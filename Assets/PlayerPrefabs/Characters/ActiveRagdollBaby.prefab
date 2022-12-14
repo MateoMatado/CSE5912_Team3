@@ -211,10 +211,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   rotationTorque: 1e+14
   rollForce: 12
-  instantDamp: 1
+  instantDamp: 0
   dampDelay: 0.1
   dampFactor: 0.9
-  dampThreshold: 0.9
+  dampThreshold: 0.1
 --- !u!114 &546183151211852307
 MonoBehaviour:
   m_ObjectHideFlags: 0
