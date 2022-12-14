@@ -234,10 +234,10 @@ namespace Team3.Ragdoll
             Vector3 diff = (Vector3)data - physRoot.transform.position;
             physRoot.transform.position += diff;
 
-            foreach (ConfigurableJoint j in physJoints)
-            {
-                j.transform.position += diff;
-            }
+            // foreach (ConfigurableJoint j in physJoints)
+            // {
+            //     j.transform.position += diff;
+            // }
         }
 
         Rigidbody prevHeadLock;

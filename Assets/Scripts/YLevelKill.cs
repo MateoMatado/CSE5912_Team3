@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Team3.Scripts.Player;
+using Team3.Events;
 
 public class YLevelKill : MonoBehaviour
 {
@@ -34,7 +36,18 @@ public class YLevelKill : MonoBehaviour
     {
         player.GetComponent<LivingEntity>().OnDamage(damage);
         Transform island = FindClosestIsland();
-        player.transform.position = island.position + new Vector3(0, 300, 0);
+        Vector3 pos = island.position + new Vector3(0, 300, 0);
+        if (Physics.Raycast(pos, Vector3.down, out RaycastHit hit, 500))
+        {
+            pos = hit.point + new Vector3(0, 10, 0);
+        }
+        var ragdoll = player.GetComponent<PlayerSwap>().current;
+        foreach (var rb in ragdoll.GetComponentsInChildren<Rigidbody>())
+        {
+            rb.velocity = Vector3.zero;
+        }
+        EventsPublisher.Instance.PublishEvent("ManualMove", null, pos);
+        EventsPublisher.Instance.PublishEvent("ToggleRagdoll", null, false);
         yield return null;
     }
 
