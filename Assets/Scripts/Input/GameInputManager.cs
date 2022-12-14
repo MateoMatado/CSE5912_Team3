@@ -135,6 +135,18 @@ namespace Team3.Input
             inputs.Player.CameraSwitch.Disable();
         }
 
+        public void DisableMove()
+        {
+            inputs.Player.Move.Disable();
+            inputs.Player.Jump.Disable();
+        }
+
+        public void EnableMove()
+        {
+            inputs.Player.Move.Enable();
+            inputs.Player.Jump.Enable();
+        }
+
         private void OnDestroy()
         {
             Events.EventsPublisher.Instance.UnsubscribeToEvent("LeftArmActivate", EnableArm);
