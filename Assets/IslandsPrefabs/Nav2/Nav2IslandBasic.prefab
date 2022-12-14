@@ -1726,6 +1726,8 @@ GameObject:
   - component: {fileID: 988956255132683891}
   - component: {fileID: 4040048002370405910}
   - component: {fileID: 7770964094021884710}
+  - component: {fileID: 4710663533175185034}
+  - component: {fileID: 2948308103847465882}
   m_Layer: 8
   m_Name: Nav2IslandBasic
   m_TagString: IslandParent
@@ -1815,6 +1817,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+--- !u!136 &4710663533175185034
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070914281333398461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 61.107777
+  m_Height: 282.59277
+  m_Direction: 1
+  m_Center: {x: -0.6599541, y: 13.475948, z: 1.9040604}
+--- !u!114 &2948308103847465882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070914281333398461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60318def87c6214ba118b9a9fdbb24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2070914281392159482
 GameObject:
   m_ObjectHideFlags: 0
@@ -14840,6 +14868,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2070914281333398460}
     m_Modifications:
+    - target: {fileID: 2283811409401766062, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 31.910004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283811409401766062, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9894004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283811409401766062, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 5976817669905050619, guid: cbf32560282014f4590435ada1afc6b4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 12.310005
