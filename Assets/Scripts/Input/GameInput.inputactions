@@ -641,6 +641,17 @@
                 },
                 {
                     "name": "",
+                    "id": "849e8ac7-330a-4b6d-902e-74f186b6feea",
+                    "path": "<NimbusGamepadHid>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "67bfed1c-e3f5-46b5-9a22-8d6fe047d522",
                     "path": "<Keyboard>/n",
                     "interactions": "",
