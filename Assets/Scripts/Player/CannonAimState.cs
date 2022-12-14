@@ -36,6 +36,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.SubscribeToEvent("LookMouse", HandleLook);
         EventsPublisher.Instance.SubscribeToEvent("PauseUnpause", HandleEscape);
         EventsPublisher.Instance.SubscribeToEvent("Scroll", HandleScroll);
+        EventsPublisher.Instance.SubscribeToEvent("LaunchedCannon", HandleLaunch);
         if (outlineMaterial == null) outlineMaterial = Resources.Load("IslandOutline") as Material;
     }
 
@@ -49,6 +50,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.UnsubscribeToEvent("LookMouse", HandleLook);
         EventsPublisher.Instance.UnsubscribeToEvent("PauseUnpause", HandleEscape);
         EventsPublisher.Instance.UnsubscribeToEvent("Scroll", HandleScroll);
+        EventsPublisher.Instance.UnsubscribeToEvent("LaunchedCannon", HandleLaunch);
         EventsPublisher.Instance.PublishEvent("ExitCannonAimState", null, null);
     }
 
@@ -305,21 +307,26 @@ public class CannonAimState : PlayerState
     {
         EventsPublisher.Instance.PublishEvent("Dissolve", null, GetParentIsland(cannon.transform));
         EventsPublisher.Instance.PublishEvent("Sink", null, GetParentIsland(cannon.transform));
-        EventsPublisher.Instance.PublishEvent("LaunchedCannon", null, null);
         EventsPublisher.Instance.PublishEvent("CannonCutscene", null, cannon);
-        EventsPublisher.Instance.PublishEvent("ReleaseRag", null, null);
+        EventsPublisher.Instance.PublishEvent("ReleaseRag", null, mouth.position);
+        EventsPublisher.Instance.PublishEvent("LaunchedCannon", null, null);
+        // EventsPublisher.Instance.PublishEvent("ManualMove", null, mouth.position);
+
         LeaveCannon();
         cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         cannon.GetComponent<AudioSource>().Play();
         mouth.Find("CannonShot").GetComponent<ParticleSystem>().Play();
         player.transform.parent.GetComponentInChildren<MoveWithCamera>().StartFlying();
-        player.transform.position = mouth.position;
+        // player.transform.position = mouth.position;
         foreach (Rigidbody body in player.GetComponentsInChildren<Rigidbody>())
         {
             //body.velocity = Vector3.zero;
             body.AddForce(cannonBarrel.forward * force * (body.mass/playerMass));
         }
+    }
 
+    private void HandleLaunch(object sender, object data)
+    {
     }
 
 

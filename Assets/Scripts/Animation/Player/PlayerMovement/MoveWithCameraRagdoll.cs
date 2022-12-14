@@ -58,7 +58,7 @@ namespace Team3.PlayerMovement
         {
             while(true)
             {
-                while (moving && ragToggle.rag)
+                while (moving)
                 {
                     Vector2 moveVector = moveAction.ReadValue<Vector2>() * 1 * PlayerStatus.Instance.GetValue("Speed");
                     Vector3 cameraVector = Vector3.Normalize(new Vector3(cameraTarget.forward.x, 0, cameraTarget.forward.z));
