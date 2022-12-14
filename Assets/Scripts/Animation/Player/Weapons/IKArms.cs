@@ -192,18 +192,22 @@ namespace Team3.Animation.Player
             }
         }
 
+        public static bool inSwing = false;
         private IEnumerator PushOnSwing()
         {
             while (true)
             {
-                while (dPos.magnitude >= swingThreshold && left != null && right != null && !(rightAction != null && rightAction.IsPressed() && right is Weapons.IKFoam) && !(leftAction != null && leftAction.IsPressed() && left is Weapons.IKFoam))
+                while (dPos.magnitude >= swingThreshold && ((rightAction != null && rightAction.IsPressed()) || (leftAction != null && leftAction.IsPressed())))
                 {
                     Vector3 force = anim.GetBoneTransform(HumanBodyBones.RightHand).transform.position - anim.GetBoneTransform(HumanBodyBones.RightShoulder).transform.position;
                     //body.AddForce(new Vector3(force.x, 0, force.z) * swingForce, ForceMode.Impulse);
                     body.velocity = new Vector3();
-                    body.AddForce(body.transform.forward * swingForce, ForceMode.Impulse);
+                    body.AddForce(body.transform.up * swingForce, ForceMode.Impulse);
+                    //Debug.Log("SWIIIING");
+                    inSwing = true;
                     yield return new WaitForSeconds(swingDelay);
                 }
+                inSwing = false;
                 yield return null;
             }
         }

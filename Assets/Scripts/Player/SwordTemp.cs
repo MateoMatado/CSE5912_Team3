@@ -14,7 +14,7 @@ public class SwordTemp : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            if(true)
+            if(Team3.Animation.Player.IKArms.inSwing)
             {
                 target = other.GetComponentInParent<IDamageable>();
                 target.OnDamage(attackpoint);
