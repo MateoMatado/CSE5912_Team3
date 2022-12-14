@@ -57,6 +57,10 @@ namespace Team3.Ragdoll
             defaultDrive.positionSpring = positionSpring;
 
             physJoints = physRoot.GetComponentsInChildren<ConfigurableJoint>();
+            List<ConfigurableJoint> tempList = new List<ConfigurableJoint>(physJoints);
+            tempList.RemoveAt(0);
+            physJoints = tempList.ToArray();
+
             TransformStore[] tStores = animRoot.GetComponentsInChildren<TransformStore>();
             animTransforms = new Transform[tStores.Length];
             for (int i = 0; i < tStores.Length; i++)
