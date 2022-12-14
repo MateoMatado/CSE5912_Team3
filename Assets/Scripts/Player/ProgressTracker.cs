@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Team3.Events;
 using Cinemachine;
+using Team3.Input;
 
 public class ProgressTracker : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class ProgressTracker : MonoBehaviour
 
     private IEnumerator ShrinkForceField()
     {
+        GameObject.Find("GameManager").GetComponent<GameInputManager>().DisableMove();
         cutsceneCam.Priority = 1000;
         while (transform.localScale.x > 1)
         {
@@ -56,6 +58,7 @@ public class ProgressTracker : MonoBehaviour
             yield return null;
         }
         cutsceneCam.Priority = 0;
+        GameObject.Find("GameManager").GetComponent<GameInputManager>().EnableMove();
         Destroy(gameObject);
     }
 }

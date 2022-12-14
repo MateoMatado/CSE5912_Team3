@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Team3.Events;
+using Team3.Input;
 
 public class CannonCutscene : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class CannonCutscene : MonoBehaviour
 
     private IEnumerator Cutscene()
     {
+        GameObject.Find("GameManager").GetComponent<GameInputManager>().DisableMove();
         cutsceneCamera.Priority = 999;
         var orbiter = cutsceneCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         orbiter.m_FollowOffset = new Vector3(0, 30, -100);
@@ -44,5 +46,7 @@ public class CannonCutscene : MonoBehaviour
             yield return null;
         }
         cutsceneCamera.Priority = 0;
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("GameManager").GetComponent<GameInputManager>().EnableMove();
     }
 }
