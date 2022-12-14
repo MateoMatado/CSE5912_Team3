@@ -43,7 +43,7 @@ public class BossTypeA : LivingEntity
     private const float dashRange = 70f;
     private const float spinStartDistance = 50f;    
 
-    private const float faintTime = 3f;
+    private const float faintTime = 5f;
     private const float spinTime = 4f;
     private const float roarTime = 1f;
     private const float waitingTimeBeforeDash = 5f;
