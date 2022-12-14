@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
+// using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 using Team3.Events;
 

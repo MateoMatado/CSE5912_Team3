@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 #if UNITY_EDITOR
-using UnityEditor;
+// using UnityEditor;
 #endif
 
 public class GhoulTemp : LivingEntity
