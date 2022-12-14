@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 144862, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
+      propertyPath: m_TagString
+      value: PlayerBox
+      objectReference: {fileID: 0}
     - target: {fileID: 147494, guid: 7ce4ece5b4323b04b920fe7d2f1450e6, type: 3}
       propertyPath: m_Layer
       value: 10
