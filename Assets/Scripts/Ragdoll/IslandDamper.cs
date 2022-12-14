@@ -12,7 +12,9 @@ namespace Team3.Ragdoll
             {
                 other.GetComponentInParent<ActiveRagdoll>().Dampen();
 
-                other.transform.parent.parent.parent.parent.parent.GetComponentInChildren<ParticleSystem>().Stop();
+                //other.transform.parent.parent.parent.parent.parent.GetComponentInChildren<ParticleSystem>().Stop();
+                //other.transform.parent.parent.parent.parent.parent.GetComponentInChildren<ParticleSystem>().Pause();
+                other.transform.parent.parent.parent.parent.parent.GetComponentInChildren<ParticleSystem>().gameObject.SetActive(false);
             }
         }
     }
