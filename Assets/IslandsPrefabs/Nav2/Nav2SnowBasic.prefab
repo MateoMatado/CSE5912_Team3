@@ -25900,6 +25900,10 @@ PrefabInstance:
       propertyPath: numberOfSpawnAtOnce
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3014551854973651733, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3014551854973966543, guid: 32b6209836c51714096e5fc1f77b00de, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.2
