@@ -65,7 +65,7 @@ public class CannonAimState : PlayerState
 
     private void HandleEnterCannon(object sender, object data)
     {
-        //EventsPublisher.Instance.PublishEvent("GrabRag", this, (((CannonCollision)sender).pelvisBody, ((CannonCollision)sender).headBody));
+        EventsPublisher.Instance.PublishEvent("GrabRag", this, (((CannonCollision)sender).pelvisBody, ((CannonCollision)sender).headBody));
         EventsPublisher.Instance.PublishEvent("TurnAnimated", null, null);
         var tuple = ((GameObject, GameObject, CinemachineVirtualCamera))data;
         cannon = tuple.Item1;
@@ -307,6 +307,7 @@ public class CannonAimState : PlayerState
         EventsPublisher.Instance.PublishEvent("Sink", null, GetParentIsland(cannon.transform));
         EventsPublisher.Instance.PublishEvent("LaunchedCannon", null, null);
         EventsPublisher.Instance.PublishEvent("CannonCutscene", null, cannon);
+        EventsPublisher.Instance.PublishEvent("ReleaseRag", null, null);
         LeaveCannon();
         cannon.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         cannon.GetComponent<AudioSource>().Play();

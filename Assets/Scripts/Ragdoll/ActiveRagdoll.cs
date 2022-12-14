@@ -11,6 +11,7 @@ namespace Team3.Ragdoll
         [SerializeField] GameObject animRoot;
         [SerializeField] GameObject physRoot;
         public GameObject PlayerObject;
+        private Player.PlayerStateManager stateManager;
 
         [Header("JOINT DRIVE")]
         [SerializeField] float maximumForce = 800;
@@ -30,6 +31,7 @@ namespace Team3.Ragdoll
         [SerializeField] public float rollForce = 100;
 
         JointDrive defaultDrive;
+        JointDrive zeroDrive;
 
         private Transform[] animTransforms;
         private ConfigurableJoint[] physJoints;
@@ -40,7 +42,7 @@ namespace Team3.Ragdoll
 
         private InputAction moveAction;
 
-        private ActiveRagdollToggle toggle;
+        public ActiveRagdollToggle toggle;
 
         private Transform effectTarget;
         private Transform enemyTarget;
@@ -56,10 +58,18 @@ namespace Team3.Ragdoll
             defaultDrive.positionDamper = positionDamper;
             defaultDrive.positionSpring = positionSpring;
 
+            zeroDrive = new JointDrive();
+            zeroDrive.maximumForce = 0;
+            zeroDrive.positionDamper = 0;
+            zeroDrive.positionSpring = 0;
+
             physJoints = physRoot.GetComponentsInChildren<ConfigurableJoint>();
             List<ConfigurableJoint> tempList = new List<ConfigurableJoint>(physJoints);
             tempList.RemoveAt(0);
             physJoints = tempList.ToArray();
+            physRoot.GetComponent<ConfigurableJoint>().xDrive = zeroDrive;
+            physRoot.GetComponent<ConfigurableJoint>().yDrive = zeroDrive;
+            physRoot.GetComponent<ConfigurableJoint>().zDrive = zeroDrive;
 
             TransformStore[] tStores = animRoot.GetComponentsInChildren<TransformStore>();
             animTransforms = new Transform[tStores.Length];
@@ -67,7 +77,7 @@ namespace Team3.Ragdoll
             {
                 animTransforms[i] = tStores[i].transform;
             }
-            foreach(ConfigurableJoint j in physJoints)
+            foreach (ConfigurableJoint j in physJoints)
             {
                 j.angularYZDrive = defaultDrive;
                 j.angularXDrive = defaultDrive;
@@ -79,11 +89,13 @@ namespace Team3.Ragdoll
                 initRotations[i] = physJoints[i].transform.localRotation;
             }
 
-            toggle = new ActiveRagdollToggle(physJoints, physRoot, rollForce);
-            Events.EventsPublisher.Instance.PublishEvent("GrabCamera", null, cameraFollow);
-
             PlayerObject = transform.parent.gameObject;
+            stateManager = PlayerObject.GetComponent<Player.PlayerStateManager>();
             transform.parent = transform.parent.parent;
+
+            toggle = new ActiveRagdollToggle(physJoints, physRoot, rollForce);
+            toggle.GetStateMachine(stateManager);
+            Events.EventsPublisher.Instance.PublishEvent("GrabCamera", null, cameraFollow);
             //StartCoroutine(CheckGround());
             //StartCoroutine(CheckFreefall());
         }
@@ -114,26 +126,29 @@ namespace Team3.Ragdoll
             //Debug.DrawLine(verticalGoal.transform.position, verticalGoal.transform.position + 10 * Vector3.Normalize(TargetDirection), Color.cyan);
 
             /*         BALANCING         */
-            Vector3 bodyUpVector = -verticalGoal.transform.right; // Frustratingly, this isn't always body.transform.up
-            var balancePercent = Vector3.Angle(bodyUpVector, Vector3.up) / 180;
-            balancePercent = uprightTorqueFunction.Evaluate(balancePercent);
-            var rot = Quaternion.FromToRotation(bodyUpVector, Vector3.up).normalized;
-
-            verticalGoal.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePercent);
-
-            Vector3 bodyForward = verticalGoal.transform.up;
-            bodyForward = new Vector3(bodyForward.x, 0, bodyForward.z);
-            DrawDebugLine(verticalGoal.position, bodyForward, Color.cyan);
-            Quaternion moveTorque = Quaternion.FromToRotation(bodyForward, TargetDirection);
-            Vector3 rotTorque = moveTorque.eulerAngles;
-            if (rotTorque.magnitude <= 180)
+            if (!(stateManager.StateMachine.CurrentState == PlayerStateMachine.CannonAimState))
             {
-                rotTorque *= -1;
-            }
+                Vector3 bodyUpVector = -verticalGoal.transform.right; // Frustratingly, this isn't always body.transform.up
+                var balancePercent = Vector3.Angle(bodyUpVector, Vector3.up) / 180;
+                balancePercent = uprightTorqueFunction.Evaluate(balancePercent);
+                var rot = Quaternion.FromToRotation(bodyUpVector, Vector3.up).normalized;
 
-            DrawDebugLine(verticalGoal.position, rotTorque, Color.red);
-            verticalGoal.AddTorque(rotTorque * rotationTorque);
-            Debug.Log("Torque Magnitude: " + rotTorque.magnitude);
+                verticalGoal.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightTorque * balancePercent);
+
+                Vector3 bodyForward = verticalGoal.transform.up;
+                bodyForward = new Vector3(bodyForward.x, 0, bodyForward.z);
+                DrawDebugLine(verticalGoal.position, bodyForward, Color.cyan);
+                Quaternion moveTorque = Quaternion.FromToRotation(bodyForward, TargetDirection);
+                Vector3 rotTorque = moveTorque.eulerAngles;
+                if (rotTorque.magnitude <= 180)
+                {
+                    rotTorque *= -1;
+                }
+
+                DrawDebugLine(verticalGoal.position, rotTorque, Color.red);
+                verticalGoal.AddTorque(rotTorque * rotationTorque);
+                Debug.Log("Torque Magnitude: " + rotTorque.magnitude);
+            }
         }
 
         private void DrawDebugLine(Vector3 startPos, Vector3 vec, Color col)
@@ -176,6 +191,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", GetInput);
             Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove", MoveTo);
             Events.EventsPublisher.Instance.SubscribeToEvent("GrabRag", GetGrabbed);
+            Events.EventsPublisher.Instance.SubscribeToEvent("ReleaseRag", GetReleased);
         }
 
         void UnsubToEvents()
@@ -184,7 +200,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCameraTransform", RecCam);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCamera", RecCamObj);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ManualMove", MoveTo);
-            Events.EventsPublisher.Instance.UnsubscribeToEvent("GrabRag", GetGrabbed);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("ReleaseRag", GetReleased);
         }
 
         void GetInput(object sender, object data)
@@ -225,11 +241,12 @@ namespace Team3.Ragdoll
         }
 
         Rigidbody prevHeadLock;
+        Vector3 prevHeadAnchor;
         void GetGrabbed(object sender, object data)
         {
             (Rigidbody, Rigidbody) rData = ((Rigidbody, Rigidbody))data;
             Rigidbody headLock = rData.Item2;
-            Rigidbody pelvisLock = rData.Item2;
+            Rigidbody pelvisLock = rData.Item1;
 
             ConfigurableJoint head = physRoot.GetComponentInChildren<HeadStore>().gameObject.GetComponent<ConfigurableJoint>();
             ConfigurableJoint pelvis = physRoot.GetComponent<ConfigurableJoint>();
@@ -237,6 +254,29 @@ namespace Team3.Ragdoll
             prevHeadLock = head.connectedBody;
             pelvis.connectedBody = pelvisLock;
             head.connectedBody = headLock;
+            prevHeadAnchor = head.anchor;
+            head.autoConfigureConnectedAnchor = false;
+            head.connectedAnchor = new Vector3();
+
+            physRoot.GetComponent<ConfigurableJoint>().xDrive = defaultDrive;
+            physRoot.GetComponent<ConfigurableJoint>().yDrive = defaultDrive;
+            physRoot.GetComponent<ConfigurableJoint>().zDrive = defaultDrive;
+        }
+
+        void GetReleased(object sender, object data)
+        {
+            ConfigurableJoint head = physRoot.GetComponentInChildren<HeadStore>().gameObject.GetComponent<ConfigurableJoint>();
+            ConfigurableJoint pelvis = physRoot.GetComponent<ConfigurableJoint>();
+
+            physRoot.GetComponent<ConfigurableJoint>().xDrive = zeroDrive;
+            physRoot.GetComponent<ConfigurableJoint>().yDrive = zeroDrive;
+            physRoot.GetComponent<ConfigurableJoint>().zDrive = zeroDrive;
+
+            head.connectedAnchor = prevHeadAnchor;
+            head.connectedBody = prevHeadLock;
+            head.autoConfigureConnectedAnchor = true;
+
+            pelvis.connectedBody = null;
         }
     }
 }

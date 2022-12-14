@@ -9,6 +9,8 @@ namespace Team3.PlayerMovement
     {
         [SerializeField] private float speed;
         [SerializeField] private Transform cameraTarget;
+
+        Ragdoll.ActiveRagdollToggle ragToggle;
         
         private InputAction moveAction;
         private bool moving = false;
@@ -17,6 +19,8 @@ namespace Team3.PlayerMovement
         // Start is called before the first frame update
         void Start()
         {
+            ragToggle = GetComponentInChildren<Ragdoll.ActiveRagdoll>().toggle;
+
             if (cameraTarget == null) cameraTarget = Camera.main.transform;
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", StartMove);
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerStop", StopMove);
@@ -54,7 +58,7 @@ namespace Team3.PlayerMovement
         {
             while(true)
             {
-                while (moving)
+                while (moving && ragToggle.rag)
                 {
                     Vector2 moveVector = moveAction.ReadValue<Vector2>() * 1 * PlayerStatus.Instance.GetValue("Speed");
                     Vector3 cameraVector = Vector3.Normalize(new Vector3(cameraTarget.forward.x, 0, cameraTarget.forward.z));

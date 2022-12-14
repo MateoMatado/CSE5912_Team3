@@ -14,6 +14,8 @@ namespace Team3.Ragdoll
         private (JointDrive, JointDrive)[] drives;
         private JointDrive zeroDrive;
 
+        private Player.PlayerStateManager stateMachine;
+
         private float rollForce;
 
         private bool _rag = false;
@@ -56,7 +58,7 @@ namespace Team3.Ragdoll
                 }
                 _rag = false;
             }
-            else
+            else if (stateMachine.StateMachine.CurrentState != PlayerStateMachine.CannonAimState)
             {
                 for(int i = 0; i < joints.Length; i++)
                 {
@@ -76,7 +78,7 @@ namespace Team3.Ragdoll
 
         void Roll(object sender, object data)
         {
-            if (!rag || Application.isEditor)
+            if ((!rag || Application.isEditor) && stateMachine.StateMachine.CurrentState != PlayerStateMachine.CannonAimState)
             {
                 Vector3 force = ConvertToWorldInput(((InputAction)data).ReadValue<Vector2>()) + new Vector3(0, 1, 0);
                 force = force.normalized * rollForce;
@@ -97,6 +99,12 @@ namespace Team3.Ragdoll
         {
             this.cam = cam;
         }
+
+        public void GetStateMachine(Player.PlayerStateManager machine)
+        {
+            stateMachine = machine;
+        }
+
 
         private Vector3 ConvertToWorldInput(Vector2 inVec)
         {
