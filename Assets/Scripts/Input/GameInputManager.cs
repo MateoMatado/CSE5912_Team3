@@ -57,6 +57,10 @@ namespace Team3.Input
 
             inputs.Player.Scroll.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("Scroll", null, inputs.Player.Scroll); };
 
+            inputs.Player.InfiniteJump.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("InfiniteJump", null, null); };
+            inputs.Player.NeverDie.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("NeverDie", null, null); };
+            inputs.Player.MoveUp.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("MoveUpDebug", null, null); };
+
             //for temporary camera switching, by Jimmy 
             // inputs.Player.CameraSwitch.performed += (context) => { Events.EventsPublisher.Instance.PublishEvent("CameraSwitch", null, inputs.Player.CameraSwitch); };
 
@@ -77,6 +81,10 @@ namespace Team3.Input
             inputs.Player.ChangeBanana.Enable();
             inputs.Player.ChangeBaby.Enable();
             inputs.Player.ChangeBananaRag.Enable();
+
+            inputs.Player.InfiniteJump.Enable();
+            inputs.Player.NeverDie.Enable();
+            inputs.Player.MoveUp.Enable();
 
             inputs.Player.ToggleRagdoll.Enable();
             inputs.Player.ToggleRoll.Enable();
@@ -112,6 +120,10 @@ namespace Team3.Input
             inputs.Player.ChangeBanana.Disable();
             inputs.Player.ChangeBaby.Disable();
             inputs.Player.ChangeBananaRag.Disable();
+
+            inputs.Player.InfiniteJump.Disable();
+            inputs.Player.NeverDie.Disable();
+            inputs.Player.MoveUp.Disable();
 
             inputs.Player.ToggleRagdoll.Disable();
             inputs.Player.ToggleRoll.Disable();

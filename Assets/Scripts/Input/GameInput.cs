@@ -323,6 +323,33 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InfiniteJump"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3456419-d1f5-4deb-9842-891aa12303fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NeverDie"",
+                    ""type"": ""Button"",
+                    ""id"": ""433fe63b-1028-40df-b879-54ebeed8d38e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a77f054-4511-4451-8534-2f42b3575253"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -895,6 +922,39 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""925446fd-fb49-405c-bf37-8af2291bdf58"",
+                    ""path"": ""<Keyboard>/home"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InfiniteJump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdd66819-7ae4-4efe-86a5-6bf41b3d94e0"",
+                    ""path"": ""<Keyboard>/pageUp"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NeverDie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""451b379f-373a-4c4d-ba48-a7f9b4461f54"",
+                    ""path"": ""<Keyboard>/pageDown"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1535,6 +1595,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Player_ToggleRagdoll = m_Player.FindAction("ToggleRagdoll", throwIfNotFound: true);
         m_Player_ToggleRoll = m_Player.FindAction("ToggleRoll", throwIfNotFound: true);
         m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
+        m_Player_InfiniteJump = m_Player.FindAction("InfiniteJump", throwIfNotFound: true);
+        m_Player_NeverDie = m_Player.FindAction("NeverDie", throwIfNotFound: true);
+        m_Player_MoveUp = m_Player.FindAction("MoveUp", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1640,6 +1703,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ToggleRagdoll;
     private readonly InputAction m_Player_ToggleRoll;
     private readonly InputAction m_Player_Scroll;
+    private readonly InputAction m_Player_InfiniteJump;
+    private readonly InputAction m_Player_NeverDie;
+    private readonly InputAction m_Player_MoveUp;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1677,6 +1743,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @ToggleRagdoll => m_Wrapper.m_Player_ToggleRagdoll;
         public InputAction @ToggleRoll => m_Wrapper.m_Player_ToggleRoll;
         public InputAction @Scroll => m_Wrapper.m_Player_Scroll;
+        public InputAction @InfiniteJump => m_Wrapper.m_Player_InfiniteJump;
+        public InputAction @NeverDie => m_Wrapper.m_Player_NeverDie;
+        public InputAction @MoveUp => m_Wrapper.m_Player_MoveUp;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1785,6 +1854,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Scroll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
                 @Scroll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
                 @Scroll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
+                @InfiniteJump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInfiniteJump;
+                @InfiniteJump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInfiniteJump;
+                @InfiniteJump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInfiniteJump;
+                @NeverDie.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNeverDie;
+                @NeverDie.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNeverDie;
+                @NeverDie.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNeverDie;
+                @MoveUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
+                @MoveUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
+                @MoveUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveUp;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1888,6 +1966,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Scroll.started += instance.OnScroll;
                 @Scroll.performed += instance.OnScroll;
                 @Scroll.canceled += instance.OnScroll;
+                @InfiniteJump.started += instance.OnInfiniteJump;
+                @InfiniteJump.performed += instance.OnInfiniteJump;
+                @InfiniteJump.canceled += instance.OnInfiniteJump;
+                @NeverDie.started += instance.OnNeverDie;
+                @NeverDie.performed += instance.OnNeverDie;
+                @NeverDie.canceled += instance.OnNeverDie;
+                @MoveUp.started += instance.OnMoveUp;
+                @MoveUp.performed += instance.OnMoveUp;
+                @MoveUp.canceled += instance.OnMoveUp;
             }
         }
     }
@@ -2085,6 +2172,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnToggleRagdoll(InputAction.CallbackContext context);
         void OnToggleRoll(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnInfiniteJump(InputAction.CallbackContext context);
+        void OnNeverDie(InputAction.CallbackContext context);
+        void OnMoveUp(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

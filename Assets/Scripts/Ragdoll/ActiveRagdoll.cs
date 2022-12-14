@@ -199,6 +199,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove2", MoveTo2);
             Events.EventsPublisher.Instance.SubscribeToEvent("GrabRag", GetGrabbed);
             Events.EventsPublisher.Instance.SubscribeToEvent("ReleaseRag", GetReleased);
+            Events.EventsPublisher.Instance.SubscribeToEvent("MoveUpDebug", MoveUpDebug);
         }
 
         void UnsubToEvents()
@@ -209,6 +210,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ManualMove", MoveTo);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ManualMove2", MoveTo2);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReleaseRag", GetReleased);
+            Events.EventsPublisher.Instance.SubscribeToEvent("MoveUpDebug", MoveUpDebug);
         }
 
         void GetInput(object sender, object data)
@@ -338,6 +340,11 @@ namespace Team3.Ragdoll
             }
 
             yield return null;
+        }
+
+        private void MoveUpDebug(object sender, object data)
+        {
+            transform.position += new Vector3(0, 10, 0);
         }
     }
 }

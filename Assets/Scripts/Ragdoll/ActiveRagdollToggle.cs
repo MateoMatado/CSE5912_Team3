@@ -21,6 +21,8 @@ namespace Team3.Ragdoll
         private bool _rag = false;
         public bool rag { get { return _rag; } }
 
+        private bool infiniteJump = false;
+
         public ActiveRagdollToggle(ConfigurableJoint[] joints, GameObject bodyRoot, float rollForce)
         {
             this.joints = joints;
@@ -28,6 +30,7 @@ namespace Team3.Ragdoll
             bodies = bodyRoot.GetComponentsInChildren<Rigidbody>();
             Events.EventsPublisher.Instance.SubscribeToEvent("ToggleRagdoll", ToggleRagdoll);
             Events.EventsPublisher.Instance.SubscribeToEvent("Roll", Roll);
+            Events.EventsPublisher.Instance.SubscribeToEvent("InfiniteJump", ToggleInfiniteJump);
 
             zeroDrive = new JointDrive();
             zeroDrive.maximumForce = 0;
@@ -41,6 +44,7 @@ namespace Team3.Ragdoll
         {
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ToggleRagdoll", ToggleRagdoll);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("Roll", Roll);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("InfiniteJump", ToggleInfiniteJump);
         }
 
         private void ToggleRagdoll(object sender, object data)
@@ -82,7 +86,7 @@ namespace Team3.Ragdoll
 
         void Roll(object sender, object data)
         {
-            if ((!rag || Application.isEditor) && stateMachine.StateMachine.CurrentState != PlayerStateMachine.CannonAimState)
+            if ((!rag || infiniteJump) && stateMachine.StateMachine.CurrentState != PlayerStateMachine.CannonAimState)
             {
                 Vector3 force = ConvertToWorldInput(((InputAction)data).ReadValue<Vector2>()) + new Vector3(0, 1, 0);
                 force = force.normalized * rollForce;
@@ -118,6 +122,18 @@ namespace Team3.Ragdoll
             cameraRight = new Vector3(cameraRight.x, 0, cameraRight.z);
 
             return Vector3.Normalize((cameraForward * inVec.y) + (cameraRight * inVec.x));
+        }
+
+        private void ToggleInfiniteJump(object sender, object data)
+        {
+            if (infiniteJump)
+            {
+                infiniteJump = false;
+            }
+            else
+            {
+                infiniteJump = true;
+            }
         }
     }
 }

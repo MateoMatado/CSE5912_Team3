@@ -15,6 +15,8 @@ public class PlayerHealth : LivingEntity
     [SerializeField] private float ChangeSpeed = 0.2f;
     public GameObject DieScene;
 
+    private bool neverDie = false;
+
     //OnEnable is for when player revives  
     protected override void OnEnable()
     {
@@ -32,16 +34,18 @@ public class PlayerHealth : LivingEntity
     }
     private void Start()
     {
-        EventsPublisher.Instance.SubscribeToEvent("HealPlayer", HandleHeal);        
-        EventsPublisher.Instance.SubscribeToEvent("LavaDamagePlayer", HandleLavaDamage);        
-        EventsPublisher.Instance.SubscribeToEvent("DamageEnemy", HandleDamage);        
+        EventsPublisher.Instance.SubscribeToEvent("HealPlayer", HandleHeal);
+        EventsPublisher.Instance.SubscribeToEvent("LavaDamagePlayer", HandleLavaDamage);
+        EventsPublisher.Instance.SubscribeToEvent("DamageEnemy", HandleDamage);
+        EventsPublisher.Instance.SubscribeToEvent("NeverDie", ToggleNeverDie);
     }
 
     void OnDestroy()
     {
         EventsPublisher.Instance.UnsubscribeToEvent("HealPlayer", HandleHeal);        
         EventsPublisher.Instance.UnsubscribeToEvent("LavaDamagePlayer", HandleLavaDamage);        
-        EventsPublisher.Instance.UnsubscribeToEvent("DamageEnemy", HandleDamage);    
+        EventsPublisher.Instance.UnsubscribeToEvent("DamageEnemy", HandleDamage);
+        EventsPublisher.Instance.UnsubscribeToEvent("NeverDie", ToggleNeverDie);
     }
 
 
@@ -123,7 +127,14 @@ public class PlayerHealth : LivingEntity
 
         if (Instance.currentHealth <= 0 && !isDead)
         {
-            Die();
+            if (neverDie)
+            {
+                Instance.currentHealth = startingHealth;
+            }
+            else
+            {
+                Die();
+            }
         }
 
         Debug.Log("PLAYER HP:" + Instance.currentHealth);
@@ -160,4 +171,15 @@ public class PlayerHealth : LivingEntity
         ChangeValueHP += amount;
     }
 
+    private void ToggleNeverDie(object sender, object data)
+    {
+        if(neverDie)
+        {
+            neverDie = false;
+        }
+        else
+        {
+            neverDie = true;
+        }
+    }
 }
