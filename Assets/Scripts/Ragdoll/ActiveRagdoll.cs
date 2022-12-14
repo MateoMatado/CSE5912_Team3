@@ -190,6 +190,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.SubscribeToEvent("ReceiveCamera", RecCamObj);
             Events.EventsPublisher.Instance.SubscribeToEvent("PlayerMove", GetInput);
             Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove", MoveTo);
+            Events.EventsPublisher.Instance.SubscribeToEvent("ManualMove2", MoveTo2);
             Events.EventsPublisher.Instance.SubscribeToEvent("GrabRag", GetGrabbed);
             Events.EventsPublisher.Instance.SubscribeToEvent("ReleaseRag", GetReleased);
         }
@@ -200,6 +201,7 @@ namespace Team3.Ragdoll
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCameraTransform", RecCam);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReceiveCamera", RecCamObj);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ManualMove", MoveTo);
+            Events.EventsPublisher.Instance.UnsubscribeToEvent("ManualMove2", MoveTo2);
             Events.EventsPublisher.Instance.UnsubscribeToEvent("ReleaseRag", GetReleased);
         }
 
@@ -227,6 +229,17 @@ namespace Team3.Ragdoll
             Transform par = this.transform.parent;
             effectTarget = par.GetComponentInChildren<EffectStore>()?.transform;
             enemyTarget = par.GetComponentInChildren<EnemyTargetStore>().transform;
+        }
+
+        void MoveTo2(object sender, object data)
+        {
+            Vector3 diff = (Vector3)data;
+            physRoot.transform.position += diff;
+
+            // foreach (ConfigurableJoint j in physJoints)
+            // {
+            //     j.transform.position += diff;
+            // }
         }
 
         void MoveTo(object sender, object data)
@@ -270,6 +283,7 @@ namespace Team3.Ragdoll
             ConfigurableJoint head = physRoot.GetComponentInChildren<HeadStore>().gameObject.GetComponent<ConfigurableJoint>();
             ConfigurableJoint pelvis = physRoot.GetComponent<ConfigurableJoint>();
 
+            physRoot.transform.position = (Vector3)data;
             physRoot.GetComponent<ConfigurableJoint>().xDrive = zeroDrive;
             physRoot.GetComponent<ConfigurableJoint>().yDrive = zeroDrive;
             physRoot.GetComponent<ConfigurableJoint>().zDrive = zeroDrive;
