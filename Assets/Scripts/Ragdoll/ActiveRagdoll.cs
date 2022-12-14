@@ -30,6 +30,12 @@ namespace Team3.Ragdoll
         [Header("ROLLING")]
         [SerializeField] public float rollForce = 100;
 
+        [Header("ISLAND DAMPING")]
+        [SerializeField] private bool instantDamp = false;
+        [SerializeField] private float dampDelay = 0.1f;
+        [SerializeField] private float dampFactor = 0.9f;
+        [SerializeField] private float dampThreshold = 0.1f;
+
         JointDrive defaultDrive;
         JointDrive zeroDrive;
 
@@ -284,12 +290,40 @@ namespace Team3.Ragdoll
 
         public void Dampen()
         {
+            if (instantDamp)
+            {
+                Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
+
+                foreach (Rigidbody r in bodies)
+                {
+                    r.velocity = Vector3.zero;
+                }
+            }
+            else
+            {
+                StartCoroutine(SlowDamp());
+            }
+        }
+
+        IEnumerator SlowDamp()
+        {
             Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
 
-            foreach (Rigidbody r in bodies)
+            double percent = 1;
+
+            while(percent > dampThreshold)
             {
-                r.velocity = Vector3.zero;
+                foreach (Rigidbody r in bodies)
+                {
+                    r.velocity *= dampFactor;
+                }
+
+                percent *= dampFactor;
+
+                yield return new WaitForSeconds(dampDelay);
             }
+
+            yield return null;
         }
     }
 }
