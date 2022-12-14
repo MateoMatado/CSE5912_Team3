@@ -20,7 +20,7 @@ public class IntroScene : MonoBehaviour
 
     private IEnumerator Cutscene()
     {
-        GameObject.Find("GameManager").GetComponent<GameInputManager>().DisableMove();
+        EventsPublisher.Instance.PublishEvent("StartCutscene", null, null);
         cutsceneCamera.Priority = 9999;
         var orbiter = cutsceneCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         // orbiter.m_FollowOffset = new Vector3(0, 30, -100);
@@ -34,6 +34,6 @@ public class IntroScene : MonoBehaviour
         }
         cutsceneCamera.Priority = 0;
         yield return new WaitForSeconds(1f);
-        GameObject.Find("GameManager").GetComponent<GameInputManager>().EnableMove();
+        EventsPublisher.Instance.PublishEvent("EndCutscene", null, null);
     }
 }

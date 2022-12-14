@@ -48,7 +48,7 @@ public class ProgressTracker : MonoBehaviour
 
     private IEnumerator ShrinkForceField()
     {
-        GameObject.Find("GameManager").GetComponent<GameInputManager>().DisableMove();
+        EventsPublisher.Instance.PublishEvent("StartCutscene", null, null);
         cutsceneCam.Priority = 1000;
         while (transform.localScale.x > 1)
         {
@@ -58,7 +58,7 @@ public class ProgressTracker : MonoBehaviour
             yield return null;
         }
         cutsceneCam.Priority = 0;
-        GameObject.Find("GameManager").GetComponent<GameInputManager>().EnableMove();
+        EventsPublisher.Instance.PublishEvent("EndCutscene", null, null);
         Destroy(gameObject);
     }
 }

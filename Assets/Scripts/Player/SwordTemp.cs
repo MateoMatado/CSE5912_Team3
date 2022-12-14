@@ -20,7 +20,7 @@ public class SwordTemp : MonoBehaviour
         else if (target != null)
         {
             Debug.Log("============"+other.name+" HIT!");
-            target.OnDamage(attackpoint);
+            // target.OnDamage(attackpoint);
         }
     }
 
