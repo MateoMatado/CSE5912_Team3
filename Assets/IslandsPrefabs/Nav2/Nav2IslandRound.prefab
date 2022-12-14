@@ -2659,6 +2659,8 @@ GameObject:
   - component: {fileID: 5105155381009479649}
   - component: {fileID: 5593910155742125217}
   - component: {fileID: 2269462529830616467}
+  - component: {fileID: 483989919317924412}
+  - component: {fileID: 8481175566733204786}
   m_Layer: 8
   m_Name: Nav2IslandRound
   m_TagString: IslandParent
@@ -2759,6 +2761,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+--- !u!136 &483989919317924412
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916570678104877123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 104.04172
+  m_Height: 208.08344
+  m_Direction: 1
+  m_Center: {x: -2.177414, y: 35.31357, z: 30.325317}
+--- !u!114 &8481175566733204786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916570678104877123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f60318def87c6214ba118b9a9fdbb24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2916570678111815596
 GameObject:
   m_ObjectHideFlags: 0
