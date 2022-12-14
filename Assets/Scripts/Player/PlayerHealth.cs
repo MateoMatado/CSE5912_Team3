@@ -160,6 +160,9 @@ public class PlayerHealth : LivingEntity
         GameStateMachine.Instance.SwitchState(GameStateMachine.MainMenuState);
 
     }
+
+    
+
     public float GetHP()
     {
         return Instance.currentHealth;

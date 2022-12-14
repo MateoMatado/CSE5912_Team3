@@ -314,6 +314,22 @@ public class BossTypeA : LivingEntity
         //Collider bossCollider = GetComponent<Collider>();
         //bossCollider.enabled = false;
 
+        StartCoroutine(EndSceneAction());
+    }
 
+
+
+
+
+
+
+
+
+
+    private IEnumerator EndSceneAction()
+    {
+        HUDManager.Instance.End();
+        yield return new WaitForSeconds(3f);
+        GameStateMachine.Instance.SwitchState(GameStateMachine.MainMenuState);
     }
 }
