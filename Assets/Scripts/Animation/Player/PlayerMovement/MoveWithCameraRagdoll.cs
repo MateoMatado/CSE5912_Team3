@@ -72,7 +72,6 @@ namespace Team3.PlayerMovement
                         force += moveVector.x * cameraVector;
                         force *= speed;
                         rb.AddForce(force);
-                        Debug.Log("FORCECECE " + force);
                     }
 
                     // body.velocity = moveVector.y * cameraVector;

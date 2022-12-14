@@ -17,9 +17,9 @@ public class SwordTemp : MonoBehaviour
             target = other.GetComponentInParent<IDamageable>();
             target.OnDamage(attackpoint);
         }
-        else if (target != null)
+        else if (target != null && other.gameObject.layer != 3 && other.gameObject.layer != 10)
         {
-            Debug.Log("============"+other.name+" HIT!");
+            // Debug.Log("============"+other.name+" HIT!");
             target.OnDamage(attackpoint);
         }
     }
