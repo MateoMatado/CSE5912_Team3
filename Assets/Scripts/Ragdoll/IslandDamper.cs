@@ -11,6 +11,8 @@ namespace Team3.Ragdoll
             if (other.tag == "PlayerBox")
             {
                 other.GetComponentInParent<ActiveRagdoll>().Dampen();
+
+                other.transform.parent.parent.parent.parent.parent.GetComponentInChildren<ParticleSystem>().Stop();
             }
         }
     }
