@@ -9,6 +9,8 @@ public class CannonCollision : MonoBehaviour
 {
     [SerializeField] private int playerLayer = 3;
     [SerializeField] private CinemachineVirtualCamera cannonCamera;
+    [SerializeField] public Rigidbody pelvisBody;
+    [SerializeField] public Rigidbody headBody;
 
     private void OnTriggerEnter(Collider collider)
     {

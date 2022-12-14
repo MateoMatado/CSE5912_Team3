@@ -65,6 +65,7 @@ public class CannonAimState : PlayerState
 
     private void HandleEnterCannon(object sender, object data)
     {
+        //EventsPublisher.Instance.PublishEvent("GrabRag", this, (((CannonCollision)sender).pelvisBody, ((CannonCollision)sender).headBody));
         EventsPublisher.Instance.PublishEvent("TurnAnimated", null, null);
         var tuple = ((GameObject, GameObject, CinemachineVirtualCamera))data;
         cannon = tuple.Item1;
