@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.019917056, g: 0.022380816, b: 0.0058184317, a: 1}
+  m_IndirectSpecularColor: {r: 0.01991872, g: 0.022382457, b: 0.005820073, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9550,11 +9550,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerPoint: {fileID: 506820672}
   Bias: 0
-  Width: 5000
-  Length: 5000
+  Width: 3000
+  Length: 3000
   Height: 50
   Attempts: 100
-  ChainNum: 10
+  ChainNum: 0
   RandomHeightLimit: 1000
   Islands:
   - {fileID: 2070914281333398461, guid: 0ccf0210ac897424c97471604d418cd5, type: 3}
